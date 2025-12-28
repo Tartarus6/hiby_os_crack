@@ -11,6 +11,7 @@ Cracking the firmware of HiBy's linux devices
 **dependencies**
 - 7zip (for `7z` command) (could probably use other tools instead)
 - squashfs-tools (for `unsquashfs` command)
+
 **extracting the upt file**
 - The original firmware file is `r3proii.upt`. It's an ISO image.
 - To extract that image, run `7z x r3proii.upt`
