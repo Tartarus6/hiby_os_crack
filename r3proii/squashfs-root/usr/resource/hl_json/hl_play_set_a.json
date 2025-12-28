@@ -1,0 +1,95 @@
+{
+	"item": 
+	[
+		{
+			"name": "ui_main",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "400",
+			"height": "160"
+		},
+		{
+			"name": "hl_play_set_a",
+			"type": "Menu",
+			"title": "<1000>",
+			"flags": "HCENTER|VCENTER",
+			"left": "120",
+			"top": "120",
+			"width": "160",
+			"height": "600",
+			"data": 
+			[
+				{
+					"title": "<1001>",
+					"link": "<hl_play_mode_d",
+					"value": "<1002>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1009>",
+					"link": "<hl_break_point_d",
+					"value": "<1010>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1011>",
+					"link": "_hl_gapless_play_t",
+					"value": "<1012>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1013>",
+					"link": "_hl_digital_volume_max_t",
+					"value": "<1014>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1015>",
+					"link": "<hl_max_vol_d",
+					"value": "<1016>",
+					"other":"refresh_link#&#hl_default_vol_d",
+					"enable":"1"
+				},
+				{
+					"title": "<1017>",
+					"link": "<hl_default_vol_d",
+					"value": "<1018>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1019>",
+					"link": "_hl_fade_t",
+					"value": "<1020>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1025>",
+					"link": "<hl_replaygain_type_d",
+					"value": "<1026>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1029>",
+					"link": "_hl_file_skip_t",
+					"value": "<1030>",
+					"other":"",
+					"enable":"1"
+				},
+				{
+					"title": "<1031>",
+					"link": "_hl_album_skip_t",
+					"value": "<1032>",
+					"other":"",
+					"enable":"1"
+				}
+			]
+		}
+	]
+}

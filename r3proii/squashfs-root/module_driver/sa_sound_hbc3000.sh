@@ -1,0 +1,1 @@
+insmod sa_sound_hbc3000.ko  hbc3000_jtag_io_as_spi_io=1 hbc3000_jtag_select=-1 hbc3000_share_spi=0 hbc3000_jtag_tdo_as_share_spi_select=0 hbc3000_jtag_tdo_as_reset=1 hbc3000_share_spi_cs1=-1 hbc3000_power_gpio=PF15 hbc3000_xtal_delay_power_down=1 hbc3000_jtag_tdi_gpio=PA30 hbc3000_jtag_tdo_gpio=PA29 hbc3000_jtag_tms_gpio=PA28 hbc3000_jtag_tck_gpio=PA31

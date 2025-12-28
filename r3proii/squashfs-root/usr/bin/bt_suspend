@@ -1,0 +1,16 @@
+#!/bin/sh
+
+hciconfig hci0 down
+killall bluetoothd > /dev/null
+killall brcm_patchram_plus > /dev/null
+rm /var/run/messagebus.pid -rf
+
+# bluetooth power off
+echo 0 > /sys/class/rfkill/rfkill0/state
+sleep 1 # if invoke this script in c with system(), must sleep for a while!!!!!
+
+# turn off bluealsa service
+killall bluealsa > /dev/null
+
+# turn off dbus-daemon service
+killall dbus-daemon > /dev/null

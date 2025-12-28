@@ -1,0 +1,1 @@
+insmod mp2731.ko i2c_bus_num=0 int_gpio=PC01 otg_enable_gpio=PF10 input_limit=2000000 charge_limit=3000000 min_sys_voltage=3500000 min_input_voltage=4500000 vbat_target=4400000 termination_current=120000 precharge_current=120000 otg_max_current=1000000

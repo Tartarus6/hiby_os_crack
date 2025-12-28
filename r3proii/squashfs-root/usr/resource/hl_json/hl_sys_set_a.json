@@ -1,0 +1,157 @@
+{
+	"item": 
+	[
+		{
+			"name": "ui_main",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "400",
+			"height": "160"
+		},
+		{
+			"name": "hl_sys_set_a",
+			"type": "Menu",
+			"title": "<1000>",
+			"flags": "HCENTER|VCENTER",
+			"left": "120",
+			"top": "120",
+			"width": "160",
+			"height": "600",
+			"data": 
+			[
+				{
+					"title": "<1001>",
+					"link": ">hl_language_a",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1002>",
+					"link": "<hl_update_type_d",
+					"value": "<1003>",
+					"other":""
+				},
+				{
+					"title": "<1004>",
+					"link": "<hl_brightness_d",
+					"value": "<1005>",
+					"other":""
+				},
+				{
+					"title": "<1006>",
+					"link": "<hl_bkl_time_d",
+					"value": "<1007>",
+					"other":""
+				},
+				{
+					"title": "<1009>",
+					"link": "<hl_color_d",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1010>",
+					"link": "<hl_font_size_d",
+					"value": "<1011>",
+					"other":""
+				},
+				{
+					"title": "<1012>",
+					"link": "<hl_usb_mode_d",
+					"value": "<1013>",
+					"other":""
+				},
+				{
+					"title": "<1014>",
+					"link": "_hl_lock_key_t",
+					"value": "<1015>",
+					"other":""
+				},
+				{
+					"title": "<1016>",
+					"link": "<hl_time_set_d",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1017>",
+					"link": "<hl_powersave_time_d",
+					"value": "<1018>",
+					"other":""
+				},
+				{
+					"title": "<1019>",
+					"link": "<hl_sleep_time_d",
+					"value": "<1020>",
+					"other":""
+				},
+				{
+					"title": "<1021>",
+					"link": "_hl_battery_percent_t",
+					"value": "<1022>",
+					"other":""
+				},
+				{
+					"title": "<1023>",
+					"link": "_hl_standby_t",
+					"value": "<1024>",
+					"other":""
+				},
+				{
+					"title": "<1025>",
+					"link": "_hl_line_control_t",
+					"value": "<1026>",
+					"other":""
+				},
+				{
+					"title": "<1027>",
+					"link": "_hl_led_t",
+					"value": "<1028>",
+					"other":""
+				},
+				{
+					"title": "<1029>",
+					"link": "<hl_screensaver_d",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1030>",
+					"link": "<hl_rotation_d",
+					"value": "<1031>",
+					"other":""
+				},
+				{
+					"title": "<1032>",
+					"link": "<hl_restore_d",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1033>",
+					"link": "<hl_upgrade_d",
+					"value": "",
+					"other":""
+				},
+				{
+					"title": "<1034>",
+					"link": "<hl_clock_d",
+					"value": "<1035>",
+					"other":""
+				},
+				{
+					"title": "<1036>",
+					"link": "<hl_clock_set_d",
+					"value": "<1037>",
+					"other":""
+				},
+				{
+					"title": "<1038>",
+					"link": "<hl_date_set_d",
+					"value": "<1039>",
+					"other":""
+				}
+			]
+		}
+	]
+}

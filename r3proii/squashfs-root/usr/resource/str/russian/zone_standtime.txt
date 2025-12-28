@@ -1,0 +1,292 @@
+"America/Rio_Branco":Акри стандартное время
+"Asia/Kabul":Афганистан
+"Africa/Maputo":Центральная Африка
+"Africa/Bujumbura":Центральная Африка
+"Africa/Gaborone":Центральная Африка
+"Africa/Lubumbashi":Центральная Африка
+"Africa/Blantyre":Центральная Африка
+"Africa/Kigali":Центральная Африка
+"Africa/Lusaka":Центральная Африка
+"Africa/Harare":Центральная Африка
+"Africa/Nairobi":Восточная Африка
+"Africa/Djibouti":Восточная Африка
+"Africa/Asmera":Восточная Африка
+"Africa/Addis_Ababa":Восточная Африка
+"Indian/Comoro":Восточная Африка
+"Indian/Antananarivo":Восточная Африка
+"Africa/Mogadishu":Восточная Африка
+"Africa/Dar_es_Salaam":Восточная Африка
+"Africa/Kampala":Восточная Африка
+"Indian/Mayotte":Восточная Африка
+"Africa/Johannesburg":Южная Африка
+"Africa/Maseru":Южная Африка
+"Africa/Mbabane":Южная Африка
+"Africa/Lagos":Западная Африка, стандартное время
+"Africa/Luanda":Западная Африка, стандартное время
+"Africa/Porto-Novo":Западная Африка, стандартное время
+"Africa/Kinshasa":Западная Африка, стандартное время
+"Africa/Bangui":Западная Африка, стандартное время
+"Africa/Brazzaville":Западная Африка, стандартное время
+"Africa/Douala":Западная Африка, стандартное время
+"Africa/Libreville":Западная Африка, стандартное время
+"Africa/Malabo":Западная Африка, стандартное время
+"Africa/Niamey":Западная Африка, стандартное время
+"Africa/Ndjamena":Западная Африка, стандартное время
+"America/Juneau":Аляска, стандартное время
+"Asia/Almaty":Алма-Ата стандартное время
+"America/Manaus":Амазонка, стандартное время
+"America/Chicago":Центральная Америка, стандартное время
+"America/Belize":Центральная Америка, стандартное время
+"America/Winnipeg":Центральная Америка, стандартное время
+"America/Costa_Rica":Центральная Америка, стандартное время
+"America/Guatemala":Центральная Америка, стандартное время
+"America/Tegucigalpa":Центральная Америка, стандартное время
+"America/Mexico_City":Центральная Америка, стандартное время
+"America/El_Salvador":Центральная Америка, стандартное время
+"America/New_York":Восточная Америка, стандартное время
+"America/Nassau":Восточная Америка, стандартное время
+"America/Toronto":Восточная Америка, стандартное время
+"America/Port-au-Prince":Восточная Америка, стандартное время
+"America/Jamaica":Восточная Америка, стандартное время
+"America/Cayman":Восточная Америка, стандартное время
+"America/Panama":Восточная Америка, стандартное время
+"America/Denver":Стандартное горное время (Северная Америка)
+"America/Edmonton":Стандартное горное время (Северная Америка)
+"America/Hermosillo":Стандартное горное время (Северная Америка)
+"America/Los_Angeles":Тихоокеанское стандартное время
+"America/Vancouver":Тихоокеанское стандартное время
+"America/Tijuana":Тихоокеанское стандартное время
+"Asia/Anadyr":Анадырь стандартное время
+"Pacific/Apia":Апиа, стандартное время
+"Asia/Aqtau":Актау, стандартное время
+"Asia/Aqtobe":Актобе стандартное время
+"Asia/Riyadh":Саудовская Аравия, стандартное время
+"Asia/Bahrain":Саудовская Аравия, стандартное время
+"Asia/Baghdad":Саудовская Аравия, стандартное время
+"Asia/Kuwait":Саудовская Аравия, стандартное время
+"Asia/Qatar":Саудовская Аравия, стандартное время
+"Asia/Aden":Саудовская Аравия, стандартное время
+"America/Buenos_Aires":Аргентина, стандартное время
+"America/Argentina/San_Luis":Западная Аргентина, стандартное время
+"Asia/Yerevan":Армения, стандартное время
+"America/Halifax":Атлантическое стандартное время
+"America/Antigua":Атлантическое стандартное время
+"America/Anguilla":Атлантическое стандартное время
+"America/Aruba":Атлантическое стандартное время
+"America/Barbados":Атлантическое стандартное время
+"Atlantic/Bermuda":Атлантическое стандартное время
+"America/Kralendijk":Атлантическое стандартное время
+"America/Curacao":Атлантическое стандартное время
+"America/Dominica":Атлантическое стандартное время
+"America/Grenada":Атлантическое стандартное время
+"America/Thule":Атлантическое стандартное время
+"America/Guadeloupe":Атлантическое стандартное время
+"America/St_Kitts":Атлантическое стандартное время
+"America/St_Lucia":Атлантическое стандартное время
+"America/Marigot":Атлантическое стандартное время
+"America/Martinique":Атлантическое стандартное время
+"America/Montserrat":Атлантическое стандартное время
+"America/Puerto_Rico":Атлантическое стандартное время
+"America/Lower_Princes":Атлантическое стандартное время
+"America/Port_of_Spain":Атлантическое стандартное время
+"America/St_Vincent":Атлантическое стандартное время
+"America/Tortola":Атлантическое стандартное время
+"America/St_Thomas":Атлантическое стандартное время
+"Australia/Adelaide":Центральная Австралия, стандартное время
+"Australia/Eucla":Центральная Австралия, западное стандартное время
+"Australia/Sydney":Восточная Австралия, стандартное время
+"Australia/Perth":Западная Австралия, стандартное время
+"Asia/Baku":Азербайджан, стандартное время
+"Atlantic/Azores":Азорские о-ва, стандартное время
+"Asia/Dhaka":Бангладеш, стандартное время
+"Asia/Thimphu":Бутан
+"America/La_Paz":Боливия
+"America/Sao_Paulo":Бразилия, стандартное время
+"Asia/Brunei":Бруней-Даруссалам
+"Atlantic/Cape_Verde":Кабо-Верде, стандартное время
+"Antarctica/Casey":Кейси
+"Pacific/Saipan":Чаморро
+"Pacific/Guam":Чаморро
+"Pacific/Chatham":Чатем, стандартное время
+"America/Santiago":Чили, стандартное время
+"Asia/Shanghai":Китай, стандартное время
+"Asia/Choibalsan":Чойбалсан, стандартное время
+"Indian/Christmas":о-в Рождества
+"Indian/Cocos":Кокосовые о-ва
+"America/Bogota":Колумбия, стандартное время
+"Pacific/Rarotonga":Острова Кука, стандартное время
+"America/Havana":Куба, стандартное время
+"Antarctica/Davis":Дейвис
+"Antarctica/DumontDUrville":Дюмон-д’Юрвиль
+"Asia/Dili":Восточный Тимор
+"Pacific/Easter":О-в Пасхи, стандартное время
+"America/Guayaquil":Эквадор
+"Europe/Paris":Центральная Европа, стандартное время
+"Europe/Andorra":Центральная Европа, стандартное время
+"Europe/Tirane":Центральная Европа, стандартное время
+"Europe/Vienna":Центральная Европа, стандартное время
+"Europe/Sarajevo":Центральная Европа, стандартное время
+"Europe/Brussels":Центральная Европа, стандартное время
+"Europe/Zurich":Центральная Европа, стандартное время
+"Europe/Prague":Центральная Европа, стандартное время
+"Europe/Berlin":Центральная Европа, стандартное время
+"Europe/Copenhagen":Центральная Европа, стандартное время
+"Europe/Madrid":Центральная Европа, стандартное время
+"Europe/Gibraltar":Центральная Европа, стандартное время
+"Europe/Zagreb":Центральная Европа, стандартное время
+"Europe/Budapest":Центральная Европа, стандартное время
+"Europe/Rome":Центральная Европа, стандартное время
+"Europe/Vaduz":Центральная Европа, стандартное время
+"Europe/Luxembourg":Центральная Европа, стандартное время
+"Europe/Monaco":Центральная Европа, стандартное время
+"Europe/Podgorica":Центральная Европа, стандартное время
+"Europe/Skopje":Центральная Европа, стандартное время
+"Europe/Malta":Центральная Европа, стандартное время
+"Europe/Amsterdam":Центральная Европа, стандартное время
+"Europe/Oslo":Центральная Европа, стандартное время
+"Europe/Warsaw":Центральная Европа, стандартное время
+"Europe/Belgrade":Центральная Европа, стандартное время
+"Europe/Stockholm":Центральная Европа, стандартное время
+"Europe/Ljubljana":Центральная Европа, стандартное время
+"Arctic/Longyearbyen":Центральная Европа, стандартное время
+"Europe/Bratislava":Центральная Европа, стандартное время
+"Europe/San_Marino":Центральная Европа, стандартное время
+"Africa/Tunis":Центральная Европа, стандартное время
+"Europe/Vatican":Центральная Европа, стандартное время
+"Europe/Belgrade":Центральная Европа, стандартное время
+"Europe/Bucharest":Восточная Европа, стандартное время
+"Europe/Mariehamn":Восточная Европа, стандартное время
+"Europe/Sofia":Восточная Европа, стандартное время
+"Asia/Nicosia":Восточная Европа, стандартное время
+"Africa/Cairo":Восточная Европа, стандартное время
+"Europe/Helsinki":Восточная Европа, стандартное время
+"Europe/Athens":Восточная Европа, стандартное время
+"Asia/Amman":Восточная Европа, стандартное время
+"Asia/Beirut":Восточная Европа, стандартное время
+"Asia/Damascus":Восточная Европа, стандартное время
+"Europe/Minsk":Московское время
+"Europe/Kaliningrad":Московское время
+"Atlantic/Canary":Западная Европа, стандартное время
+"Atlantic/Faeroe":Западная Европа, стандартное время
+"Atlantic/Stanley":Фолклендские о-ва, стандартное время
+"Pacific/Fiji":Фиджи, стандартное время
+"America/Cayenne":Французская Гвиана
+"Indian/Kerguelen":Французские Южные и Антарктические территории
+"Atlantic/Reykjavik":Среднее время по Гринвичу
+"Africa/Ouagadougou":Среднее время по Гринвичу
+"Africa/Abidjan":Среднее время по Гринвичу
+"Europe/London":Среднее время по Гринвичу
+"Africa/Accra":Среднее время по Гринвичу
+"Africa/Banjul":Среднее время по Гринвичу
+"Africa/Conakry":Среднее время по Гринвичу
+"Europe/Dublin":Среднее время по Гринвичу
+"Africa/Bamako":Среднее время по Гринвичу
+"Africa/Nouakchott":Среднее время по Гринвичу
+"Atlantic/St_Helena":Среднее время по Гринвичу
+"Africa/Freetown":Среднее время по Гринвичу
+"Africa/Dakar":Среднее время по Гринвичу
+"Africa/Lome":Среднее время по Гринвичу
+"Pacific/Galapagos":Галапагосские о-ва
+"Pacific/Gambier":Гамбье
+"Asia/Tbilisi":Грузия, стандартное время
+"Pacific/Tarawa":о-ва Гилберта
+"America/Scoresbysund":Восточная Гренландия, стандарное время
+"America/Godthab":Западная Гренландия, стандартное время
+"Pacific/Guam":Гуам
+"Asia/Dubai":Персидский залив
+"Asia/Muscat":Персидский залив
+"America/Guyana":Гайана
+"Pacific/Honolulu":Гавайско-алеутское стандартное время
+"Asia/Hong_Kong":Китай, стандартное время
+"Asia/Hovd":Ховд, стандартное время
+"Asia/Calcutta":Индия
+"Asia/Colombo":Индия
+"Indian/Chagos":Индийский океан
+"Asia/Bangkok":Индокитай
+"Asia/Phnom_Penh":Индокитай
+"Asia/Vientiane":Индокитай
+"Asia/Makassar":Центральная Индонезия
+"Asia/Jayapura":Восточная Индонезия
+"Asia/Jakarta":Западная Индонезия
+"Asia/Tehran":Иран, стандартное время
+"Asia/Irkutsk":Иркутск, стандартное время
+"Asia/Jerusalem":Израиль, стандартное время
+"Asia/Tokyo":Япония, стандартное время
+"Asia/Kamchatka":Петропавловск-Камчатский, стандартное время
+"Asia/Almaty":Восточный Казахстан
+"Asia/Aqtobe":Западный Казахстан
+"Asia/Seoul":Корея, стандартное время
+"Pacific/Kosrae":Косрае
+"Asia/Krasnoyarsk":Красноярск, стандартное время
+"Asia/Bishkek":Киргизия
+"Asia/Colombo":Шри-Ланка
+"Pacific/Kiritimati":о-ва Лайн
+"Australia/Lord_Howe":Лорд-Хау, стандартное время
+"Asia/Macau":Китай, стандартное время
+"Antarctica/Macquarie":Маккуори
+"Asia/Magadan":Магадан, стандартное время
+"Asia/Kuching":Малайзия
+"Indian/Maldives":Мальдивы
+"Pacific/Marquesas":Маркизские о-ва
+"Pacific/Majuro":Маршалловы Острова
+"Indian/Mauritius":Маврикий, стандартное время
+"Antarctica/Mawson":Моусон
+"America/Santa_Isabel":Северо-западное мексиканское стандартное время
+"America/Mazatlan":Тихоокеанское мексиканское стандартное время
+"Asia/Ulaanbaatar":Улан-Батор, стандартное время
+"Europe/Moscow":Москва, стандартное время
+"Asia/Rangoon":Мьянма
+"Pacific/Nauru":Науру
+"Asia/Katmandu":Непал
+"Pacific/Noumea":Новая Каледония, стандартное время
+"Pacific/Auckland":Новая Зеландия, стандартное время
+"Antarctica/McMurdo":Новая Зеландия, стандартное время
+"America/St_Johns":Ньюфаундленд, стандартное время
+"Pacific/Niue":Ниуэ
+"Pacific/Norfolk":Норфолк, стандартное время
+"America/Noronha":Фернанду-ди-Норонья, стандартное время
+"Pacific/Saipan":Северные Марианские о-ва
+"Asia/Novosibirsk":Новосибирск, стандартное время
+"Asia/Omsk":Омск, стандартное время
+"Asia/Karachi":Пакистан, стандартное время
+"Pacific/Palau":Палау
+"Pacific/Port_Moresby":Папуа – Новая Гвинея
+"America/Asuncion":Парагвай, стандартное время
+"America/Lima":Перу, стандартное время
+"Asia/Manila":Филиппины, стандартное время
+"Pacific/Enderbury":о-ва Феникс
+"America/Miquelon":Сен-Пьер и Микелон, стандартное время
+"Pacific/Pitcairn":Питкэрн
+"Pacific/Ponape":Понпеи
+"Asia/Pyongyang":Пхеньян
+"Asia/Qyzylorda":Кызылорда, стандартное время*
+"Indian/Reunion":Реюньон
+"Antarctica/Rothera":Ротера
+"Asia/Sakhalin":Сахалин, стандартное время
+"Europe/Samara":Самарское стандартное время
+"Pacific/Pago_Pago":Самоа, стандартное время
+"Indian/Mahe":Сейшельские Острова
+"Asia/Singapore":Сингапур
+"Pacific/Guadalcanal":Соломоновы Острова
+"Atlantic/South_Georgia":Южная Георгия
+"America/Paramaribo":Суринам
+"Antarctica/Syowa":Сёва
+"Pacific/Tahiti":Таити
+"Asia/Taipei":Китай, стандартное время
+"Asia/Dushanbe":Таджикистан
+"Pacific/Fakaofo":Токелау
+"Pacific/Tongatapu":Тонга, стандартное время
+"Pacific/Truk":Трук
+"Asia/Ashgabat":Туркменистан, стандартное время
+"Pacific/Funafuti":Тувалу
+"America/Montevideo":Уругвай, стандартное время
+"Asia/Tashkent":Узбекистан, стандартное время
+"Pacific/Efate":Вануату, стандартное время
+"America/Caracas":Венесуэла
+"Asia/Vladivostok":Владивосток, стандартное время
+"Europe/Volgograd":Волгоград, стандартное время
+"Antarctica/Vostok":Восток
+"Pacific/Wake":Уэйк
+"Pacific/Wallis":Уоллис и Футуна
+"Asia/Yakutsk":Якутск, стандартное время
+"Asia/Yekaterinburg":Екатеринбург, стандартное время

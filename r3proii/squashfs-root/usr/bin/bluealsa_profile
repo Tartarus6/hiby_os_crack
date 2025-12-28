@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Kill any existing bluealsa process
+killall    bluealsa    &>/dev/null
+killall -9 bluealsa    &>/dev/null
+
+case "$1" in
+  a2dp-sink)
+    # echo "Starting bluealsa with A2DP sink profile..."
+    /usr/bin/bluealsa -p a2dp-sink --a2dp-volume &
+    # echo "Bluealsa sink started."
+    ;;
+  a2dp-source)
+    # echo "Starting bluealsa with A2DP source profile..."
+    /usr/bin/bluealsa -p a2dp-source --a2dp-volume &
+    # echo "Bluealsa source started."
+    ;;
+  *)
+    echo "Usage: $0 {a2dp-sink|a2dp-source}"
+    exit 1
+    ;;
+esac

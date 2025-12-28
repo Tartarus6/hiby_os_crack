@@ -1,0 +1,55 @@
+{
+	"item": 
+	[
+		{
+			"name": "this",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "420",
+			"height": "130"
+		},
+		{
+			"name": "progress",
+			"type": "HScroll",
+			"title": "",
+			"max": "10",
+			"min": "-10",
+			"step": "1",
+			"left": "40",
+			"top": "60",
+			"width": "320",
+			"height": "32",
+			"data_type": "int32",
+			"link": "hl_balance_d",
+			"value":"<1001>"
+		},
+		{
+			"name": "hl_balance_d",
+			"type": "Static",
+			"title": "%s",
+			"left": "200",
+			"top": "10",
+			"width": "100",
+			"height": "20"
+		},
+		{
+			"name": "_bal_left",
+			"type": "Static",
+			"title": "L",
+			"left": "45",
+			"top": "90",
+			"width": "100",
+			"height": "20"
+		},
+		{
+			"name": "_bal_right",
+			"type": "Static",
+			"title": "R",
+			"left": "345",
+			"top": "90",
+			"width": "100",
+			"height": "20"
+		}
+
+	]
+}

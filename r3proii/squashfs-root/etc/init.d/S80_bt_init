@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Start logging
+#
+
+PL01=/usr/bin/bt_init
+
+case "$1" in
+  start)
+	echo -n "Starting $0 : begin "
+
+    [ -f $PL01 ] && ( $PL01 & ) || echo " file <$PL01> don't exist."
+
+	echo -n "Starting $0 : end "
+	;;
+  stop)
+	echo -n "Stopping $0 : "
+	echo "OK"
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

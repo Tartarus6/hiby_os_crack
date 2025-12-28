@@ -1,0 +1,33 @@
+#!/bin/sh
+
+sh utils.sh
+sh rmem_manager.sh
+sh soc_utils.sh
+sh soc_i2c.sh
+sh i2c_gpio_add.sh
+sh axp2101.sh
+sh cw2015.sh
+sh gpio_aw95016_add.sh
+sh keyboard_gpio_add.sh
+sh soc_gpio.sh
+sh soc_pwm.sh
+sh pwm_backlight.sh
+sh soc_fb.sh
+sh lcd_st7701_sbtc033001.sh
+sh soc_aic.sh
+sh soc_msc.sh
+sh soc_adc.sh
+sh sa_sound_switch.sh
+sh sa_sound_hbc3000.sh
+sh codec_cs43198_dual.sh
+sh cywdhd.sh
+sh fusb302b.sh
+sh gt9xx_touch.sh
+sh keyboard_adc.sh
+sh leds_sgm31324_add.sh
+sh mp2731.sh
+sh sa_config.sh
+sh sa_earpods_adc.sh
+sh sa_hgl_dma.sh
+sh soc_efuse.sh
+sh x1600_hiby_r3proii_sound_card.sh

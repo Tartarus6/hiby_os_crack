@@ -1,0 +1,282 @@
+"Asia/Kabul":Afganistan
+"Africa/Maputo":czas środkowoafrykański
+"Africa/Bujumbura":czas środkowoafrykański
+"Africa/Gaborone":czas środkowoafrykański
+"Africa/Lubumbashi":czas środkowoafrykański
+"Africa/Blantyre":czas środkowoafrykański
+"Africa/Kigali":czas środkowoafrykański
+"Africa/Lusaka":czas środkowoafrykański
+"Africa/Harare":czas środkowoafrykański
+"Africa/Nairobi":czas wschodnioafrykański
+"Africa/Djibouti":czas wschodnioafrykański
+"Africa/Asmera":czas wschodnioafrykański
+"Africa/Addis_Ababa":czas wschodnioafrykański
+"Indian/Comoro":czas wschodnioafrykański
+"Indian/Antananarivo":czas wschodnioafrykański
+"Africa/Mogadishu":czas wschodnioafrykański
+"Africa/Dar_es_Salaam":czas wschodnioafrykański
+"Africa/Kampala":czas wschodnioafrykański
+"Indian/Mayotte":czas wschodnioafrykański
+"Africa/Johannesburg":czas południowoafrykański
+"Africa/Maseru":czas południowoafrykański
+"Africa/Mbabane":czas południowoafrykański
+"Africa/Lagos":czas zachodnioafrykański standardowy
+"Africa/Luanda":czas zachodnioafrykański standardowy
+"Africa/Porto-Novo":czas zachodnioafrykański standardowy
+"Africa/Kinshasa":czas zachodnioafrykański standardowy
+"Africa/Bangui":czas zachodnioafrykański standardowy
+"Africa/Brazzaville":czas zachodnioafrykański standardowy
+"Africa/Douala":czas zachodnioafrykański standardowy
+"Africa/Libreville":czas zachodnioafrykański standardowy
+"Africa/Malabo":czas zachodnioafrykański standardowy
+"Africa/Niamey":czas zachodnioafrykański standardowy
+"Africa/Ndjamena":czas zachodnioafrykański standardowy
+"America/Juneau":Alaska (czas standardowy)
+"America/Manaus":czas amazoński standardowy
+"America/Chicago":czas środkowoamerykański standardowy
+"America/Belize":czas środkowoamerykański standardowy
+"America/Winnipeg":czas środkowoamerykański standardowy
+"America/Costa_Rica":czas środkowoamerykański standardowy
+"America/Guatemala":czas środkowoamerykański standardowy
+"America/Tegucigalpa":czas środkowoamerykański standardowy
+"America/Mexico_City":czas środkowoamerykański standardowy
+"America/El_Salvador":czas środkowoamerykański standardowy
+"America/New_York":czas wschodnioamerykański standardowy
+"America/Nassau":czas wschodnioamerykański standardowy
+"America/Toronto":czas wschodnioamerykański standardowy
+"America/Port-au-Prince":czas wschodnioamerykański standardowy
+"America/Jamaica":czas wschodnioamerykański standardowy
+"America/Cayman":czas wschodnioamerykański standardowy
+"America/Panama":czas wschodnioamerykański standardowy
+"America/Denver":czas górski standardowy
+"America/Edmonton":czas górski standardowy
+"America/Hermosillo":czas górski standardowy
+"America/Los_Angeles":czas pacyficzny standardowy
+"America/Vancouver":czas pacyficzny standardowy
+"America/Tijuana":czas pacyficzny standardowy
+"Asia/Anadyr":czas standardowy Anadyr
+"Pacific/Apia":Apia (czas standardowy)
+"Asia/Riyadh":Półwysep Arabski (czas standardowy)
+"Asia/Bahrain":Półwysep Arabski (czas standardowy)
+"Asia/Baghdad":Półwysep Arabski (czas standardowy)
+"Asia/Kuwait":Półwysep Arabski (czas standardowy)
+"Asia/Qatar":Półwysep Arabski (czas standardowy)
+"Asia/Aden":Półwysep Arabski (czas standardowy)
+"America/Buenos_Aires":Argentyna (czas standardowy)
+"America/Argentina/San_Luis":Argentyna Zachodnia (czas standardowy)
+"Asia/Yerevan":Armenia (czas standardowy)
+"America/Halifax":czas atlantycki standardowy
+"America/Antigua":czas atlantycki standardowy
+"America/Anguilla":czas atlantycki standardowy
+"America/Aruba":czas atlantycki standardowy
+"America/Barbados":czas atlantycki standardowy
+"Atlantic/Bermuda":czas atlantycki standardowy
+"America/Kralendijk":czas atlantycki standardowy
+"America/Curacao":czas atlantycki standardowy
+"America/Dominica":czas atlantycki standardowy
+"America/Grenada":czas atlantycki standardowy
+"America/Thule":czas atlantycki standardowy
+"America/Guadeloupe":czas atlantycki standardowy
+"America/St_Kitts":czas atlantycki standardowy
+"America/St_Lucia":czas atlantycki standardowy
+"America/Marigot":czas atlantycki standardowy
+"America/Martinique":czas atlantycki standardowy
+"America/Montserrat":czas atlantycki standardowy
+"America/Puerto_Rico":czas atlantycki standardowy
+"America/Lower_Princes":czas atlantycki standardowy
+"America/Port_of_Spain":czas atlantycki standardowy
+"America/St_Vincent":czas atlantycki standardowy
+"America/Tortola":czas atlantycki standardowy
+"America/St_Thomas":czas atlantycki standardowy
+"Australia/Adelaide":czas środkowoaustralijski standardowy
+"Australia/Eucla":czas środkowo-zachodnioaustralijski standardowy
+"Australia/Sydney":czas wschodnioaustralijski standardowy
+"Australia/Perth":czas zachodnioaustralijski standardowy
+"Asia/Baku":Azerbejdżan (czas standardowy)
+"Atlantic/Azores":Azory (czas standardowy)
+"Asia/Dhaka":Bangladesz (czas standardowy)
+"Asia/Thimphu":czas Bhutan
+"America/La_Paz":czas Boliwia
+"America/Sao_Paulo":Brasília (czas standardowy)
+"Asia/Brunei":czas Brunei
+"Atlantic/Cape_Verde":Wyspy Zielonego Przylądka (czas standardowy)
+"Pacific/Saipan":czas Czamorro
+"Pacific/Guam":czas Czamorro
+"Pacific/Chatham":Chatham (czas standardowy)
+"America/Santiago":Chile (czas standardowy)
+"Asia/Shanghai":Chiny (czas standardowy)
+"Asia/Choibalsan":Czojbalsan (czas standardowy)
+"Indian/Christmas":czas Wyspa Bożego Narodzenia
+"Indian/Cocos":czas Wyspy Kokosowe
+"America/Bogota":Kolumbia (czas standardowy)
+"Pacific/Rarotonga":Wyspy Cooka (czas standardowy)
+"America/Havana":Kuba (czas standardowy)
+"Antarctica/Davis":czas Davis
+"Antarctica/DumontDUrville":czas Dumont-d’Urville
+"Asia/Dili":czas Timor Wschodni
+"Pacific/Easter":Wyspa Wielkanocna (czas standardowy)
+"America/Guayaquil":czas Ekwador
+"Europe/Paris":czas środkowoeuropejski standardowy
+"Europe/Andorra":czas środkowoeuropejski standardowy
+"Europe/Tirane":czas środkowoeuropejski standardowy
+"Europe/Vienna":czas środkowoeuropejski standardowy
+"Europe/Sarajevo":czas środkowoeuropejski standardowy
+"Europe/Brussels":czas środkowoeuropejski standardowy
+"Europe/Zurich":czas środkowoeuropejski standardowy
+"Europe/Prague":czas środkowoeuropejski standardowy
+"Europe/Berlin":czas środkowoeuropejski standardowy
+"Europe/Copenhagen":czas środkowoeuropejski standardowy
+"Europe/Madrid":czas środkowoeuropejski standardowy
+"Europe/Gibraltar":czas środkowoeuropejski standardowy
+"Europe/Zagreb":czas środkowoeuropejski standardowy
+"Europe/Budapest":czas środkowoeuropejski standardowy
+"Europe/Rome":czas środkowoeuropejski standardowy
+"Europe/Vaduz":czas środkowoeuropejski standardowy
+"Europe/Luxembourg":czas środkowoeuropejski standardowy
+"Europe/Monaco":czas środkowoeuropejski standardowy
+"Europe/Podgorica":czas środkowoeuropejski standardowy
+"Europe/Skopje":czas środkowoeuropejski standardowy
+"Europe/Malta":czas środkowoeuropejski standardowy
+"Europe/Amsterdam":czas środkowoeuropejski standardowy
+"Europe/Oslo":czas środkowoeuropejski standardowy
+"Europe/Warsaw":czas środkowoeuropejski standardowy
+"Europe/Belgrade":czas środkowoeuropejski standardowy
+"Europe/Stockholm":czas środkowoeuropejski standardowy
+"Europe/Ljubljana":czas środkowoeuropejski standardowy
+"Arctic/Longyearbyen":czas środkowoeuropejski standardowy
+"Europe/Bratislava":czas środkowoeuropejski standardowy
+"Europe/San_Marino":czas środkowoeuropejski standardowy
+"Africa/Tunis":czas środkowoeuropejski standardowy
+"Europe/Vatican":czas środkowoeuropejski standardowy
+"Europe/Belgrade":czas środkowoeuropejski standardowy
+"Europe/Bucharest":czas wschodnioeuropejski standardowy
+"Europe/Mariehamn":czas wschodnioeuropejski standardowy
+"Europe/Sofia":czas wschodnioeuropejski standardowy
+"Asia/Nicosia":czas wschodnioeuropejski standardowy
+"Africa/Cairo":czas wschodnioeuropejski standardowy
+"Europe/Helsinki":czas wschodnioeuropejski standardowy
+"Europe/Athens":czas wschodnioeuropejski standardowy
+"Asia/Amman":czas wschodnioeuropejski standardowy
+"Asia/Beirut":czas wschodnioeuropejski standardowy
+"Asia/Damascus":czas wschodnioeuropejski standardowy
+"Europe/Minsk":czas wschodnioeuropejski dalszy
+"Europe/Kaliningrad":czas wschodnioeuropejski dalszy
+"Atlantic/Canary":czas zachodnioeuropejski standardowy
+"Atlantic/Faeroe":czas zachodnioeuropejski standardowy
+"Atlantic/Stanley":Falklandy (czas standardowy)
+"Pacific/Fiji":Fidżi (czas standardowy)
+"America/Cayenne":czas Gujana Francuska
+"Indian/Kerguelen":czas Francuskie Terytoria Południowe i Antarktyczne
+"Atlantic/Reykjavik":czas uniwersalny
+"Africa/Ouagadougou":czas uniwersalny
+"Africa/Abidjan":czas uniwersalny
+"Europe/London":czas uniwersalny
+"Africa/Accra":czas uniwersalny
+"Africa/Banjul":czas uniwersalny
+"Africa/Conakry":czas uniwersalny
+"Europe/Dublin":czas uniwersalny
+"Africa/Bamako":czas uniwersalny
+"Africa/Nouakchott":czas uniwersalny
+"Atlantic/St_Helena":czas uniwersalny
+"Africa/Freetown":czas uniwersalny
+"Africa/Dakar":czas uniwersalny
+"Africa/Lome":czas uniwersalny
+"Pacific/Galapagos":czas Galapagos
+"Pacific/Gambier":czas Wyspy Gambiera
+"Asia/Tbilisi":Gruzja (czas standardowy)
+"Pacific/Tarawa":czas Wyspy Gilberta
+"America/Scoresbysund":Grenlandia Wschodnia (czas standardowy)
+"America/Godthab":Grenlandia Zachodnia (czas standardowy)
+"Asia/Dubai":czas Zatoka Perska
+"Asia/Muscat":czas Zatoka Perska
+"America/Guyana":czas Gujana
+"Pacific/Honolulu":Hawaje-Aleuty (czas standardowy)
+"Asia/Hong_Kong":Chiny (czas standardowy)
+"Asia/Hovd":Kobdo (czas standardowy)
+"Asia/Calcutta":czas indyjski standardowy
+"Asia/Colombo":czas indyjski standardowy
+"Indian/Chagos":czas Ocean Indyjski
+"Asia/Bangkok":czas indochiński
+"Asia/Phnom_Penh":czas indochiński
+"Asia/Vientiane":czas indochiński
+"Asia/Makassar":czas Indonezja Środkowa
+"Asia/Jayapura":czas Indonezja Wschodnia
+"Asia/Jakarta":czas Indonezja Zachodnia
+"Asia/Tehran":Iran (czas standardowy)
+"Asia/Irkutsk":Irkuck (czas standardowy)
+"Asia/Jerusalem":Izrael (czas standardowy)
+"Asia/Tokyo":Japonia (czas standardowy)
+"Asia/Kamchatka":czas standardowy Pietropawłowsk Kamczacki
+"Asia/Almaty":czas Kazachstan Wschodni
+"Asia/Aqtobe":czas Kazachstan Zachodni
+"Asia/Seoul":Korea (czas standardowy)
+"Pacific/Kosrae":czas Kosrae
+"Asia/Krasnoyarsk":Krasnojarsk (czas standardowy)
+"Asia/Bishkek":czas Kirgistan
+"Pacific/Kiritimati":czas Line Islands
+"Australia/Lord_Howe":Lord Howe (czas standardowy)
+"Antarctica/Macquarie":czas Macquarie
+"Asia/Magadan":Magadan (czas standardowy)
+"Asia/Kuching":czas Malezja
+"Indian/Maldives":czas Malediwy
+"Pacific/Marquesas":czas Markizy
+"Pacific/Majuro":czas Wyspy Marshalla
+"Indian/Mauritius":Mauritius (czas standardowy)
+"Antarctica/Mawson":czas Mawson
+"America/Santa_Isabel":Meksyk Północno-Zachodni (czas standardowy)
+"America/Mazatlan":Meksyk (czas pacyficzny standardowy)
+"Asia/Ulaanbaatar":Ułan Bator (czas standardowy)
+"Europe/Moscow":Moskwa (czas standardowy)
+"Asia/Rangoon":czas Mjanma
+"Pacific/Nauru":czas Nauru
+"Asia/Katmandu":czas Nepal
+"Pacific/Noumea":Nowa Kaledonia (czas standardowy)
+"Pacific/Auckland":Nowa Zelandia (czas standardowy)
+"Antarctica/McMurdo":Nowa Zelandia (czas standardowy)
+"America/St_Johns":Nowa Fundlandia (czas standardowy)
+"Pacific/Niue":czas Niue
+"Pacific/Norfolk":Norfolk (czas standardowy)
+"America/Noronha":Fernando de Noronha (czas standardowy)
+"Asia/Novosibirsk":Nowosybirsk (czas standardowy)
+"Asia/Omsk":Omsk (czas standardowy)
+"Asia/Karachi":Pakistan (czas standardowy)
+"Pacific/Palau":czas Palau
+"Pacific/Port_Moresby":czas Papua-Nowa Gwinea
+"America/Asuncion":Paragwaj (czas standardowy)
+"America/Lima":Peru (czas standardowy)
+"Asia/Manila":Filipiny (czas standardowy)
+"Pacific/Enderbury":czas Feniks
+"America/Miquelon":Saint-Pierre i Miquelon (czas standardowy)
+"Pacific/Pitcairn":czas Pitcairn
+"Pacific/Ponape":czas Pohnpei
+"Asia/Pyongyang":czas Pjongjang
+"Indian/Reunion":czas Reunion
+"Antarctica/Rothera":czas Rothera
+"Asia/Sakhalin":Sachalin (czas standardowy)
+"Europe/Samara":czas standardowy Samara
+"Pacific/Pago_Pago":Samoa (czas standardowy)
+"Indian/Mahe":czas Seszele
+"Asia/Singapore":czas Singapur
+"Pacific/Guadalcanal":czas Wyspy Salomona
+"Atlantic/South_Georgia":czas Georgia Południowa
+"America/Paramaribo":czas Surinam
+"Antarctica/Syowa":czas Syowa
+"Pacific/Tahiti":czas Tahiti
+"Asia/Taipei":Chiny (czas standardowy)
+"Asia/Dushanbe":czas Tadżykistan
+"Pacific/Fakaofo":czas Tokelau
+"Pacific/Tongatapu":Tonga (czas standardowy)
+"Pacific/Truk":czas Chuuk
+"Asia/Ashgabat":Turkmenistan (czas standardowy)
+"Pacific/Funafuti":czas Tuvalu
+"America/Montevideo":Urugwaj (czas standardowy)
+"Asia/Tashkent":Uzbekistan (czas standardowy)
+"Pacific/Efate":Vanuatu (czas standardowy)
+"America/Caracas":czas Wenezuela
+"Asia/Vladivostok":Władywostok (czas standardowy)
+"Europe/Volgograd":Wołgograd (czas standardowy)
+"Antarctica/Vostok":czas Wostok
+"Pacific/Wake":czas Wake
+"Pacific/Wallis":czas Wallis i Futuna
+"Asia/Yakutsk":Jakuck (czas standardowy)
+"Asia/Yekaterinburg":Jekaterynburg (czas standardowy)

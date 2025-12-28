@@ -1,0 +1,5 @@
+#!/bin/sh
+/etc/init.d/adb/S440adb stop
+/usr/bin/usb_dev_mass_storage.sh start /dev/mmcblk0
+exit 0
+

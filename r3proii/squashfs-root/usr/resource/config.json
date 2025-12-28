@@ -1,0 +1,52 @@
+[
+    {
+        "type":"version",
+        "value":1
+    },
+    {
+        "type":"product",
+        "company":"HiBy",
+        "device":"R3PROII",
+        "version":"1.3",
+        "ota_name":"HiBy R3PROII",
+        "usb_pid":"0x0101",
+        "dac_pid":"0x0004",
+        "vid":"0x32BB"
+    },
+    {
+        "type":"screen",
+        "hor":480,
+        "ver":720
+    },
+    {
+        "type":"function",
+        "fcn0":[
+            {"dac_to_store":1},
+            {"book_set_percent":1},
+            {"most_played":0},
+            {"playmenu_eq_disable":0},
+            {"dark_theme_enable":1},
+            {"screen_short_enable":1},
+            {"lyric_color_enable":0},
+            {"tf_image_cache_enable":0},
+            {"tf_music_db_enable":0}
+        ]
+    },
+    {
+        "type":"volume",
+        "vol_warn_enable":1,
+        "lock_vol":[
+            {"headset":55},
+            {"balance":43}
+        ],
+        "default_vol":[
+            {"headset":20},
+            {"balance":15}
+        ],
+        "warn_vol":[
+            {"headset":34},
+            {"balance":28}
+        ]
+    }
+]
+    

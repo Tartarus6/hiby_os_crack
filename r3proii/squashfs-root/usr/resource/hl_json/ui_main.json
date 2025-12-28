@@ -1,0 +1,31 @@
+{
+	"item": 
+	[
+		{
+			"name": "ui_main",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "400",
+			"height": "160"
+		},
+		{
+			"name": "ui_main",
+			"type": "Menu",
+			"title": "<1000>",
+			"flags": "HCENTER|VCENTER",
+			"left": "120",
+			"top": "120",
+			"width": "160",
+			"height": "600",
+			"data": 
+			[
+				{
+					"title": "<1001>",
+					"link": ">hl_play_set_a",
+					"value": "",
+					"other":""
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,251 @@
+fr{
+    Countries{
+        FR{"France"}
+        CN{"Chine"}
+        GB{"Royaume-Uni"}
+        US{"États-Unis"}
+        JP{"Japon"}
+        RU{"Russie"}
+        ES{"Espagne"}
+        IT{"Italie"}
+        PL{"Pologne"}
+        DE{"Allemagne"}
+        KR{"Corée du Sud"}
+        TH{"Thaïlande"}
+        UA{"Ukraine"}
+        AF{"Afghanistan"}
+        ZA{"Afrique du Sud"}
+        AL{"Albanie"}
+        DZ{"Algérie"}
+        AD{"Andorre"}
+        AO{"Angola"}
+        AI{"Anguilla"}
+        AQ{"Antarctique"}
+        AG{"Antigua-et-Barbuda"}
+        SA{"Arabie saoudite"}
+        AR{"Argentine"}
+        AM{"Arménie"}
+        AW{"Aruba"}
+        AU{"Australie"}
+        AT{"Autriche"}
+        AZ{"Azerbaïdjan"}
+        BS{"Bahamas"}
+        BH{"Bahreïn"}
+        BD{"Bangladesh"}
+        BB{"Barbade"}
+        BE{"Belgique"}
+        BZ{"Belize"}
+        BJ{"Bénin"}
+        BM{"Bermudes"}
+        BT{"Bhoutan"}
+        BY{"Biélorussie"}
+        BO{"Bolivie"}
+        BA{"Bosnie-Herzégovine"}
+        BW{"Botswana"}
+        BR{"Brésil"}
+        BN{"Brunei"}
+        BG{"Bulgarie"}
+        BF{"Burkina Faso"}
+        BI{"Burundi"}
+        KH{"Cambodge"}
+        CM{"Cameroun"}
+        CA{"Canada"}
+        CV{"Cap-Vert"}
+        CL{"Chili"}
+        CY{"Chypre"}
+        CO{"Colombie"}
+        KM{"Comores"}
+        CG{"Congo-Brazzaville"}
+        CD{"Congo-Kinshasa"}
+        KP{"Corée du Nord"}
+        CR{"Costa Rica"}
+        CI{"Côte d’Ivoire"}
+        HR{"Croatie"}
+        CU{"Cuba"}
+        CW{"Curaçao"}
+        DK{"Danemark"}
+        DJ{"Djibouti"}
+        DM{"Dominique"}
+        EG{"Égypte"}
+        AE{"Émirats arabes unis"}
+        EC{"Équateur"}
+        ER{"Érythrée"}
+        EE{"Estonie"}
+        SZ{"Eswatini"}
+        VA{"État de la Cité du Vatican"}
+        ET{"Éthiopie"}
+        FJ{"Fidji"}
+        FI{"Finlande"}
+        GA{"Gabon"}
+        GM{"Gambie"}
+        GS{"Géorgie du Sud-et-les Îles Sandwich du Sud"}
+        GE{"Géorgie"}
+        GH{"Ghana"}
+        GI{"Gibraltar"}
+        GR{"Grèce"}
+        GD{"Grenade"}
+        GL{"Groenland"}
+        GP{"Guadeloupe"}
+        GU{"Guam"}
+        GT{"Guatemala"}
+        GG{"Guernesey"}
+        GQ{"Guinée équatoriale"}
+        GN{"Guinée"}
+        GW{"Guinée-Bissau"}
+        GY{"Guyana"}
+        GF{"Guyane française"}
+        HT{"Haïti"}
+        HN{"Honduras"}
+        HK{"Hong Kong, Chine"}
+        HU{"Hongrie"}
+        CX{"Île Christmas"}
+        IM{"Île de Man"}
+        NF{"Île Norfolk"}
+        AX{"Îles Åland"}
+        KY{"Îles Caïmans"}
+        CC{"Îles Cocos"}
+        CK{"Îles Cook"}
+        FO{"Îles Féroé"}
+        FK{"Îles Malouines (Îles Falkland)"}
+        MP{"Îles Mariannes du Nord"}
+        MH{"Îles Marshall"}
+        UM{"Îles mineures éloignées des États-Unis"}
+        PN{"Îles Pitcairn"}
+        SB{"Îles Salomon"}
+        TC{"Îles Turques-et-Caïques"}
+        VG{"Îles Vierges britanniques"}
+        VI{"Îles Vierges des États-Unis"}
+        IN{"Inde"}
+        ID{"Indonésie"}
+        IQ{"Irak"}
+        IR{"Iran"}
+        IE{"Irlande"}
+        IS{"Islande"}
+        IL{"Israël"}
+        JM{"Jamaïque"}
+        JE{"Jersey"}
+        JO{"Jordanie"}
+        KZ{"Kazakhstan"}
+        KE{"Kenya"}
+        KG{"Kirghizstan"}
+        KI{"Kiribati"}
+        KW{"Koweït"}
+        RE{"La Réunion"}
+        LA{"Laos"}
+        LS{"Lesotho"}
+        LV{"Lettonie"}
+        LB{"Liban"}
+        LR{"Liberia"}
+        LY{"Libye"}
+        LI{"Liechtenstein"}
+        LT{"Lituanie"}
+        LU{"Luxembourg"}
+        MO{"Macao, Chine"}
+        MK{"Macédoine du Nord"}
+        MG{"Madagascar"}
+        MY{"Malaisie"}
+        MW{"Malawi"}
+        MV{"Maldives"}
+        ML{"Mali"}
+        MT{"Malte"}
+        MA{"Maroc"}
+        MQ{"Martinique"}
+        MU{"Maurice"}
+        MR{"Mauritanie"}
+        YT{"Mayotte"}
+        MX{"Mexique"}
+        FM{"Micronésie"}
+        MD{"Moldavie"}
+        MC{"Monaco"}
+        MN{"Mongolie"}
+        ME{"Monténégro"}
+        MS{"Montserrat"}
+        MZ{"Mozambique"}
+        MM{"Myanmar (Birmanie)"}
+        NA{"Namibie"}
+        NR{"Nauru"}
+        NP{"Népal"}
+        NI{"Nicaragua"}
+        NE{"Niger"}
+        NG{"Nigeria"}
+        NU{"Niue"}
+        NO{"Norvège"}
+        NC{"Nouvelle-Calédonie"}
+        NZ{"Nouvelle-Zélande"}
+        OM{"Oman"}
+        UG{"Ouganda"}
+        UZ{"Ouzbékistan"}
+        PK{"Pakistan"}
+        PW{"Palaos"}
+        PS{"Palestine"}
+        PA{"Panama"}
+        PG{"Papouasie-Nouvelle-Guinée"}
+        PY{"Paraguay"}
+        BQ{"Pays-Bas caribéens"}
+        NL{"Pays-Bas"}
+        PE{"Pérou"}
+        PH{"Philippines"}
+        PF{"Polynésie française"}
+        PR{"Porto Rico"}
+        PT{"Portugal"}
+        QA{"Qatar"}
+        CF{"République centrafricaine"}
+        DO{"République dominicaine"}
+        RO{"Roumanie"}
+        RW{"Rwanda"}
+        EH{"Sahara occidental"}
+        BL{"Saint-Barthélemy"}
+        KN{"Saint-Christophe-et-Niévès"}
+        SH{"Sainte-Hélène"}
+        LC{"Sainte-Lucie"}
+        SM{"Saint-Marin"}
+        SX{"Saint-Martin (partie néerlandaise)"}
+        MF{"Saint-Martin"}
+        PM{"Saint-Pierre-et-Miquelon"}
+        VC{"Saint-Vincent-et-les Grenadines"}
+        SV{"Salvador"}
+        AS{"Samoa américaines"}
+        WS{"Samoa"}
+        ST{"Sao Tomé-et-Principe"}
+        SN{"Sénégal"}
+        RS{"Serbie"}
+        SC{"Seychelles"}
+        SL{"Sierra Leone"}
+        SG{"Singapour"}
+        SK{"Slovaquie"}
+        SI{"Slovénie"}
+        SO{"Somalie"}
+        SS{"Soudan du Sud"}
+        SD{"Soudan"}
+        LK{"Sri Lanka"}
+        SE{"Suède"}
+        CH{"Suisse"}
+        SR{"Suriname"}
+        SJ{"Svalbard et Jan Mayen"}
+        SY{"Syrie"}
+        TJ{"Tadjikistan"}
+        TW{"Taipei, Chine"}
+        TZ{"Tanzanie"}
+        TD{"Tchad"}
+        CZ{"Tchéquie"}
+        TF{"Terres australes françaises"}
+        IO{"Territoire britannique de l’océan Indien"}
+        TL{"Timor oriental"}
+        TG{"Togo"}
+        TK{"Tokelau"}
+        TO{"Tonga"}
+        TT{"Trinité-et-Tobago"}
+        TN{"Tunisie"}
+        TM{"Turkménistan"}
+        TR{"Turquie"}
+        TV{"Tuvalu"}
+        UY{"Uruguay"}
+        VU{"Vanuatu"}
+        VE{"Venezuela"}
+        VN{"Viêt Nam"}
+        WF{"Wallis-et-Futuna"}
+        YE{"Yémen"}
+        ZM{"Zambie"}
+        ZW{"Zimbabwe"}
+    }
+}

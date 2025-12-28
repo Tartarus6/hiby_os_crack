@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Start sys_server....
+#
+
+case "$1" in
+  start)
+	echo "Starting sys_server..."
+	# make sure the /mnt dir is empty
+	rm -rf /mnt/*
+	/usr/bin/sys_server &
+	;;
+  stop)
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
