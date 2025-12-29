@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration Variables ---
-KERNEL_IMAGE="../vmlinux.elf"            # Path to extracted ELF kernel
+KERNEL_IMAGE="../Linux-4.4.94+.elf"            # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"          # Path to your created root filesystem image
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
 QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
