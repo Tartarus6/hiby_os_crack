@@ -11,6 +11,8 @@ Cracking the firmware of HiBy's linux devices
 **dependencies**
 - 7zip (for `7z` command) (could probably use other tools instead)
 - squashfs-tools (for `unsquashfs` command)
+- binwalk (to extract uImage. it's overkill for this, but it does all of the uImage extraction work automatically)
+- vmlinux-to-elf (for formatting the kernel to use with qemu)
 
 **extracting the upt file**
 - The original firmware file is `r3proii.upt`. It's an ISO image.
@@ -27,9 +29,11 @@ Cracking the firmware of HiBy's linux devices
 ![alt text](resources/squashfs-root.png)
 
 **extracting the xImage file**
-- (TODO) I'm not sure what, if anything, should/could be done with this xImage file. I think it's just the kernel
 - To concatenate the xImage files into one, run `cat xImage.* > xImage.all`. This creates a new file called `xImage.all` that contains the concatenated data
-- Running `file xImage.all` returns "xImage.all: u-boot legacy uImage, Linux-4.4.94+, Linux/MIPS, OS Kernel Image (Not compressed), 3760128 bytes, Sat Aug 30 09:46:50 2025, Load Address: 0X80F00000, Entry Point: 0X80F00000, Header CRC: 0XA4A80BB9, Data CRC: 0XC79EED8C"
+- `xImage.all` is a u-boot image that contains a raw binary for the linux kernel
+- To extract the kernel binary from the uImage, run `dd if=xImage of=Linux-4.4.94+.bin bs=64 skip=1`. that will create a file called `Linux-4.4.94+.bin`
+- qemu wants the kernel in elf format, so we need to turn the raw binary into an elf file
+- to do that, run `vmlinux-to-bin Linux-4.4.94+.bin Linux-4.4.94+.elf`
 
 ### Windows
 (TODO)
