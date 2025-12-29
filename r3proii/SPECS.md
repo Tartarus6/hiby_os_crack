@@ -50,7 +50,7 @@
 ### Output interface
 | Output interface |                  Specifications                 |
 |:----------------:|:-----------------------------------------------:|
-| USB              | PCM 44.1k~384k, DSD256 (DoP), DSD256（Native）   |
+| USB              | PCM 44.1k~384k, DSD256 (DoP), DSD256 (Native)   |
 | Bluetooth        | PCM 44.1k~192k                                  |
 | Simulation       | PCM 44.1k~384k, DSD64~DSD256                    |
 ### Output audio specifications
@@ -63,7 +63,7 @@
 |             Audio format             |    Specifications   |
 |:------------------------------------:|:-------------------:|
 | Lossless                             |                     |
-| DSD(DSF、DFF、SACD(ISO))             | DSD64/DSD128/DSD256 |
+| DSD(DSF, DFF, SACD(ISO))             | DSD64/DSD128/DSD256 |
 | WAV                                  | 384kHz@32bits(MAX)  |
 | FLAC                                 | 384kHz@32bits(MAX)  |
 | AIFF                                 | 384kHz@32bits(MAX)  |
