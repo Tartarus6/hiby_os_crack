@@ -37,7 +37,7 @@ Cracking the firmware of HiBy's linux devices
 
 ### Windows
 (TODO)
-
+For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above.
 
 ## Repacking the firmware
 (TODO)
