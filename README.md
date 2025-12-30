@@ -33,33 +33,25 @@ Cracking the firmware of HiBy's linux devices
 
 ## Windows
 (TODO)
-For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above.
+For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above. Currently WIP.
 ### Cygwin Specific Depedencies
 *If you are using the Cygwin project, please install the following packages as instructed INSTEAD of following the traditional linux dependencies*
-**1. Use the Cygwin installer to install `make`, `gcc-core`, `g++`, `python3`, `python3-pip`.**
 
-Note: *GCC is not sufficient to build the source repo without g++.*
+**1. Use the Cygwin installer to install the latest (non-test) versions of:
 
-Note: *If you have installed Python on Windows natively, you can likely just use the existing installation and make a bash alias*
+`make`, `gcc-core`, `g++`, `python3`, `python3-pip`, `p7zip`, `git`, `python3-zstandard`, `python3-cffi`, `python3-devel`, `libffi-devel`**
 
-**2. Install 7Zip**
-Download the latest source copy of p7zip or the version below (any version should suffice). *The core 7Zip will not work standalone.*
+Also install: `python312-devel` or the equivalent development package for the python build on your system.
 
-`wget https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2`
+Note: *GCC is not sufficient without g++.*
 
-`tar -xf p7zip_16.02_src_all.tar.bz2`
+Note: *If you already use Python's Windows build in Cygwin natively, please make sure to ALSO INSTALL the Cygwin variant (conversion will be automatic due to path preferencing) to prevent filepath errors in step 5. (ADVANCED) If necessary, please create a bash alias so you can install invoke the windows copy where needed. Please make sure that pip is not the Windows copy, as it breaks files with hyphens. You can see what version of pip is trying to load with errors using pip -v for verbose output when running commands.*
 
-`cd p7zip_16.02`
-
-`cp makefile.cygwin makefile.machine`
-
-`CXXFLAGS="-Wno-error=narrowing" make`
-
-`./install.sh`
 **3. Install squashfs-tools**
+
 Download the latest source copy of squashfs-tools or the version below (any version should suffice)
 
-(TODO) Not working until I add some patch fixes for Cygwin. Users can manipulate binwalk for equivalent functionality in the meantime.
+(TODO: Not working until I add some patch fixes for Cygwin. Users can manipulate binwalk for equivalent functionality in the meantime.)
 
 `wget https://github.com/plougher/squashfs-tools/releases/download/4.7.4/squashfs-tools-4.7.4.tar.gz`
 
@@ -68,12 +60,28 @@ Download the latest source copy of squashfs-tools or the version below (any vers
 `cd squashfs-tools-4.7.4/squashfs-tools`
 
 `make`
+
+Working solution:
+
+We only need unsquashfs, which will be formatted into a cheap .bashrc alias from binwalk (Requires step 4 to work). (TODO: Remove once patch is available.)
+
+`echo 'unsquashfs() { binwalk -e "$1" && [ -d "_${1}.extracted/squashfs-root" ] && echo "Extracted to _${1}.extracted/squashfs-root"; }' >> ~/.bashrc`
+
 **4. Install binwalk**
-`pip install binwalk`
+
+`pip3 install binwalk`
 
 **5. Install vmlinux-to-elf**
 
-`pip install git+https://github.com/marin-m/vmlinux-to-elf.git`
+`pip3 install git+https://github.com/marin-m/vmlinux-to-elf`
+
+**Install QEMU (Windows)**
+
+Download and run in Windows: `https://qemu.weilnetz.de/w64/qemu-w64-setup-20251224.exe`
+
+Note: *We recommend you choose the default program filepath to avoid breaking Cygwin*
+
+Install `qemu-integration` from the Cygwin installer (this is just a linking program that translates the windows binaries into linux-reachable commands)
 
 ## Repacking the firmware
 (TODO)
