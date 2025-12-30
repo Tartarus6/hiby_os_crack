@@ -29,7 +29,7 @@ dd if=/dev/zero of="${OUTPUT_IMAGE}" bs=1M count=0 seek=$(echo ${IMAGE_SIZE} | s
 
 # --- Format as ext4 ---
 echo "[2/5] Formatting image as ext4..."
-mkfs.ext4 -F "${OUTPUT_IMAGE}"
+mkfs.ext4 "${OUTPUT_IMAGE}"
 
 # --- Mount the image ---
 echo "[3/5] Mounting image..."
@@ -49,6 +49,9 @@ echo "[5/5] Syncing and unmounting..."
 sync
 umount "${MOUNT_POINT}"
 rmdir "${MOUNT_POINT}"
+
+# --- Update file permissions ---
+chmod 666 "${OUTPUT_IMAGE}"
 
 trap - EXIT  # Remove trap since we manually unmounted
 

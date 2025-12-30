@@ -5,7 +5,7 @@ KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
 QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
-QEMU_CPU="XBurstR1"                # CPU type to emulate
+QEMU_CPU="XBurstR2"                # CPU type to emulate
 
 # QEMU path (adjust if qemu-system-mips is not in your PATH)
 QEMU_PATH=$(which qemu-system-${QEMU_ARCH})
@@ -39,4 +39,6 @@ echo ""
     -kernel "${KERNEL_IMAGE}" \
     -append "${KERNEL_CMDLINE}" \
     -drive file="${ROOTFS_IMAGE}",format=raw \
-    -serial stdio
+    -nographic \
+    -serial mon:stdio \
+    -d int,cpu_reset
