@@ -31,9 +31,49 @@ Cracking the firmware of HiBy's linux devices
 - To concatenate the xImage files into one, run `cat xImage.* > xImage.all`. This creates a new file called `xImage.all` that contains the concatenated data
 - Running `file xImage.all` returns "xImage.all: u-boot legacy uImage, Linux-4.4.94+, Linux/MIPS, OS Kernel Image (Not compressed), 3760128 bytes, Sat Aug 30 09:46:50 2025, Load Address: 0X80F00000, Entry Point: 0X80F00000, Header CRC: 0XA4A80BB9, Data CRC: 0XC79EED8C"
 
-### Windows
+## Windows
 (TODO)
 For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above.
+### Cygwin Specific Depedencies
+*If you are using the Cygwin project, please install the following packages as instructed INSTEAD of following the traditional linux dependencies*
+**1. Use the Cygwin installer to install `make`, `gcc-core`, `g++`, `python3`, `python3-pip`.**
+
+Note: *GCC is not sufficient to build the source repo without g++.*
+
+Note: *If you have installed Python on Windows natively, you can likely just use the existing installation and make a bash alias*
+
+**2. Install 7Zip**
+Download the latest source copy of p7zip or the version below (any version should suffice). *The core 7Zip will not work standalone.*
+
+`wget https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2`
+
+`tar -xf p7zip_16.02_src_all.tar.bz2`
+
+`cd p7zip_16.02`
+
+`cp makefile.cygwin makefile.machine`
+
+`CXXFLAGS="-Wno-error=narrowing" make`
+
+`./install.sh`
+**3. Install squashfs-tools**
+Download the latest source copy of squashfs-tools or the version below (any version should suffice)
+
+(TODO) Not working until I add some patch fixes for Cygwin. Users can manipulate binwalk for equivalent functionality in the meantime.
+
+`wget https://github.com/plougher/squashfs-tools/releases/download/4.7.4/squashfs-tools-4.7.4.tar.gz`
+
+`tar -xf squashfs-tools-4.7.4.tar.gz`
+
+`cd squashfs-tools-4.7.4/squashfs-tools`
+
+`make`
+**4. Install binwalk**
+`pip install binwalk`
+
+**5. Install vmlinux-to-elf**
+
+`pip install git+https://github.com/marin-m/vmlinux-to-elf.git`
 
 ## Repacking the firmware
 (TODO)
