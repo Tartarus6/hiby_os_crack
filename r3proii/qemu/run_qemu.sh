@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # --- Configuration Variables ---
+BIOS_IMAGE="../xImage"              # Path to the BIOS image
 KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
 QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
-QEMU_CPU="XBurstR2"                # CPU type to emulate
+MEMORY_SIZE="64M"                   # Amount of RAM for the emulated system
+QEMU_CPU="XBurstR2"                 # CPU type to emulate
 
 # QEMU path (adjust if qemu-system-mips is not in your PATH)
 QEMU_PATH=$(which qemu-system-${QEMU_ARCH})
@@ -23,8 +25,7 @@ fi
 # - console=ttyS0: Routes kernel messages and a login prompt to the serial port (MIPS uses ttyS0).
 # - rw: Mount root filesystem read-write.
 # - init=/sbin/init: Specifies the first process to run (adjust if your init is elsewhere).
-KERNEL_CMDLINE="root=/dev/sda console=ttyS0 rw init=/sbin/init"
-
+KERNEL_CMDLINE="rw init=/sbin/init mem=${MEMORY_SIZE} earlyprintk debug"
 # --- QEMU Command ---
 echo "Starting QEMU for ${QEMU_ARCH}..."
 echo "Kernel: ${KERNEL_IMAGE}"
@@ -33,12 +34,16 @@ echo "QEMU Board: ${QEMU_BOARD}"
 echo "Kernel Cmdline: ${KERNEL_CMDLINE}"
 echo ""
 
+# Note: the -s and -S options are for debugging (start QEMU paused and listen on port 1234)
+
 "${QEMU_PATH}" \
     -M "${QEMU_BOARD}" \
     -cpu ${QEMU_CPU} \
+    -m ${MEMORY_SIZE} \
+    -bios ${BIOS_IMAGE} \
     -kernel "${KERNEL_IMAGE}" \
     -append "${KERNEL_CMDLINE}" \
     -drive file="${ROOTFS_IMAGE}",format=raw \
-    -nographic \
-    -serial mon:stdio \
-    -d int,cpu_reset
+    -s \
+    -S \
+    -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log

@@ -11,6 +11,7 @@ SQUASHFS_ROOT="../squashfs-root"
 INITRD_IMAGE="initrd.cpio"
 QEMU_ARCH="mipsel"
 QEMU_BOARD="malta"
+MEMORY_SIZE="64M"                   # Amount of RAM for the emulated system
 QEMU_CPU="XBurstR2"
 
 # Check if QEMU is found
@@ -34,7 +35,7 @@ fi
 # - console=ttyS0: Routes output to serial port
 # - rw: Mount root filesystem read-write
 # - init=/linuxrc: Your init script (adjust if needed)
-KERNEL_CMDLINE="console=ttyS0 rw init=/linuxrc"
+KERNEL_CMDLINE="rw init=/sbin/init mem=${MEMORY_SIZE} earlyprintk debug"
 
 # --- QEMU Command ---
 echo "Starting QEMU for ${QEMU_ARCH}..."
@@ -47,9 +48,10 @@ echo ""
 "${QEMU_PATH}" \
     -M "${QEMU_BOARD}" \
     -cpu ${QEMU_CPU} \
+    -m ${MEMORY_SIZE} \
     -kernel "${KERNEL_IMAGE}" \
     -initrd "${INITRD_IMAGE}" \
     -append "${KERNEL_CMDLINE}" \
-    -nographic \
-    -serial mon:stdio \
-    -d int,cpu_reset
+    -s \
+    -S \
+    -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log
