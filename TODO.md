@@ -28,6 +28,8 @@
 - [ ] better playlist menu
 - [ ] shrink file system if needed
 
+## Windows Support
+- [ ] Windows devices should be able to install all project dependencies and run qemu
 
 ## Plan: Create X1600/Halley6 QEMU Board Support (ai generated, be warned)
 **TL;DR**: The Malta board is fundamentally incompatible with your X1600E chip. All critical clocks show 0Hz, causing the workqueue crash. The kernel needs X1600-specific hardware (Clock Power Management, interrupt controller, timers) that Malta doesn't provide. You'll need to add minimal X1600/Halley6 board emulation to QEMU.
