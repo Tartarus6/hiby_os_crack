@@ -1,0 +1,5 @@
+#0  0x8008b2d8 in panic ()
+#1  0x8001cb7c in die ()
+#2  0x80022bf8 in __do_page_fault ()
+#3  0x80017464 in ret_from_irq ()
+Backtrace stopped: frame did not save the PC
