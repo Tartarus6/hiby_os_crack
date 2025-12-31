@@ -1,3 +1,7 @@
-# ignore vm images, too big for GH
+# Locally generated VM Images
 r3proii/qemu/initrd.cpio
 r3proii/qemu/rootfs-image
+
+# Decompressed ISO
+r3proii/original_firmware/ota_v0/
+r3proii/original_firmware/ota_config.in
