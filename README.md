@@ -32,8 +32,8 @@ Cracking the firmware of HiBy's linux devices
 - Running `file xImage.all` returns "xImage.all: u-boot legacy uImage, Linux-4.4.94+, Linux/MIPS, OS Kernel Image (Not compressed), 3760128 bytes, Sat Aug 30 09:46:50 2025, Load Address: 0X80F00000, Entry Point: 0X80F00000, Header CRC: 0XA4A80BB9, Data CRC: 0XC79EED8C"
 
 ## Windows
-(TODO)
-For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above.
+(TODO) For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above. I broke a lot of things here, need to be patched before release ready.
+
 ### Cygwin Specific Depedencies
 *If you are using the Cygwin project, please install the following packages as instructed INSTEAD of following the traditional linux dependencies*
 
@@ -73,23 +73,27 @@ We only need unsquashfs, which will be formatted into a cheap .bashrc alias from
 
 **5. Install binwalk**
 
-Install Rust for Linux with default configuration: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+First install rustup (for Windows)
 
-Note: *Rust on Windows will not work, you will need the additional Cygwin local install to keep things from breaking.*
+`cd ~`
 
-`wget https://static.rust-lang.org/dist/rust-1.92.0-x86_64-unknown-linux-gnu.tar.xz`
+`curl -o rustup-init.exe https://win.rustup.rs/x86_64`
 
-`tar -xvf rust-1.92.0-x86_64-unknown-linux-gnu.tar.xz`
+`./rustup-init.exe`
 
-`cd rust-1.92.0-x86_64-unknown-linux-gnu`
+Add this to your .bashrc
 
-`./install.sh`
+`export PATH="/cygdrive/c/Users/YOUR_USERNAME/.cargo/bin:$PATH"`
 
-Note: *This command may take an awfully long time to complete*
+`source ~/.bashrc`
 
-Now reopen Cygwin and run the following
+Now install dependencies and binwalk
 
-`pip3 install uefi_firmware jefferson ubi-reader`
+`cargo install maturin --locked`
+
+`pip3 install uefi_firmware jefferson ubi-reader setuptools-rust`
+
+`pip3 install --no-deps --no-build-isolation maturin || true`
 
 `git clone https://github.com/ReFirmLabs/binwalk.git`
 
