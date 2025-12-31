@@ -33,19 +33,19 @@ Cracking the firmware of HiBy's linux devices
 
 ## Windows
 (TODO)
-For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above. Currently WIP.
+For equivalent functionality on Windows, please use the Cygwin project and follow the Linux commands above.
 ### Cygwin Specific Depedencies
 *If you are using the Cygwin project, please install the following packages as instructed INSTEAD of following the traditional linux dependencies*
 
-**1. Use the Cygwin installer to install the latest (non-test) versions of:
+**1. Use the Cygwin installer to install the latest (preferably non-test) versions of:
 
-`make`, `gcc-core`, `g++`, `python3`, `python3-pip`, `p7zip`, `git`, `python3-zstandard`, `python3-cffi`, `python3-devel`, `libffi-devel`**
+`make`, `gcc-core`, `g++`, `python3`, `python3-pip`, `p7zip`, `git`, `python3-zstandard`, `python3-cffi`, `python3-devel`, `libffi-devel`, `libzstd-devel`, `mingw64-x86_64-zstd`, `mingw64-x86_64-gcc-core`, `mingw64-x86_64-gcc-g++`, `mingw64-x86_64-binutils`, `mingw64-x86_64-runtime`, `mingw64-x86_64-headers`, `mingw64-x86_64-expat`**
 
 Also install: `python312-devel` or the equivalent development package for the python build on your system.
 
 Note: *GCC is not sufficient without g++.*
 
-Note: *If you already use Python's Windows build in Cygwin natively, please make sure to ALSO INSTALL the Cygwin variant (conversion will be automatic due to path preferencing) to prevent filepath errors in step 5. (ADVANCED) If necessary, please create a bash alias so you can install invoke the windows copy where needed. Please make sure that pip is not the Windows copy, as it breaks files with hyphens. You can see what version of pip is trying to load with errors using pip -v for verbose output when running commands.*
+Note: *If you already use Python's Windows build in Cygwin natively, please make sure to ALSO INSTALL the Cygwin variant (conversion will be automatic due to path preferencing) to prevent filepath errors in step 4. (ADVANCED) If necessary, please create a bash alias so you can install invoke the windows copy where needed. Please make sure that pip is not the Windows copy, as it breaks many filepaths.*
 
 **3. Install squashfs-tools**
 
@@ -63,25 +63,51 @@ Download the latest source copy of squashfs-tools or the version below (any vers
 
 Working solution:
 
-We only need unsquashfs, which will be formatted into a cheap .bashrc alias from binwalk (Requires step 4 to work). (TODO: Remove once patch is available.)
+We only need unsquashfs, which will be formatted into a cheap .bashrc alias from binwalk (Requires step 5 to work). (TODO: Remove once patch is available.)
 
 `echo 'unsquashfs() { binwalk -e "$1" && [ -d "_${1}.extracted/squashfs-root" ] && echo "Extracted to _${1}.extracted/squashfs-root"; }' >> ~/.bashrc`
 
-**4. Install binwalk**
-
-`pip3 install binwalk`
-
-**5. Install vmlinux-to-elf**
+**4. Install vmlinux-to-elf**
 
 `pip3 install git+https://github.com/marin-m/vmlinux-to-elf`
 
-**Install QEMU (Windows)**
+**5. Install binwalk**
+
+Install Rust for Linux with default configuration: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+
+Note: *Rust on Windows will not work, you will need the additional Cygwin local install to keep things from breaking.*
+
+`wget https://static.rust-lang.org/dist/rust-1.92.0-x86_64-unknown-linux-gnu.tar.xz`
+
+`tar -xvf rust-1.92.0-x86_64-unknown-linux-gnu.tar.xz`
+
+`cd rust-1.92.0-x86_64-unknown-linux-gnu`
+
+`./install.sh`
+
+Note: *This command may take an awfully long time to complete*
+
+Now reopen Cygwin and run the following
+
+`pip3 install uefi_firmware jefferson ubi-reader`
+
+`git clone https://github.com/ReFirmLabs/binwalk.git`
+
+`cd binwalk`
+
+`cargo build --release`
+
+**6. Install QEMU (Windows)**
 
 Download and run in Windows: `https://qemu.weilnetz.de/w64/qemu-w64-setup-20251224.exe`
 
 Note: *We recommend you choose the default program filepath to avoid breaking Cygwin*
 
 Install `qemu-integration` from the Cygwin installer (this is just a linking program that translates the windows binaries into linux-reachable commands)
+
+**7. Install e2fsprogs**
+
+Install `e2fsprogs` through the Cygwin installer
 
 ## Repacking the firmware
 (TODO)
