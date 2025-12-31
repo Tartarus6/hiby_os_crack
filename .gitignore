@@ -1,0 +1,3 @@
+# ignore vm images, too big for GH
+r3proii/qemu/initrd.cpio
+r3proii/qemu/rootfs-image
