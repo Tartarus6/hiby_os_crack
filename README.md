@@ -37,9 +37,9 @@ Cracking the firmware of HiBy's linux devices
 ### Cygwin Specific Depedencies
 *If you are using the Cygwin project, please install the following packages as instructed INSTEAD of following the traditional linux dependencies*
 
-**1. Use the Cygwin installer to install the latest (preferably non-test) versions of:
+**1. Use the Cygwin installer to install the latest (preferably non-test) versions of:**
 
-`make`, `gcc-core`, `g++`, `python3`, `python3-pip`, `p7zip`, `git`, `python3-zstandard`, `python3-cffi`, `python3-devel`, `libffi-devel`, `libzstd-devel`, `mingw64-x86_64-zstd`, `mingw64-x86_64-gcc-core`, `mingw64-x86_64-gcc-g++`, `mingw64-x86_64-binutils`, `mingw64-x86_64-runtime`, `mingw64-x86_64-headers`, `mingw64-x86_64-expat`**
+`make`, `gcc-core`, `g++`, `python3`, `python3-pip`, `p7zip`, `git`, `python3-zstandard`, `python3-cffi`, `python3-devel`, `libffi-devel`, `libzstd-devel`, `zlib-devel`**
 
 Also install: `python312-devel` or the equivalent development package for the python build on your system.
 
@@ -49,23 +49,19 @@ Note: *If you already use Python's Windows build in Cygwin natively, please make
 
 **3. Install squashfs-tools**
 
-Download the latest source copy of squashfs-tools or the version below (any version should suffice)
+`wget https://github.com/plougher/squashfs-tools/archive/refs/tags/4.5.1.tar.gz`
 
-(TODO: Not working until I add some patch fixes for Cygwin. Users can manipulate binwalk for equivalent functionality in the meantime.)
+`tar -xf 4.5.1.tar.gz`
 
-`wget https://github.com/plougher/squashfs-tools/releases/download/4.7.4/squashfs-tools-4.7.4.tar.gz`
+`cd squashfs-tools-4.5.1/squashfs-tools`
 
-`tar -xf squashfs-tools-4.7.4.tar.gz`
+`wget http://files.glitchtech.top/squashfs-tools-cygwin.patch`
 
-`cd squashfs-tools-4.7.4/squashfs-tools`
+`patch -p0 < squashfs-tools-cygwin.patch`
 
 `make`
 
-Working solution:
-
-We only need unsquashfs, which will be formatted into a cheap .bashrc alias from binwalk (Requires step 5 to work). (TODO: Remove once patch is available.)
-
-`echo 'unsquashfs() { binwalk -e "$1" && [ -d "_${1}.extracted/squashfs-root" ] && echo "Extracted to _${1}.extracted/squashfs-root"; }' >> ~/.bashrc`
+`make install`
 
 **4. Install vmlinux-to-elf**
 
