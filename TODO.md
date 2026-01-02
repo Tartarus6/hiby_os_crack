@@ -8,6 +8,8 @@
 
 ## Emulator
 *Goal: creating a workflow that allows emulating the hiby devices to speed up testing and let people test without hardware*
+- [ ] get kernel to run the init kernel function
+- [ ] successfully load into file system
 - [ ] run with ingenic x1600e features
 - [ ] display output
 - [ ] fake touch control interface
@@ -26,7 +28,16 @@
 - [ ] add support for playing audiobooks
 - [ ] easier playlist access
 - [ ] better playlist menu
-- [ ] shrink file system if needed
+- [ ] allow for much lower brightnesses (could use backlight to a point, then use overlay. point in slider where overlay gets used should be marked, like how vol over 100% is done in some programs)
+- [ ] fix some album art not loading
+- [ ] make main page style same as the rest of the pages (its styled different for some reason)
+- [ ] charge limit (to conserve battery health)
+- [ ] combine all setting menus by using settings tabs (i.e. general settings, playback settings, Bluetooth settings, etc.)
+- [ ] built-in custom radio creation/management (currently have to put it in the right format in a txt file)
+- [ ] fix setting font size bringing you to the all songs menu (no idea why this happens)
+- [ ] (if possible) fix Bluetooth connection usually taking multiple attempts
+- [ ] fix very inconsistent and unintuitive settings (backlight settings vs. time setting, USB working mode needs descriptions, etc.)
+- [ ] shrink file system where possible
 
 ## Windows Support
 - [ ] Windows devices should be able to install all project dependencies and run qemu
