@@ -3,7 +3,7 @@
 
 ## Project Structure
 - [ ] probably should move linux kernel bin and elf into qemu folder
-- [ ] add vm image files `rootfs-image` and `initrd.cpio` to gitignore
+- [x] add vm image files `rootfs-image` and `initrd.cpio` to gitignore
 
 
 ## Emulator
@@ -13,7 +13,7 @@
 - [ ] run with ingenic x1600e features
 - [ ] display output
 - [ ] fake touch control interface
-- [ ] (maybe) sound output
+- [ ] sound output
 - [ ] (maybe) usb interface
 
 ## hiby_player Decomp
