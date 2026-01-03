@@ -24,6 +24,8 @@
 
 ## Custom Firmware
 - [ ] add audiobooks button to books menu
+- [ ] make device open onto the playback page rather than where it was
+- [ ] add setting for opening onto playback page
 - [ ] create audiobooks page
 - [ ] add support for playing audiobooks
 - [ ] easier playlist access
