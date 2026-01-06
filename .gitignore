@@ -2,6 +2,10 @@
 r3proii/qemu/initrd.cpio
 r3proii/qemu/rootfs-image
 
+# Unpacking and Repacking Outputs
+r3proii/unpacking_and_repacking/r3proii.upt
+r3proii/unpacking_and_repacking/squashfs-root/
+
 # Decompressed ISO
 r3proii/original_firmware/ota_v0/
 r3proii/original_firmware/ota_config.in
