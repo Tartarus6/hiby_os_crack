@@ -9,6 +9,20 @@ Cracking the firmware of HiBy's linux devices
 For equivalent functionality on Windows, please use the Cygwin project to run any scripts.
 
 
+## Workflow
+**For HiBy R3Proii**
+- go to `r3proii/unpacking_and_repacking`
+- run `unpack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored folder called `squashfs-root`.
+- modify the contents of `squashfs-root` to make whatever custom firmware you want
+- run `repack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored file called `r3proii.upt`
+- flash that firmware file onto the device (how to do that is explained below)
+
+**Workflow Notes**
+- `squashfs-root` represents the root filesystem that will be flashed with the firmware.
+- most/all of the files in `squashfs-root` will be owned by `root`, so it can be annoying to modify sometimes. This is also why it's gitignored
+- `r3proii.upt` is the firmware file
+
+
 ## Unpacking the firmware
 **dependencies**
 - 7zip (for `7z` command) (could probably use other tools instead)

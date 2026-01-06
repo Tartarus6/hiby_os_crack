@@ -5,6 +5,7 @@
 - [ ] figure out what "burn" mode does (manual says entered by holding the next song button)
 - [ ] store a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide)
 - [ ] figure out how to better manage file permissions in rootfs (currently, nearly every file is owned by root and has write protection. this makes it difficult to modify and difficult to upload through git)
+- [ ] add a README somewhere that explains the major structure of the root filesystem (like where `hiby_player` is, where useful images are, etc.)
 - [x] add vm image files `rootfs-image` and `initrd.cpio` to gitignore
 - [x] firmware unpacking script
 - [x] firmware repacking script
