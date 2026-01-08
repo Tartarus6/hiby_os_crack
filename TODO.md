@@ -45,6 +45,8 @@
 - [ ] built-in custom radio creation/management (currently have to put it in the right format in a txt file)
 - [ ] fix setting font size bringing you to the all songs menu (no idea why this happens)
 - [ ] (if possible) fix Bluetooth connection usually taking multiple attempts
+- [ ] fix bluetooth menu slow response (after turning on bluetooth, it can take quite a while for the rest of the bluetooth settings to appear)
+- [ ] fix wifi menu slow response (after turning on wifi, it can take quite a while for the rest of the wifi settings to appear)
 - [ ] fix very inconsistent and unintuitive settings (backlight settings vs. time setting, USB working mode needs descriptions, etc.)
 - [ ] shrink file system where possible
 
