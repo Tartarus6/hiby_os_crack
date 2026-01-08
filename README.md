@@ -31,6 +31,7 @@ For equivalent functionality on Windows, please use the Cygwin project to run an
 - vmlinux-to-elf (for formatting the kernel to use with qemu)
 
 **script**
+
 There is a script that does this automatically located in `r3proii/unpacking_and_repacking`
 
 **extracting the upt file**
@@ -65,6 +66,7 @@ There is a script that does this automatically located in `r3proii/unpacking_and
 - cdrtools (for the `mkisofs` command)
 
 **script**
+
 There is a script that does this automatically located in `r3proii/unpacking_and_repacking`.
 
 Just look at the script to see how it works, it should be pretty well commented.
