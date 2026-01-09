@@ -1,12 +1,11 @@
 #!/bin/bash
-
 # Script to create a bootable rootfs image from squashfs-root directory
-set -e  
+set -e
 
 # --- Configuration & Defaults ---
 SOURCE_DIR="../squashfs-root"
 OUTPUT_IMAGE="rootfs-image"
-IMAGE_SIZE="256M"  
+IMAGE_SIZE="256M"
 CHECK_SUDO=true  # Default to true
 
 # --- Parse Arguments ---
@@ -25,12 +24,21 @@ fi
 
 # Conditional Sudo Check
 if [ "$CHECK_SUDO" = true ]; then
-    if [ "$EUID" -ne 0 ]; then 
+    if [ "$EUID" -ne 0 ]; then
         echo "Error: This script requires root privileges."
         echo "Use -n or --no-sudo to bypass this check (ensure you have loop device permissions)."
         echo "Usage: sudo $0"
         exit 1
     fi
+fi
+
+# --- Determine mkfs.ext4 path ---
+if [ "$CHECK_SUDO" = false ]; then
+    # Cygwin scenario - use direct path
+    MKFS_CMD="/usr/sbin/mkfs.ext4"
+else
+    # Normal Linux - rely on PATH
+    MKFS_CMD="mkfs.ext4"
 fi
 
 # --- Create empty image file ---
@@ -41,12 +49,11 @@ dd if=/dev/zero of="${OUTPUT_IMAGE}" bs=1M count=0 seek="${SEEK_SIZE}" status=no
 
 # --- Format as ext4 ---
 echo "[2/5] Formatting image as ext4..."
-mkfs.ext4 -F "${OUTPUT_IMAGE}"
+"${MKFS_CMD}" -F "${OUTPUT_IMAGE}"
 
 # --- Mount the image ---
 echo "[3/5] Mounting image..."
 MOUNT_POINT=$(mktemp -d)
-
 # If we aren't root, mounting will likely fail unless using user-namespaces or specialized tools
 mount -o loop "${OUTPUT_IMAGE}" "${MOUNT_POINT}"
 
@@ -62,7 +69,7 @@ echo "[5/5] Syncing and unmounting..."
 sync
 umount "${MOUNT_POINT}"
 rmdir "${MOUNT_POINT}"
-trap - EXIT 
+trap - EXIT
 
 # --- Finalize ---
 chmod 666 "${OUTPUT_IMAGE}"
