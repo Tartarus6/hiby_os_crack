@@ -1,7 +1,7 @@
 ## Windows
 For equivalent functionality on Windows, choose:
 
-(A) Install the Cygwin project, which keeps the majority of the software used in it's native packaging for Windows, which is translated in a Linux terminal for equivalent command functionality. The details of this install are kept below in this document.
+(A) Install the Cygwin project, which keeps the majority of the software used in its native packaging for Windows, which is translated in a Linux terminal for equivalent command functionality. The details of this install are kept below in this document.
 
 (B - TODO: UNTESTED) Install the Windows Subsystem for Linux and follow the original README.md
 
