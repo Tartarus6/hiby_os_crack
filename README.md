@@ -6,8 +6,7 @@ Cracking the firmware of HiBy's linux devices
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
 
 ### Note for Windows
-For equivalent functionality on Windows, please use the Cygwin project to run any scripts.
-
+For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 
 ## Workflow
 **For HiBy R3Proii**
@@ -57,13 +56,6 @@ There is a script that does this automatically located in `r3proii/unpacking_and
 - To extract the kernel binary from the uImage, run `dd if=xImage of=Linux-4.4.94+.bin bs=64 skip=1`. that will create a file called `Linux-4.4.94+.bin`
 - qemu wants the kernel in elf format, so we need to turn the raw binary into an elf file
 - to do that, run `vmlinux-to-bin Linux-4.4.94+.bin Linux-4.4.94+.elf`
-
-
-## Repacking the Firmware
-**requirements**
-- 7zip (for `7z` command) (could probably use other tools instead)
-- squashfs-tools (for `mksquashfs` command)
-- cdrtools (for the `mkisofs` command)
 
 **script**
 
