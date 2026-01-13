@@ -10,5 +10,5 @@ r3proii/unpacking_and_repacking/squashfs-root/
 r3proii/original_firmware/ota_v0/
 r3proii/original_firmware/ota_config.in
 
-# Claude Code working directory
+# Claude Code
 .claude/
