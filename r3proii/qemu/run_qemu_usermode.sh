@@ -1,15 +1,37 @@
 #!/bin/bash
 
 # Simple script to run MIPS binaries from squashfs-root in QEMU user mode
-# Usage: ./run_usermode.sh <path-to-binary> [args...]
+# Usage: ./run_usermode.sh [OPTIONS] <path-to-binary> [args...]
+#
+# Options:
+#   -example    Use squashfs-root-example instead of squashfs-root
 #
 # Examples:
 #   ./run_usermode.sh /usr/bin/hiby_player
 #   ./run_usermode.sh /bin/busybox ls -la
-#   ./run_usermode.sh /bin/busybox uname -a
+#   ./run_usermode.sh -example /bin/busybox uname -a
 #   ./run_usermode.sh /usr/bin/some-app
 
-SQUASHFS_ROOT="../squashfs-root"
+# Parse options
+USE_EXAMPLE=false
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -example)
+            USE_EXAMPLE=true
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [ "$USE_EXAMPLE" = true ]; then
+    SQUASHFS_ROOT="../squashfs-root-example"
+else
+    SQUASHFS_ROOT="../squashfs-root"
+fi
+
 BINARY_PATH="$1"
 ARCH="mipsel"  # Use qemu-mipsel for little-endian MIPS
 CPU="XBurstR1"  # CPU type to emulate
@@ -17,12 +39,15 @@ ENABLE_COREDUMP=0  # Set to 1 to enable core dumps
 shift  # Remove first argument, leaving the rest as args
 
 if [ -z "$BINARY_PATH" ]; then
-    echo "Usage: $0 <path-to-binary-relative-to-squashfs-root> [args...]"
+    echo "Usage: $0 [OPTIONS] <path-to-binary-relative-to-squashfs-root> [args...]"
+    echo ""
+    echo "Options:"
+    echo "  -example    Use squashfs-root-example instead of squashfs-root"
     echo ""
     echo "Examples:"
     echo "  $0 /bin/busybox ls -la"
     echo "  $0 /bin/busybox uname -a"
-    echo "  $0 /bin/echo Hello World"
+    echo "  $0 -example /bin/echo Hello World"
     exit 1
 fi
 

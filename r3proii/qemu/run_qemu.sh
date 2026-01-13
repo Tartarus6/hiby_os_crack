@@ -11,6 +11,8 @@ Run QEMU emulation for MIPS-based device firmware.
 
 Options:
     -initrd         Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
+    -no-pause       Start QEMU running (default is paused, waiting for GDB/monitor)
+    -example        Use squashfs-root-example instead of squashfs-root
     -h, --help      Show this help message and exit
 
 Modes:
@@ -18,13 +20,17 @@ Modes:
     -initrd:        Creates/uses a CPIO archive from squashfs-root as initrd
 
 Examples:
-    $(basename "$0")                    # Run with rootfs-image
-    $(basename "$0") -initrd            # Run with initrd
+    $(basename "$0")                    # Run with rootfs-image (paused)
+    $(basename "$0") -initrd            # Run with initrd (paused)
+    $(basename "$0") -initrd -no-pause  # Run with initrd (start immediately)
 
 Notes:
-    - QEMU starts paused (-S flag) and listens on port 1234 for GDB debugging (-s flag)
+    - QEMU listens on port 1234 for GDB debugging (-s flag)
+    - QEMU monitor available on telnet port 4444
+    - Serial console output shown in terminal
     - Logs are written to /tmp/qemu.log
     - Memory is fixed at 64M (required by BIOS)
+    - Use 'telnet 127.0.0.1 4444' to access QEMU monitor
 
 EOF
     exit 0
@@ -32,11 +38,21 @@ EOF
 
 # Parse command line arguments
 USE_INITRD=false
+START_PAUSED=true
+USE_EXAMPLE=false
 
 while [[ $# -gt 0 ]]; do
     case $1 in
         -initrd)
             USE_INITRD=true
+            shift
+            ;;
+        -no-pause)
+            START_PAUSED=false
+            shift
+            ;;
+        -example)
+            USE_EXAMPLE=true
             shift
             ;;
         -h|--help)
@@ -51,10 +67,15 @@ while [[ $# -gt 0 ]]; do
 done
 
 # --- Configuration Variables ---
+if [ "$USE_EXAMPLE" = true ]; then
+    SQUASHFS_ROOT="../squashfs-root-example"    # Path to squashfs-root for initrd
+else
+    SQUASHFS_ROOT="../squashfs-root"            # Path to squashfs-root for initrd
+fi
+
 BIOS_IMAGE="../xImage"              # Path to the BIOS image
 KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
-SQUASHFS_ROOT="../squashfs-root"    # Path to squashfs-root for initrd
 INITRD_IMAGE="initrd.cpio"          # Path to initrd CPIO archive
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
 QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
@@ -109,6 +130,20 @@ echo "QEMU Board: ${QEMU_BOARD}"
 echo "Kernel Cmdline: ${KERNEL_CMDLINE}"
 echo ""
 
+# Build pause flag
+PAUSE_FLAG=()
+if [ "$START_PAUSED" = true ]; then
+    PAUSE_FLAG+=(-S)
+    echo "QEMU will start PAUSED. Connect via:"
+    echo "  - GDB: target remote :1234, then 'continue'"
+    echo "  - Monitor: telnet 127.0.0.1 4444, then 'c'"
+    echo ""
+else
+    echo "QEMU will start RUNNING immediately"
+    echo "Monitor available at: telnet 127.0.0.1 4444"
+    echo ""
+fi
+
 # Note: the -s and -S options are for debugging (start QEMU paused and listen on port 1234)
 #       remove them if you don't need gdb debugging.
 
@@ -131,5 +166,7 @@ echo ""
     "${MODE_SPECIFIC_ARGS[@]}" \
     -append "${KERNEL_CMDLINE}" \
     -s \
-    -S \
+    "${PAUSE_FLAG[@]}" \
+    -serial stdio \
+    -monitor telnet:127.0.0.1:4444,server,nowait \
     -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log
