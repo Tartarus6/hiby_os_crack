@@ -43,8 +43,24 @@ fi
 
 # --- Create empty image file ---
 echo "[1/5] Creating empty image file (${IMAGE_SIZE})..."
-# Using a more robust size calculation for the seek command
-SEEK_SIZE=$(echo ${IMAGE_SIZE} | sed 's/[GgMm]//')
+# Calculate seek size in MiB for dd (bs=1M), handling G/g and M/m suffixes
+RAW_SIZE="${IMAGE_SIZE}"
+UNIT="${RAW_SIZE: -1}"
+VALUE="${RAW_SIZE%[GgMm]}"
+case "$UNIT" in
+    G|g)
+        # Convert GiB to MiB
+        SEEK_SIZE=$((VALUE * 1024))
+        ;;
+    M|m)
+        # Already in MiB
+        SEEK_SIZE="$VALUE"
+        ;;
+    *)
+        # No recognized suffix; assume the value is already in MiB
+        SEEK_SIZE="$RAW_SIZE"
+        ;;
+esac
 dd if=/dev/zero of="${OUTPUT_IMAGE}" bs=1M count=0 seek="${SEEK_SIZE}" status=none
 
 # --- Format as ext4 ---
