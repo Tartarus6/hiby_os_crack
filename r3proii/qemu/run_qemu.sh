@@ -132,4 +132,5 @@ echo ""
     -append "${KERNEL_CMDLINE}" \
     -s \
     -S \
-    -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log
+    -serial stdio \
+    -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log
