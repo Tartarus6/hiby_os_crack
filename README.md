@@ -88,5 +88,11 @@ Just look at the script to see how it works, it should be pretty well commented.
 - that will open the device straight into firmware update mode
 
 
+## Development
+- TODO: HiBy uses a custom MIPS SoC which we have been adding custom support for in a qemu fork (`qemu/`).
+- To develop for HiBy OS Crack, you will need the build tools detailed in `docs/qemu-board-emulation-guide.md`
+- This is currently a WIP. Development at the driver/kernel level is currently NOT SUPPORTED.
+- To use the base Linux kernel and write custom software (not firmware) for the HiBy OS, please see `Alternative Approaches` in the qemu emulation guide.
+
 ## Notes
 - (TODO, make sure the following is correct) The HiBy OS filesystem is read-only, since it's a squashfs image. Only mounted storage, like `sd_0` can be written to.
