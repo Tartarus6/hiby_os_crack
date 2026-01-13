@@ -13,6 +13,9 @@ Options:
     -initrd         Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
     -no-pause       Start QEMU running (default is paused, waiting for GDB/monitor)
     -example        Use squashfs-root-example instead of squashfs-root
+    -quiet          No terminal output, full log to file
+    -filter         Filter excessive traces from terminal output (GRP0, px:, CPU0, etc)
+    -filter-log     Also filter log file (combine with -filter for filtered output and log)
     -h, --help      Show this help message and exit
 
 Modes:
@@ -20,9 +23,12 @@ Modes:
     -initrd:        Creates/uses a CPIO archive from squashfs-root as initrd
 
 Examples:
-    $(basename "$0")                    # Run with rootfs-image (paused)
-    $(basename "$0") -initrd            # Run with initrd (paused)
+    $(basename "$0")                    # Run with rootfs-image (paused, full debug)
+    $(basename "$0") -initrd            # Run with initrd (paused, full debug)
     $(basename "$0") -initrd -no-pause  # Run with initrd (start immediately)
+    $(basename "$0") -quiet             # No terminal output, full log to file
+    $(basename "$0") -filter            # Filtered terminal, full log to file
+    $(basename "$0") -filter -filter-log # Filtered terminal and log file
 
 Notes:
     - QEMU listens on port 1234 for GDB debugging (-s flag)
@@ -40,6 +46,9 @@ EOF
 USE_INITRD=false
 START_PAUSED=true
 USE_EXAMPLE=false
+QUIET_MODE=false
+FILTER_OUTPUT=false
+FILTER_LOG=false
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -53,6 +62,18 @@ while [[ $# -gt 0 ]]; do
             ;;
         -example)
             USE_EXAMPLE=true
+            shift
+            ;;
+        -quiet)
+            QUIET_MODE=true
+            shift
+            ;;
+        -filter)
+            FILTER_OUTPUT=true
+            shift
+            ;;
+        -filter-log)
+            FILTER_LOG=true
             shift
             ;;
         -h|--help)
@@ -158,15 +179,68 @@ fi
 # -d sets the debug options (log various events)
 # -D specifies the log file location (remove -D to log to terminal)
 
-"${QEMU_PATH}" \
-    -M "${QEMU_BOARD}" \
-    -cpu ${QEMU_CPU} \
-    -m ${MEMORY_SIZE} \
-    -kernel "${KERNEL_IMAGE}" \
-    "${MODE_SPECIFIC_ARGS[@]}" \
-    -append "${KERNEL_CMDLINE}" \
-    -s \
-    "${PAUSE_FLAG[@]}" \
-    -serial stdio \
-    -monitor telnet:127.0.0.1:4444,server,nowait \
-    -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log
+# Define the filter pattern for excessive trace lines
+FILTER_PATTERN='^(GRP0|px:|CPU0|C[0-9]|pc=|GPR[0-9]{2}:|CP0 |[[:space:]]+Config)'
+
+# Build the command based on output filtering options
+if [ "$QUIET_MODE" = true ]; then
+    # No terminal output, full log to file
+    echo "Running in QUIET mode: no terminal output, full log to /tmp/qemu.log"
+    "${QEMU_PATH}" \
+        -M "${QEMU_BOARD}" \
+        -cpu ${QEMU_CPU} \
+        -m ${MEMORY_SIZE} \
+        -kernel "${KERNEL_IMAGE}" \
+        "${MODE_SPECIFIC_ARGS[@]}" \
+        -append "${KERNEL_CMDLINE}" \
+        -s \
+        "${PAUSE_FLAG[@]}" \
+        -serial stdio \
+        -monitor telnet:127.0.0.1:4444,server,nowait \
+        -d in_asm,int,cpu,unimp,guest_errors > /tmp/qemu.log 2>&1
+elif [ "$FILTER_OUTPUT" = true ] && [ "$FILTER_LOG" = false ]; then
+    # Filtered terminal output, full log to file
+    echo "Running with FILTERED terminal output, full log to /tmp/qemu.log"
+    "${QEMU_PATH}" \
+        -M "${QEMU_BOARD}" \
+        -cpu ${QEMU_CPU} \
+        -m ${MEMORY_SIZE} \
+        -kernel "${KERNEL_IMAGE}" \
+        "${MODE_SPECIFIC_ARGS[@]}" \
+        -append "${KERNEL_CMDLINE}" \
+        -s \
+        "${PAUSE_FLAG[@]}" \
+        -serial stdio \
+        -monitor telnet:127.0.0.1:4444,server,nowait \
+        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log | grep -v -E "${FILTER_PATTERN}"
+elif [ "$FILTER_OUTPUT" = true ] && [ "$FILTER_LOG" = true ]; then
+    # Filtered terminal output AND filtered log file
+    echo "Running with FILTERED terminal output and FILTERED log to /tmp/qemu.log"
+    "${QEMU_PATH}" \
+        -M "${QEMU_BOARD}" \
+        -cpu ${QEMU_CPU} \
+        -m ${MEMORY_SIZE} \
+        -kernel "${KERNEL_IMAGE}" \
+        "${MODE_SPECIFIC_ARGS[@]}" \
+        -append "${KERNEL_CMDLINE}" \
+        -s \
+        "${PAUSE_FLAG[@]}" \
+        -serial stdio \
+        -monitor telnet:127.0.0.1:4444,server,nowait \
+        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | grep -v -E "${FILTER_PATTERN}" | tee /tmp/qemu.log
+else
+    # Default: full output to both terminal and log file
+    echo "Running with FULL debug output to terminal and /tmp/qemu.log"
+    "${QEMU_PATH}" \
+        -M "${QEMU_BOARD}" \
+        -cpu ${QEMU_CPU} \
+        -m ${MEMORY_SIZE} \
+        -kernel "${KERNEL_IMAGE}" \
+        "${MODE_SPECIFIC_ARGS[@]}" \
+        -append "${KERNEL_CMDLINE}" \
+        -s \
+        "${PAUSE_FLAG[@]}" \
+        -serial stdio \
+        -monitor telnet:127.0.0.1:4444,server,nowait \
+        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log
+fi
