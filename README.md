@@ -28,6 +28,8 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 - squashfs-tools (for `unsquashfs` command)
 - binwalk (to extract uImage. it's overkill for this, but it does all of the uImage extraction work automatically)
 - vmlinux-to-elf (for formatting the kernel to use with qemu)
+- `gdb`, `gcc-mips-linux-gnu`, `binutils-mips-linux-gnu`, `gdb-multiarch` for a QEMU debugger interface
+
 
 **script**
 
@@ -53,9 +55,9 @@ There is a script that does this automatically located in `r3proii/unpacking_and
 **extracting the xImage file**
 - To concatenate the xImage files into one, run `cat xImage.* > xImage.all`. This creates a new file called `xImage.all` that contains the concatenated data
 - `xImage.all` is a u-boot image that contains a raw binary for the linux kernel
-- To extract the kernel binary from the uImage, run `dd if=xImage of=Linux-4.4.94+.bin bs=64 skip=1`. that will create a file called `Linux-4.4.94+.bin`
+- To extract the kernel binary from the uImage, run `dd if=xImage.all of=Linux-4.4.94+.bin bs=64 skip=1`. that will create a file called `Linux-4.4.94+.bin`
 - qemu wants the kernel in elf format, so we need to turn the raw binary into an elf file
-- to do that, run `vmlinux-to-bin Linux-4.4.94+.bin Linux-4.4.94+.elf`
+- to do that, run `vmlinux-to-ekf Linux-4.4.94+.bin Linux-4.4.94+.elf`
 
 
 ## Repacking the Firmware
