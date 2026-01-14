@@ -6,8 +6,7 @@ Cracking the firmware of HiBy's linux devices
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
 
 ### Note for Windows
-For equivalent functionality on Windows, please use the Cygwin project to run any scripts.
-
+For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 
 ## Workflow
 **For HiBy R3Proii**
