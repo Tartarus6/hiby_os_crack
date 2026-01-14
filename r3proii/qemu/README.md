@@ -21,7 +21,6 @@ The outputs from this debugging have been put into the logs directory for analys
 3. now that you're in the gdb tool, run `target remote :1234`
 4. run `continue`. wait for a pretty long while (like 10-30 seconds in my testing)
 5. after a while it usually panics and automatically finishes the continue command. if it's been a long time it probably did panic but didnt stop the command for some reason
-6. run `print __log_buf`
-7. run `x/2000s __log_buf`, then type "c" and press enter to let it print out the whole log. this should show the kernel log, and end with a traceback from a panic. if it just ends at `random: nonblocking pool is initialized"`, then you probably didnt let it continue long enough.
-8. save that log, it's useful. probably get rid of all the empty lines though
-9. run `bt` to get a simple backtrace. ive not found it useful yet. but more info is more info.
+6. run `x/2000s __log_buf`, then type "c" and press enter to let it print out the whole log. this should show the kernel log, and end with a traceback from a panic. if it just ends at `random: nonblocking pool is initialized"`, then you probably didnt let it continue long enough.
+7. save that log, it's useful. probably get rid of all the empty lines though
+8. run `bt` to get a simple backtrace. ive not found it useful yet. but more info is more info.
