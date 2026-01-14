@@ -28,6 +28,8 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 - squashfs-tools (for `unsquashfs` command)
 - binwalk (to extract uImage. it's overkill for this, but it does all of the uImage extraction work automatically)
 - vmlinux-to-elf (for formatting the kernel to use with qemu)
+- `gdb`, `gcc-mips-linux-gnu`, `binutils-mips-linux-gnu` for a QEMU debugger interface
+
 
 **script**
 
