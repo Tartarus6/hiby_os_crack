@@ -2,9 +2,13 @@
 # Script to create a bootable rootfs image from squashfs-root directory
 set -e
 
+# --- Get project root and set up absolute paths ---
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+QEMU_DIR="${PROJECT_ROOT}/r3proii/qemu"
+
 # --- Configuration & Defaults ---
-SOURCE_DIR="../squashfs-root"
-OUTPUT_IMAGE="rootfs-image"
+SOURCE_DIR="${PROJECT_ROOT}/r3proii/unpacking_and_repacking/squashfs-root"
+OUTPUT_IMAGE="${QEMU_DIR}/rootfs-image"
 IMAGE_SIZE="256M"
 CHECK_SUDO=true  # Default to true
 
@@ -19,6 +23,7 @@ done
 # --- Checks ---
 if [ ! -d "$SOURCE_DIR" ]; then
     echo "Error: Source directory '$SOURCE_DIR' not found!"
+    echo "To fix this, run unpack.sh in unpacking_and_repacking"
     exit 1
 fi
 
@@ -90,3 +95,4 @@ trap - EXIT
 # --- Finalize ---
 chmod 666 "${OUTPUT_IMAGE}"
 echo "✓ Success! Root filesystem image created: ${OUTPUT_IMAGE}"
+echo "   (Located at: ${OUTPUT_IMAGE})"
