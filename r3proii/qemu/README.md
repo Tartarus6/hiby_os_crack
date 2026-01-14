@@ -16,6 +16,8 @@ this folder is for stuff needed to emulate the device
 In order to get the kernel output from qemu youll need to use `gdb` (the GNU Debug Tool)
 The outputs from this debugging have been put into the logs directory for analysis after being cleaned (there were a lot of useless lines)
 
+*Note: If later steps inside gdb (such as `target remote :1234`) are failing, ensure you have the mips-specific packages in the project README and load with `gdb-multiarch Linux-4.4.94+.elf` instead.*
+
 1. run `run_qemu.sh` to start the vm
 2. run `gdb Linux-4.4.94+.elf` (you might need to change the path to the elf depending on your current directory). this opens up the gdb tool analyzing the kernel
 3. now that you're in the gdb tool, run `target remote :1234`

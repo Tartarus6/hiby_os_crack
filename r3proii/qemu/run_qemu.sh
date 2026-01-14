@@ -50,16 +50,20 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# --- Get project root and set up absolute paths ---
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+QEMU_DIR="${PROJECT_ROOT}/r3proii/qemu"
+
 # --- Configuration Variables ---
-BIOS_IMAGE="../xImage"              # Path to the BIOS image
-KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
-ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
-SQUASHFS_ROOT="../squashfs-root"    # Path to squashfs-root for initrd
-INITRD_IMAGE="initrd.cpio"          # Path to initrd CPIO archive
-QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
-QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
-MEMORY_SIZE="64M"                   # Amount of RAM for the emulated system
-QEMU_CPU="XBurstR2"                 # CPU type to emulate
+BIOS_IMAGE="${PROJECT_ROOT}/r3proii/xImage"                                    # Path to the BIOS image
+KERNEL_IMAGE="${PROJECT_ROOT}/r3proii/Linux-4.4.94+.elf"                       # Path to extracted ELF kernel
+ROOTFS_IMAGE="${QEMU_DIR}/rootfs-image"                                        # Path to your created root filesystem image
+SQUASHFS_ROOT="${PROJECT_ROOT}/r3proii/unpacking_and_repacking/squashfs-root"  # Path to squashfs-root for initrd
+INITRD_IMAGE="${QEMU_DIR}/initrd.cpio"                                         # Path to initrd CPIO archive
+QEMU_ARCH="mipsel"                                                             # Use qemu-system-mipsel (little-endian)
+QEMU_BOARD="malta"                                                             # A common generic MIPS board. You might need to experiment.
+MEMORY_SIZE="64M"                                                              # Amount of RAM for the emulated system
+QEMU_CPU="XBurstR2"                                                            # CPU type to emulate
 
 # QEMU path (adjust if qemu-system-mips is not in your PATH)
 QEMU_PATH=$(which qemu-system-${QEMU_ARCH})
@@ -81,12 +85,20 @@ KERNEL_CMDLINE="rw init=/sbin/init mem=${MEMORY_SIZE} earlyprintk debug"
 MODE_SPECIFIC_ARGS=()
 
 if [ "$USE_INITRD" = true ]; then
+    # Check that squashfs-root exists
+    if [ ! -d "$SQUASHFS_ROOT" ]; then
+        echo "Error: Initrd source directory '$SQUASHFS_ROOT' not found!"
+        echo "To fix this, run unpack.sh in unpacking_and_repacking"
+        exit 1
+    fi
+
     # Create initrd if it doesn't exist or is older than squashfs-root
     if [ ! -f "$INITRD_IMAGE" ] || [ "$SQUASHFS_ROOT" -nt "$INITRD_IMAGE" ]; then
         echo "Creating initrd CPIO archive from ${SQUASHFS_ROOT}..."
         cd "$SQUASHFS_ROOT"
-        find . | cpio -o -H newc | gzip > "../qemu/${INITRD_IMAGE}.gz"
-        cd - > /dev/null
+        echo "Sudo is required due to the permissions of some files in squashfs-root"
+        sudo find . | sudo cpio -o -H newc | gzip > "${INITRD_IMAGE}.gz"
+        cd "$QEMU_DIR"
         mv "${INITRD_IMAGE}.gz" "${INITRD_IMAGE}"
         echo "Initrd created: ${INITRD_IMAGE}"
     fi
@@ -101,9 +113,12 @@ else
     echo "Kernel: ${KERNEL_IMAGE}"
     echo "RootFS: ${ROOTFS_IMAGE}"
     
-    MODE_SPECIFIC_ARGS+=(-bios ${BIOS_IMAGE})
+    MODE_SPECIFIC_ARGS+=(-bios "${BIOS_IMAGE}")
     MODE_SPECIFIC_ARGS+=(-drive file="${ROOTFS_IMAGE}",format=raw)
 fi
+
+# Change to QEMU directory to ensure relative paths work correctly
+cd "$QEMU_DIR"
 
 echo "QEMU Board: ${QEMU_BOARD}"
 echo "Kernel Cmdline: ${KERNEL_CMDLINE}"
@@ -132,4 +147,5 @@ echo ""
     -append "${KERNEL_CMDLINE}" \
     -s \
     -S \
-    -d in_asm,int,cpu,unimp,guest_errors -D /tmp/qemu.log
+    -serial stdio \
+    -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log
