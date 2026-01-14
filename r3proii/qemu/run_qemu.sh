@@ -13,27 +13,37 @@ Options:
     -initrd         Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
     -no-pause       Start QEMU running (default is paused, waiting for GDB/monitor)
     -example        Use squashfs-root-example instead of squashfs-root
-    -quiet          No terminal output, full log to file
-    -filter         Filter excessive traces from terminal output (GRP0, px:, CPU0, etc)
-    -filter-log     Also filter log file (combine with -filter for filtered output and log)
+    -quiet          No terminal output (default is verbose terminal output)
+    -no-logfile     Don't write to log file (default writes to /tmp/qemu.log)
+    -dminimal       Minimal debug logging: unimp,guest_errors (default)
+    -dlight         Light debug logging: int,unimp,guest_errors
+    -dmedium        Medium debug logging: int,exec,unimp,guest_errors
+    -dfull          Full debug logging: in_asm,int,cpu,unimp,guest_errors
+    -dflags FLAGS   Custom debug flags (comma-separated, e.g., "in_asm,int,exec")
     -h, --help      Show this help message and exit
+
+Output Modes:
+    Default:        Terminal output + log file (/tmp/qemu.log)
+    -quiet:         Log file only (no terminal output)
+    -no-logfile:    Terminal output only (no log file)
+    -quiet -no-logfile: No output (not recommended)
 
 Modes:
     Default:        Uses rootfs-image as a raw disk drive
     -initrd:        Creates/uses a CPIO archive from squashfs-root as initrd
 
 Examples:
-    $(basename "$0")                    # Run with rootfs-image (paused, full debug)
-    $(basename "$0") -initrd            # Run with initrd (paused, full debug)
-    $(basename "$0") -initrd -no-pause  # Run with initrd (start immediately)
-    $(basename "$0") -quiet             # No terminal output, full log to file
-    $(basename "$0") -filter            # Filtered terminal, full log to file
-    $(basename "$0") -filter -filter-log # Filtered terminal and log file
+    $(basename "$0")                    # Terminal + log file, minimal debug (default, paused)
+    $(basename "$0") -quiet             # Log file only, minimal debug
+    $(basename "$0") -no-logfile        # Terminal only, minimal debug
+    $(basename "$0") -dfull             # Terminal + log, full debug logging
+    $(basename "$0") -dflags "exec,int" # Terminal + log, custom debug flags
+    $(basename "$0") -quiet -dlight     # Log file only, light debug logging
 
 Notes:
     - QEMU listens on port 1234 for GDB debugging (-s flag)
     - QEMU monitor available on telnet port 4444
-    - Serial console output shown in terminal
+    - Serial console output shown in terminal only with -show
     - Logs are written to /tmp/qemu.log
     - Memory is fixed at 64M (required by BIOS)
     - Use 'telnet 127.0.0.1 4444' to access QEMU monitor
@@ -42,13 +52,20 @@ EOF
     exit 0
 }
 
+
 # Parse command line arguments
 USE_INITRD=false
 START_PAUSED=true
 USE_EXAMPLE=false
-QUIET_MODE=false
-FILTER_OUTPUT=false
-FILTER_LOG=false
+QUIET_MODE=false       # Default: show terminal output
+USE_LOGFILE=true       # Default: write to log file
+
+# Debug flags presets
+DEBUG_FLAGS="unimp,guest_errors"  # Default: minimal
+DEBUG_PRESET_MINIMAL="unimp,guest_errors"
+DEBUG_PRESET_LIGHT="int,unimp,guest_errors"
+DEBUG_PRESET_MEDIUM="int,exec,unimp,guest_errors"
+DEBUG_PRESET_FULL="in_asm,int,cpu,unimp,guest_errors"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -68,13 +85,33 @@ while [[ $# -gt 0 ]]; do
             QUIET_MODE=true
             shift
             ;;
-        -filter)
-            FILTER_OUTPUT=true
+        -no-logfile)
+            USE_LOGFILE=false
             shift
             ;;
-        -filter-log)
-            FILTER_LOG=true
+        -dminimal)
+            DEBUG_FLAGS="$DEBUG_PRESET_MINIMAL"
             shift
+            ;;
+        -dlight)
+            DEBUG_FLAGS="$DEBUG_PRESET_LIGHT"
+            shift
+            ;;
+        -dmedium)
+            DEBUG_FLAGS="$DEBUG_PRESET_MEDIUM"
+            shift
+            ;;
+        -dfull)
+            DEBUG_FLAGS="$DEBUG_PRESET_FULL"
+            shift
+            ;;
+        -dflags)
+            if [[ -z "$2" || "$2" == -* ]]; then
+                echo "Error: -dflags requires an argument"
+                exit 1
+            fi
+            DEBUG_FLAGS="$2"
+            shift 2
             ;;
         -h|--help)
             show_help
@@ -179,68 +216,46 @@ fi
 # -d sets the debug options (log various events)
 # -D specifies the log file location (remove -D to log to terminal)
 
-# Define the filter pattern for excessive trace lines
-FILTER_PATTERN='^(GRP0|px:|CPU0|C[0-9]|pc=|GPR[0-9]{2}:|CP0 |[[:space:]]+Config)'
-
-# Build the command based on output filtering options
-if [ "$QUIET_MODE" = true ]; then
-    # No terminal output, full log to file
-    echo "Running in QUIET mode: no terminal output, full log to /tmp/qemu.log"
-    "${QEMU_PATH}" \
-        -M "${QEMU_BOARD}" \
-        -cpu ${QEMU_CPU} \
-        -m ${MEMORY_SIZE} \
-        -kernel "${KERNEL_IMAGE}" \
-        "${MODE_SPECIFIC_ARGS[@]}" \
-        -append "${KERNEL_CMDLINE}" \
-        -s \
-        "${PAUSE_FLAG[@]}" \
-        -serial stdio \
-        -monitor telnet:127.0.0.1:4444,server,nowait \
-        -d in_asm,int,cpu,unimp,guest_errors > /tmp/qemu.log 2>&1
-elif [ "$FILTER_OUTPUT" = true ] && [ "$FILTER_LOG" = false ]; then
-    # Filtered terminal output, full log to file
-    echo "Running with FILTERED terminal output, full log to /tmp/qemu.log"
-    "${QEMU_PATH}" \
-        -M "${QEMU_BOARD}" \
-        -cpu ${QEMU_CPU} \
-        -m ${MEMORY_SIZE} \
-        -kernel "${KERNEL_IMAGE}" \
-        "${MODE_SPECIFIC_ARGS[@]}" \
-        -append "${KERNEL_CMDLINE}" \
-        -s \
-        "${PAUSE_FLAG[@]}" \
-        -serial stdio \
-        -monitor telnet:127.0.0.1:4444,server,nowait \
-        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log | grep -v -E "${FILTER_PATTERN}"
-elif [ "$FILTER_OUTPUT" = true ] && [ "$FILTER_LOG" = true ]; then
-    # Filtered terminal output AND filtered log file
-    echo "Running with FILTERED terminal output and FILTERED log to /tmp/qemu.log"
-    "${QEMU_PATH}" \
-        -M "${QEMU_BOARD}" \
-        -cpu ${QEMU_CPU} \
-        -m ${MEMORY_SIZE} \
-        -kernel "${KERNEL_IMAGE}" \
-        "${MODE_SPECIFIC_ARGS[@]}" \
-        -append "${KERNEL_CMDLINE}" \
-        -s \
-        "${PAUSE_FLAG[@]}" \
-        -serial stdio \
-        -monitor telnet:127.0.0.1:4444,server,nowait \
-        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | grep -v -E "${FILTER_PATTERN}" | tee /tmp/qemu.log
+# Display output configuration
+if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
+    echo "Output: Log file only (/tmp/qemu.log)"
+elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
+    echo "Output: None (quiet mode without log file)"
+elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
+    echo "Output: Terminal + log file (/tmp/qemu.log)"
 else
-    # Default: full output to both terminal and log file
-    echo "Running with FULL debug output to terminal and /tmp/qemu.log"
-    "${QEMU_PATH}" \
-        -M "${QEMU_BOARD}" \
-        -cpu ${QEMU_CPU} \
-        -m ${MEMORY_SIZE} \
-        -kernel "${KERNEL_IMAGE}" \
-        "${MODE_SPECIFIC_ARGS[@]}" \
-        -append "${KERNEL_CMDLINE}" \
-        -s \
-        "${PAUSE_FLAG[@]}" \
-        -serial stdio \
-        -monitor telnet:127.0.0.1:4444,server,nowait \
-        -d in_asm,int,cpu,unimp,guest_errors 2>&1 | tee /tmp/qemu.log
+    echo "Output: Terminal only"
+fi
+echo "Debug flags: ${DEBUG_FLAGS}"
+echo ""
+
+# Build QEMU command with common arguments
+QEMU_CMD=(
+    "${QEMU_PATH}"
+    -M "${QEMU_BOARD}"
+    -cpu ${QEMU_CPU}
+    -m ${MEMORY_SIZE}
+    -kernel "${KERNEL_IMAGE}"
+    "${MODE_SPECIFIC_ARGS[@]}"
+    -append "${KERNEL_CMDLINE}"
+    -s
+    "${PAUSE_FLAG[@]}"
+    -serial stdio
+    -monitor telnet:127.0.0.1:4444,server,nowait
+    -d ${DEBUG_FLAGS}
+)
+
+# Execute QEMU with appropriate output redirection
+if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
+    # Quiet with log file: redirect to log file only
+    "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1
+elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
+    # Quiet without log file: redirect to /dev/null
+    "${QEMU_CMD[@]}" > /dev/null 2>&1
+elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
+    # Terminal and log file: use tee
+    "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log
+else
+    # Terminal only: normal output
+    "${QEMU_CMD[@]}"
 fi
