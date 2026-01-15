@@ -12,3 +12,6 @@ r3proii/original_firmware/ota_config.in
 
 # Claude Code
 .claude/
+
+# QEMU Builds
+qemu/build/
