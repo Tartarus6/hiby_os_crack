@@ -14,4 +14,7 @@ r3proii/original_firmware/ota_config.in
 .claude/
 
 # QEMU Builds
-qemu/build/
+qemu-v8.1.1/build/
+
+# Logfiles
+r3proii/tmp

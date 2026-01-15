@@ -1,0 +1,9 @@
+do_raise_exception_err: 26 (TLB load) 1
+mips_cpu_do_interrupt enter: PC 800441e0 EPC 807b2a84 TLB load exception
+mips_cpu_do_interrupt: PC 80000000 EPC 800441e0 cause 2
+    S 10001802 C 00800408 A 00000080 D 00000000
+do_raise_exception_err: 26 (TLB load) 0
+mips_cpu_do_interrupt enter: PC 800441e0 EPC 800441e0 TLB load exception
+mips_cpu_do_interrupt: PC 80000180 EPC 800441e0 cause 2
+    S 10001802 C 00800408 A 00000080 D 00000000
+qemu: terminating on signal 15 from pid 323 (/bin/bash)

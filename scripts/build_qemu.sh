@@ -2,7 +2,7 @@
 
 #HINT: Run me from project root :)
 
-cd qemu
+cd /qemu-v8.1.1
 
 make clean
 

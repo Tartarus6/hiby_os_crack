@@ -1,0 +1,5 @@
+=== Backtrace ===
+Captured at: Thu Jan 15 11:29:46 AM EST 2026
+==========================================
+
+#0  0x8001afc0 in machine_restart ()
