@@ -162,7 +162,7 @@ KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
 INITRD_IMAGE="initrd.cpio"          # Path to initrd CPIO archive
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
-QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
+QEMU_BOARD="halley6"                  # A common generic MIPS board. You might need to experiment.
 MEMORY_SIZE="64M"                   # Amount of RAM for the emulated system
 QEMU_CPU="XBurstR2"                 # CPU type to emulate
 
