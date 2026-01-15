@@ -3,7 +3,7 @@
 set -e
 
 # --- Configuration & Defaults ---
-SOURCE_DIR="../squashfs-root"
+SOURCE_DIR="../squashfs-root-example"
 OUTPUT_IMAGE="rootfs-image"
 IMAGE_SIZE="256M"
 CHECK_SUDO=true  # Default to true
