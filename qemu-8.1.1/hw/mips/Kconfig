@@ -64,5 +64,6 @@ config FW_CFG_MIPS
 
 config INGENIC_X1600
     bool
-    select MIPS_CPS
+    default y if MIPSEL
     select SERIAL
+    select PTIMER
