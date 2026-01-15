@@ -1,3 +1,7 @@
+config INGENIC_X1600
+    bool
+    depends on MIPS
+
 config APPLESMC
     bool
     depends on ISA_BUS
