@@ -13,3 +13,8 @@ mips_ss.add(when: 'CONFIG_MIPS_BOSTON', if_true: [files('boston.c'), fdt])
 endif
 
 hw_arch += {'mips': mips_ss}
+
+
+# Ingenic devices
+mips_ss.add(when: 'CONFIG_INGENIC_X1600', if_true: files('ingenic_halley6.c'))
+
