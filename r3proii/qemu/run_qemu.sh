@@ -10,17 +10,19 @@ Usage: $(basename "$0") [OPTIONS]
 Run QEMU emulation for MIPS-based device firmware.
 
 Options:
-    -initrd         Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
-    -no-pause       Start QEMU running (default is paused, waiting for GDB/monitor)
-    -example        Use squashfs-root-example instead of squashfs-root
-    -quiet          No terminal output (default is verbose terminal output)
-    -no-logfile     Don't write to log file (default writes to /tmp/qemu.log)
-    -dminimal       Minimal debug logging: unimp,guest_errors (default)
-    -dlight         Light debug logging: int,unimp,guest_errors
-    -dmedium        Medium debug logging: int,exec,unimp,guest_errors
-    -dfull          Full debug logging: in_asm,int,cpu,unimp,guest_errors
-    -dflags FLAGS   Custom debug flags (comma-separated, e.g., "in_asm,int,exec")
-    -h, --help      Show this help message and exit
+    -initrd                Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
+    -no-pause              Start QEMU running (default is paused, waiting for GDB/monitor)
+    -example               Use squashfs-root-example instead of squashfs-root
+    -quiet                 No terminal output (default is verbose terminal output)
+    -no-logfile            Don't write to log file (default writes to /tmp/qemu.log)
+    -capture-kernel-log    Automatically capture kernel log via GDB (writes to /tmp/qemu_kernel.log)
+    -kernel-wait TIME      Set wait time for kernel panic in seconds (default: 35, used with -capture-kernel-log)
+    -dminimal              Minimal debug logging: unimp,guest_errors (default)
+    -dlight                Light debug logging: int,unimp,guest_errors
+    -dmedium               Medium debug logging: int,exec,unimp,guest_errors
+    -dfull                 Full debug logging: in_asm,int,cpu,unimp,guest_errors
+    -dflags FLAGS          Custom debug flags (comma-separated, e.g., "in_asm,int,exec")
+    -h, --help             Show this help message and exit
 
 Output Modes:
     Default:        Terminal output + log file (/tmp/qemu.log)
@@ -33,20 +35,23 @@ Modes:
     -initrd:        Creates/uses a CPIO archive from squashfs-root as initrd
 
 Examples:
-    $(basename "$0")                    # Terminal + log file, minimal debug (default, paused)
-    $(basename "$0") -quiet             # Log file only, minimal debug
-    $(basename "$0") -no-logfile        # Terminal only, minimal debug
-    $(basename "$0") -dfull             # Terminal + log, full debug logging
-    $(basename "$0") -dflags "exec,int" # Terminal + log, custom debug flags
-    $(basename "$0") -quiet -dlight     # Log file only, light debug logging
+    $(basename "$0")                          # Terminal + log file, minimal debug (default, paused)
+    $(basename "$0") -quiet                   # Log file only, minimal debug
+    $(basename "$0") -no-logfile              # Terminal only, minimal debug
+    $(basename "$0") -dfull                   # Terminal + log, full debug logging
+    $(basename "$0") -dflags "exec,int"       # Terminal + log, custom debug flags
+    $(basename "$0") -quiet -dlight           # Log file only, light debug logging
+    $(basename "$0") -capture-kernel-log      # Auto-capture kernel log via GDB
 
 Notes:
     - QEMU listens on port 1234 for GDB debugging (-s flag)
     - QEMU monitor available on telnet port 4444
     - Serial console output shown in terminal only with -show
     - Logs are written to /tmp/qemu.log
+    - Kernel logs (with -capture-kernel-log) written to /tmp/qemu_kernel.log and /tmp/qemu_backtrace.txt
     - Memory is fixed at 64M (required by BIOS)
     - Use 'telnet 127.0.0.1 4444' to access QEMU monitor
+    - -capture-kernel-log requires QEMU to start paused (conflicts with -no-pause)
 
 EOF
     exit 0
@@ -59,6 +64,8 @@ START_PAUSED=true
 USE_EXAMPLE=false
 QUIET_MODE=false       # Default: show terminal output
 USE_LOGFILE=true       # Default: write to log file
+CAPTURE_KERNEL_LOG=false   # Default: don't capture kernel log
+KERNEL_WAIT_TIME=35        # Default wait time for kernel panic
 
 # Debug flags presets
 DEBUG_FLAGS="unimp,guest_errors"  # Default: minimal
@@ -88,6 +95,18 @@ while [[ $# -gt 0 ]]; do
         -no-logfile)
             USE_LOGFILE=false
             shift
+            ;;
+        -capture-kernel-log)
+            CAPTURE_KERNEL_LOG=true
+            shift
+            ;;
+        -kernel-wait)
+            if [[ -z "$2" || "$2" == -* ]]; then
+                echo "Error: -kernel-wait requires an argument"
+                exit 1
+            fi
+            KERNEL_WAIT_TIME="$2"
+            shift 2
             ;;
         -dminimal)
             DEBUG_FLAGS="$DEBUG_PRESET_MINIMAL"
@@ -123,6 +142,13 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+
+# Validate flag combinations
+if [ "$CAPTURE_KERNEL_LOG" = true ] && [ "$START_PAUSED" = false ]; then
+    echo "Error: -capture-kernel-log cannot be used with -no-pause"
+    echo "Kernel log capture requires QEMU to start paused for GDB connection."
+    exit 1
+fi
 
 # --- Configuration Variables ---
 if [ "$USE_EXAMPLE" = true ]; then
@@ -246,16 +272,101 @@ QEMU_CMD=(
 )
 
 # Execute QEMU with appropriate output redirection
-if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
-    # Quiet with log file: redirect to log file only
-    "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1
-elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
-    # Quiet without log file: redirect to /dev/null
-    "${QEMU_CMD[@]}" > /dev/null 2>&1
-elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
-    # Terminal and log file: use tee
-    "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log
+if [ "$CAPTURE_KERNEL_LOG" = true ]; then
+    # Special mode: Start QEMU in background and capture kernel log via GDB
+    echo ""
+    echo "=========================================="
+    echo "Automated Kernel Log Capture Mode"
+    echo "=========================================="
+    echo ""
+    echo "This will:"
+    echo "  1. Start QEMU in background"
+    echo "  2. Connect GDB and capture kernel log"
+    echo "  3. Save logs to /tmp/qemu_kernel.log and /tmp/qemu_backtrace.txt"
+    echo ""
+
+    # Start QEMU in background
+    if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
+        "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1 &
+    elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
+        "${QEMU_CMD[@]}" > /dev/null 2>&1 &
+    elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
+        "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log &
+    else
+        "${QEMU_CMD[@]}" &
+    fi
+
+    QEMU_PID=$!
+
+    # Ensure QEMU is killed on script exit
+    trap "echo ''; echo 'Cleaning up...'; kill ${QEMU_PID} 2>/dev/null || true" EXIT INT TERM
+
+    # Give QEMU a moment to start
+    sleep 2
+
+    # Check if QEMU is still running
+    if ! kill -0 ${QEMU_PID} 2>/dev/null; then
+        echo "Error: QEMU failed to start or exited prematurely"
+        exit 1
+    fi
+
+    echo "QEMU started in background (PID: ${QEMU_PID})"
+    echo ""
+
+    # Get the directory where this script is located
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    # Invoke the kernel log capture script with custom wait time
+    if [ -f "${SCRIPT_DIR}/capture_kernel_log.sh" ]; then
+        ORIGINAL_WAIT=$(grep '^WAIT_TIME=' "${SCRIPT_DIR}/capture_kernel_log.sh" | head -1 | cut -d= -f2 | tr -d ' ')
+
+        # Temporarily modify wait time if different from default
+        if [ "${KERNEL_WAIT_TIME}" != "${ORIGINAL_WAIT}" ]; then
+            sed -i.bak "s/^WAIT_TIME=.*/WAIT_TIME=${KERNEL_WAIT_TIME}/" "${SCRIPT_DIR}/capture_kernel_log.sh"
+        fi
+
+        # Run the capture script
+        bash "${SCRIPT_DIR}/capture_kernel_log.sh"
+
+        # Restore original wait time
+        if [ "${KERNEL_WAIT_TIME}" != "${ORIGINAL_WAIT}" ]; then
+            sed -i.bak "s/^WAIT_TIME=.*/WAIT_TIME=${ORIGINAL_WAIT}/" "${SCRIPT_DIR}/capture_kernel_log.sh"
+            rm -f "${SCRIPT_DIR}/capture_kernel_log.sh.bak"
+        fi
+    else
+        echo "Error: capture_kernel_log.sh not found in ${SCRIPT_DIR}"
+        kill ${QEMU_PID} 2>/dev/null || true
+        exit 1
+    fi
+
+    echo ""
+    echo "=========================================="
+    echo "Capture Complete"
+    echo "=========================================="
+    echo "Logs available at:"
+    echo "  - QEMU debug:   /tmp/qemu.log"
+    echo "  - Kernel log:   /tmp/qemu_kernel.log"
+    echo "  - Backtrace:    /tmp/qemu_backtrace.txt"
+    echo ""
+
+    # Kill QEMU
+    kill ${QEMU_PID} 2>/dev/null || true
+    wait ${QEMU_PID} 2>/dev/null || true
+    echo "QEMU stopped."
+
 else
-    # Terminal only: normal output
-    "${QEMU_CMD[@]}"
+    # Normal mode: Execute QEMU directly
+    if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
+        # Quiet with log file: redirect to log file only
+        "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1
+    elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
+        # Quiet without log file: redirect to /dev/null
+        "${QEMU_CMD[@]}" > /dev/null 2>&1
+    elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
+        # Terminal and log file: use tee
+        "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log
+    else
+        # Terminal only: normal output
+        "${QEMU_CMD[@]}"
+    fi
 fi
