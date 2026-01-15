@@ -41,10 +41,12 @@ target remote :1234
 
 # Set pagination off so we can capture everything
 set pagination off
-set logging on
+
+# Configure logging for kernel log buffer (set file/options BEFORE enabling)
 set logging file /tmp/gdb_kernel_log_raw.txt
 set logging overwrite on
 set logging redirect on
+set logging enabled on
 
 # Continue execution
 continue
@@ -52,17 +54,17 @@ continue
 # After panic (or interrupt), extract kernel log buffer
 x/2000s __log_buf
 
-# Turn off logging for backtrace
-set logging off
+# Turn off logging and configure for backtrace
+set logging enabled off
 set logging file /tmp/gdb_backtrace_raw.txt
 set logging overwrite on
 set logging redirect on
-set logging on
+set logging enabled on
 
 # Get backtrace
 bt
 
-set logging off
+set logging enabled off
 
 # Quit GDB
 quit
