@@ -66,8 +66,3 @@ config INGENIC_X1600
     bool
     select MIPS_CPS
     select SERIAL
-    select INGENIC_X1600_DEVICES
-
-config INGENIC_X1600_DEVICES
-    bool
-    select INGENIC_X1600
