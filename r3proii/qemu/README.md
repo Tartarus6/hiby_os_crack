@@ -18,7 +18,32 @@ this folder is for stuff needed to emulate the device
 
 ## Debugging Methods
 
-### Method 1: QEMU Monitor (Recommended for Windows/Cygwin)
+### Method 1: Automated Kernel Log Capture (Recommended)
+Automatically captures kernel log buffer via GDB - no manual steps required.
+
+**Run with automated capture:**
+```bash
+./run_qemu.sh -initrd -capture-kernel-log
+```
+
+This will:
+1. Start QEMU in background
+2. Connect GDB automatically
+3. Wait for kernel panic (or timeout after 35s)
+4. Extract kernel log buffer (`__log_buf`)
+5. Save logs to `/tmp/qemu_kernel.log` and `/tmp/qemu_backtrace.txt`
+
+**Customize wait time:**
+```bash
+./run_qemu.sh -initrd -capture-kernel-log -kernel-wait 45
+```
+
+**Output files:**
+- `/tmp/qemu.log` - QEMU debug output (instructions, interrupts, etc.)
+- `/tmp/qemu_kernel.log` - Kernel log buffer contents
+- `/tmp/qemu_backtrace.txt` - Stack backtrace at panic
+
+### Method 2: QEMU Monitor (Good for Windows/Cygwin)
 The QEMU monitor provides interactive access without needing GDB.
 
 **Start QEMU:**
@@ -46,8 +71,8 @@ telnet 127.0.0.1 4444
 ./run_qemu.sh -initrd -no-pause    # Starts running immediately
 ```
 
-### Method 2: GDB (Traditional Method)
-For detailed debugging with full GDB features.
+### Method 3: GDB (Manual Method)
+For detailed debugging with full GDB features. Use this when you need interactive control.
 
 **Start QEMU:**
 ```bash
@@ -65,11 +90,20 @@ gdb ../Linux-4.4.94+.elf
 (gdb) bt
 ```
 
-### Method 3: Log Files
-QEMU writes detailed logs to `/tmp/qemu.log` including instruction traces, interrupts, and unimplemented device accesses.
+### Method 4: QEMU Log Files
+QEMU writes detailed logs to `/tmp/qemu.log` including instruction traces, interrupts, and unimplemented device accesses. Use `-dlight`, `-dmedium`, or `-dfull` flags to control verbosity.
 
 ## Quick Examples
 ```bash
+# Automated kernel log capture (recommended for analysis)
+./run_qemu.sh -initrd -capture-kernel-log
+
+# Automated capture with custom wait time
+./run_qemu.sh -initrd -capture-kernel-log -kernel-wait 45
+
+# Automated capture with quiet mode (logs only)
+./run_qemu.sh -initrd -capture-kernel-log -quiet
+
 # Run with monitor access, start immediately
 ./run_qemu.sh -initrd -no-pause
 
