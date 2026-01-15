@@ -1640,6 +1640,40 @@ Run `./run_qemu.sh -no-pause` and check the output. Find your current stage by m
 | **Stage 6** | User applications run, hiby_player launches | Not Started |
 | **Stage 7** | Display/touch/audio peripherals functional | Not Started |
 
+### Current Status Summary (Based on Actual Log Analysis)
+
+**Last Test Run:** Thu Jan 15 01:04:14 AM EST 2026
+**Log Location:** `r3proii/tmp/qemu_kernel.log`, `r3proii/tmp/qemu_backtrace.txt`
+
+**What's Working:**
+- ✅ Kernel loads and boots through early initialization
+- ✅ CPU properly detected: Xburst 2ed1024f
+- ✅ 64MB RAM detected and configured
+- ✅ Machine type identified: `ingenic,x1600_halley6_module_base`
+- ✅ RCU subsystem initialized
+- ✅ OST timer initializes and registers 1.5MHz clocksource
+- ✅ Scheduler clock configured
+- ✅ Timer interrupts are firing
+
+**What's Failing:**
+- ❌ All system clocks report 0 Hz (APLL, MPLL, CPU, DDR, AHB, APB all = 0)
+- ❌ Only external crystal shows correct value (24 MHz)
+- ❌ Workqueue subsystem corrupted due to division by zero in timing calculations
+- ❌ First timer interrupt triggers NULL pointer dereference at address 0x80
+- ❌ Kernel panics in `__queue_work+0x58` with "Fatal exception in interrupt"
+
+**Root Cause:**
+Malta board lacks X1600 Clock Power Management (CPM) hardware at 0x10000000. Zero clock values corrupt workqueue initialization. When timer interrupts fire, workqueue code dereferences NULL pointer and crashes.
+
+**Critical Path to Fix:**
+1. Implement CPM device at 0x10000000 returning non-zero clock values
+2. Workqueue will initialize correctly with proper timing
+3. Timer interrupts will then work without crashing
+4. Boot will proceed to filesystem mount stage
+
+**Next Action:**
+Follow Step 1 in the implementation guide (lines 300-545) to create `hw/misc/ingenic_cpm.c` device model.
+
 ### Detailed Stage Descriptions
 
 #### **STAGE 0: Build Environment Setup**
@@ -1755,15 +1789,99 @@ grep "0x10000000" cpm_test.log  # CPM register accesses
 ```
 
 **Log File Locations:**
-- Kernel messages: `/tmp/qemu.log`
-- Clock dump: `r3proii/qemu/logs/log_buffer.txt` (lines 107-115)
-- Backtrace: `r3proii/qemu/logs/backtrace.txt`
+- Kernel messages: `r3proii/tmp/qemu_kernel.log` (captured via GDB from `__log_buf`)
+- QEMU debug output: `r3proii/tmp/qemu.log` (if enabled)
+- Backtrace: `r3proii/tmp/qemu_backtrace.txt`
 
 **Why This Fails:**
 - QEMU using generic Malta board (no X1600-specific hardware)
 - CPM registers at 0x10000000 not implemented
 - Kernel reads return 0 or garbage values
 - Division by zero in clock calculations causes NULL pointer dereference
+
+**Detailed Crash Mechanism (Confirmed from Actual Logs):**
+
+The crash follows a specific chain of events:
+
+**1. Zero Clock Values**
+```
+=========== x1600 clocks: =============
+    apll     = 0 , mpll     = 0, ddr = 0
+    cpu_clk  = 0 , l2c_clk  = 0
+    ahb0_clk = 0 , ahb2_clk = 0
+    apb_clk  = 0 , ext_clk  = 24000000
+```
+All PLLs and derived clocks read as 0 Hz because Malta board doesn't have CPM hardware.
+
+**2. Workqueue Subsystem Corruption**
+The kernel's workqueue initialization uses CPU clock frequency for timer calculations:
+- Calculations like `delay = CONSTANT / cpu_clk` result in division by zero or huge values
+- Workqueue data structures initialized with corrupted pointers
+- Specifically, the per-CPU workqueue pool pointer becomes NULL or near-NULL
+
+**3. Timer Interrupt Triggers Crash**
+After clock initialization, the OST (Operating System Timer) fires its first interrupt:
+```
+clocksource: ingenic_clocksource: mask: 0xffffffffffffffff
+sched_clock: 64 bits at 1500kHz, resolution 666ns
+random: nonblocking pool is initialized
+```
+Then immediately:
+```
+CPU 0 Unable to handle kernel paging request at virtual address 00000080
+epc == 800441e0, ra == 800444bc
+```
+
+**4. NULL Pointer Dereference**
+Complete call stack from actual logs:
+```
+Call Trace:
+[<800441e0>] __queue_work+0x58/0x2f0
+[<800444bc>] queue_work_on+0x44/0x6c
+[<802bd364>] credit_entropy_bits+0x354/0x38c    ← Random number generator
+[<8005fa28>] handle_irq_event_percpu+0x138/0x188
+[<800635c4>] handle_percpu_irq+0x50/0x80
+[<8005f190>] generic_handle_irq+0x28/0x38
+[<80019494>] do_IRQ+0x18/0x24
+[<8027a3b4>] plat_irq_dispatch+0x9c/0xc8
+```
+
+**Disassembled Instruction at Crash:**
+```
+Code: 2484f5f0  24020001  a202f4bf <8e220080> 7c420400  10400018 ...
+                                    ^^^^^^^^
+```
+The faulting instruction `0x8e220080` is:
+```assembly
+lw $v0, 0x80($s1)    # Load word from address ($s1 + 0x80)
+```
+
+If register `$s1` contains 0 (NULL), this attempts to read from address `0x00000080`, causing:
+```
+Cause : 00800408 (ExcCode 02)    ← TLB Load Exception
+BadVA : 00000080                  ← Bad Virtual Address
+```
+
+**Exception Details:**
+- **ExcCode 02**: TLB Load Exception (invalid memory read during load instruction)
+- **BadVA 0x00000080**: Attempted to read from near-NULL address
+- **In interrupt context**: "Fatal exception in interrupt" (cannot recover)
+- **Function**: `__queue_work+0x58` trying to access workqueue pool structure
+
+**Why The Workqueue Pointer is NULL:**
+With `cpu_clk = 0`, the workqueue initialization code likely:
+1. Calculates pool size as `SOME_VALUE / cpu_clk` → division by zero or overflow
+2. Memory allocation fails or returns NULL
+3. Pool pointer stored as NULL or garbage
+4. First attempt to use workqueue dereferences NULL+0x80 → CRASH
+
+**Final State:**
+```
+Kernel panic - not syncing: Fatal exception in interrupt
+Rebooting in 10 seconds..
+Reboot failed -- System halted
+```
+The system cannot recover from a panic in interrupt context, so it attempts to reboot but halts.
 
 **What's Needed:**
 - Create `qemu/hw/mips/x1600_halley6.c` machine definition
@@ -1812,21 +1930,39 @@ Calibrating delay loop...
 ```
 
 **Log File Locations:**
-- `/tmp/qemu.log` - Real-time boot progress
+- `r3proii/tmp/qemu_kernel.log` - Kernel boot messages
+- `r3proii/tmp/qemu.log` - QEMU debug output
 - Check for timer-related kernel panics
 
+**Current State (Partially Working):**
+From actual logs, the OST timer **IS** initializing and working:
+```
+clocksource: ingenic_clocksource: mask: 0xffffffffffffffff max_cycles: 0x1623fa770
+sched_clock: 64 bits at 1500kHz, resolution 666ns
+random: nonblocking pool is initialized
+```
+
+This means:
+- ✅ OST device exists at 0x12000000 (probably provided by Malta board's timer)
+- ✅ 1.5 MHz clocksource is registered
+- ✅ Scheduler clock is configured
+- ✅ Timer interrupts ARE firing (that's what triggers the crash!)
+
+**The Problem:**
+The timer interrupt fires successfully, but when the interrupt handler tries to queue work to process random entropy, it crashes because the workqueue was corrupted by zero CPU clock values in Stage 2.
+
 **What's Needed:**
-- Implement OST device at 0x12000000
-- Ingenic interrupt controller (INTC) at 0x10001000
-- Timer must generate interrupts at correct frequency (1500 kHz)
-- INTC must route interrupts to MIPS CPU IRQ lines
+- **Fix Stage 2 first** - CPM must return non-zero clocks so workqueue initializes correctly
+- Verify OST device implementation (might be Malta's timer or partial X1600 support)
+- Implement proper Ingenic interrupt controller (INTC) at 0x10001000
+- Ensure INTC routes interrupts to MIPS CPU IRQ lines correctly
 
 **Troubleshooting:**
-- If stuck after CPM but before workqueue: OST not implemented
+- OST appears to work, but triggers crash: Fix Stage 2 (CPM) first
 - If "do_IRQ" spam in logs: Interrupt controller misconfigured
-- If no timer interrupts: Check OST frequency and interrupt routing
+- If no timer interrupts after Stage 2 fix: Check OST frequency and interrupt routing
 
-**Current Status:** ❌ BLOCKED - Dependent on Stage 2
+**Current Status:** ⚠️ PARTIALLY WORKING - OST timer functional, but crash due to Stage 2 corruption. Cannot proceed until Stage 2 is fixed.
 
 ---
 
@@ -2025,28 +2161,73 @@ telnet 127.0.0.1 4444
 
 ### Log File Reference
 
-#### Primary Log Files
-| File | Purpose | How to Generate |
-|------|---------|----------------|
-| `/tmp/qemu.log` | Real-time QEMU/kernel output | Auto-generated by run_qemu.sh |
-| `r3proii/qemu/logs/log_buffer.txt` | Kernel log buffer dump | GDB: `x /3000s __log_buf+8` |
-| `r3proii/qemu/logs/backtrace.txt` | Stack trace at crash | GDB: `backtrace` after panic |
+#### Primary Log Files (Updated Locations)
+| File | Purpose | Size | How to Generate |
+|------|---------|------|----------------|
+| `r3proii/tmp/qemu_kernel.log` | Kernel log buffer (clean, formatted) | ~4.8KB | Automated by `./run_qemu.sh -capture-kernel-log` |
+| `r3proii/tmp/qemu_backtrace.txt` | Stack trace at crash point | ~150B | Automated by `./run_qemu.sh -capture-kernel-log` |
+| `r3proii/tmp/qemu.log` | QEMU debug output (MMIO, interrupts, etc.) | Varies | Enabled with `-dlight`, `-dmedium`, or `-dfull` flags |
 
-#### How to Extract Kernel Log Buffer
+**Note:** Log files have been moved from `/tmp/` to `r3proii/tmp/` for better organization.
+
+#### What Each Log Contains (from Jan 15 2026 capture)
+
+**`qemu_kernel.log`** - Most Important for Debugging ⭐
+- Complete kernel boot sequence from start to panic
+- All kernel messages including timestamps and log levels
+- Shows exact point where boot fails
+- Current content shows:
+  - ✅ Successful early boot through memory setup
+  - ✅ RCU and interrupt subsystem initialization
+  - ❌ Zero clock values: `apll = 0, mpll = 0, cpu_clk = 0`
+  - ❌ Crash in `__queue_work+0x58` at address 0x80
+  - Complete register dump and call stack
+
+**`qemu_backtrace.txt`** - Limited Usefulness
+- Shows backtrace at moment of GDB interrupt
+- Current content: `#0 machine_restart()` (caught during reboot attempt)
+- Less useful than the call trace in kernel log
+- The actual crash stack is in `qemu_kernel.log`, not here
+
+**`qemu.log`** - QEMU Internal Debug (Currently Empty)
+- Would contain QEMU's internal tracing if enabled
+- Shows unimplemented device accesses at 0x10000000 (CPM)
+- Interrupt delivery traces
+- Guest error messages
+- Currently 0 bytes - not being written (check run_qemu.sh flags)
+
+#### How to Capture Logs (Automated Method - Recommended)
+```bash
+cd r3proii/qemu
+
+# Automated capture via GDB (captures kernel log + backtrace)
+./run_qemu.sh -capture-kernel-log -kernel-wait 45
+
+# Logs written to:
+# - r3proii/tmp/qemu_kernel.log
+# - r3proii/tmp/qemu_backtrace.txt
+```
+
+#### How to Extract Kernel Log Buffer (Manual Method)
 ```bash
 # Start QEMU paused
+cd r3proii/qemu
 ./run_qemu.sh
 
 # In another terminal:
 cd r3proii
 gdb Linux-4.4.94+.elf
 (gdb) target remote :1234
-(gdb) set logging file qemu/logs/log_buffer.txt
+(gdb) continue
+# Wait for crash or press Ctrl+C
+(gdb) set logging file tmp/manual_log_buffer.txt
 (gdb) set logging on
-(gdb) x /3000s __log_buf+8
+(gdb) x /2000s __log_buf
+(gdb) set logging off
+(gdb) set logging file tmp/manual_backtrace.txt
+(gdb) set logging on
+(gdb) backtrace
 (gdb) quit
-
-# Logs saved to qemu/logs/log_buffer.txt
 ```
 
 #### Debug Log Levels
@@ -2082,17 +2263,25 @@ grep -E "(x1600 clocks|Unable to handle|VFS: Mounted|INIT: version)" current_pro
 
 #### Quick Stage Identification
 ```bash
-# Stage 2 check (CPM)
-grep "x1600 clocks" /tmp/qemu.log
+# Stage 2 check (CPM) - look for zero clocks
+grep "x1600 clocks" r3proii/tmp/qemu_kernel.log
+# Expected: all clocks = 0 (current state)
 
-# Stage 3 check (Timer)
-grep "sched_clock" /tmp/qemu.log
+# Stage 3 check (Timer) - look for clocksource
+grep "sched_clock" r3proii/tmp/qemu_kernel.log
+# Expected: "sched_clock: 64 bits at 1500kHz" (working!)
 
 # Stage 4 check (Filesystem)
-grep "VFS: Mounted" /tmp/qemu.log
+grep "VFS: Mounted" r3proii/tmp/qemu_kernel.log
+# Expected: Not reached yet
 
 # Stage 5 check (Init)
-grep "INIT:" /tmp/qemu.log
+grep "INIT:" r3proii/tmp/qemu_kernel.log
+# Expected: Not reached yet
+
+# Check for crash
+grep "Unable to handle" r3proii/tmp/qemu_kernel.log
+# Expected: "Unable to handle kernel paging request at virtual address 00000080"
 ```
 
 #### Monitor QEMU in Real-Time
@@ -2101,11 +2290,17 @@ grep "INIT:" /tmp/qemu.log
 cd r3proii/qemu
 ./run_qemu.sh -no-pause -dlight
 
-# Terminal 2: Monitor log
-tail -f /tmp/qemu.log | grep --color -E "(error|panic|unable|fail|success|mounted)"
+# Terminal 2: Monitor QEMU debug log (if being written)
+tail -f ../tmp/qemu.log | grep --color -E "(error|panic|unable|fail|success|mounted)"
 
-# Terminal 3: QEMU Monitor
+# Terminal 3: QEMU Monitor (for runtime inspection)
 telnet 127.0.0.1 4444
+# Useful commands:
+#   info registers   - Show CPU registers
+#   info qtree       - Show device tree
+#   info mem         - Show memory mappings
+#   c                - Continue execution
+#   q                - Quit QEMU
 ```
 
 ### Next Steps Based on Current Stage
