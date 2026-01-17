@@ -57,7 +57,7 @@ There is a script that does this automatically located in `r3proii/unpacking_and
 - `xImage.all` is a u-boot image that contains a raw binary for the linux kernel
 - To extract the kernel binary from the uImage, run `dd if=xImage.all of=Linux-4.4.94+.bin bs=64 skip=1`. that will create a file called `Linux-4.4.94+.bin`
 - qemu wants the kernel in elf format, so we need to turn the raw binary into an elf file
-- to do that, run `vmlinux-to-ekf Linux-4.4.94+.bin Linux-4.4.94+.elf`
+- to do that, run `vmlinux-to-elf Linux-4.4.94+.bin Linux-4.4.94+.elf`
 
 
 ## Repacking the Firmware
