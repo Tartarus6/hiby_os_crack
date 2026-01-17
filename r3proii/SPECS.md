@@ -47,18 +47,21 @@
 | Timed shutdown      | Power-saving shutdown, sleep shutdown                   |
 | Charging Management | Support                                                 |
 | Firmware upgrade    | TF card upgrade, OTA upgrade                            |
+
 ### Output interface
 | Output interface |                  Specifications                 |
 |:----------------:|:-----------------------------------------------:|
 | USB              | PCM 44.1k~384k, DSD256 (DoP), DSD256 (Native)   |
 | Bluetooth        | PCM 44.1k~192k                                  |
 | Simulation       | PCM 44.1k~384k, DSD64~DSD256                    |
+
 ### Output audio specifications
 | Format | Sampling Rate |
 |:------:|:-------------:|
 | DSD    | DSD64~DSD256  |
 | PCM    | 44.1k~384k    |
 | MQA    | 4x            |
+
 ### Audio file specifications
 |             Audio format             |    Specifications   |
 |:------------------------------------:|:-------------------:|
