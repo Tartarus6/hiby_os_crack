@@ -6,9 +6,9 @@
 - [x] firmware repacking script
 - [x] add a README somewhere that explains the major structure of the root filesystem (like where `hiby_player` is, where useful images are, etc.)
 - [x] simplify project README by splitting it up and linking
+- [x] get a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide) on this repo
 - [ ] probably should move linux kernel bin and elf into qemu folder
-- [ ] figure out what "burn" mode does (manual says entered by holding the next song button)
-- [ ] get a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide) on this repo
+- [ ] figure out what "burn" mode does (user manual says entered by holding the next song button)
 - [ ] figure out how to better manage file permissions in rootfs (currently, nearly every file is owned by root and has write protection. this makes it difficult to modify and difficult to upload through git)
 - [ ] write out step by step how to repack the firmware (just like unpacking instructions have)
 - [ ] make a list of supported devices on README
@@ -16,7 +16,7 @@
 
 
 ## Emulator
-*Goal: creating a workflow that allows emulating the hiby devices to speed up testing and let people test without hardware*
+*Goal: creating a workflow that allows emulating the hiby devices to greatly speed up testing and let people test without hardware*
 - [ ] get kernel to run the init kernel function
 - [ ] successfully load into file system
 - [ ] run with ingenic x1600e features
@@ -30,15 +30,19 @@
 ## hiby_player Decomp
 *Goal: get `hiby_player` in a state where new buttons, pages, and features (i.e. audiobook support) can be added*
 - [?] de-obfuscate gui rendering
+- [?] figure out what each system setting value is (and make an enum type to organize the getter/setter function calls)
 - [ ] figure out how to add a new button
 - [ ] figure out how to add a new page
-- [?] figure out what each system setting value is (and make an enum type to organize the getter/setter function calls)
 
 ## Custom Firmware
 - [x] make the first functional change (tested by changing the number of presses to bring up dev mode dialog from 3 to 4)
 - [x] get a working adb connection (done by adding `/usr/bin/adbon` call to `/usr/bin/hiby_player.sh`)
+- [?] adb debug usb mode option
+- [ ] fix usb connection issues (sometimes, plugging it into my laptop will cause the usb screen to show up for a second then dissapear and not connect. sometimes plugging it in won't cause a usb connection other than charging)
+- [ ] test HiBy R1 firmware unpacking and repacking (modify an image, or something)
 - [ ] keep developer mode page visible when developer mode is off (there is a dev mode toggle in the dev mode page)
 - [ ] allow for much lower brightnesses (could use backlight to a point, then use overlay. point in slider where overlay gets used should be marked, like how vol over 100% is done in some programs)
+- [ ] charge limit (to conserve battery health)
 - [ ] add audiobooks button to books menu
 - [ ] create audiobooks page
 - [ ] add support for playing audiobooks
@@ -48,7 +52,6 @@
 - [ ] better playlist menu
 - [ ] fix some album art not loading
 - [ ] make main page style same as the rest of the pages (its styled different for some reason)
-- [ ] charge limit (to conserve battery health)
 - [ ] combine all setting menus by using settings tabs (i.e. general settings, playback settings, Bluetooth settings, etc.)
 - [ ] built-in custom radio creation/management (currently have to put it in the right format in a txt file)
 - [ ] fix setting font size bringing you to the all songs menu (no idea why this happens)
@@ -57,8 +60,6 @@
 - [ ] fix wifi menu slow response (after turning on wifi, it can take quite a while for the rest of the wifi settings to appear)
 - [ ] fix very inconsistent and unintuitive settings (backlight settings vs. time setting, USB working mode needs descriptions, etc.)
 - [ ] shrink file system where possible
-- [?] adb debug usb mode option
-- [ ] test HiBy R1 firmware unpacking and repacking (modify an image, or something)
 
 ## Windows Support
 - [x] Windows devices should be able to install all project dependencies and run qemu

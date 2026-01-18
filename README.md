@@ -25,6 +25,9 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
     - [specs](r1/SPECS.md)
     - [qemu readme](r1/qemu/README.md)
 - Third Party
+    - HiBy User Manuals
+        - [R3 Pro II](thirdpartydocs/HiBy%20R3PROII%20User%20Manual%20_%20HiBy%20WiKi.pdf)
+        - [R1](thirdpartydocs/HiBy%20R1%20User%20Manual%20_%20HiBy%20WiKi.pdf)
     - Ingenic x1600e (SOC)
         - [x1600e datasheet](thirdpartydocs/X1600_E+Data+Sheet.pdf)
         - [XBurst ISA MXU](thirdpartydocs/X1000_M200_XBurst_ISA_MXU_PM.pdf)
