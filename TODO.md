@@ -1,14 +1,18 @@
 # Todo List
 
 ## This Project
-- [ ] probably should move linux kernel bin and elf into qemu folder
-- [ ] figure out what "burn" mode does (manual says entered by holding the next song button)
-- [ ] store a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide)
-- [ ] figure out how to better manage file permissions in rootfs (currently, nearly every file is owned by root and has write protection. this makes it difficult to modify and difficult to upload through git)
-- [ ] add a README somewhere that explains the major structure of the root filesystem (like where `hiby_player` is, where useful images are, etc.)
 - [x] add vm image files `rootfs-image` and `initrd.cpio` to gitignore
 - [x] firmware unpacking script
 - [x] firmware repacking script
+- [x] add a README somewhere that explains the major structure of the root filesystem (like where `hiby_player` is, where useful images are, etc.)
+- [x] simplify project README by splitting it up and linking
+- [ ] probably should move linux kernel bin and elf into qemu folder
+- [ ] figure out what "burn" mode does (manual says entered by holding the next song button)
+- [ ] get a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide) on this repo
+- [ ] figure out how to better manage file permissions in rootfs (currently, nearly every file is owned by root and has write protection. this makes it difficult to modify and difficult to upload through git)
+- [ ] write out step by step how to repack the firmware (just like unpacking instructions have)
+- [ ] make a list of supported devices on README
+- [ ] add HiBy R1 to supported devices
 
 
 ## Emulator
@@ -20,15 +24,19 @@
 - [ ] fake touch control interface
 - [ ] sound output
 - [ ] (maybe) usb interface
+- [ ] console output
+- [ ] kernel boot text output
 
 ## hiby_player Decomp
 *Goal: get `hiby_player` in a state where new buttons, pages, and features (i.e. audiobook support) can be added*
-- [ ] de-obfuscate gui rendering
+- [?] de-obfuscate gui rendering
 - [ ] figure out how to add a new button
 - [ ] figure out how to add a new page
-- [x] make the first functional change (tested by changing the number of presses to bring up dev mode dialog from 3 to 4)
+- [?] figure out what each system setting value is (and make an enum type to organize the getter/setter function calls)
 
 ## Custom Firmware
+- [x] make the first functional change (tested by changing the number of presses to bring up dev mode dialog from 3 to 4)
+- [x] get a working adb connection (done by adding `/usr/bin/adbon` call to `/usr/bin/hiby_player.sh`)
 - [ ] keep developer mode page visible when developer mode is off (there is a dev mode toggle in the dev mode page)
 - [ ] allow for much lower brightnesses (could use backlight to a point, then use overlay. point in slider where overlay gets used should be marked, like how vol over 100% is done in some programs)
 - [ ] add audiobooks button to books menu
@@ -49,6 +57,8 @@
 - [ ] fix wifi menu slow response (after turning on wifi, it can take quite a while for the rest of the wifi settings to appear)
 - [ ] fix very inconsistent and unintuitive settings (backlight settings vs. time setting, USB working mode needs descriptions, etc.)
 - [ ] shrink file system where possible
+- [?] adb debug usb mode option
+- [ ] test HiBy R1 firmware unpacking and repacking (modify an image, or something)
 
 ## Windows Support
 - [x] Windows devices should be able to install all project dependencies and run qemu
