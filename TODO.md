@@ -40,6 +40,7 @@
 - [?] adb debug usb mode option
 - [ ] fix usb connection issues (sometimes, plugging it into my laptop will cause the usb screen to show up for a second then dissapear and not connect. sometimes plugging it in won't cause a usb connection other than charging)
 - [ ] test HiBy R1 firmware unpacking and repacking (modify an image, or something)
+- [ ] option to reverse the skip/reverse buttons (for some reason, down is skip and up is reverse)
 - [ ] keep developer mode page visible when developer mode is off (there is a dev mode toggle in the dev mode page)
 - [ ] allow for much lower brightnesses (could use backlight to a point, then use overlay. point in slider where overlay gets used should be marked, like how vol over 100% is done in some programs)
 - [ ] charge limit (to conserve battery health)
