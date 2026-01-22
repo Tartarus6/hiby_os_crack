@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: BSD-2-Clause
+
+menu "HSM Device Support"
+
+config FDT_HSM
+	bool "FDT based HSM drivers"
+	depends on FDT
+	default n
+
+if FDT_HSM
+
+config FDT_HSM_RPMI
+	bool "FDT RPMI HSM driver"
+	depends on FDT_MAILBOX && RPMI_MAILBOX
+	default n
+
+endif
+
+endmenu

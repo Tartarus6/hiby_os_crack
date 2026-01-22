@@ -62,8 +62,7 @@ config MIPS_BOSTON
 config FW_CFG_MIPS
     bool
 
-config INGENIC_X1600
+config HALLEY6
     bool
-    default y if MIPSEL
     select SERIAL
     select PTIMER

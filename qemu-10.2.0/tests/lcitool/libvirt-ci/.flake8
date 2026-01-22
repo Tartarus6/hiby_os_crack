@@ -1,0 +1,10 @@
+[flake8]
+
+# E129 - Visually indented line with same indent as next logical line
+# E402 - Module level import not at top of file
+# E501 - Line too long
+# W504 - Line break occurred before a binary operator
+# W605 - Invalid escape sequence 'x'
+# E203 - whitespace before ':', Black’s style
+# W503 - line break before binary operator, Black’s style
+ignore = E129, E402, E501, W504, W605, E203, W503

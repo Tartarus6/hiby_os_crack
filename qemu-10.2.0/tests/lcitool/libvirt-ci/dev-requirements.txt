@@ -1,0 +1,11 @@
+-r vm-requirements.txt
+
+black
+flake8
+mypy
+types-PyYAML
+types-requests
+types-paramiko
+types-tqdm
+pytest
+tox

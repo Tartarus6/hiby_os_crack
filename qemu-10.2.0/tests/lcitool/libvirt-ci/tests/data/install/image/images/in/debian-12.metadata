@@ -1,0 +1,6 @@
+arch: x86_64
+format: qcow2
+image: debian-12.qcow2
+libosinfo_id: http://debian.org/debian/12
+target: debian-12
+url: https://cdimage.debian.org/cdimage/cloud/bullseye/latest/debian-12-amd64.qcow2

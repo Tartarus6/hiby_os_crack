@@ -1,0 +1,24 @@
+---
+- name: Get package facts
+  ansible.builtin.package_facts:
+
+- name: Enable cloud-init services
+  service:
+    name: '{{ item }}'
+    enabled: yes
+  loop:
+    - cloud-init
+    - cloud-init-local
+    - cloud-config
+    - cloud-final
+  when:
+    - os.name != 'FreeBSD'
+    - ansible_facts.packages['cloud-init'][0].version.split('-') | first is version('24.3', '<')
+
+- name: Enable cloud-init services
+  service:
+    name: cloudinit
+    enabled: yes
+  when:
+    - os.name == 'FreeBSD'
+

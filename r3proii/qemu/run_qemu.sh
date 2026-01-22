@@ -12,10 +12,12 @@ Run QEMU emulation for MIPS-based device firmware.
 Options:
     -initrd                Use initrd (CPIO archive) mode instead of rootfs image (might prevent need for sudo)
     -no-pause              Start QEMU running (default is paused, waiting for GDB/monitor)
+    -no-drive              Disable the -drive option (no rootfs disk attached)
     -example               Use squashfs-root-example instead of squashfs-root
+    -xburstr1              Use XBurstR1 CPU instead of XBurstR2 (default)
     -quiet                 No terminal output (default is verbose terminal output)
-    -no-logfile            Don't write to log file (default writes to /tmp/qemu.log)
-    -capture-kernel-log    Automatically capture kernel log via GDB (writes to /tmp/qemu_kernel.log)
+    -no-logfile            Don't write to log file (default writes to qemu_debug.log)
+    -capture-kernel-log    Automatically capture kernel log via GDB (writes to qemu_kernel.log)
     -kernel-wait TIME      Set wait time for kernel panic in seconds (default: 35, used with -capture-kernel-log)
     -dminimal              Minimal debug logging: unimp,guest_errors (default)
     -dlight                Light debug logging: int,unimp,guest_errors
@@ -25,7 +27,7 @@ Options:
     -h, --help             Show this help message and exit
 
 Output Modes:
-    Default:        Terminal output + log file (/tmp/qemu.log)
+    Default:        Terminal output + log file (logs/TIMESTAMP_CPU_BOARD/qemu_debug.log)
     -quiet:         Log file only (no terminal output)
     -no-logfile:    Terminal output only (no log file)
     -quiet -no-logfile: No output (not recommended)
@@ -47,8 +49,8 @@ Notes:
     - QEMU listens on port 1234 for GDB debugging (-s flag)
     - QEMU monitor available on telnet port 4444
     - Serial console output shown in terminal only with -show
-    - Logs are written to /tmp/qemu.log
-    - Kernel logs (with -capture-kernel-log) written to /tmp/qemu_kernel.log and /tmp/qemu_backtrace.txt
+    - Logs are written to logs/TIMESTAMP_CPU_BOARD/qemu_debug.log
+    - Kernel logs (with -capture-kernel-log) written to qemu_kernel.log and qemu_backtrace.log
     - Memory is fixed at 64M (required by BIOS)
     - Use 'telnet 127.0.0.1 4444' to access QEMU monitor
     - -capture-kernel-log requires QEMU to start paused (conflicts with -no-pause)
@@ -62,6 +64,8 @@ EOF
 USE_INITRD=false
 START_PAUSED=true
 USE_EXAMPLE=false
+USE_XBURSTR1=false     # Default: use XBurstR2
+USE_DRIVE=true         # Default: use -drive option in rootfs mode
 QUIET_MODE=false       # Default: show terminal output
 USE_LOGFILE=true       # Default: write to log file
 CAPTURE_KERNEL_LOG=false   # Default: don't capture kernel log
@@ -84,8 +88,16 @@ while [[ $# -gt 0 ]]; do
             START_PAUSED=false
             shift
             ;;
+        -no-drive)
+            USE_DRIVE=false
+            shift
+            ;;
         -example)
             USE_EXAMPLE=true
+            shift
+            ;;
+        -xburstr1)
+            USE_XBURSTR1=true
             shift
             ;;
         -quiet)
@@ -162,9 +174,15 @@ KERNEL_IMAGE="../Linux-4.4.94+.elf" # Path to extracted ELF kernel
 ROOTFS_IMAGE="rootfs-image"         # Path to your created root filesystem image
 INITRD_IMAGE="initrd.cpio"          # Path to initrd CPIO archive
 QEMU_ARCH="mipsel"                  # Use qemu-system-mipsel (little-endian)
-QEMU_BOARD="halley6"                  # A common generic MIPS board. You might need to experiment.
+QEMU_BOARD="malta"                  # A common generic MIPS board. You might need to experiment.
 MEMORY_SIZE="64M"                   # Amount of RAM for the emulated system
-QEMU_CPU="XBurstR2"                 # CPU type to emulate
+
+# Set CPU type based on flag
+if [ "$USE_XBURSTR1" = true ]; then
+    QEMU_CPU="XBurstR1"             # CPU type to emulate
+else
+    QEMU_CPU="XBurstR2"             # CPU type to emulate (default)
+fi
 
 # QEMU path (adjust if qemu-system-mips is not in your PATH)
 QEMU_PATH=$(which qemu-system-${QEMU_ARCH})
@@ -204,10 +222,16 @@ if [ "$USE_INITRD" = true ]; then
 else
     echo "Starting QEMU for ${QEMU_ARCH} (rootfs mode)..."
     echo "Kernel: ${KERNEL_IMAGE}"
-    echo "RootFS: ${ROOTFS_IMAGE}"
-    
+    if [ "$USE_DRIVE" = true ]; then
+        echo "RootFS: ${ROOTFS_IMAGE}"
+    else
+        echo "RootFS: disabled (no -drive option)"
+    fi
+
     MODE_SPECIFIC_ARGS+=(-bios ${BIOS_IMAGE})
-    MODE_SPECIFIC_ARGS+=(-drive file="${ROOTFS_IMAGE}",format=raw)
+    if [ "$USE_DRIVE" = true ]; then
+        MODE_SPECIFIC_ARGS+=(-drive file="${ROOTFS_IMAGE}",format=raw)
+    fi
 fi
 
 echo "QEMU Board: ${QEMU_BOARD}"
@@ -244,15 +268,34 @@ fi
 
 # Display output configuration
 if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
-    echo "Output: Log file only (/tmp/qemu.log)"
+    echo "Output: Log file only (${LOG_DEBUG})"
 elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
     echo "Output: None (quiet mode without log file)"
 elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
-    echo "Output: Terminal + log file (/tmp/qemu.log)"
+    echo "Output: Terminal + log file (${LOG_DEBUG})"
 else
     echo "Output: Terminal only"
 fi
 echo "Debug flags: ${DEBUG_FLAGS}"
+echo ""
+
+# --- Setup Log Directory ---
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Create timestamp for this run
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+# Create log directory name based on timestamp, CPU, and board
+LOG_DIR="${SCRIPT_DIR}/logs/${TIMESTAMP}_${QEMU_CPU}_${QEMU_BOARD}"
+mkdir -p "${LOG_DIR}"
+
+# Define log file paths
+LOG_DEBUG="${LOG_DIR}/qemu_debug.log"
+LOG_KERNEL="${LOG_DIR}/qemu_kernel.log"
+LOG_BACKTRACE="${LOG_DIR}/qemu_backtrace.log"
+
+echo "Log directory: ${LOG_DIR}"
 echo ""
 
 # Build QEMU command with common arguments
@@ -271,6 +314,7 @@ QEMU_CMD=(
     -d ${DEBUG_FLAGS}
 )
 
+
 # Execute QEMU with appropriate output redirection
 if [ "$CAPTURE_KERNEL_LOG" = true ]; then
     # Special mode: Start QEMU in background and capture kernel log via GDB
@@ -282,16 +326,16 @@ if [ "$CAPTURE_KERNEL_LOG" = true ]; then
     echo "This will:"
     echo "  1. Start QEMU in background"
     echo "  2. Connect GDB and capture kernel log"
-    echo "  3. Save logs to /tmp/qemu_kernel.log and /tmp/qemu_backtrace.txt"
+    echo "  3. Save logs to ${LOG_KERNEL} and ${LOG_BACKTRACE}"
     echo ""
 
     # Start QEMU in background
     if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
-        "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1 &
+        "${QEMU_CMD[@]}" > "${LOG_DEBUG}" 2>&1 &
     elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
         "${QEMU_CMD[@]}" > /dev/null 2>&1 &
     elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
-        "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log &
+        "${QEMU_CMD[@]}" 2>&1 | tee "${LOG_DEBUG}" &
     else
         "${QEMU_CMD[@]}" &
     fi
@@ -313,8 +357,9 @@ if [ "$CAPTURE_KERNEL_LOG" = true ]; then
     echo "QEMU started in background (PID: ${QEMU_PID})"
     echo ""
 
-    # Get the directory where this script is located
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    # Export log file paths for capture_kernel_log.sh to use
+    export QEMU_LOG_KERNEL="${LOG_KERNEL}"
+    export QEMU_LOG_BACKTRACE="${LOG_BACKTRACE}"
 
     # Invoke the kernel log capture script with custom wait time
     if [ -f "${SCRIPT_DIR}/capture_kernel_log.sh" ]; then
@@ -344,9 +389,9 @@ if [ "$CAPTURE_KERNEL_LOG" = true ]; then
     echo "Capture Complete"
     echo "=========================================="
     echo "Logs available at:"
-    echo "  - QEMU debug:   /tmp/qemu.log"
-    echo "  - Kernel log:   /tmp/qemu_kernel.log"
-    echo "  - Backtrace:    /tmp/qemu_backtrace.txt"
+    echo "  - QEMU debug:   ${LOG_DEBUG}"
+    echo "  - Kernel log:   ${LOG_KERNEL}"
+    echo "  - Backtrace:    ${LOG_BACKTRACE}"
     echo ""
 
     # Kill QEMU
@@ -358,13 +403,13 @@ else
     # Normal mode: Execute QEMU directly
     if [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = true ]; then
         # Quiet with log file: redirect to log file only
-        "${QEMU_CMD[@]}" > /tmp/qemu.log 2>&1
+        "${QEMU_CMD[@]}" > "${LOG_DEBUG}" 2>&1
     elif [ "$QUIET_MODE" = true ] && [ "$USE_LOGFILE" = false ]; then
         # Quiet without log file: redirect to /dev/null
         "${QEMU_CMD[@]}" > /dev/null 2>&1
     elif [ "$QUIET_MODE" = false ] && [ "$USE_LOGFILE" = true ]; then
         # Terminal and log file: use tee
-        "${QEMU_CMD[@]}" 2>&1 | tee /tmp/qemu.log
+        "${QEMU_CMD[@]}" 2>&1 | tee "${LOG_DEBUG}"
     else
         # Terminal only: normal output
         "${QEMU_CMD[@]}"

@@ -1,0 +1,6 @@
+=== Kernel Log Buffer ===
+Captured at: Thu Jan 22 12:05:32 PM EST 2026
+Method: Automated GDB extraction from __log_buf
+==========================================
+
+(No kernel log data captured)

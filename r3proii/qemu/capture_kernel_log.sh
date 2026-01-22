@@ -3,14 +3,13 @@
 set -e
 
 # Script to automatically capture kernel log buffer from QEMU via GDB
-# This automates the manual GDB process documented in the README
 
 # --- Configuration ---
 KERNEL_ELF="../Linux-4.4.94+.elf"
 GDB_PORT=1234
-KERNEL_LOG_OUTPUT="/tmp/qemu_kernel.log"
-BACKTRACE_OUTPUT="/tmp/qemu_backtrace.txt"
-WAIT_TIME=35#Timetowaitforkernelpanic(seconds)
+KERNEL_LOG_OUTPUT="${QEMU_LOG_KERNEL:-/tmp/qemu_kernel.log}"
+BACKTRACE_OUTPUT="${QEMU_LOG_BACKTRACE:-/tmp/qemu_backtrace.log}"
+WAIT_TIME=35
 
 # Check for gdb-multiarch or gdb
 if command -v gdb-multiarch &> /dev/null; then
@@ -18,7 +17,7 @@ if command -v gdb-multiarch &> /dev/null; then
 elif command -v gdb &> /dev/null; then
     GDB_CMD="gdb"
 else
-    echo "Error: Neither gdb nor gdb-multiarch found in PATH"
+    echo "Error: Neither gdb nor gdb-multiarch found in PATH" >&2
     exit 1
 fi
 
@@ -41,6 +40,10 @@ target remote :1234
 
 # Set pagination off so we can capture everything
 set pagination off
+
+# Handle SIGINT gracefully - stop execution but don't exit GDB
+# This allows the timeout command to interrupt 'continue' and let subsequent commands run
+handle SIGINT stop nopass
 
 # Configure logging for kernel log buffer (set file/options BEFORE enabling)
 set logging file /tmp/gdb_kernel_log_raw.txt

@@ -1,8 +1,3 @@
-config INGENIC_X1600
-    bool
-    default y if MIPSEL
-    depends on MIPS
-
 config APPLESMC
     bool
     depends on ISA_BUS

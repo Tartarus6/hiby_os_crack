@@ -1,0 +1,2 @@
+VNC server running on ::1:5900
+qemu-system-mipsel: ../tcg/tcg.c:6874: tcg_gen_code: Assertion `!error' failed.
