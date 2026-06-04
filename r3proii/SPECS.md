@@ -17,7 +17,7 @@
 | PMU                    | AXP2101 + MP2731                                    |
 | Charger                | 9V@1.67A/5V@3A/5V@1A                                |
 | USB                    | USB 2.0, Type-C                                     |
-| Key                    | Power key, up and down, volume knob, playback pause |
+| Key                    | Power key, up and down, volume buttons, playback pause |
 | DAC                    | CS43131  Dual                                       |
 | PhoneOut               | 3.5mm                                               |
 | Balance                | 4.4mm                                               |
