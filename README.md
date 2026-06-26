@@ -66,7 +66,7 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 2. run `unpack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored folder called `squashfs-root`.
 3. modify the contents of `squashfs-root` to make whatever custom firmware you want
 4. run `repack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored file called `r3proii.upt`
-5. flash that firmware file onto the device (how to do that is explained below)
+5. flash that firmware file onto the device (this is explained in-depth in [REPACKING.md](REPACKING.md))
 
 **Workflow Notes**
 - `squashfs-root` represents the root filesystem that will be flashed with the firmware.
