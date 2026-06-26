@@ -11,7 +11,7 @@
   #include "src/drivers/sdl/lv_sdl_keyboard.h"
 #else
   #include "src/drivers/display/fb/lv_linux_fbdev.h"
-  #include "src/drivers/indev/evdev/lv_evdev.h"
+  #include "src/drivers/evdev/lv_evdev.h"
 #endif
 
 #define SCREEN_WIDTH 480

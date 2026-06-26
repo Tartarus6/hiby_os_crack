@@ -7,11 +7,13 @@ This repo is for:
 - Documentation on the device (datasheets, ISA, etc.)
 - Other tools and information helpful for creating custom firmwares
 
-This project is part of the hiby-modding organization. Also see:
+This project is part of the [hiby-modding organization](https://github.com/hiby-modding). Also see:
 - [hiby-r3proii-custom-firmware](https://github.com/hiby-modding/hiby-r3proii-custom-firmware) by noisetta — complementary firmware modding project that adds Arabic text rendering support and documents the proprietary OTA firmware format.
 
+If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](guides/INSTALLING_FIRMWARE))
+
 ## Scope
-- For now, this project focuses on the HiBy R3 Pro II, as it's the only one I have. As far as I know, there are some minor differences between the firmwares on the different HiBy linux devices, but most things apply universally.
+- For now, this project focuses on the HiBy R3 Pro II amd HiBy R1. As far as I know, there are some minor differences between the firmwares on the different HiBy OS devices, but most things apply universally.
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
 - For now, this project also only focuses on the HiBy OS firmware used by the generation including the R1, R3, and R3 Pro II
     - Older devices such as the R3 Pro and the R3 Pro Saber used a different format. see [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub for that older type of firmware
@@ -23,10 +25,11 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 ## Documentation
 - [this README](README.md)
 - [project TODO](TODO.md)
-- [firmware file system structure](ROOTFS_STRUCTURE.md)
+- [firmware file system structure](docs/ROOTFS_STRUCTURE.md)
 - Guides
-    - [firmware unpacking](UNPACKING.md)
-    - [firmware repacking](REPACKING.md)
+    - [installing firmware](guides/INSTALLING_FIRMWARE.md)
+    - [firmware unpacking](guides/UNPACKING.md)
+    - [firmware repacking](guides/REPACKING.md)
 - R3ProII
     - [specs](r3proii/SPECS.md)
     - [qemu readme](r3proii/qemu/README.md)

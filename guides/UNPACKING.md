@@ -2,7 +2,8 @@
 
 This file describes how to unpack the firmware, as well as the main structure of the firmware files.
 
-## dependencies
+## Requirements
+*The following packages need to be installed*
 - 7zip (for `7z` command) (could probably use other tools instead)
 - squashfs-tools (for `unsquashfs` command)
 - vmlinux-to-elf (for formatting the kernel to use with qemu)
@@ -10,11 +11,10 @@ This file describes how to unpack the firmware, as well as the main structure of
 - binwalk (to extract uImage. it's overkill for this, but it does all of the uImage extraction work automatically)
 
 
-## script
-
+## Script
 There is a script that does this automatically [for the R3ProII](r3proii/unpacking_and_repacking/unpack.sh) and another script [for the R1](r1/unpacking_and_repacking/unpack.sh).
 
-## steps
+## Steps for Manual Unpacking
 Here's the instructions for manually unpacking the firmware. Just here for documentation, since the scripts can do it automatically.
 ### extracting the upt file
 - The original firmware file is a `.upt` file. It's an ISO image.
