@@ -18,7 +18,7 @@ If you just want to see instructions on how to install custom firmware onto your
     - Older devices such as the R3 Pro and the R3 Pro Saber used a different format. see [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub for that older type of firmware
 
 ### Note for Windows
-For equivalent functionality on Windows, please see [docs/WIN_INSTALL.md](docs/WIN_INSTALL.md]).
+For equivalent functionality on Windows, please see [docs/WIN_INSTALL.md](docs/WIN_INSTALL.md).
 
 ## Supported Devices
 This repo is applicable to any HiBy OS device that uses the `.upt` firmware type. However, each device has it's own stock firmware and slightly different hardware.
