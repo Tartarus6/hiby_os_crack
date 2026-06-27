@@ -13,14 +13,19 @@ This project is part of the [hiby-modding organization](https://github.com/hiby-
 If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](guides/INSTALLING_FIRMWARE))
 
 ## Scope
-- For now, this project focuses on the HiBy R3 Pro II amd HiBy R1. As far as I know, there are some minor differences between the firmwares on the different HiBy OS devices, but most things apply universally.
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
 - For now, this project also only focuses on the HiBy OS firmware used by the generation including the R1, R3, and R3 Pro II
     - Older devices such as the R3 Pro and the R3 Pro Saber used a different format. see [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub for that older type of firmware
 
 ### Note for Windows
-For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
+For equivalent functionality on Windows, please see [docs/WIN_INSTALL.md](docs/WIN_INSTALL.md]).
 
+## Supported Devices
+This repo is applicable to any HiBy OS device that uses the `.upt` firmware type. However, each device has it's own stock firmware and slightly different hardware.
+
+We have collected documentation and created firmware unpacking/repacking scripts for the following devices:
+- HiBy R1
+- HiBy R3Pro II
 
 ## Documentation
 - [this README](README.md)
@@ -61,7 +66,7 @@ For equivalent functionality on Windows, please see `docs/WIN_INSTALL.md`.
 
 
 ## Workflow
-**For HiBy R3 Pro II**
+**Example For HiBy R3 Pro II**
 1. go to `r3proii/unpacking_and_repacking`
 2. run `unpack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored folder called `squashfs-root`.
 3. modify the contents of `squashfs-root` to make whatever custom firmware you want

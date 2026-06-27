@@ -7,12 +7,16 @@
 - [x] add a README somewhere that explains the major structure of the root filesystem (like where `hiby_player` is, where useful images are, etc.)
 - [x] simplify project README by splitting it up and linking
 - [x] get a copy of the r3proii [user manual](https://guide.hiby.com/en/docs/products/audio_player/hiby_r3proii/guide) on this repo
+- [x] make a list of supported devices on README
+- [x] add HiBy R1 to supported devices
 - [ ] probably should move linux kernel bin and elf into qemu folder
 - [ ] figure out what "burn" mode does (user manual says entered by holding the next song button)
 - [ ] figure out how to better manage file permissions in rootfs (currently, nearly every file is owned by root and has write protection. this makes it difficult to modify and difficult to upload through git)
 - [ ] write out step by step how to repack the firmware (just like unpacking instructions have)
-- [ ] make a list of supported devices on README
-- [ ] add HiBy R1 to supported devices
+- [ ] figure out whether the name of a firmware file matters (like, if i rename `r3proii.upt` to something else, will the firmware update still work?)
+- [ ] include tools for building a cross-compiler (note: rockbox has a working cross-compiler for HiBy OS devices. so we can use what they have to set up our own)
+- [ ] include mention/link/file for the torrent that includes firmwares, docs, and sdk
+- [ ] maybe it would be good to make unpacker and repacker into standalone tools that can be used anywhere, not just inside this project in their specific folders
 
 
 ## Emulator

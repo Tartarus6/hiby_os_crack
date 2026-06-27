@@ -76,4 +76,3 @@ compile_commands.json:
 
 clean:
 	rm -rf build_host build_target $(HOST_BIN) $(TARGET_BIN) compile_commands.json compile_flags.txt
-
