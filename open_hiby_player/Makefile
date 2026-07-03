@@ -5,6 +5,7 @@ HOST_BIN = open_hiby_player_host
 TARGET_BIN = open_hiby_player_target
 
 # Compiler and Linker configuration
+# TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
 CC = gcc
 CROSS_CC = mipsel-rockbox-linux-gnu-gcc
 
@@ -28,7 +29,7 @@ HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm
 TARGET_LDFLAGS = -lpthread -lm
 
 # Source files
-APP_SRCS = src/main.c src/gui.c
+APP_SRCS := $(shell find src -name '*.c')
 LVGL_SRCS = $(shell find $(LVGL_DIR)/src -type f -name '*.c')
 
 # Object files

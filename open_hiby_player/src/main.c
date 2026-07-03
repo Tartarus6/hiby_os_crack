@@ -1,9 +1,13 @@
 #include "lvgl/lvgl.h"
+
 #include <stdint.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <pthread.h>
+
+#include "src/system.h"
 
 #ifdef HOST_BUILD
   #include "src/drivers/sdl/lv_sdl_window.h"
@@ -17,42 +21,42 @@
 #define SCREEN_WIDTH 480
 #define SCREEN_HEIGHT 720
 
-/* Custom tick interface for LVGL timing (replaces older thread-based ticks) */
+// custom tick interface for LVGL timing (replaces older thread-based ticks)
 static uint32_t custom_tick_get(void) {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
 }
 
-/* GUI initialization declaration */
+// GUI initialization declaration
 extern void gui_init(uint32_t screen_width, uint32_t screen_height);
 
 int main(void) {
     printf("Starting open_hiby_player...\n");
 
-    /* 1. Initialize LVGL core */
+    // initialize LVGL core
     lv_init();
 
-    /* Register the custom tick source */
+    // register the custom tick source
     lv_tick_set_cb(custom_tick_get);
 
 #ifdef HOST_BUILD
     printf("Initializing Host Build (SDL2 Simulation at %dx%d)...\n", SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    /* Create SDL2 window and display */
+    // create SDL2 window and display
     lv_display_t * disp = lv_sdl_window_create(SCREEN_WIDTH, SCREEN_HEIGHT);
     if (!disp) {
         fprintf(stderr, "Error: Failed to create SDL2 window\n");
         return 1;
     }
 
-    /* Register Mouse as Pointer device (maps mouse click -> touch) */
+    // register mouse as pointer device (maps mouse click -> touch)
     lv_indev_t * mouse = lv_sdl_mouse_create();
     if (mouse) {
         lv_indev_set_display(mouse, disp);
     }
 
-    /* Register Keyboard as Keypad device */
+    // Register Keyboard as Keypad device
     lv_indev_t * kbd = lv_sdl_keyboard_create();
     if (kbd) {
         lv_indev_set_display(kbd, disp);
@@ -60,7 +64,7 @@ int main(void) {
 #else
     printf("Initializing Target Build (Linux Framebuffer and EVDEV touch)...\n");
 
-    /* Create Framebuffer display */
+    // Create Framebuffer display
     lv_display_t * disp = lv_linux_fbdev_create();
     if (!disp) {
         fprintf(stderr, "Error: Failed to create Linux framebuffer display\n");
@@ -70,7 +74,7 @@ int main(void) {
 
     // TODO: how can we make it figure out whuch event device is the right one? instead of hardcoding it
 
-    /* Create Touch Input device via evdev (Goodix GT9xx controller) */
+    // Create Touch Input device via evdev (Goodix GT9xx controller)
     lv_indev_t * touch = lv_evdev_create(LV_INDEV_TYPE_POINTER, "/dev/input/event1");
     if (!touch) {
         fprintf(stderr, "Warning: Failed to open /dev/input/event1. Trying event0...\n");
@@ -85,14 +89,19 @@ int main(void) {
     }
 #endif
 
-    /* 2. Initialize the application GUI */
+	// start system services
+	system_start_services();
+
+
+    // initialize the application GUI
     gui_init(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    /* 3. Main event loop */
+    // main event loop
+    // TODO: how does this event loop work? is this effieient? is this standard?
     printf("Entering main event loop...\n");
     while(1) {
         uint32_t time_till_next = lv_timer_handler();
-        usleep(time_till_next * 1000); /* Convert milliseconds to microseconds */
+        usleep(time_till_next * 1000); // Convert milliseconds to microseconds
     }
 
     return 0;
