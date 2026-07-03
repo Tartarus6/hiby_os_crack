@@ -27,7 +27,8 @@ However, there is actually quite a bit of stuff that you can do without ever loo
 	- Also the tools are usually very unpolished. Improving the user experience (UX) means that more people will be willing/able to help with the project. So helping to improve the UX with the tools is a huge help
 - We document as we go, but there's always room for more documentation.
 	- Look through the instructions that are written, and if something is confusing, then just talk in the community about that and propose a way to make it more clear/complete.
-	- If you find documentation/information that's missing, adding it will help make stuff easier in the future. (for example, writing out something that explains what Ingenic is and what it has to do with HiBy's DAPs)
+	- If you find documentation/information that's missing, adding it will help make stuff easier in the future.
+    	- For example, writing out something that explains what Ingenic is and what it has to do with HiBy's DAPs.
 
 
 ### If You Do Know C
