@@ -10,6 +10,7 @@ There's a huge variety of ways that devs can help out.
 It's not hard to learn a new language (in my experience). So I'd say, why not learn C today?
 
 However, there is actually quite a bit of stuff that you can do without ever looking at C.
+
 **Developing Mods**: 
 - Without knowing C, you'll have a hard time modifying the `hiby_player` binary, but that's only one tiny part of modding.
 - You can poke around the rootfs files, looking at config files to see what functionality you could change/add in order to improve something.
