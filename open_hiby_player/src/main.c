@@ -68,10 +68,12 @@ int main(void) {
     }
     lv_linux_fbdev_set_file(disp, "/dev/fb0");
 
+    // TODO: how can we make it figure out whuch event device is the right one? instead of hardcoding it
+
     /* Create Touch Input device via evdev (Goodix GT9xx controller) */
-    lv_indev_t * touch = lv_evdev_create(LV_INDEV_TYPE_POINTER, "/dev/input/event0");
+    lv_indev_t * touch = lv_evdev_create(LV_INDEV_TYPE_POINTER, "/dev/input/event1");
     if (!touch) {
-        fprintf(stderr, "Warning: Failed to open /dev/input/event0. Trying event1...\n");
+        fprintf(stderr, "Warning: Failed to open /dev/input/event1. Trying event0...\n");
         touch = lv_evdev_create(LV_INDEV_TYPE_POINTER, "/dev/input/event1");
     }
 

@@ -6,7 +6,7 @@ TARGET_BIN = open_hiby_player_target
 
 # Compiler and Linker configuration
 CC = gcc
-CROSS_CC = mipsel-linux-gnu-gcc
+CROSS_CC = mipsel-rockbox-linux-gnu-gcc
 
 # LVGL directory name
 LVGL_DIR = lvgl
@@ -40,7 +40,7 @@ TARGET_OBJS = $(APP_SRCS:src/%.c=build_target/%.o) $(LVGL_SRCS:$(LVGL_DIR)/%.c=b
 # Default target builds for host simulation and generates compile commands for IDE
 all: host compile_commands.json
 
-# Build for host (Arch Linux PC)
+# Build for host (Linux PC)
 host: $(HOST_BIN)
 
 $(HOST_BIN): $(HOST_OBJS)
