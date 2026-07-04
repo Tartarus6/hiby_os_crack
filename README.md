@@ -1,6 +1,8 @@
 # HiBy OS Crack
 Cracking the firmware of HiBy's linux devices
 
+**How Can I Help?**: [HOW_CAN_I_HELP.md](HOW_CAN_I_HELP.md)
+
 This repo is for:
 - Tools to unpack/repack hiby os firmwares
 - Documentation on the structure of the firmware
