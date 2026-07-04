@@ -9,6 +9,8 @@
 #include <sys/mount.h>
 #include <sys/stat.h>
 #include <pthread.h>
+#include <sys/inotify.h>
+#include <errno.h>
 
 #include "src/gui.h"
 #include "src/misc/lv_async.h"
@@ -43,24 +45,91 @@ char * read_battery_percent() {
 	return battery_cache;
 }
 
+// TODO: make this function more generic, in case device name differs
+static int wait_for_sd() {
+	if (access("/dev/mmcblk0p1", F_OK) == 0) {
+		return 0;
+	}
+
+	int fd = inotify_init1(IN_CLOEXEC);
+	if (fd < 0) {
+		return -1;
+	}
+
+	int wd = inotify_add_watch(fd, "/dev", IN_CREATE | IN_MOVED_TO);
+	if (wd < 0) {
+		close(fd);
+		return -1;
+	}
+
+	char buf[4096];
+
+    for (;;) {
+        ssize_t len = read(fd, buf, sizeof(buf));
+
+        if (len < 0) {
+            if (errno == EINTR)
+                continue;
+
+            close(fd);
+            return -1;
+        }
+
+        for (char *p = buf; p < buf + len; ) {
+            struct inotify_event *ev = (struct inotify_event *)p;
+
+            if ((ev->mask & (IN_CREATE | IN_MOVED_TO)) &&
+                strcmp(ev->name, "mmcblk0p1") == 0)
+            {
+                close(fd);
+                return 0;
+            }
+
+            p += sizeof(*ev) + ev->len;
+        }
+    }
+}
+
+// TODO: make this function more generic, in case device name differs
 static int mount_sd() {
 	mkdir("/media", 0755); // make media dir in case it didnt exist
+
+	if (wait_for_sd() != 0) {
+        fprintf(stderr, "Timed out waiting for SD\n");
+        return -1;
+	}
 
 	int ret = mount(
 		"/dev/mmcblk0p1",
 		"/media",
-		"auto", // auto identify format
+		"exfat", // auto identify format
 		MS_NOATIME,
 		NULL
 	);
 
+	if (ret != 0) {
+		perror("mount_sd failed");
+	}
+
 	return ret;
 }
 
+// TODO: make mount directory be a variable somewhere, instead of a repeated hard-coded value
 static void unmount_sd() {
 	umount("/media");
 }
 
+// TODO: make this function more generic, in case device name differs
+static void check_and_mount_existing_sd() {
+    if (access("/dev/mmcblk0p1", F_OK) == 0) {
+        printf("SD card device found at boot, mounting...\n");
+        mount_sd();
+    } else {
+        printf("No SD card detected at boot.\n");
+    }
+}
+
+// TODO: make this function more generic, in case device name differs
 void *sd_hotplug_thread(void *arg) {
 	int sock = socket(AF_NETLINK, SOCK_DGRAM, NETLINK_KOBJECT_UEVENT);
 
@@ -86,6 +155,16 @@ void *sd_hotplug_thread(void *arg) {
 
 		buf[len] = '\0';
 
+		// printf("%s\n", buf);
+		char *p = buf;
+
+		while (p < buf + len) {
+		    printf("[%s]\n", p);
+		    p += strlen(p) + 1;
+		}
+
+		puts("----");
+
 		if (strstr(buf, "mmcblk0p1")) {
 			if (strstr(buf, "add@")) {
 				popup_event_t *ev = malloc(sizeof(*ev));
@@ -106,19 +185,6 @@ void *sd_hotplug_thread(void *arg) {
 			}
 		}
 	}
-}
-
-static void check_and_mount_existing_sd(void) {
-    if (access("/dev/mmcblk0p1", F_OK) == 0) {
-        printf("SD card device found at boot, mounting...\n");
-        if (mount_sd() == 0) {
-            printf("SD card mounted successfully.\n");
-        } else {
-            perror("mount_sd");
-        }
-    } else {
-        printf("No SD card detected at boot.\n");
-    }
 }
 
 void system_start_services() {
