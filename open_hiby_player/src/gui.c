@@ -59,7 +59,7 @@ static void play_btn_event_cb(lv_event_t * e) {
 }
 
 // timer handler for updating the battery percentage
-// TODO: could be good if this can be done on the XBurst0 core, to save compute/battery (maybe)
+// TODO: this might be possible to do more efficiently by adding a watcher to the battery level file, then having this run only when that file is updated
 static void battery_update_cb(lv_timer_t *timer) {
 	// update and read battery level
 	sync_battery_from_sysfs();
