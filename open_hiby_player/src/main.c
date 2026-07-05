@@ -8,6 +8,7 @@
 #include <pthread.h>
 
 #include "src/system.h"
+#include "src/audio.h"
 
 #ifdef HOST_BUILD
   #include "src/drivers/sdl/lv_sdl_window.h"
@@ -21,8 +22,10 @@
 #define SCREEN_WIDTH 480
 #define SCREEN_HEIGHT 720
 
+// TODO: remove host build. i dont think it's useful and it clutters code
+
 // custom tick interface for LVGL timing (replaces older thread-based ticks)
-static uint32_t custom_tick_get(void) {
+static uint32_t custom_tick_get() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
@@ -31,7 +34,7 @@ static uint32_t custom_tick_get(void) {
 // GUI initialization declaration
 extern void gui_init(uint32_t screen_width, uint32_t screen_height);
 
-int main(void) {
+int main() {
     printf("Starting open_hiby_player...\n");
 
     // initialize LVGL core
@@ -91,6 +94,7 @@ int main(void) {
 
 	// start system services
 	system_start_services();
+	audio_init();
 
 
     // initialize the application GUI

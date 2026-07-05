@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "src/audio.h"
 #include "src/core/lv_obj.h"
 #include "src/core/lv_obj_pos.h"
 #include "src/core/lv_obj_style.h"
@@ -47,11 +48,13 @@ static void play_btn_event_cb(lv_event_t * e) {
         lv_label_set_text(play_btn_label, "Pause");
         /* Change button background to a modern warning/orange color */
         lv_obj_set_style_bg_color(play_btn, lv_color_make(220, 80, 60), 0);
+        // audio_play("/media/M1F1-int12-AFsp.wav");
     } else {
    	lv_label_set_text(play_status_label, "Paused...");
         lv_label_set_text(play_btn_label, "Play");
         /* Change button background to a sleek theme/blue color */
         lv_obj_set_style_bg_color(play_btn, lv_color_make(60, 160, 220), 0);
+        audio_stop();
     }
 }
 
