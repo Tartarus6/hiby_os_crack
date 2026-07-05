@@ -3,7 +3,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "src/audio.h"
+#include "src/system/audio.h"
+#include "src/system/system.h"
+#include "src/events.h"
+
 #include "src/core/lv_obj.h"
 #include "src/core/lv_obj_pos.h"
 #include "src/core/lv_obj_style.h"
@@ -12,10 +15,8 @@
 #include "src/lv_api_map_v8.h"
 #include "src/misc/lv_area.h"
 #include "src/misc/lv_event.h"
-#include "src/system.h"
 #include "src/widgets/label/lv_label.h"
 #include "src/widgets/slider/lv_slider.h"
-#include "src/events.h"
 
 static lv_obj_t *play_status_label;
 static lv_obj_t *bat_label;
@@ -105,16 +106,13 @@ void popup_async_cb(void *user_data) {
     free(ev);
 }
 
-void gui_init(uint32_t screen_width, uint32_t screen_height) {
-	const int8_t TOP_BAR_PADDING = 15;
-	const int8_t TOP_BAR_HEIGHT = 45;
-
+void gui_init(gui_config_t *cfg) {
     // Base Screen Style: Dark Mode Background
     lv_obj_set_style_bg_color(lv_scr_act(), lv_color_make(50, 50, 62), 0);
 
     // Top Status Bar
     lv_obj_t * top_bar = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(top_bar, screen_width, TOP_BAR_HEIGHT);
+    lv_obj_set_size(top_bar, cfg->screen_width, cfg->top_bar_height);
     lv_obj_align(top_bar, LV_ALIGN_TOP_MID, 0, 0);
     lv_obj_set_style_bg_color(top_bar, lv_color_make(0, 0, 0), 0);
     lv_obj_set_style_border_width(top_bar, 0, 0);
@@ -124,14 +122,14 @@ void gui_init(uint32_t screen_width, uint32_t screen_height) {
     // Time on the left of status bar
     play_status_label = lv_label_create(top_bar);
     lv_label_set_text(play_status_label, "--");
-    lv_obj_align(play_status_label, LV_ALIGN_LEFT_MID, TOP_BAR_PADDING, 0);
+    lv_obj_align(play_status_label, LV_ALIGN_LEFT_MID, cfg->top_bar_padding, 0);
     lv_obj_set_style_text_color(play_status_label, lv_color_make(220, 220, 220), 0);
     lv_obj_set_style_text_font(play_status_label, &lv_font_montserrat_16, 0);
 
     // Battery on the right of status bar
     bat_label = lv_label_create(top_bar);
     lv_label_set_text(bat_label, "--");
-    lv_obj_align(bat_label, LV_ALIGN_RIGHT_MID, -TOP_BAR_PADDING, 0);
+    lv_obj_align(bat_label, LV_ALIGN_RIGHT_MID, -cfg->top_bar_padding, 0);
     lv_obj_set_style_text_color(bat_label, lv_color_make(220, 220, 220), 0);
     lv_obj_set_style_text_font(bat_label, &lv_font_montserrat_16, 0);
 
@@ -148,7 +146,7 @@ void gui_init(uint32_t screen_width, uint32_t screen_height) {
 
     // Container for player menu
     lv_obj_t * player_menu = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(player_menu, screen_width, LV_SIZE_CONTENT);
+    lv_obj_set_size(player_menu, cfg->screen_width, LV_SIZE_CONTENT);
     lv_obj_align(player_menu, LV_ALIGN_BOTTOM_MID, 0, 0);
     lv_obj_set_style_bg_color(player_menu, lv_color_make(0, 0, 0), 0);
     lv_obj_set_flex_flow(player_menu, LV_FLEX_FLOW_COLUMN);

@@ -12,18 +12,28 @@
 #include <sys/inotify.h>
 #include <errno.h>
 
-#include "src/gui.h"
+#include "src/system/audio.h"
+#include "src/gui/gui.h"
 #include "src/misc/lv_async.h"
-#include "src/utils.h"
+#include "src/system/utils.h"
 #include "src/events.h"
+#include "utils.h"
 
 // TODO: mounting doesn't work. it seems like the binary doesn't have access to the sd card device or something
 
 static char battery_cache[8] = "!!";
+static const battery_config_t *g_battery_cfg = NULL;
+const char *device_name; // TODO: is it safe to have a global pointer? when/how does it get freed? what if the program crashes?
 
 
-void sync_battery_from_sysfs() {
-	char *content = read_file_content("/sys/class/power_supply/battery/capacity");
+void sync_battery_from_sysfs(void) {
+	if (!g_battery_cfg) {
+		strcpy(battery_cache, "!!");
+		return;
+	}
+
+	const battery_config_t *battery_cfg = g_battery_cfg;
+	char *content = read_file_content(battery_cfg->battery_capacity_file);
 
 	// handle failed read
 	if (content == NULL) {
@@ -46,7 +56,7 @@ char * read_battery_percent() {
 }
 
 // TODO: make this function more generic, in case device name differs
-static int wait_for_sd() {
+static int wait_for_sd(storage_config_t *storage_cfg) {
 	if (access("/dev/mmcblk0p1", F_OK) == 0) {
 		return 0;
 	}
@@ -91,18 +101,19 @@ static int wait_for_sd() {
 }
 
 // TODO: make this function more generic, in case device name differs
-static int mount_sd() {
-	mkdir("/media", 0755); // make media dir in case it didnt exist
+static int mount_sd(storage_config_t *storage_cfg) {
+	mkdir(storage_cfg->mount_point, 0755); // make media dir in case it didnt exist
 
-	if (wait_for_sd() != 0) {
+	if (wait_for_sd(storage_cfg) != 0) {
         fprintf(stderr, "Timed out waiting for SD\n");
         return -1;
 	}
 
+	// TODO: detect filesystem type automatically, rather than it being hardcoded
 	int ret = mount(
-		"/dev/mmcblk0p1",
-		"/media",
-		"exfat", // auto identify format
+		storage_cfg->device,
+		storage_cfg->mount_point,
+		"exfat",
 		MS_NOATIME,
 		NULL
 	);
@@ -115,15 +126,15 @@ static int mount_sd() {
 }
 
 // TODO: make mount directory be a variable somewhere, instead of a repeated hard-coded value
-static void unmount_sd() {
-	umount("/media");
+static void unmount_sd(storage_config_t *storage_cfg) {
+	umount(storage_cfg->mount_point);
 }
 
 // TODO: make this function more generic, in case device name differs
-static void check_and_mount_existing_sd() {
-    if (access("/dev/mmcblk0p1", F_OK) == 0) {
+static void check_and_mount_existing_sd(storage_config_t *storage_cfg) {
+    if (access(storage_cfg->device, F_OK) == 0) {
         printf("SD card device found at boot, mounting...\n");
-        mount_sd();
+        mount_sd(storage_cfg);
     } else {
         printf("No SD card detected at boot.\n");
     }
@@ -131,6 +142,9 @@ static void check_and_mount_existing_sd() {
 
 // TODO: make this function more generic, in case device name differs
 void *sd_hotplug_thread(void *arg) {
+	// get cfg
+	storage_config_t *storage_cfg = arg;
+
 	int sock = socket(AF_NETLINK, SOCK_DGRAM, NETLINK_KOBJECT_UEVENT);
 
 	struct sockaddr_nl addr = {
@@ -155,24 +169,23 @@ void *sd_hotplug_thread(void *arg) {
 
 		buf[len] = '\0';
 
-		// printf("%s\n", buf);
-		char *p = buf;
+		// char *p = buf;
 
-		while (p < buf + len) {
-		    printf("[%s]\n", p);
-		    p += strlen(p) + 1;
-		}
+		// while (p < buf + len) {
+		//     printf("[%s]\n", p);
+		//     p += strlen(p) + 1;
+		// }
 
-		puts("----");
+		// puts("----");
 
-		if (strstr(buf, "mmcblk0p1")) {
+		if (strstr(buf, device_name)) {
 			if (strstr(buf, "add@")) {
 				popup_event_t *ev = malloc(sizeof(*ev));
 				strcpy(ev->text, "SD Card Inserted");
 
 				lv_async_call(popup_async_cb, ev);
 				printf("SD Card Inserted\n");
-				mount_sd();
+				mount_sd(storage_cfg);
 			}
 
 			if (strstr(buf, "remove@")) {
@@ -181,19 +194,39 @@ void *sd_hotplug_thread(void *arg) {
 
 				lv_async_call(popup_async_cb, ev);
 				printf("SD Card Removed\n");
-				unmount_sd();
+				unmount_sd(storage_cfg);
 			}
 		}
 	}
 }
 
-void system_start_services() {
-	check_and_mount_existing_sd(); // mount sd on startup, if it's present
+/*
+ * Starts system services including:
+ *     - SD card detection + mounting
+ *     - Audio service initializing
+ */
+void system_start_services(system_config_t *cfg) {
+	// --- Battery ---
+	g_battery_cfg = cfg->battery_cfg;
+
+	// --- Storage ---
+	// getting device name
+	// TODO: does this work? what if the device is multiple directories in?
+	device_name = strrchr(cfg->storage_cfg->device, '/');
+	if (device_name)
+	    device_name++;
+	else
+	    device_name = cfg->storage_cfg->device;
+
+	check_and_mount_existing_sd(cfg->storage_cfg); // mount sd on startup, if it's present
 
     pthread_t sd_thread;
-    if (pthread_create(&sd_thread, NULL, sd_hotplug_thread, NULL) != 0) {
+    if (pthread_create(&sd_thread, NULL, sd_hotplug_thread, cfg->storage_cfg) != 0) {
 	    fprintf(stderr, "Failed to start SD hotplug thread :(\n");
 	} else {
 		printf("Started SD hotplug thread :)\n");
 	}
+
+    // --- Audio ---
+    audio_init(); // TODO: audio doesnt work. the system restarts after attempting to play sound
 }

@@ -7,8 +7,8 @@
 #include <time.h>
 #include <pthread.h>
 
-#include "src/system.h"
-#include "src/audio.h"
+#include "src/system/system.h"
+#include "src/gui/gui.h"
 
 #ifdef HOST_BUILD
   #include "src/drivers/sdl/lv_sdl_window.h"
@@ -22,7 +22,7 @@
 #define SCREEN_WIDTH 480
 #define SCREEN_HEIGHT 720
 
-// TODO: remove host build. i dont think it's useful and it clutters code
+// TODO: clean up host build. make it so that all of the host stuff is all in one place, like setting up where the "SD" card is, and the audio, and such, so that all the rest of the code can be clean
 
 // custom tick interface for LVGL timing (replaces older thread-based ticks)
 static uint32_t custom_tick_get() {
@@ -30,9 +30,6 @@ static uint32_t custom_tick_get() {
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
 }
-
-// GUI initialization declaration
-extern void gui_init(uint32_t screen_width, uint32_t screen_height);
 
 int main() {
     printf("Starting open_hiby_player...\n");
@@ -93,12 +90,31 @@ int main() {
 #endif
 
 	// start system services
-	system_start_services();
-	audio_init();
+	storage_config_t storage_cfg = {
+        .device = "/dev/mmcblk0p1",
+        .mount_point = "/media",
+    };
 
+	battery_config_t battery_cfg = {
+		.battery_capacity_file = "/sys/class/power_supply/battery/capacity",
+	};
+
+	system_config_t system_cfg = {
+		.battery_cfg = &battery_cfg,
+		.storage_cfg = &storage_cfg,
+	};
+
+    system_start_services(&system_cfg);
 
     // initialize the application GUI
-    gui_init(SCREEN_WIDTH, SCREEN_HEIGHT);
+    gui_config_t gui_cfg = {
+        .screen_width = SCREEN_WIDTH,
+        .screen_height = SCREEN_HEIGHT,
+        .top_bar_height = 45,
+        .top_bar_padding = 15,
+    };
+
+    gui_init(&gui_cfg);
 
     // main event loop
     // TODO: how does this event loop work? is this effieient? is this standard?
