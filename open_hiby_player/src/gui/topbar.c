@@ -3,7 +3,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "src/system/system.h"      // for sync_battery_from_sysfs, read_battery_percent
+#include "src/display/lv_display.h"
+#include "src/system/system.h"
 #include "src/core/lv_obj.h"
 #include "src/core/lv_obj_pos.h"
 #include "src/core/lv_obj_style_gen.h"
@@ -11,11 +12,14 @@
 #include "src/misc/lv_timer.h"
 
 // Static objects belonging to the top bar
+static lv_obj_t *top_bar;
 static lv_obj_t *bat_label;
 static lv_timer_t *battery_timer;
 
 // Battery update callback (runs periodically)
 static void battery_update_cb(lv_timer_t *timer) {
+    (void)timer;
+
     sync_battery_from_sysfs();
     char *battery_level = read_battery_percent();
 
@@ -28,8 +32,12 @@ static void battery_update_cb(lv_timer_t *timer) {
 
 // Public: initialize the top bar
 void topbar_init(gui_config_t *cfg) {
+    if (top_bar != NULL) {
+        return;
+    }
+
     // Create the top bar container
-    lv_obj_t *top_bar = lv_obj_create(lv_scr_act());
+    top_bar = lv_obj_create(lv_layer_top());
     lv_obj_set_size(top_bar, cfg->screen_width, cfg->top_bar_height);
     lv_obj_align(top_bar, LV_ALIGN_TOP_MID, 0, 0);
     lv_obj_set_style_bg_color(top_bar, lv_color_make(0, 0, 0), 0);

@@ -12,6 +12,6 @@ typedef struct {
 } gui_config_t;
 
 void gui_init(gui_config_t *cfg);
-void popup_async_cb(void *user_data);
+void gui_notify_popup(const char *text);
 
 #endif /* GUI_H */

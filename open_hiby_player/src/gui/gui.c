@@ -1,5 +1,7 @@
 #include "gui.h"
 
+#include <stdlib.h>
+#include <string.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -7,9 +9,6 @@
 #include "src/gui/main_menu.h"
 #include "src/gui/player.h"
 #include "src/gui/topbar.h"
-#include "src/system/audio.h"
-#include "src/system/system.h"
-#include "src/events.h"
 
 #include "src/core/lv_obj.h"
 #include "src/core/lv_obj_pos.h"
@@ -21,6 +20,11 @@
 #include "src/misc/lv_event.h"
 #include "src/widgets/label/lv_label.h"
 #include "src/widgets/slider/lv_slider.h"
+
+
+typedef struct {
+    char text[64];
+} popup_event_t;
 
 
 static lv_obj_t *popup;
@@ -51,7 +55,7 @@ void popup_show(const char *text) {
     lv_timer_resume(popup_timer);
 }
 
-void popup_async_cb(void *user_data) {
+static void popup_async_cb(void *user_data) {
     popup_event_t *ev = user_data;
 
     popup_show(ev->text);
@@ -59,9 +63,23 @@ void popup_async_cb(void *user_data) {
     free(ev);
 }
 
+void gui_notify_popup(const char *text) {
+    popup_event_t *ev = malloc(sizeof(*ev));
+    if (!ev) {
+        return;
+    }
+
+    strncpy(ev->text, text, sizeof(ev->text) - 1);
+    ev->text[sizeof(ev->text) - 1] = '\0';
+    lv_async_call(popup_async_cb, ev);
+}
+
 void gui_init(gui_config_t *cfg) {
     main_menu_screen = lv_obj_create(NULL);
     player_screen = lv_obj_create(NULL);
+
+    // Persistent topbar that stays above every screen.
+    topbar_init(cfg);
 
     lv_screen_load(main_menu_screen);
 

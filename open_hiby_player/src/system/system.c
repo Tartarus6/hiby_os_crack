@@ -13,17 +13,31 @@
 #include <errno.h>
 
 #include "src/system/audio.h"
-#include "src/gui/gui.h"
-#include "src/misc/lv_async.h"
 #include "src/system/utils.h"
-#include "src/events.h"
 #include "utils.h"
 
 // TODO: mounting doesn't work. it seems like the binary doesn't have access to the sd card device or something
 
 static char battery_cache[8] = "!!";
 static const battery_config_t *g_battery_cfg = NULL;
-const char *device_name; // TODO: is it safe to have a global pointer? when/how does it get freed? what if the program crashes?
+
+typedef struct {
+	storage_config_t *storage_cfg;
+	const char *device_name;
+	system_notification_cb_t notification_cb;
+	void *notification_user_data;
+} system_runtime_t;
+
+static void send_notification(const system_runtime_t *runtime, const char *message) {
+	if (runtime->notification_cb) {
+		runtime->notification_cb(message, runtime->notification_user_data);
+	}
+}
+
+static const char *storage_device_name(const char *device_path) {
+	const char *name = strrchr(device_path, '/');
+	return name ? name + 1 : device_path;
+}
 
 
 void sync_battery_from_sysfs(void) {
@@ -55,9 +69,11 @@ char * read_battery_percent() {
 	return battery_cache;
 }
 
-// TODO: make this function more generic, in case device name differs
-static int wait_for_sd(storage_config_t *storage_cfg) {
-	if (access("/dev/mmcblk0p1", F_OK) == 0) {
+static int wait_for_sd(const system_runtime_t *runtime) {
+	char device_path[128];
+	snprintf(device_path, sizeof(device_path), "/dev/%s", runtime->device_name);
+
+	if (access(device_path, F_OK) == 0) {
 		return 0;
 	}
 
@@ -89,7 +105,7 @@ static int wait_for_sd(storage_config_t *storage_cfg) {
             struct inotify_event *ev = (struct inotify_event *)p;
 
             if ((ev->mask & (IN_CREATE | IN_MOVED_TO)) &&
-                strcmp(ev->name, "mmcblk0p1") == 0)
+				strcmp(ev->name, runtime->device_name) == 0)
             {
                 close(fd);
                 return 0;
@@ -100,11 +116,10 @@ static int wait_for_sd(storage_config_t *storage_cfg) {
     }
 }
 
-// TODO: make this function more generic, in case device name differs
-static int mount_sd(storage_config_t *storage_cfg) {
+static int mount_sd(storage_config_t *storage_cfg, const system_runtime_t *runtime) {
 	mkdir(storage_cfg->mount_point, 0755); // make media dir in case it didnt exist
 
-	if (wait_for_sd(storage_cfg) != 0) {
+	if (wait_for_sd(runtime) != 0) {
         fprintf(stderr, "Timed out waiting for SD\n");
         return -1;
 	}
@@ -130,11 +145,10 @@ static void unmount_sd(storage_config_t *storage_cfg) {
 	umount(storage_cfg->mount_point);
 }
 
-// TODO: make this function more generic, in case device name differs
-static void check_and_mount_existing_sd(storage_config_t *storage_cfg) {
+static void check_and_mount_existing_sd(storage_config_t *storage_cfg, const system_runtime_t *runtime) {
     if (access(storage_cfg->device, F_OK) == 0) {
         printf("SD card device found at boot, mounting...\n");
-        mount_sd(storage_cfg);
+		mount_sd(storage_cfg, runtime);
     } else {
         printf("No SD card detected at boot.\n");
     }
@@ -142,8 +156,8 @@ static void check_and_mount_existing_sd(storage_config_t *storage_cfg) {
 
 // TODO: make this function more generic, in case device name differs
 void *sd_hotplug_thread(void *arg) {
-	// get cfg
-	storage_config_t *storage_cfg = arg;
+	system_runtime_t *runtime = arg;
+	storage_config_t *storage_cfg = runtime->storage_cfg;
 
 	int sock = socket(AF_NETLINK, SOCK_DGRAM, NETLINK_KOBJECT_UEVENT);
 
@@ -178,21 +192,15 @@ void *sd_hotplug_thread(void *arg) {
 
 		// puts("----");
 
-		if (strstr(buf, device_name)) {
+		if (strstr(buf, runtime->device_name)) {
 			if (strstr(buf, "add@")) {
-				popup_event_t *ev = malloc(sizeof(*ev));
-				strcpy(ev->text, "SD Card Inserted");
-
-				lv_async_call(popup_async_cb, ev);
+				send_notification(runtime, "SD Card Inserted");
 				printf("SD Card Inserted\n");
-				mount_sd(storage_cfg);
+				mount_sd(storage_cfg, runtime);
 			}
 
 			if (strstr(buf, "remove@")) {
-				popup_event_t *ev = malloc(sizeof(*ev));
-				strcpy(ev->text, "SD Card Removed");
-
-				lv_async_call(popup_async_cb, ev);
+				send_notification(runtime, "SD Card Removed");
 				printf("SD Card Removed\n");
 				unmount_sd(storage_cfg);
 			}
@@ -205,26 +213,26 @@ void *sd_hotplug_thread(void *arg) {
  *     - SD card detection + mounting
  *     - Audio service initializing
  */
-void system_start_services(system_config_t *cfg) {
+void system_start_services(system_config_t *cfg, system_notification_cb_t notification_cb, void *user_data) {
+	static system_runtime_t runtime;
+
 	// --- Battery ---
 	g_battery_cfg = cfg->battery_cfg;
 
 	// --- Storage ---
-	// getting device name
-	// TODO: does this work? what if the device is multiple directories in?
-	device_name = strrchr(cfg->storage_cfg->device, '/');
-	if (device_name)
-	    device_name++;
-	else
-	    device_name = cfg->storage_cfg->device;
+	runtime.storage_cfg = cfg->storage_cfg;
+	runtime.device_name = storage_device_name(cfg->storage_cfg->device);
+	runtime.notification_cb = notification_cb;
+	runtime.notification_user_data = user_data;
 
-	check_and_mount_existing_sd(cfg->storage_cfg); // mount sd on startup, if it's present
+	check_and_mount_existing_sd(cfg->storage_cfg, &runtime); // mount sd on startup, if it's present
 
     pthread_t sd_thread;
-    if (pthread_create(&sd_thread, NULL, sd_hotplug_thread, cfg->storage_cfg) != 0) {
+	if (pthread_create(&sd_thread, NULL, sd_hotplug_thread, &runtime) != 0) {
 	    fprintf(stderr, "Failed to start SD hotplug thread :(\n");
 	} else {
 		printf("Started SD hotplug thread :)\n");
+		pthread_detach(sd_thread);
 	}
 
     // --- Audio ---

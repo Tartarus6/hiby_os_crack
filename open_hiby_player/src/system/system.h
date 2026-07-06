@@ -17,8 +17,10 @@ typedef struct {
 	battery_config_t *battery_cfg;
 } system_config_t;
 
+typedef void (*system_notification_cb_t)(const char *message, void *user_data);
+
 void sync_battery_from_sysfs(void);
 char * read_battery_percent();
-void system_start_services(system_config_t *cfg);
+void system_start_services(system_config_t *cfg, system_notification_cb_t notification_cb, void *user_data);
 
 #endif /* SYSTEM_H */
