@@ -90,7 +90,7 @@ void gui_init(gui_config_t *cfg) {
     player_init(cfg);
 
     // popup
-    popup = lv_obj_create(lv_scr_act());
+    popup = lv_obj_create(lv_layer_top());
     lv_obj_add_flag(popup, LV_OBJ_FLAG_HIDDEN);
     lv_obj_set_size(popup, 300, 200);
     lv_obj_center(popup);
