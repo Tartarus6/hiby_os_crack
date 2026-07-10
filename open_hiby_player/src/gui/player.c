@@ -2,12 +2,10 @@
 
 #include <stdint.h>
 
-#include "src/display/lv_display.h"
 #include "src/gui/gui.h"
 #include "src/gui/main_menu.h"
-#include "src/gui/switcher.h"
-#include "src/misc/lv_area.h"
-#include "src/misc/lv_event.h"
+
+#include "lvgl/lvgl.h"
 
 lv_obj_t *player_screen;
 

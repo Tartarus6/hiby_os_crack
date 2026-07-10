@@ -2,11 +2,11 @@
 
 #include <stdint.h>
 
-#include "src/core/lv_obj_style_gen.h"
 #include "src/gui/gui.h"
 #include "src/gui/switcher.h"
 #include "src/gui/player.h"
-#include "src/misc/lv_color.h"
+
+#include "lvgl/lvgl.h"
 
 lv_obj_t *main_menu_screen;
 

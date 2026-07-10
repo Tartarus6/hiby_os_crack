@@ -1,7 +1,6 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "lvgl/lvgl.h"
 #include <stdint.h>
 
 typedef struct {

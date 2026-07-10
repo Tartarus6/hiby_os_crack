@@ -1,8 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "src/core/lv_obj.h"
 #include "src/gui/gui.h"
+#include "src/misc/lv_types.h"
 
 extern lv_obj_t *player_screen;
 

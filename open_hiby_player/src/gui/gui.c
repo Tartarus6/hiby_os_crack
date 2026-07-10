@@ -10,16 +10,7 @@
 #include "src/gui/player.h"
 #include "src/gui/topbar.h"
 
-#include "src/core/lv_obj.h"
-#include "src/core/lv_obj_pos.h"
-#include "src/core/lv_obj_style.h"
-#include "src/core/lv_obj_style_gen.h"
-#include "src/layouts/flex/lv_flex.h"
-#include "src/lv_api_map_v8.h"
-#include "src/misc/lv_area.h"
-#include "src/misc/lv_event.h"
-#include "src/widgets/label/lv_label.h"
-#include "src/widgets/slider/lv_slider.h"
+#include "lvgl/lvgl.h"
 
 
 typedef struct {
