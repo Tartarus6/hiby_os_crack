@@ -6,6 +6,7 @@
 #include "src/gui/main_menu.h"
 
 #include "lvgl/lvgl.h"
+#include "src/system/audio.h"
 
 lv_obj_t *player_screen;
 
@@ -25,12 +26,12 @@ static void play_btn_event_cb(lv_event_t *e) {
         // topbar_set_play_status("Playing...");    // use topbar function
         lv_label_set_text(play_btn_label, "Pause");
         lv_obj_set_style_bg_color(play_btn, lv_color_make(220, 80, 60), 0);
-        // audio_play("/media/M1F1-int12-AFsp.wav");
+        audio_play("/media/M1F1-int12-AFsp.wav");
     } else {
         // topbar_set_play_status("Paused...");     // use topbar function
         lv_label_set_text(play_btn_label, "Play");
         lv_obj_set_style_bg_color(play_btn, lv_color_make(60, 160, 220), 0);
-        // audio_stop();
+        audio_stop();
     }
 }
 

@@ -37,7 +37,7 @@
 
 // #include "logf.h"
 
-int hiby_has_valid_output(void);
+// int hiby_has_valid_output(void);
 
 static int hw_init = 0;
 
@@ -127,10 +127,10 @@ void audiohw_preinit(void)
     alsa_controls_set_bool("DOP_EN", 0); //isDSD
 }
 
-void audiohw_postinit(void)
-{
-    logf("hw postinit");
-}
+// void audiohw_postinit(void)
+// {
+//     logf("hw postinit");
+// }
 
 void audiohw_close(void)
 {
