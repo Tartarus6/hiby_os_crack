@@ -40,7 +40,7 @@ static struct ctl_t
     const char **enum_name; /* names of the enum, indexed by ALSA index */
 } *alsa_ctl_info;
 
-#if defined(DEBUG)
+// #if defined(DEBUG)
 static const char *alsa_ctl_type_name(snd_ctl_elem_type_t type)
 {
     switch(type)
@@ -51,7 +51,7 @@ static const char *alsa_ctl_type_name(snd_ctl_elem_type_t type)
         default: return "???";
     }
 }
-#endif
+// #endif
 
 void alsa_controls_init(const char *name)
 {
