@@ -7,7 +7,7 @@
 
 #define logf printf
 #define DEBUGF printf
-#define panicf printf
+#define panicf printf // TODO: probably smart to make it actually panic, rather than print the log and continue
 
 static FILE* open_read(const char *file_name)
 {
