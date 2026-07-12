@@ -24,20 +24,7 @@
 
 #include "rockbox-compat.h"
 
-// #include "config.h"
-// #include "audio.h"
-// #include "audiohw.h"
-// #include "button.h"
-// #include "system.h"
-// #include "kernel.h"
-// #include "panic.h"
-// #include "sysfs.h"
 #include "alsa-controls.h"
-// #include "pcm-alsa.h"
-
-// #include "logf.h"
-
-// int hiby_has_valid_output(void);
 
 static int hw_init = 0;
 
@@ -58,7 +45,7 @@ void audiohw_mute(int mute)
 }
 
 int hiby_has_valid_output(void) {
-    long int ps = 0; // Muted, if nothing is plugged in!
+    long int ps = 4; // Default to "none" device
 
     int status = 0;
 
@@ -78,18 +65,23 @@ int hiby_has_valid_output(void) {
 
 void audiohw_set_volume(int vol_l, int vol_r)
 {
-    logf("hw vol %d %d", vol_l, vol_r);
+    logf("hw vol %d %d\n", vol_l, vol_r);
 
     long l,r;
 
     vol_l_hw = vol_l;
     vol_r_hw = vol_r;
 
-    l = -vol_l/5;
-    r = -vol_r/5;
+    // l = -vol_l/5;
+    l = vol_l;
+    // r = -vol_r/5;
+    r = vol_r;
 
     if (!hw_init)
         return;
+
+    printf("left : %ld\n", l);
+    printf("right: %ld\n", r);
 
     alsa_controls_set_ints("Left Playback Volume", 1, &l);
     alsa_controls_set_ints("Right Playback Volume", 1, &r);
@@ -101,7 +93,7 @@ void hiby_set_output(int ps)
 
     if (last_ps != ps)
     {
-        logf("set out %d/%d", ps, last_ps);
+        logf("set out %d/%d\n", ps, last_ps);
         /* Output port switch */
         last_ps = ps;
         alsa_controls_set_ints("Output Port Switch", 1, &last_ps);
@@ -109,7 +101,7 @@ void hiby_set_output(int ps)
     }
 }
 
-int hiby_get_outputs(void){
+int hiby_auto_set_output(void){
     long int ps = hiby_has_valid_output();
 
     hiby_set_output(ps);
@@ -117,9 +109,9 @@ int hiby_get_outputs(void){
     return ps;
 }
 
-void audiohw_preinit(void)
+void audiohw_init(void)
 {
-    logf("hw preinit");
+    logf("hw preinit\n");
     alsa_controls_init("default");
     hw_init = 1;
 
@@ -127,14 +119,9 @@ void audiohw_preinit(void)
     alsa_controls_set_bool("DOP_EN", 0); //isDSD
 }
 
-// void audiohw_postinit(void)
-// {
-//     logf("hw postinit");
-// }
-
 void audiohw_close(void)
 {
-    logf("hw close");
+    logf("hw close\n");
     hw_init = 0;
     alsa_controls_close();
 }
@@ -146,7 +133,7 @@ void audiohw_set_frequency(int fsel)
 
 void audiohw_set_filter_roll_off(int value)
 {
-    logf("rolloff %d", value);
+    logf("rolloff %d\n", value);
     /* 0 = Sharp;
      *       1 = Slow;
      *       2 = Short Sharp

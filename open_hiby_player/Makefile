@@ -25,8 +25,8 @@ HOST_CFLAGS = $(CFLAGS) -DHOST_BUILD=1 $(shell sdl2-config --cflags)
 TARGET_CFLAGS = $(CFLAGS) -I$(LVGL_DIR)/src
 
 # Link flags
-HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm
-TARGET_LDFLAGS = -lpthread -lm -L/home/tar/Code/hiby_os_crack/r3proii/squashfs-root-example/usr/lib -lasound -lsndfile
+HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm -ldl
+TARGET_LDFLAGS = -lpthread -lm -ldl -lasound -lsndfile -latomic -L/home/tar/Code/hiby_os_crack/r3proii/squashfs-root-example/usr/lib
 
 # Source files
 APP_SRCS := $(shell find src -name '*.c')

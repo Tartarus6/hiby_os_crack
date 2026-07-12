@@ -4,9 +4,18 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <time.h>
+#include <signal.h>
 
 #include "src/system/system.h"
 #include "src/gui/gui.h"
+
+static volatile sig_atomic_t running = 1;
+
+static void sigint_handler(int sig)
+{
+    (void)sig;
+    running = 0;
+}
 
 #ifdef HOST_BUILD
   #include "src/drivers/sdl/lv_sdl_window.h"
@@ -78,6 +87,9 @@ static lv_display_t *init_target_display(void) {
 #endif
 
 int main() {
+	// register SIGINT handler
+	signal(SIGINT, sigint_handler);
+
     printf("Starting open_hiby_player...\n");
 
     // initialize LVGL core
@@ -131,10 +143,12 @@ int main() {
     // main event loop
     // TODO: how does this event loop work? is this effieient? is this standard?
     printf("Entering main event loop...\n");
-    while (1) {
+    while (running) {
         uint32_t time_till_next = lv_timer_handler();
         usleep(time_till_next * 1000); // Convert milliseconds to microseconds
     }
+
+    printf("\n");
 
     return 0;
 }
