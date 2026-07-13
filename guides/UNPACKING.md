@@ -12,7 +12,7 @@ This file describes how to unpack the firmware, as well as the main structure of
 
 
 ## Script
-There is a script that does this automatically [for the R3ProII](r3proii/unpacking_and_repacking/unpack.sh) and another script [for the R1](r1/unpacking_and_repacking/unpack.sh).
+There is a script that does this automatically [for the R3ProII](r3proii/unpacking_and_repacking/unpack-helper.sh) and another script [for the R1](r1/unpacking_and_repacking/unpack-helper.sh).
 
 ## Steps for Manual Unpacking
 Here's the instructions for manually unpacking the firmware. Just here for documentation, since the scripts can do it automatically.
