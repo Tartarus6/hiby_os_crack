@@ -33,4 +33,4 @@ Note that you will need a very specific cable in order to use this S/PDIF output
 > One end is the Typc-C interface, and the other end is the RCA interface.
 > On the existing USB TypeC interface, SUB1/SUB2 (pins A8/B8 below) on the Type-C interface are used to transmit the SPDIF signal. Since SUB1/SBU2 is used, other functions on the Type-C interface are still normal.
 > 
-> ![usb-c diagram](resources/docs/r3proii/OUTPUT_MODES.md/usb-c_diagram.png)
+> ![usb-c diagram](/resources/docs/r3proii/OUTPUT_MODES.md/usb-c_diagram.png)
