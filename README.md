@@ -77,18 +77,21 @@ We have collected documentation and created firmware unpacking/repacking scripts
         - Ingenic Public FTP Server
             - URL: `ftp://ftp.ingenic.com.cn`
             - Username: `ingenic_public`
-            - Password: `BFdg2f9B12` 
+            - Password: `BFdg2f9B12`
+
+## Tools
+- [general upt firmware unpacking script](scripts/unpack.sh)
+- [general upt firmware repacking script](scripts/repack.sh)
+- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
 
 
-## Workflow
-**Example For HiBy R3 Pro II**
-1. go to `r3proii/unpacking_and_repacking`
-2. run `unpack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored folder called `squashfs-root`.
-3. modify the contents of `squashfs-root` to make whatever custom firmware you want
-4. run `repack.sh` (it will ask for sudo permissions for part of the script). this will create a gitignored file called `r3proii.upt`
-5. flash that firmware file onto the device (this is explained in-depth in [INSTALLING_FIRMWARE.md](guides/INSTALLING_FIRMWARE.md))
+## Unpacking and Repacking Workflow
+1. Depending on your device, enter either the `r1` directory or the `r3proii` directory
+2. if you want to unpack a firmware not in this repo already, add it in the `firmware/custom` directory
+3. enter the `unpacking_and_repacking` directory for your device
+4. to unpack your firmware use the `unpack-helper.sh` script and choose the firmware you want to unpack
+5. to repack your firmware, just run the `repack-helper.sh` script
 
 > [!NOTE]
-> - `squashfs-root` represents the root filesystem that will be flashed with the firmware.
-> - most/all of the files in `squashfs-root` will be owned by `root`, so it can be annoying to modify sometimes. This is also why it's gitignored
-> - `r3proii.upt` is the firmware file
+> - You might need to create the `firmware/custom` directory if it doesn't exist
+> - I've made it so that the unpacking and repacking scripts no longer need sudo in order to run
