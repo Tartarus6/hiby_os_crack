@@ -1,7 +1,7 @@
 # Rootfs Structure
 
 ## /etc/init.d/
-![image of /etc/init.d/ folder](resources/rootfs_structure/init.d.png)
+![image of /etc/init.d/ folder](resources/docs/ROOTFS_STRUCTURE.md/init.d.png)
 - in `/etc/init.d` there are initializing and un-initializing scripts
 - the main init script is `rcS`. it runs anything in the `/etc/init.d` directory that fits the format `S??*`, doing so in numerical order
     - for example, it would run `S10mdev`, then `S11jpeg_display_shell`, then `S11module_driver_default`, then `S20urandom`, and so on
@@ -18,7 +18,7 @@
 
 
 ## /usr/resource/
-![image of /usr/resource/ folder](resources/rootfs_structure/resource.png)
+![image of /usr/resource/ folder](resources/docs/ROOTFS_STRUCTURE.md/resource.png)
 - this folder contains most of the device configuration
 - it also includes the files that the `hiby_player` binary depends on (like images, layout, etc.)
 

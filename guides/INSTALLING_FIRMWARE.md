@@ -1,7 +1,8 @@
 # Installing Firmware
 This guide explains how to install `.upt` firmware on HiBy OS devices. This guide works for the R1, R3, R3 Pro II, and any other device using `.upt` HiBy OS firmware.
 
-Older HiBy devices, including the R3 Pro and R3 Pro Saber, use a different firmware file type. So I cannot guarantee that this guide is fully correct for those devices. For those devices, check out [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub.
+> [!NOTE]
+> Older HiBy devices, including the R3 Pro and R3 Pro Saber, use a different firmware file type. So I cannot guarantee that this guide is fully correct for those devices. For those devices, check out [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub.
 
 
 ## Common Problems, Symptoms, and Fixes

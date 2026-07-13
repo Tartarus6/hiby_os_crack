@@ -21,7 +21,7 @@ Here's the instructions for manually unpacking the firmware. Just here for docum
     - *Note: in this guide, it will be refered to as `r3proii.upt`, since this is written for the R3ProII, but most, if not all, steps are the same for extracting the UPT firmware of other HiBy OS devices such as the R1*
 - To extract that image, run `7z x r3proii.upt`
 - That will have created a file and a folder. The file, `ota_config.in`, just says "current_version=0". The folder, `ota_v0/`, contains a bunch of stuff
-![alt text](resources/ota_v0.png)
+![ota_v0](resources/UNPACKING.md/ota_v0.png)
 - There are a bunch of squashfs files, and a bunch of xImage files
 
 ### extracting the squashfs file
@@ -33,7 +33,7 @@ Here's the instructions for manually unpacking the firmware. Just here for docum
     - Running this command with sudo is needed in order to maintain the original file ownership and permissions. This is required in order to make a working repack of the firmware.
     - If run without sudo, the rootfs will be extracted just file, but with all of the file permissions set to your user.
 - The `squashfs-root` folder is what acts as the linux root directory on the device when firmware is flashed
-![alt text](resources/squashfs-root.png)
+![squashfs-root](resources/UNPACKING.md/squashfs-root.png)
 
 ### extracting the xImage file
 - To concatenate the xImage files into one, run `cat xImage.* > xImage.all`. This creates a new file called `xImage.all` that contains the concatenated data

@@ -17,6 +17,8 @@
 - [ ] include tools for building a cross-compiler (note: rockbox has a working cross-compiler for HiBy OS devices. so we can use what they have to set up our own)
 - [ ] include mention/link/file for the torrent that includes firmwares, docs, and sdk
 - [ ] maybe it would be good to make unpacker and repacker into standalone tools that can be used anywhere, not just inside this project in their specific folders
+- [ ] add output modes documentation for the r1
+- [ ] move open_hiby_player into it's own repository
 
 
 ## Emulator

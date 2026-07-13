@@ -30,3 +30,5 @@ open_hiby_player/compile_flags.txt
 
 # Claude Code
 .claude/
+r1/unpacking_and_repacking/rootfs.squashfs
+r1/unpacking_and_repacking/xImage
