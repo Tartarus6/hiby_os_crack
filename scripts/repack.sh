@@ -194,6 +194,6 @@ rm -rf "$TEMP_DIR"
 
 echo ""
 echo "Repacking complete!"
-echo "Firmware image saved as ${OUT_PKG}"
+echo "Firmware image saved as ${output_file}"
 echo ""
 echo "Now you can flash this to the device"
