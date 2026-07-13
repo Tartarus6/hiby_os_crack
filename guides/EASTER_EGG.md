@@ -2,9 +2,6 @@
 
 In the HiBy OS firmware, there's an easter egg on the "About" page in the settings.
 
-> [!NOTE]
-> If you don't have the 
-
 ## Accessing the Easter Egg Page
 1. Enter the main settings menu
 2. Scroll all the way to the bottom and enter the "About" page
