@@ -24,7 +24,7 @@ Additionally, playing audio in mode 0 causes the device to reboot. Modes 1 throu
 ## S/PDIF Output
 The HiBy R3Pro II can output a raw S/PIDF signal out of its USB-C port.
 
-HiBy's documentation for this is [here](https://guide.hiby.com/en/docs/knowledge/audio_port/coaxial) on their wiki. That wiki page is also archived in this repository [here](docs/third_party/hiby/Coaxial_HiBy_WiKi.pdf)
+HiBy's documentation for this is [here](https://guide.hiby.com/en/docs/knowledge/audio_port/coaxial) on their wiki. That wiki page is also archived in this repository [here](/docs/third_party/hiby/Coaxial_HiBy_WiKi.pdf)
 
 Note that you will need a very specific cable in order to use this S/PDIF output. Most cables available are meant to convert from standard USB audio to S/PDIF, and would not be able to handle a signal that's already S/PDIF. As mentioned on the wiki entry, HiBy does sell "Type C to RCA Coaxial Cable", which should work properly.
 

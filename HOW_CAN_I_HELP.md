@@ -4,7 +4,7 @@ Just chatting in the discord about issues that you have, and talking with the pe
 And talking about mods with people on Reddit, where relevant, will help to broaden our community.
 
 ## I'm a Dev, What Can I Do?
-There's a huge variety of ways that devs can help out. Look through the [TODOs](TODO.md) and see if there's any you want to tackle.
+There's a huge variety of ways that devs can help out. Look through the [TODOs](/TODO.md) and see if there's any you want to tackle.
 
 > *Also, if there's things in this repository that you want to work on, add it to the TODOs, or make an Issue, or make a Discussion post to talk about your goal. Then make a branch/fork to implement your change, and make a Pull Request to have your contribution merged in.*
 
