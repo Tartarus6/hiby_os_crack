@@ -5,10 +5,13 @@ HOST_BIN = open_hiby_player_host
 TARGET_BIN = open_hiby_player_target
 
 # Compiler and Linker configuration
-# TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
+# TODO: remove host config, switch to only target
 CC = gcc
 # CROSS_CC = mipsel-rockbox-linux-gnu-gcc
-CROSS_CC = mipsel-linux-gnu-gcc
+CROSS_CC ?= mipsel-linux-musl-gcc
+
+# TODO: might need to have different sysroot for different targets. could extract it from a base firmware
+SYSROOT ?= $(CURDIR)/sysroot
 
 # LVGL directory name
 LVGL_DIR = lvgl
@@ -27,7 +30,14 @@ TARGET_CFLAGS = $(CFLAGS) -I$(LVGL_DIR)/src
 
 # Link flags
 HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm -ldl
-TARGET_LDFLAGS = -lpthread -lm -ldl -lasound -lsndfile -latomic -L/home/tar/Code/hiby_os_crack/r3proii/squashfs-root-example/usr/lib
+SYSROOT_USR_LIB = $(SYSROOT)/usr/lib
+SYSROOT_LIB     = $(SYSROOT)/lib
+TARGET_LDFLAGS = \
+	-L$(SYSROOT_USR_LIB) \
+	-L$(SYSROOT_LIB) \
+	-Wl,--rpath-link,$(SYSROOT_USR_LIB) \
+	-Wl,--rpath-link,$(SYSROOT_LIB) \
+	-lsndfile -lasound -lpthread -lm -ldl -latomic
 
 # Source files
 APP_SRCS := $(shell find src -name '*.c')
