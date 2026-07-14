@@ -68,7 +68,7 @@ build_host/lvgl/%.o: $(LVGL_DIR)/%.c
 	$(CC) $(HOST_CFLAGS) -c $< -o $@
 
 # Build for target (MIPS HiBy Device)
-target: $(TARGET_BIN)
+target: $(TARGET_BIN) compile_commands.json
 
 $(TARGET_BIN): $(TARGET_OBJS)
 	$(CROSS_CC) -o $@ $(TARGET_OBJS) $(TARGET_LDFLAGS)
