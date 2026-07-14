@@ -290,9 +290,9 @@ Based on kernel panic analysis and datasheets, we need to implement:
    ```
 
 3. **Project Documentation:**
-   - X1600E datasheet (`thirdpartydocs/X1600_E+Data+Sheet.pdf`)
-   - Halley6 hardware guide (`thirdpartydocs/Halley6_hardware_develop_V2.1.pdf`)
-   - XBurst programming manual (`thirdpartydocs/XBurst1 CPU core - programming manual.pdf`)
+   - X1600E datasheet (`docs/third_party/X1600_E+Data+Sheet.pdf`)
+   - Halley6 hardware guide (`docs/third_party/Halley6_hardware_develop_V2.1.pdf`)
+   - XBurst programming manual (`docs/third_party/XBurst1 CPU core - programming manual.pdf`)
    - Kernel source (if available) or driver code from `r3proii/squashfs-root-example/module_driver/`
 
 ---
@@ -1302,18 +1302,18 @@ gdb ../Linux-4.4.94+.elf
 
 ### Use Project Documentation
 
-1. **X1600E Datasheet** (`thirdpartydocs/X1600_E+Data+Sheet.pdf`)
+1. **X1600E Datasheet** (`docs/third_party/X1600_E+Data+Sheet.pdf`)
    - Chapter on CPM: Extract exact register layouts and PLL formulas
    - Chapter on OST: Timer frequency, register offsets, interrupt numbers
    - Chapter on INTC: Number of IRQ sources, priority handling
    - Memory map: Verify all base addresses
 
-2. **Halley6 Hardware Guide** (`thirdpartydocs/Halley6_hardware_develop_V2.1.pdf`)
+2. **Halley6 Hardware Guide** (`docs/third_party/Halley6_hardware_develop_V2.1.pdf`)
    - Board schematic: Component connections, GPIO assignments
    - Boot process: Understand bootloader → kernel → userspace flow
    - Peripheral configuration: Default states
 
-3. **XBurst Programming Manual** (`thirdpartydocs/XBurst1 CPU core - programming manual.pdf`)
+3. **XBurst Programming Manual** (`docs/third_party/XBurst1 CPU core - programming manual.pdf`)
    - CPU features that QEMU needs to emulate
    - Coprocessor 0 registers
    - TLB and cache behavior

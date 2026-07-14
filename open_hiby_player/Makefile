@@ -7,7 +7,8 @@ TARGET_BIN = open_hiby_player_target
 # Compiler and Linker configuration
 # TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
 CC = gcc
-CROSS_CC = mipsel-rockbox-linux-gnu-gcc
+# CROSS_CC = mipsel-rockbox-linux-gnu-gcc
+CROSS_CC = mipsel-linux-gnu-gcc
 
 # LVGL directory name
 LVGL_DIR = lvgl

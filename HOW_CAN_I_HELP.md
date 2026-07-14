@@ -4,7 +4,7 @@ Just chatting in the discord about issues that you have, and talking with the pe
 And talking about mods with people on Reddit, where relevant, will help to broaden our community.
 
 ## I'm a Dev, What Can I Do?
-There's a huge variety of ways that devs can help out. Look through the [TODOs](TODO.md) and see if there's any you want to tackle.
+There's a huge variety of ways that devs can help out. Look through the [TODOs](/TODO.md) and see if there's any you want to tackle.
 
 > *Also, if there's things in this repository that you want to work on, add it to the TODOs, or make an Issue, or make a Discussion post to talk about your goal. Then make a branch/fork to implement your change, and make a Pull Request to have your contribution merged in.*
 
@@ -35,4 +35,9 @@ However, there is actually quite a bit of stuff that you can do without ever loo
 
 
 ### If You Do Know C
-(TODO)
+If you do know C, you can still, of course, do all of the things said above.
+
+But you can also help with some of the deeper modding projects. There's several project where people are writing new programs to run on the HiBy OS devices. There's Rockbox, open_hiby_player, and spotui-hiby-r3proii to name a couple. Contributing to these projects and/or starting your own would help greatly with getting the perfect experience on these devices.
+
+You can also help us learn more about the inner workings of the original firmware by using decompilation tools on the original `hiby_player` binary.
+- For example, we found what each of the values of `Output Port Switch` in ALSA correlate to. This helps us know better how to switch output modes.

@@ -5,6 +5,13 @@ r3proii/qemu/rootfs-image
 r1/qemu/initrd.cpio
 r1/qemu/rootfs-image
 
+# User Custom Firmwares
+r3proii/firmware/custom
+!r3proii/firmware/custom/.gitkeep
+
+r1/firmware/custom
+!r1/firmware/custom/.gitkeep
+
 # Unpacking and Repacking Outputs
 r3proii/unpacking_and_repacking/r3proii.upt
 r3proii/unpacking_and_repacking/squashfs-root/
@@ -30,5 +37,5 @@ open_hiby_player/compile_flags.txt
 
 # Claude Code
 .claude/
-r1/unpacking_and_repacking/rootfs.squashfs
 r1/unpacking_and_repacking/xImage
+r3proii/unpacking_and_repacking/xImage
