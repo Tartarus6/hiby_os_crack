@@ -130,6 +130,7 @@ rm -r $TEMP_DIR  # clean up temp folder
 
 echo ""
 echo "Unpacking complete!"
-echo "Original filesystem extracted to: squashfs-root/"
+echo "Original filesystem extracted to: ${output_dir}"
+echo "xImage extracted to: ${output_ximage}"
 echo ""
-echo "${Cyan}Now you can modify files in squashfs-root/${NC}"
+echo "${Cyan}Now you can modify files in ${output_dir}/${NC}"

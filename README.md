@@ -47,7 +47,6 @@ We have collected documentation and created firmware unpacking/repacking scripts
     - [specs](/docs/r3proii/SPECS.md)
     - [output modes](/docs/r3proii/OUTPUT_MODES.md)
     - [qemu readme](/r3proii/qemu/README.md)
-    - [squashfs-root-example readme](/r3proii/squashfs-root-example/README.md)
 - R1
     - [specs](/docs/r1/SPECS.md)
     - [qemu readme](/r1/qemu/README.md)

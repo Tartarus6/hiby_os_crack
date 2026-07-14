@@ -1,1 +1,0 @@
-insmod gpio_aw95016_add.ko i2c_bus_num=0 gpio_base=160 irq_base=160 int_gpio=PA08 rst_gpio=PA09
