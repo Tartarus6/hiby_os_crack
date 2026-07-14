@@ -1,0 +1,292 @@
+"America/Rio_Branco":Acre Standard Time
+"Asia/Kabul":Afghanistan Time
+"Africa/Maputo":Central Africa Time
+"Africa/Bujumbura":Central Africa Time
+"Africa/Gaborone":Central Africa Time
+"Africa/Lubumbashi":Central Africa Time
+"Africa/Blantyre":Central Africa Time
+"Africa/Kigali":Central Africa Time
+"Africa/Lusaka":Central Africa Time
+"Africa/Harare":Central Africa Time
+"Africa/Nairobi":East Africa Time
+"Africa/Djibouti":East Africa Time
+"Africa/Asmera":East Africa Time
+"Africa/Addis_Ababa":East Africa Time
+"Indian/Comoro":East Africa Time
+"Indian/Antananarivo":East Africa Time
+"Africa/Mogadishu":East Africa Time
+"Africa/Dar_es_Salaam":East Africa Time
+"Africa/Kampala":East Africa Time
+"Indian/Mayotte":East Africa Time
+"Africa/Johannesburg":South Africa Standard Time
+"Africa/Maseru":South Africa Standard Time
+"Africa/Mbabane":South Africa Standard Time
+"Africa/Lagos":West Africa Standard Time
+"Africa/Luanda":West Africa Standard Time
+"Africa/Porto-Novo":West Africa Standard Time
+"Africa/Kinshasa":West Africa Standard Time
+"Africa/Bangui":West Africa Standard Time
+"Africa/Brazzaville":West Africa Standard Time
+"Africa/Douala":West Africa Standard Time
+"Africa/Libreville":West Africa Standard Time
+"Africa/Malabo":West Africa Standard Time
+"Africa/Niamey":West Africa Standard Time
+"Africa/Ndjamena":West Africa Standard Time
+"America/Juneau":Alaska Standard Time
+"Asia/Almaty":Almaty Standard Time
+"America/Manaus":Amazon Standard Time
+"America/Chicago":Central Standard Time
+"America/Belize":Central Standard Time
+"America/Winnipeg":Central Standard Time
+"America/Costa_Rica":Central Standard Time
+"America/Guatemala":Central Standard Time
+"America/Tegucigalpa":Central Standard Time
+"America/Mexico_City":Central Standard Time
+"America/El_Salvador":Central Standard Time
+"America/New_York":Eastern Standard Time
+"America/Nassau":Eastern Standard Time
+"America/Toronto":Eastern Standard Time
+"America/Port-au-Prince":Eastern Standard Time
+"America/Jamaica":Eastern Standard Time
+"America/Cayman":Eastern Standard Time
+"America/Panama":Eastern Standard Time
+"America/Denver":Mountain Standard Time
+"America/Edmonton":Mountain Standard Time
+"America/Hermosillo":Mountain Standard Time
+"America/Los_Angeles":Pacific Standard Time
+"America/Vancouver":Pacific Standard Time
+"America/Tijuana":Pacific Standard Time
+"Asia/Anadyr":Anadyr Standard Time
+"Pacific/Apia":Apia Standard Time
+"Asia/Aqtau":Aqtau Standard Time
+"Asia/Aqtobe":Aqtobe Standard Time
+"Asia/Riyadh":Arabian Standard Time
+"Asia/Bahrain":Arabian Standard Time
+"Asia/Baghdad":Arabian Standard Time
+"Asia/Kuwait":Arabian Standard Time
+"Asia/Qatar":Arabian Standard Time
+"Asia/Aden":Arabian Standard Time
+"America/Buenos_Aires":Argentina Standard Time
+"America/Argentina/San_Luis":Western Argentina Standard Time
+"Asia/Yerevan":Armenia Standard Time
+"America/Halifax":Atlantic Standard Time
+"America/Antigua":Atlantic Standard Time
+"America/Anguilla":Atlantic Standard Time
+"America/Aruba":Atlantic Standard Time
+"America/Barbados":Atlantic Standard Time
+"Atlantic/Bermuda":Atlantic Standard Time
+"America/Kralendijk":Atlantic Standard Time
+"America/Curacao":Atlantic Standard Time
+"America/Dominica":Atlantic Standard Time
+"America/Grenada":Atlantic Standard Time
+"America/Thule":Atlantic Standard Time
+"America/Guadeloupe":Atlantic Standard Time
+"America/St_Kitts":Atlantic Standard Time
+"America/St_Lucia":Atlantic Standard Time
+"America/Marigot":Atlantic Standard Time
+"America/Martinique":Atlantic Standard Time
+"America/Montserrat":Atlantic Standard Time
+"America/Puerto_Rico":Atlantic Standard Time
+"America/Lower_Princes":Atlantic Standard Time
+"America/Port_of_Spain":Atlantic Standard Time
+"America/St_Vincent":Atlantic Standard Time
+"America/Tortola":Atlantic Standard Time
+"America/St_Thomas":Atlantic Standard Time
+"Australia/Adelaide":Australian Central Standard Time
+"Australia/Eucla":Australian Central Western Standard Time
+"Australia/Sydney":Australian Eastern Standard Time
+"Australia/Perth":Australian Western Standard Time
+"Asia/Baku":Azerbaijan Standard Time
+"Atlantic/Azores":Azores Standard Time
+"Asia/Dhaka":Bangladesh Standard Time
+"Asia/Thimphu":Bhutan Time
+"America/La_Paz":Bolivia Time
+"America/Sao_Paulo":Brasilia Standard Time
+"Asia/Brunei":Brunei Darussalam Time
+"Atlantic/Cape_Verde":Cape Verde Standard Time
+"Antarctica/Casey":Casey Time
+"Pacific/Saipan":Chamorro Standard Time
+"Pacific/Guam":Chamorro Standard Time
+"Pacific/Chatham":Chatham Standard Time
+"America/Santiago":Chile Standard Time
+"Asia/Shanghai":China Standard Time
+"Asia/Choibalsan":Choibalsan Standard Time
+"Indian/Christmas":Christmas Island Time
+"Indian/Cocos":Cocos Islands Time
+"America/Bogota":Colombia Standard Time
+"Pacific/Rarotonga":Cook Islands Standard Time
+"America/Havana":Cuba Standard Time
+"Antarctica/Davis":Davis Time
+"Antarctica/DumontDUrville":Dumont-d’Urville Time
+"Asia/Dili":East Timor Time
+"Pacific/Easter":Easter Island Standard Time
+"America/Guayaquil":Ecuador Time
+"Europe/Paris":Central European Standard Time
+"Europe/Andorra":Central European Standard Time
+"Europe/Tirane":Central European Standard Time
+"Europe/Vienna":Central European Standard Time
+"Europe/Sarajevo":Central European Standard Time
+"Europe/Brussels":Central European Standard Time
+"Europe/Zurich":Central European Standard Time
+"Europe/Prague":Central European Standard Time
+"Europe/Berlin":Central European Standard Time
+"Europe/Copenhagen":Central European Standard Time
+"Europe/Madrid":Central European Standard Time
+"Europe/Gibraltar":Central European Standard Time
+"Europe/Zagreb":Central European Standard Time
+"Europe/Budapest":Central European Standard Time
+"Europe/Rome":Central European Standard Time
+"Europe/Vaduz":Central European Standard Time
+"Europe/Luxembourg":Central European Standard Time
+"Europe/Monaco":Central European Standard Time
+"Europe/Podgorica":Central European Standard Time
+"Europe/Skopje":Central European Standard Time
+"Europe/Malta":Central European Standard Time
+"Europe/Amsterdam":Central European Standard Time
+"Europe/Oslo":Central European Standard Time
+"Europe/Warsaw":Central European Standard Time
+"Europe/Belgrade":Central European Standard Time
+"Europe/Stockholm":Central European Standard Time
+"Europe/Ljubljana":Central European Standard Time
+"Arctic/Longyearbyen":Central European Standard Time
+"Europe/Bratislava":Central European Standard Time
+"Europe/San_Marino":Central European Standard Time
+"Africa/Tunis":Central European Standard Time
+"Europe/Vatican":Central European Standard Time
+"Europe/Belgrade":Central European Standard Time
+"Europe/Bucharest":Eastern European Standard Time
+"Europe/Mariehamn":Eastern European Standard Time
+"Europe/Sofia":Eastern European Standard Time
+"Asia/Nicosia":Eastern European Standard Time
+"Africa/Cairo":Eastern European Standard Time
+"Europe/Helsinki":Eastern European Standard Time
+"Europe/Athens":Eastern European Standard Time
+"Asia/Amman":Eastern European Standard Time
+"Asia/Beirut":Eastern European Standard Time
+"Asia/Damascus":Eastern European Standard Time
+"Europe/Minsk":Further-eastern European Time
+"Europe/Kaliningrad":Further-eastern European Time
+"Atlantic/Canary":Western European Standard Time
+"Atlantic/Faeroe":Western European Standard Time
+"Atlantic/Stanley":Falkland Islands Standard Time
+"Pacific/Fiji":Fiji Standard Time
+"America/Cayenne":French Guiana Time
+"Indian/Kerguelen":French Southern & Antarctic Time
+"Atlantic/Reykjavik":Greenwich Mean Time
+"Africa/Ouagadougou":Greenwich Mean Time
+"Africa/Abidjan":Greenwich Mean Time
+"Europe/London":Greenwich Mean Time
+"Africa/Accra":Greenwich Mean Time
+"Africa/Banjul":Greenwich Mean Time
+"Africa/Conakry":Greenwich Mean Time
+"Europe/Dublin":Greenwich Mean Time
+"Africa/Bamako":Greenwich Mean Time
+"Africa/Nouakchott":Greenwich Mean Time
+"Atlantic/St_Helena":Greenwich Mean Time
+"Africa/Freetown":Greenwich Mean Time
+"Africa/Dakar":Greenwich Mean Time
+"Africa/Lome":Greenwich Mean Time
+"Pacific/Galapagos":Galapagos Time
+"Pacific/Gambier":Gambier Time
+"Asia/Tbilisi":Georgia Standard Time
+"Pacific/Tarawa":Gilbert Islands Time
+"America/Scoresbysund":East Greenland Standard Time
+"America/Godthab":West Greenland Standard Time
+"Pacific/Guam":Guam Standard Time
+"Asia/Dubai":Gulf Standard Time
+"Asia/Muscat":Gulf Standard Time
+"America/Guyana":Guyana Time
+"Pacific/Honolulu":Hawaii-Aleutian Standard Time
+"Asia/Hong_Kong":China Standard Time
+"Asia/Hovd":Hovd Standard Time
+"Asia/Calcutta":India Standard Time
+"Asia/Colombo":India Standard Time
+"Indian/Chagos":Indian Ocean Time
+"Asia/Bangkok":Indochina Time
+"Asia/Phnom_Penh":Indochina Time
+"Asia/Vientiane":Indochina Time
+"Asia/Makassar":Central Indonesia Time
+"Asia/Jayapura":Eastern Indonesia Time
+"Asia/Jakarta":Western Indonesia Time
+"Asia/Tehran":Iran Standard Time
+"Asia/Irkutsk":Irkutsk Standard Time
+"Asia/Jerusalem":Israel Standard Time
+"Asia/Tokyo":Japan Standard Time
+"Asia/Kamchatka":Petropavlovsk-Kamchatski Standard Time
+"Asia/Almaty":East Kazakhstan Time
+"Asia/Aqtobe":West Kazakhstan Time
+"Asia/Seoul":Korean Standard Time
+"Pacific/Kosrae":Kosrae Time
+"Asia/Krasnoyarsk":Krasnoyarsk Standard Time
+"Asia/Bishkek":Kyrgyzstan Time
+"Asia/Colombo":Lanka Time
+"Pacific/Kiritimati":Line Islands Time
+"Australia/Lord_Howe":Lord Howe Standard Time
+"Asia/Macau":China Standard Time
+"Antarctica/Macquarie":Macquarie Island Time
+"Asia/Magadan":Magadan Standard Time
+"Asia/Kuching":Malaysia Time
+"Indian/Maldives":Maldives Time
+"Pacific/Marquesas":Marquesas Time
+"Pacific/Majuro":Marshall Islands Time
+"Indian/Mauritius":Mauritius Standard Time
+"Antarctica/Mawson":Mawson Time
+"America/Santa_Isabel":Northwest Mexico Standard Time
+"America/Mazatlan":Mexican Pacific Standard Time
+"Asia/Ulaanbaatar":Ulaanbaatar Standard Time
+"Europe/Moscow":Moscow Standard Time
+"Asia/Rangoon":Myanmar Time
+"Pacific/Nauru":Nauru Time
+"Asia/Katmandu":Nepal Time
+"Pacific/Noumea":New Caledonia Standard Time
+"Pacific/Auckland":New Zealand Standard Time
+"Antarctica/McMurdo":New Zealand Standard Time
+"America/St_Johns":Newfoundland Standard Time
+"Pacific/Niue":Niue Time
+"Pacific/Norfolk":Norfolk Island Standard Time
+"America/Noronha":Fernando de Noronha Standard Time
+"Pacific/Saipan":North Mariana Islands Time
+"Asia/Novosibirsk":Novosibirsk Standard Time
+"Asia/Omsk":Omsk Standard Time
+"Asia/Karachi":Pakistan Standard Time
+"Pacific/Palau":Palau Time
+"Pacific/Port_Moresby":Papua New Guinea Time
+"America/Asuncion":Paraguay Standard Time
+"America/Lima":Peru Standard Time
+"Asia/Manila":Philippine Standard Time
+"Pacific/Enderbury":Phoenix Islands Time
+"America/Miquelon":St. Pierre & Miquelon Standard Time
+"Pacific/Pitcairn":Pitcairn Time
+"Pacific/Ponape":Ponape Time
+"Asia/Pyongyang":Pyongyang Time
+"Asia/Qyzylorda":Qyzylorda Standard Time
+"Indian/Reunion":Réunion Time
+"Antarctica/Rothera":Rothera Time
+"Asia/Sakhalin":Sakhalin Standard Time
+"Europe/Samara":Samara Standard Time
+"Pacific/Pago_Pago":Samoa Standard Time
+"Indian/Mahe":Seychelles Time
+"Asia/Singapore":Singapore Standard Time
+"Pacific/Guadalcanal":Solomon Islands Time
+"Atlantic/South_Georgia":South Georgia Time
+"America/Paramaribo":Suriname Time
+"Antarctica/Syowa":Syowa Time
+"Pacific/Tahiti":Tahiti Time
+"Asia/Taipei":China Standard Time
+"Asia/Dushanbe":Tajikistan Time
+"Pacific/Fakaofo":Tokelau Time
+"Pacific/Tongatapu":Tonga Standard Time
+"Pacific/Truk":Chuuk Time
+"Asia/Ashgabat":Turkmenistan Standard Time
+"Pacific/Funafuti":Tuvalu Time
+"America/Montevideo":Uruguay Standard Time
+"Asia/Tashkent":Uzbekistan Standard Time
+"Pacific/Efate":Vanuatu Standard Time
+"America/Caracas":Venezuela Time
+"Asia/Vladivostok":Vladivostok Standard Time
+"Europe/Volgograd":Volgograd Standard Time
+"Antarctica/Vostok":Vostok Time
+"Pacific/Wake":Wake Island Time
+"Pacific/Wallis":Wallis & Futuna Time
+"Asia/Yakutsk":Yakutsk Standard Time
+"Asia/Yekaterinburg":Yekaterinburg Standard Time

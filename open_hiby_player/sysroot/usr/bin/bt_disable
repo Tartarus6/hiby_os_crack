@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bt-adapter --set "Discoverable" "Off"
+bt-adapter --set "Powered" "Off"
+

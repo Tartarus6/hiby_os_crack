@@ -1,0 +1,55 @@
+{
+	"item": 
+	[
+		{
+			"name": "this",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "420",
+			"height": "130"
+		},
+		{
+			"name": "progress",
+			"type": "HScroll",
+			"title": "",
+			"max": "100",
+			"min": "0",
+			"step": "1",
+			"left": "40",
+			"top": "60",
+			"width": "320",
+			"height": "32",
+			"data_type": "int32",
+			"link": "cur_val",
+			"value":"<1001>"
+		},
+		{
+			"name": "cur_val",
+			"type": "Static",
+			"title": "%s",
+			"left": "200",
+			"top": "20",
+			"width": "100",
+			"height": "20"
+		},	
+		{
+			"name": "max",
+			"type": "Static",
+			"title": "100",
+			"left": "325",
+			"top": "90",
+			"width": "100",
+			"height": "20",
+			"value":"<1002>"
+		},
+		{
+			"name": "min",
+			"type": "Static",
+			"title": "0",
+			"left": "45",
+			"top": "90",
+			"width": "100",
+			"height": "20"
+		}
+	]
+}

@@ -1,0 +1,1714 @@
+﻿// © 2016 and later: Unicode, Inc. and others.
+// License & terms of use: http://www.unicode.org/copyright.html
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+it{
+    zoneStrings{
+        "Africa:Abidjan" {
+            ec{"Abidjan"}
+            gmt{"+0000"}
+        }
+        "Africa:Accra" {
+            ec{"Accra"}
+            gmt{"+0000"}
+        }
+        "Africa:Addis_Ababa" {
+            ec{"Addis Abeba"}
+            gmt{"+0300"}
+        }
+        "Africa:Algiers" {
+            ec{"Algeri"}
+            gmt{"+0100"}
+        }
+        "Africa:Asmera" {
+            ec{"Asmara"}
+            gmt{"+0300"}
+        }
+        "Africa:Bamako" {
+            ec{"Bamako"}
+            gmt{"+0000"}
+        }
+        "Africa:Bangui" {
+            ec{"Bangui"}
+            gmt{"+0100"}
+        }
+        "Africa:Banjul" {
+            ec{"Banjul"}
+            gmt{"+0000"}
+        }
+        "Africa:Bissau" {
+            ec{"Bissau"}
+            gmt{"+0000"}
+        }
+        "Africa:Blantyre" {
+            ec{"Blantyre"}
+            gmt{"+0200"}
+        }
+        "Africa:Brazzaville" {
+            ec{"Brazzaville"}
+            gmt{"+0100"}
+        }
+        "Africa:Bujumbura" {
+            ec{"Bujumbura"}
+            gmt{"+0200"}
+        }
+        "Africa:Cairo" {
+            ec{"Il Cairo"}
+            gmt{"+0200"}
+        }
+        "Africa:Casablanca" {
+            ec{"Casablanca"}
+            gmt{"+0100"}
+        }
+        "Africa:Ceuta" {
+            ec{"Ceuta"}
+            gmt{"+0100"}
+        }
+        "Africa:Conakry" {
+            ec{"Conakry"}
+            gmt{"+0000"}
+        }
+        "Africa:Dakar" {
+            ec{"Dakar"}
+            gmt{"+0000"}
+        }
+        "Africa:Dar_es_Salaam" {
+            ec{"Dar es Salaam"}
+            gmt{"+0300"}
+        }
+        "Africa:Djibouti" {
+            ec{"Gibuti"}
+            gmt{"+0300"}
+        }
+        "Africa:Douala" {
+            ec{"Douala"}
+            gmt{"+0100"}
+        }
+        "Africa:El_Aaiun" {
+            ec{"El Ayun"}
+            gmt{"+0100"}
+        }
+        "Africa:Freetown" {
+            ec{"Freetown"}
+            gmt{"+0000"}
+        }
+        "Africa:Gaborone" {
+            ec{"Gaborone"}
+            gmt{"+0200"}
+        }
+        "Africa:Harare" {
+            ec{"Harare"}
+            gmt{"+0200"}
+        }
+        "Africa:Johannesburg" {
+            ec{"Johannesburg"}
+            gmt{"+0200"}
+        }
+        "Africa:Juba" {
+            ec{"Giuba"}
+            gmt{"+0200"}
+        }
+        "Africa:Kampala" {
+            ec{"Kampala"}
+            gmt{"+0300"}
+        }
+        "Africa:Khartoum" {
+            ec{"Khartum"}
+            gmt{"+0200"}
+        }
+        "Africa:Kigali" {
+            ec{"Kigali"}
+            gmt{"+0200"}
+        }
+        "Africa:Kinshasa" {
+            ec{"Kinshasa"}
+            gmt{"+0100"}
+        }
+        "Africa:Lagos" {
+            ec{"Lagos"}
+            gmt{"+0100"}
+        }
+        "Africa:Libreville" {
+            ec{"Libreville"}
+            gmt{"+0100"}
+        }
+        "Africa:Lome" {
+            ec{"Lomé"}
+            gmt{"+0000"}
+        }
+        "Africa:Luanda" {
+            ec{"Luanda"}
+            gmt{"+0100"}
+        }
+        "Africa:Lubumbashi" {
+            ec{"Lubumbashi"}
+            gmt{"+0200"}
+        }
+        "Africa:Lusaka" {
+            ec{"Lusaka"}
+            gmt{"+0200"}
+        }
+        "Africa:Malabo" {
+            ec{"Malabo"}
+            gmt{"+0100"}
+        }
+        "Africa:Maputo" {
+            ec{"Maputo"}
+            gmt{"+0200"}
+        }
+        "Africa:Maseru" {
+            ec{"Maseru"}
+            gmt{"+0200"}
+        }
+        "Africa:Mbabane" {
+            ec{"Mbabane"}
+            gmt{"+0200"}
+        }
+        "Africa:Mogadishu" {
+            ec{"Mogadiscio"}
+            gmt{"+0300"}
+        }
+        "Africa:Monrovia" {
+            ec{"Monrovia"}
+            gmt{"+0000"}
+        }
+        "Africa:Nairobi" {
+            ec{"Nairobi"}
+            gmt{"+0300"}
+        }
+        "Africa:Ndjamena" {
+            ec{"N’Djamena"}
+            gmt{"+0100"}
+        }
+        "Africa:Niamey" {
+            ec{"Niamey"}
+            gmt{"+0100"}
+        }
+        "Africa:Nouakchott" {
+            ec{"Nouakchott"}
+            gmt{"+0000"}
+        }
+        "Africa:Ouagadougou" {
+            ec{"Ouagadougou"}
+            gmt{"+0000"}
+        }
+        "Africa:Porto-Novo"{
+            ec{"Porto-Novo"}
+        }
+        "Africa:Sao_Tome" {
+            ec{"São Tomé"}
+            gmt{"+0000"}
+        }
+        "Africa:Tripoli" {
+            ec{"Tripoli"}
+            gmt{"+0200"}
+        }
+        "Africa:Tunis" {
+            ec{"Tunisi"}
+            gmt{"+0100"}
+        }
+        "Africa:Windhoek" {
+            ec{"Windhoek"}
+            gmt{"+0200"}
+        }
+        "America:Adak" {
+            ec{"Adak"}
+            gmt{"-1000"}
+        }
+        "America:Anchorage" {
+            ec{"Anchorage"}
+            gmt{"-0900"}
+        }
+        "America:Anguilla" {
+            ec{"Anguilla"}
+            gmt{"-0400"}
+        }
+        "America:Antigua" {
+            ec{"Antigua"}
+            gmt{"-0400"}
+        }
+        "America:Araguaina" {
+            ec{"Araguaina"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:La_Rioja" {
+            ec{"La Rioja"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Rio_Gallegos" {
+            ec{"Rio Gallegos"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Salta" {
+            ec{"Salta"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:San_Juan" {
+            ec{"San Juan"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:San_Luis" {
+            ec{"San Luis"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Tucuman" {
+            ec{"Tucumán"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Ushuaia" {
+            ec{"Ushuaia"}
+            gmt{"-0300"}
+        }
+        "America:Aruba" {
+            ec{"Aruba"}
+            gmt{"-0400"}
+        }
+        "America:Asuncion" {
+            ec{"Asunción"}
+            gmt{"-0300"}
+        }
+        "America:Bahia" {
+            ec{"Bahia"}
+            gmt{"-0300"}
+        }
+        "America:Bahia_Banderas" {
+            ec{"Bahía de Banderas"}
+            gmt{"-0600"}
+        }
+        "America:Barbados" {
+            ec{"Barbados"}
+            gmt{"-0400"}
+        }
+        "America:Belem" {
+            ec{"Belem"}
+            gmt{"-0300"}
+        }
+        "America:Belize" {
+            ec{"Belize"}
+            gmt{"-0600"}
+        }
+        "America:Blanc-Sablon"{
+            ec{"Blanc-Sablon"}
+        }
+        "America:Boa_Vista" {
+            ec{"Boa Vista"}
+            gmt{"-0400"}
+        }
+        "America:Bogota" {
+            ec{"Bogotá"}
+            gmt{"-0500"}
+        }
+        "America:Boise" {
+            ec{"Boise"}
+            gmt{"-0700"}
+        }
+        "America:Buenos_Aires" {
+            ec{"Buenos Aires"}
+            gmt{"-0300"}
+        }
+        "America:Cambridge_Bay" {
+            ec{"Cambridge Bay"}
+            gmt{"-0700"}
+        }
+        "America:Campo_Grande" {
+            ec{"Campo Grande"}
+            gmt{"-0400"}
+        }
+        "America:Cancun" {
+            ec{"Cancún"}
+            gmt{"-0500"}
+        }
+        "America:Caracas" {
+            ec{"Caracas"}
+            gmt{"-0400"}
+        }
+        "America:Catamarca" {
+            ec{"Catamarca"}
+            gmt{"-0300"}
+        }
+        "America:Cayenne" {
+            ec{"Caienna"}
+            gmt{"-0300"}
+        }
+        "America:Cayman" {
+            ec{"Cayman"}
+            gmt{"-0500"}
+        }
+        "America:Chicago" {
+            ec{"Chicago"}
+            gmt{"-0600"}
+        }
+        "America:Chihuahua" {
+            ec{"Chihuahua"}
+            gmt{"-0600"}
+        }
+        "America:Coral_Harbour" {
+            ec{"Atikokan"}
+            gmt{"-0500"}
+        }
+        "America:Cordoba" {
+            ec{"Cordoba"}
+            gmt{"-0300"}
+        }
+        "America:Costa_Rica" {
+            ec{"Costa Rica"}
+            gmt{"-0600"}
+        }
+        "America:Creston" {
+            ec{"Creston"}
+            gmt{"-0700"}
+        }
+        "America:Cuiaba" {
+            ec{"Cuiaba"}
+            gmt{"-0400"}
+        }
+        "America:Curacao" {
+            ec{"Curaçao"}
+            gmt{"-0400"}
+        }
+        "America:Danmarkshavn" {
+            ec{"Danmarkshavn"}
+            gmt{"+0000"}
+        }
+        "America:Dawson" {
+            ec{"Dawson"}
+            gmt{"-0700"}
+        }
+        "America:Dawson_Creek" {
+            ec{"Dawson Creek"}
+            gmt{"-0700"}
+        }
+        "America:Denver" {
+            ec{"Denver"}
+            gmt{"-0700"}
+        }
+        "America:Detroit" {
+            ec{"Detroit"}
+            gmt{"-0500"}
+        }
+        "America:Dominica" {
+            ec{"Dominica"}
+            gmt{"-0400"}
+        }
+        "America:Edmonton" {
+            ec{"Edmonton"}
+            gmt{"-0700"}
+        }
+        "America:Eirunepe" {
+            ec{"Eirunepe"}
+            gmt{"-0500"}
+        }
+        "America:El_Salvador" {
+            ec{"El Salvador"}
+            gmt{"-0600"}
+        }
+        "America:Fort_Nelson" {
+            ec{"Fort Nelson"}
+            gmt{"-0700"}
+        }
+        "America:Fortaleza" {
+            ec{"Fortaleza"}
+            gmt{"-0300"}
+        }
+        "America:Glace_Bay" {
+            ec{"Glace Bay"}
+            gmt{"-0400"}
+        }
+        "America:Godthab" {
+            ec{"Nuuk"}
+            gmt{"-0300"}
+        }
+        "America:Goose_Bay" {
+            ec{"Goose Bay"}
+            gmt{"-0400"}
+        }
+        "America:Grand_Turk" {
+            ec{"Grand Turk"}
+            gmt{"-0500"}
+        }
+        "America:Grenada" {
+            ec{"Grenada"}
+            gmt{"-0400"}
+        }
+        "America:Guadeloupe" {
+            ec{"Guadalupa"}
+            gmt{"-0400"}
+        }
+        "America:Guatemala" {
+            ec{"Guatemala"}
+            gmt{"-0600"}
+        }
+        "America:Guayaquil" {
+            ec{"Guayaquil"}
+            gmt{"-0500"}
+        }
+        "America:Guyana" {
+            ec{"Guyana"}
+            gmt{"-0400"}
+        }
+        "America:Halifax" {
+            ec{"Halifax"}
+            gmt{"-0400"}
+        }
+        "America:Havana" {
+            ec{"L’Avana"}
+            gmt{"-0500"}
+        }
+        "America:Hermosillo" {
+            ec{"Hermosillo"}
+            gmt{"-0700"}
+        }
+        "America:Indiana:Knox" {
+            ec{"Knox, Indiana"}
+            gmt{"-0600"}
+        }
+        "America:Indiana:Marengo" {
+            ec{"Marengo, Indiana"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Petersburg" {
+            ec{"Petersburg, Indiana"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Tell_City" {
+            ec{"Tell City, Indiana"}
+            gmt{"-0600"}
+        }
+        "America:Indiana:Vevay" {
+            ec{"Vevay, Indiana"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Vincennes" {
+            ec{"Vincennes, Indiana"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Winamac" {
+            ec{"Winamac, Indiana"}
+            gmt{"-0500"}
+        }
+        "America:Indianapolis" {
+            ec{"Indianapolis"}
+            gmt{"-0500"}
+        }
+        "America:Inuvik" {
+            ec{"Inuvik"}
+            gmt{"-0700"}
+        }
+        "America:Iqaluit" {
+            ec{"Iqaluit"}
+            gmt{"-0500"}
+        }
+        "America:Jamaica" {
+            ec{"Giamaica"}
+            gmt{"-0500"}
+        }
+        "America:Jujuy" {
+            ec{"Jujuy"}
+            gmt{"-0300"}
+        }
+        "America:Juneau" {
+            ec{"Juneau"}
+            gmt{"-0900"}
+        }
+        "America:Kentucky:Monticello" {
+            ec{"Monticello, Kentucky"}
+            gmt{"-0500"}
+        }
+        "America:Kralendijk" {
+            ec{"Kralendijk"}
+            gmt{"-0400"}
+        }
+        "America:La_Paz" {
+            ec{"La Paz"}
+            gmt{"-0400"}
+        }
+        "America:Lima" {
+            ec{"Lima"}
+            gmt{"-0500"}
+        }
+        "America:Los_Angeles" {
+            ec{"Los Angeles"}
+            gmt{"-0800"}
+        }
+        "America:Louisville" {
+            ec{"Louisville"}
+            gmt{"-0500"}
+        }
+        "America:Lower_Princes" {
+            ec{"Lower Prince’s Quarter"}
+            gmt{"-0400"}
+        }
+        "America:Maceio" {
+            ec{"Maceio"}
+            gmt{"-0300"}
+        }
+        "America:Managua" {
+            ec{"Managua"}
+            gmt{"-0600"}
+        }
+        "America:Manaus" {
+            ec{"Manaus"}
+            gmt{"-0400"}
+        }
+        "America:Marigot" {
+            ec{"Marigot"}
+            gmt{"-0400"}
+        }
+        "America:Martinique" {
+            ec{"Martinica"}
+            gmt{"-0400"}
+        }
+        "America:Matamoros" {
+            ec{"Matamoros"}
+            gmt{"-0600"}
+        }
+        "America:Mazatlan" {
+            ec{"Mazatlan"}
+            gmt{"-0700"}
+        }
+        "America:Mendoza" {
+            ec{"Mendoza"}
+            gmt{"-0300"}
+        }
+        "America:Menominee" {
+            ec{"Menominee"}
+            gmt{"-0600"}
+        }
+        "America:Merida" {
+            ec{"Mérida"}
+            gmt{"-0600"}
+        }
+        "America:Metlakatla" {
+            ec{"Metlakatla"}
+            gmt{"-0900"}
+        }
+        "America:Mexico_City" {
+            ec{"Città del Messico"}
+            gmt{"-0600"}
+        }
+        "America:Miquelon" {
+            ec{"Miquelon"}
+            gmt{"-0300"}
+        }
+        "America:Moncton" {
+            ec{"Moncton"}
+            gmt{"-0400"}
+        }
+        "America:Monterrey" {
+            ec{"Monterrey"}
+            gmt{"-0600"}
+        }
+        "America:Montevideo" {
+            ec{"Montevideo"}
+            gmt{"-0300"}
+        }
+        "America:Montserrat" {
+            ec{"Montserrat"}
+            gmt{"-0400"}
+        }
+        "America:Nassau" {
+            ec{"Nassau"}
+            gmt{"-0500"}
+        }
+        "America:New_York" {
+            ec{"New York"}
+            gmt{"-0500"}
+        }
+        "America:Nipigon" {
+            ec{"Nipigon"}
+            gmt{"-0500"}
+        }
+        "America:Nome" {
+            ec{"Nome"}
+            gmt{"-0900"}
+        }
+        "America:Noronha" {
+            ec{"Noronha"}
+            gmt{"-0200"}
+        }
+        "America:North_Dakota:Beulah" {
+            ec{"Beulah, Dakota del nord"}
+            gmt{"-0600"}
+        }
+        "America:North_Dakota:Center" {
+            ec{"Center, Dakota del nord"}
+            gmt{"-0600"}
+        }
+        "America:North_Dakota:New_Salem" {
+            ec{"New Salem, Dakota del nord"}
+            gmt{"-0600"}
+        }
+        "America:Ojinaga" {
+            ec{"Ojinaga"}
+            gmt{"-0600"}
+        }
+        "America:Panama" {
+            ec{"Panamá"}
+            gmt{"-0500"}
+        }
+        "America:Pangnirtung" {
+            ec{"Pangnirtung"}
+            gmt{"-0500"}
+        }
+        "America:Paramaribo" {
+            ec{"Paramaribo"}
+            gmt{"-0300"}
+        }
+        "America:Phoenix" {
+            ec{"Phoenix"}
+            gmt{"-0700"}
+        }
+        "America:Port-au-Prince"{
+            ec{"Port-au-Prince"}
+        }
+        "America:Port_of_Spain" {
+            ec{"Port of Spain"}
+            gmt{"-0400"}
+        }
+        "America:Porto_Velho" {
+            ec{"Porto Velho"}
+            gmt{"-0400"}
+        }
+        "America:Puerto_Rico" {
+            ec{"Portorico"}
+            gmt{"-0400"}
+        }
+        "America:Punta_Arenas" {
+            ec{"Punta Arenas"}
+            gmt{"-0300"}
+        }
+        "America:Rainy_River" {
+            ec{"Rainy River"}
+            gmt{"-0600"}
+        }
+        "America:Rankin_Inlet" {
+            ec{"Rankin Inlet"}
+            gmt{"-0600"}
+        }
+        "America:Recife" {
+            ec{"Recife"}
+            gmt{"-0300"}
+        }
+        "America:Regina" {
+            ec{"Regina"}
+            gmt{"-0600"}
+        }
+        "America:Resolute" {
+            ec{"Resolute"}
+            gmt{"-0600"}
+        }
+        "America:Rio_Branco" {
+            ec{"Rio Branco"}
+            gmt{"-0500"}
+        }
+        "America:Santa_Isabel" {
+            ec{"Santa Isabel"}
+            gmt{"-0800"}
+        }
+        "America:Santarem" {
+            ec{"Santarém"}
+            gmt{"-0300"}
+        }
+        "America:Santiago" {
+            ec{"Santiago"}
+            gmt{"-0300"}
+        }
+        "America:Santo_Domingo" {
+            ec{"Santo Domingo"}
+            gmt{"-0400"}
+        }
+        "America:Sao_Paulo" {
+            ec{"San Paolo"}
+            gmt{"-0300"}
+        }
+        "America:Scoresbysund" {
+            ec{"Ittoqqortoormiit"}
+            gmt{"-0100"}
+        }
+        "America:Sitka" {
+            ec{"Sitka"}
+            gmt{"-0900"}
+        }
+        "America:St_Barthelemy" {
+            ec{"Saint-Barthélemy"}
+            gmt{"-0400"}
+        }
+        "America:St_Johns" {
+            ec{"St. John’s"}
+            gmt{"-0430"}
+        }
+        "America:St_Kitts" {
+            ec{"St. Kitts"}
+            gmt{"-0400"}
+        }
+        "America:St_Lucia" {
+            ec{"Santa Lucia"}
+            gmt{"-0400"}
+        }
+        "America:St_Thomas" {
+            ec{"Saint Thomas"}
+            gmt{"-0400"}
+        }
+        "America:St_Vincent" {
+            ec{"Saint Vincent"}
+            gmt{"-0400"}
+        }
+        "America:Swift_Current" {
+            ec{"Swift Current"}
+            gmt{"-0600"}
+        }
+        "America:Tegucigalpa" {
+            ec{"Tegucigalpa"}
+            gmt{"-0600"}
+        }
+        "America:Thule" {
+            ec{"Thule"}
+            gmt{"-0400"}
+        }
+        "America:Thunder_Bay" {
+            ec{"Thunder Bay"}
+            gmt{"-0500"}
+        }
+        "America:Tijuana" {
+            ec{"Tijuana"}
+            gmt{"-0800"}
+        }
+        "America:Toronto" {
+            ec{"Toronto"}
+            gmt{"-0500"}
+        }
+        "America:Tortola" {
+            ec{"Tortola"}
+            gmt{"-0400"}
+        }
+        "America:Vancouver" {
+            ec{"Vancouver"}
+            gmt{"-0800"}
+        }
+        "America:Whitehorse" {
+            ec{"Whitehorse"}
+            gmt{"-0700"}
+        }
+        "America:Winnipeg" {
+            ec{"Winnipeg"}
+            gmt{"-0600"}
+        }
+        "America:Yakutat" {
+            ec{"Yakutat"}
+            gmt{"-0900"}
+        }
+        "America:Yellowknife" {
+            ec{"Yellowknife"}
+            gmt{"-0700"}
+        }
+        "Antarctica:Casey" {
+            ec{"Casey"}
+            gmt{"+1100"}
+        }
+        "Antarctica:Davis" {
+            ec{"Davis"}
+            gmt{"+0700"}
+        }
+        "Antarctica:DumontDUrville" {
+            ec{"Dumont d’Urville"}
+            gmt{"+1000"}
+        }
+        "Antarctica:Macquarie" {
+            ec{"Macquarie"}
+            gmt{"+1100"}
+        }
+        "Antarctica:Mawson" {
+            ec{"Mawson"}
+            gmt{"+0500"}
+        }
+        "Antarctica:McMurdo" {
+            ec{"McMurdo"}
+            gmt{"+1300"}
+        }
+        "Antarctica:Palmer" {
+            ec{"Palmer"}
+            gmt{"-0300"}
+        }
+        "Antarctica:Rothera" {
+            ec{"Rothera"}
+            gmt{"-0300"}
+        }
+        "Antarctica:Syowa" {
+            ec{"Syowa"}
+            gmt{"+0300"}
+        }
+        "Antarctica:Troll" {
+            ec{"Troll"}
+            gmt{"+0000"}
+        }
+        "Antarctica:Vostok" {
+            ec{"Vostok"}
+            gmt{"+0700"}
+        }
+        "Arctic:Longyearbyen" {
+            ec{"Longyearbyen"}
+            gmt{"+0100"}
+        }
+        "Asia:Aden" {
+            ec{"Aden"}
+            gmt{"+0300"}
+        }
+        "Asia:Almaty" {
+            ec{"Almaty"}
+            gmt{"+0600"}
+        }
+        "Asia:Amman" {
+            ec{"Amman"}
+            gmt{"+0300"}
+        }
+        "Asia:Anadyr" {
+            ec{"Anadyr’"}
+            gmt{"+1200"}
+        }
+        "Asia:Aqtau" {
+            ec{"Aqtau"}
+            gmt{"+0500"}
+        }
+        "Asia:Aqtobe" {
+            ec{"Aqtöbe"}
+            gmt{"+0500"}
+        }
+        "Asia:Ashgabat" {
+            ec{"Ashgabat"}
+            gmt{"+0500"}
+        }
+        "Asia:Atyrau" {
+            ec{"Atyrau"}
+            gmt{"+0500"}
+        }
+        "Asia:Baghdad" {
+            ec{"Baghdad"}
+            gmt{"+0300"}
+        }
+        "Asia:Bahrain" {
+            ec{"Bahrein"}
+            gmt{"+0300"}
+        }
+        "Asia:Baku" {
+            ec{"Baku"}
+            gmt{"+0400"}
+        }
+        "Asia:Bangkok" {
+            ec{"Bangkok"}
+            gmt{"+0700"}
+        }
+        "Asia:Barnaul" {
+            ec{"Barnaul"}
+            gmt{"+0700"}
+        }
+        "Asia:Beirut" {
+            ec{"Beirut"}
+            gmt{"+0200"}
+        }
+        "Asia:Bishkek" {
+            ec{"Bishkek"}
+            gmt{"+0600"}
+        }
+        "Asia:Brunei" {
+            ec{"Brunei"}
+            gmt{"+0800"}
+        }
+        "Asia:Calcutta" {
+            ec{"Calcutta"}
+            gmt{"+0530"}
+        }
+        "Asia:Chita" {
+            ec{"Čita"}
+            gmt{"+0900"}
+        }
+        "Asia:Choibalsan" {
+            ec{"Choibalsan"}
+            gmt{"+0800"}
+        }
+        "Asia:Colombo" {
+            ec{"Colombo"}
+            gmt{"+0530"}
+        }
+        "Asia:Damascus" {
+            ec{"Damasco"}
+            gmt{"+0300"}
+        }
+        "Asia:Dhaka" {
+            ec{"Dacca"}
+            gmt{"+0600"}
+        }
+        "Asia:Dili" {
+            ec{"Dili"}
+            gmt{"+0900"}
+        }
+        "Asia:Dubai" {
+            ec{"Dubai"}
+            gmt{"+0400"}
+        }
+        "Asia:Dushanbe" {
+            ec{"Dushanbe"}
+            gmt{"+0500"}
+        }
+        "Asia:Famagusta" {
+            ec{"Famagosta"}
+            gmt{"+0200"}
+        }
+        "Asia:Gaza" {
+            ec{"Gaza"}
+            gmt{"+0200"}
+        }
+        "Asia:Hebron" {
+            ec{"Hebron"}
+            gmt{"+0200"}
+        }
+        "Asia:Hong_Kong" {
+            ec{"Hong Kong"}
+            gmt{"+0800"}
+        }
+        "Asia:Hovd" {
+            ec{"Hovd"}
+            gmt{"+0700"}
+        }
+        "Asia:Irkutsk" {
+            ec{"Irkutsk"}
+            gmt{"+0800"}
+        }
+        "Asia:Jakarta" {
+            ec{"Giacarta"}
+            gmt{"+0700"}
+        }
+        "Asia:Jayapura" {
+            ec{"Jayapura"}
+            gmt{"+0900"}
+        }
+        "Asia:Jerusalem" {
+            ec{"Gerusalemme"}
+            gmt{"+0200"}
+        }
+        "Asia:Kabul" {
+            ec{"Kabul"}
+            gmt{"+0430"}
+        }
+        "Asia:Kamchatka" {
+            ec{"Kamchatka"}
+            gmt{"+1200"}
+        }
+        "Asia:Karachi" {
+            ec{"Karachi"}
+            gmt{"+0500"}
+        }
+        "Asia:Katmandu" {
+            ec{"Kathmandu"}
+            gmt{"+0545"}
+        }
+        "Asia:Khandyga" {
+            ec{"Chandyga"}
+            gmt{"+0900"}
+        }
+        "Asia:Krasnoyarsk" {
+            ec{"Krasnojarsk"}
+            gmt{"+0700"}
+        }
+        "Asia:Kuala_Lumpur" {
+            ec{"Kuala Lumpur"}
+            gmt{"+0800"}
+        }
+        "Asia:Kuching" {
+            ec{"Kuching"}
+            gmt{"+0800"}
+        }
+        "Asia:Kuwait" {
+            ec{"Kuwait"}
+            gmt{"+0300"}
+        }
+        "Asia:Macau" {
+            ec{"Macao"}
+            gmt{"+0800"}
+        }
+        "Asia:Magadan" {
+            ec{"Magadan"}
+            gmt{"+1100"}
+        }
+        "Asia:Makassar" {
+            ec{"Makassar"}
+            gmt{"+0800"}
+        }
+        "Asia:Manila" {
+            ec{"Manila"}
+            gmt{"+0800"}
+        }
+        "Asia:Muscat" {
+            ec{"Mascate"}
+            gmt{"+0400"}
+        }
+        "Asia:Nicosia" {
+            ec{"Nicosia"}
+            gmt{"+0200"}
+        }
+        "Asia:Novokuznetsk" {
+            ec{"Novokuzneck"}
+            gmt{"+0700"}
+        }
+        "Asia:Novosibirsk" {
+            ec{"Novosibirsk"}
+            gmt{"+0700"}
+        }
+        "Asia:Omsk" {
+            ec{"Omsk"}
+            gmt{"+0600"}
+        }
+        "Asia:Oral" {
+            ec{"Oral"}
+            gmt{"+0500"}
+        }
+        "Asia:Phnom_Penh" {
+            ec{"Phnom Penh"}
+            gmt{"+0700"}
+        }
+        "Asia:Pontianak" {
+            ec{"Pontianak"}
+            gmt{"+0700"}
+        }
+        "Asia:Pyongyang" {
+            ec{"Pyongyang"}
+            gmt{"+0900"}
+        }
+        "Asia:Qatar" {
+            ec{"Qatar"}
+            gmt{"+0300"}
+        }
+        "Asia:Qyzylorda" {
+            ec{"Qyzylorda"}
+            gmt{"+0500"}
+        }
+        "Asia:Rangoon" {
+            ec{"Rangoon"}
+            gmt{"+0630"}
+        }
+        "Asia:Riyadh" {
+            ec{"Riyad"}
+            gmt{"+0300"}
+        }
+        "Asia:Saigon" {
+            ec{"Ho Chi Minh"}
+            gmt{"+0700"}
+        }
+        "Asia:Sakhalin" {
+            ec{"Sachalin"}
+            gmt{"+1100"}
+        }
+        "Asia:Samarkand" {
+            ec{"Samarcanda"}
+            gmt{"+0500"}
+        }
+        "Asia:Seoul" {
+            ec{"Seul"}
+            gmt{"+0900"}
+        }
+        "Asia:Shanghai" {
+            ec{"Pechino"}
+            gmt{"+0800"}
+        }
+        "Asia:Singapore" {
+            ec{"Singapore"}
+            gmt{"+0800"}
+        }
+        "Asia:Srednekolymsk" {
+            ec{"Srednekolymsk"}
+            gmt{"+1100"}
+        }
+        "Asia:Taipei" {
+            ec{"Taipei"}
+            gmt{"+0800"}
+        }
+        "Asia:Tashkent" {
+            ec{"Tashkent"}
+            gmt{"+0500"}
+        }
+        "Asia:Tbilisi" {
+            ec{"Tbilisi"}
+            gmt{"+0400"}
+        }
+        "Asia:Tehran" {
+            ec{"Teheran"}
+            gmt{"+0330"}
+        }
+        "Asia:Thimphu" {
+            ec{"Thimphu"}
+            gmt{"+0600"}
+        }
+        "Asia:Tokyo" {
+            ec{"Tokyo"}
+            gmt{"+0900"}
+        }
+        "Asia:Tomsk" {
+            ec{"Tomsk"}
+            gmt{"+0700"}
+        }
+        "Asia:Ulaanbaatar" {
+            ec{"Ulaanbaatar"}
+            gmt{"+0800"}
+        }
+        "Asia:Urumqi" {
+            ec{"Urumqi"}
+            gmt{"+0600"}
+        }
+        "Asia:Ust-Nera"{
+            ec{"Ust’-Nera"}
+        }
+        "Asia:Vientiane" {
+            ec{"Vientiane"}
+            gmt{"+0700"}
+        }
+        "Asia:Vladivostok" {
+            ec{"Vladivostok"}
+            gmt{"+1000"}
+        }
+        "Asia:Yakutsk" {
+            ec{"Jakutsk"}
+            gmt{"+0900"}
+        }
+        "Asia:Yekaterinburg" {
+            ec{"Ekaterinburg"}
+            gmt{"+0500"}
+        }
+        "Asia:Yerevan" {
+            ec{"Yerevan"}
+            gmt{"+0400"}
+        }
+        "Atlantic:Azores" {
+            ec{"Azzorre"}
+            gmt{"-0100"}
+        }
+        "Atlantic:Bermuda" {
+            ec{"Bermuda"}
+            gmt{"-0400"}
+        }
+        "Atlantic:Canary" {
+            ec{"Canarie"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Cape_Verde" {
+            ec{"Capo Verde"}
+            gmt{"-0100"}
+        }
+        "Atlantic:Faeroe" {
+            ec{"Isole Fær Øer"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Madeira" {
+            ec{"Madeira"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Reykjavik" {
+            ec{"Reykjavík"}
+            gmt{"+0000"}
+        }
+        "Atlantic:South_Georgia" {
+            ec{"Georgia del Sud"}
+            gmt{"-0200"}
+        }
+        "Atlantic:St_Helena" {
+            ec{"Sant’Elena"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Stanley" {
+            ec{"Stanley"}
+            gmt{"-0300"}
+        }
+        "Australia:Adelaide" {
+            ec{"Adelaide"}
+            gmt{"+1030"}
+        }
+        "Australia:Brisbane" {
+            ec{"Brisbane"}
+            gmt{"+1000"}
+        }
+        "Australia:Broken_Hill" {
+            ec{"Broken Hill"}
+            gmt{"+1030"}
+        }
+        "Australia:Currie" {
+            ec{"Currie"}
+            gmt{"+1100"}
+        }
+        "Australia:Darwin" {
+            ec{"Darwin"}
+            gmt{"+0930"}
+        }
+        "Australia:Eucla" {
+            ec{"Eucla"}
+            gmt{"+0845"}
+        }
+        "Australia:Hobart" {
+            ec{"Hobart"}
+            gmt{"+1100"}
+        }
+        "Australia:Lindeman" {
+            ec{"Lindeman"}
+            gmt{"+1000"}
+        }
+        "Australia:Lord_Howe" {
+            ec{"Lord Howe"}
+            gmt{"+1100"}
+        }
+        "Australia:Melbourne" {
+            ec{"Melbourne"}
+            gmt{"+1100"}
+        }
+        "Australia:Perth" {
+            ec{"Perth"}
+            gmt{"+0800"}
+        }
+        "Australia:Sydney" {
+            ec{"Sydney"}
+            gmt{"+1100"}
+        }
+        "Etc:UTC" {
+            ls{"Tempo coordinato universale"}
+            gmt{"+0000"}
+        }
+        "Etc:Unknown"{
+            ec{"Città sconosciuta"}
+        }
+        "Europe:Amsterdam" {
+            ec{"Amsterdam"}
+            gmt{"+0100"}
+        }
+        "Europe:Andorra" {
+            ec{"Andorra"}
+            gmt{"+0100"}
+        }
+        "Europe:Astrakhan" {
+            ec{"Astrakhan"}
+            gmt{"+0400"}
+        }
+        "Europe:Athens" {
+            ec{"Atene"}
+            gmt{"+0200"}
+        }
+        "Europe:Belgrade" {
+            ec{"Belgrado"}
+            gmt{"+0100"}
+        }
+        "Europe:Berlin" {
+            ec{"Berlino"}
+            gmt{"+0100"}
+        }
+        "Europe:Bratislava" {
+            ec{"Bratislava"}
+            gmt{"+0100"}
+        }
+        "Europe:Brussels" {
+            ec{"Bruxelles"}
+            gmt{"+0100"}
+        }
+        "Europe:Bucharest" {
+            ec{"Bucarest"}
+            gmt{"+0200"}
+        }
+        "Europe:Budapest" {
+            ec{"Budapest"}
+            gmt{"+0100"}
+        }
+        "Europe:Busingen" {
+            ec{"Büsingen"}
+            gmt{"+0100"}
+        }
+        "Europe:Chisinau" {
+            ec{"Chisinau"}
+            gmt{"+0200"}
+        }
+        "Europe:Copenhagen" {
+            ec{"Copenaghen"}
+            gmt{"+0100"}
+        }
+        "Europe:Dublin" {
+            ec{"Dublino"}
+            gmt{"+0000"}
+        }
+        "Europe:Gibraltar" {
+            ec{"Gibilterra"}
+            gmt{"+0100"}
+        }
+        "Europe:Guernsey" {
+            ec{"Guernsey"}
+            gmt{"+0000"}
+        }
+        "Europe:Helsinki" {
+            ec{"Helsinki"}
+            gmt{"+0200"}
+        }
+        "Europe:Isle_of_Man" {
+            ec{"Isola di Man"}
+            gmt{"+0000"}
+        }
+        "Europe:Istanbul" {
+            ec{"Istanbul"}
+            gmt{"+0300"}
+        }
+        "Europe:Jersey" {
+            ec{"Jersey"}
+            gmt{"+0000"}
+        }
+        "Europe:Kaliningrad" {
+            ec{"Kaliningrad"}
+            gmt{"+0200"}
+        }
+        "Europe:Kiev" {
+            ec{"Kiev"}
+            gmt{"+0200"}
+        }
+        "Europe:Kirov" {
+            ec{"Kirov"}
+            gmt{"+0300"}
+        }
+        "Europe:Lisbon" {
+            ec{"Lisbona"}
+            gmt{"+0000"}
+        }
+        "Europe:Ljubljana" {
+            ec{"Lubiana"}
+            gmt{"+0100"}
+        }
+        "Europe:London" {
+            ec{"Londra"}
+            gmt{"+0000"}
+        }
+        "Europe:Luxembourg" {
+            ec{"Lussemburgo"}
+            gmt{"+0100"}
+        }
+        "Europe:Madrid" {
+            ec{"Madrid"}
+            gmt{"+0100"}
+        }
+        "Europe:Malta" {
+            ec{"Malta"}
+            gmt{"+0100"}
+        }
+        "Europe:Mariehamn" {
+            ec{"Mariehamn"}
+            gmt{"+0200"}
+        }
+        "Europe:Minsk" {
+            ec{"Minsk"}
+            gmt{"+0300"}
+        }
+        "Europe:Monaco" {
+            ec{"Monaco"}
+            gmt{"+0100"}
+        }
+        "Europe:Moscow" {
+            ec{"Mosca"}
+            gmt{"+0300"}
+        }
+        "Europe:Oslo" {
+            ec{"Oslo"}
+            gmt{"+0100"}
+        }
+        "Europe:Paris" {
+            ec{"Parigi"}
+            gmt{"+0100"}
+        }
+        "Europe:Podgorica" {
+            ec{"Podgorica"}
+            gmt{"+0100"}
+        }
+        "Europe:Prague" {
+            ec{"Praga"}
+            gmt{"+0100"}
+        }
+        "Europe:Riga" {
+            ec{"Riga"}
+            gmt{"+0200"}
+        }
+        "Europe:Rome" {
+            ec{"Roma"}
+            gmt{"+0100"}
+        }
+        "Europe:Samara" {
+            ec{"Samara"}
+            gmt{"+0400"}
+        }
+        "Europe:San_Marino" {
+            ec{"San Marino"}
+            gmt{"+0100"}
+        }
+        "Europe:Sarajevo" {
+            ec{"Sarajevo"}
+            gmt{"+0100"}
+        }
+        "Europe:Saratov" {
+            ec{"Saratov"}
+            gmt{"+0400"}
+        }
+        "Europe:Simferopol" {
+            ec{"Sinferopoli"}
+            gmt{"+0300"}
+        }
+        "Europe:Skopje" {
+            ec{"Skopje"}
+            gmt{"+0100"}
+        }
+        "Europe:Sofia" {
+            ec{"Sofia"}
+            gmt{"+0200"}
+        }
+        "Europe:Stockholm" {
+            ec{"Stoccolma"}
+            gmt{"+0100"}
+        }
+        "Europe:Tallinn" {
+            ec{"Tallinn"}
+            gmt{"+0200"}
+        }
+        "Europe:Tirane" {
+            ec{"Tirana"}
+            gmt{"+0100"}
+        }
+        "Europe:Ulyanovsk" {
+            ec{"Ulyanovsk"}
+            gmt{"+0400"}
+        }
+        "Europe:Uzhgorod" {
+            ec{"Užhorod"}
+            gmt{"+0200"}
+        }
+        "Europe:Vaduz" {
+            ec{"Vaduz"}
+            gmt{"+0100"}
+        }
+        "Europe:Vatican" {
+            ec{"Città del Vaticano"}
+            gmt{"+0100"}
+        }
+        "Europe:Vienna" {
+            ec{"Vienna"}
+            gmt{"+0100"}
+        }
+        "Europe:Vilnius" {
+            ec{"Vilnius"}
+            gmt{"+0200"}
+        }
+        "Europe:Volgograd" {
+            ec{"Volgograd"}
+            gmt{"+0300"}
+        }
+        "Europe:Warsaw" {
+            ec{"Varsavia"}
+            gmt{"+0100"}
+        }
+        "Europe:Zagreb" {
+            ec{"Zagabria"}
+            gmt{"+0100"}
+        }
+        "Europe:Zaporozhye" {
+            ec{"Zaporozhye"}
+            gmt{"+0200"}
+        }
+        "Europe:Zurich" {
+            ec{"Zurigo"}
+            gmt{"+0100"}
+        }
+        "Indian:Antananarivo" {
+            ec{"Antananarivo"}
+            gmt{"+0300"}
+        }
+        "Indian:Chagos" {
+            ec{"Chagos"}
+            gmt{"+0600"}
+        }
+        "Indian:Christmas" {
+            ec{"Natale"}
+            gmt{"+0700"}
+        }
+        "Indian:Cocos" {
+            ec{"Cocos"}
+            gmt{"+0630"}
+        }
+        "Indian:Comoro" {
+            ec{"Comore"}
+            gmt{"+0300"}
+        }
+        "Indian:Kerguelen" {
+            ec{"Kerguelen"}
+            gmt{"+0500"}
+        }
+        "Indian:Mahe" {
+            ec{"Mahe"}
+            gmt{"+0400"}
+        }
+        "Indian:Maldives" {
+            ec{"Maldive"}
+            gmt{"+0500"}
+        }
+        "Indian:Mauritius" {
+            ec{"Mauritius"}
+            gmt{"+0400"}
+        }
+        "Indian:Mayotte" {
+            ec{"Mayotte"}
+            gmt{"+0300"}
+        }
+        "Indian:Reunion" {
+            ec{"La Riunione"}
+            gmt{"+0400"}
+        }
+        "Pacific:Apia" {
+            ec{"Apia"}
+            gmt{"+1300"}
+        }
+        "Pacific:Auckland" {
+            ec{"Auckland"}
+            gmt{"+1300"}
+        }
+        "Pacific:Bougainville" {
+            ec{"Bougainville"}
+            gmt{"+1100"}
+        }
+        "Pacific:Chatham" {
+            ec{"Chatham"}
+            gmt{"+1345"}
+        }
+        "Pacific:Easter" {
+            ec{"Pasqua"}
+            gmt{"-0500"}
+        }
+        "Pacific:Efate" {
+            ec{"Efate"}
+            gmt{"+1100"}
+        }
+        "Pacific:Enderbury" {
+            ec{"Enderbury"}
+            gmt{"+1300"}
+        }
+        "Pacific:Fakaofo" {
+            ec{"Fakaofo"}
+            gmt{"+1300"}
+        }
+        "Pacific:Fiji" {
+            ec{"Figi"}
+            gmt{"+1200"}
+        }
+        "Pacific:Funafuti" {
+            ec{"Funafuti"}
+            gmt{"+1200"}
+        }
+        "Pacific:Galapagos" {
+            ec{"Galapagos"}
+            gmt{"-0600"}
+        }
+        "Pacific:Gambier" {
+            ec{"Gambier"}
+            gmt{"-0900"}
+        }
+        "Pacific:Guadalcanal" {
+            ec{"Guadalcanal"}
+            gmt{"+1100"}
+        }
+        "Pacific:Guam" {
+            ec{"Guam"}
+            gmt{"+1000"}
+        }
+        "Pacific:Honolulu" {
+            ec{"Hawaii"}
+            gmt{"-1000"}
+        }
+        "Pacific:Johnston" {
+            ec{"Johnston"}
+            gmt{"-1000"}
+        }
+        "Pacific:Kiritimati" {
+            ec{"Kiritimati"}
+            gmt{"+1400"}
+        }
+        "Pacific:Kosrae" {
+            ec{"Kosrae"}
+            gmt{"+1100"}
+        }
+        "Pacific:Kwajalein" {
+            ec{"Kwajalein"}
+            gmt{"+1200"}
+        }
+        "Pacific:Majuro" {
+            ec{"Majuro"}
+            gmt{"+1200"}
+        }
+        "Pacific:Marquesas" {
+            ec{"Marchesi"}
+            gmt{"-1030"}
+        }
+        "Pacific:Midway" {
+            ec{"Midway"}
+            gmt{"-1100"}
+        }
+        "Pacific:Nauru" {
+            ec{"Nauru"}
+            gmt{"+1200"}
+        }
+        "Pacific:Niue" {
+            ec{"Niue"}
+            gmt{"-1100"}
+        }
+        "Pacific:Norfolk" {
+            ec{"Norfolk"}
+            gmt{"+1200"}
+        }
+        "Pacific:Noumea" {
+            ec{"Noumea"}
+            gmt{"+1100"}
+        }
+        "Pacific:Pago_Pago" {
+            ec{"Pago Pago"}
+            gmt{"-1100"}
+        }
+        "Pacific:Palau" {
+            ec{"Palau"}
+            gmt{"+0900"}
+        }
+        "Pacific:Pitcairn" {
+            ec{"Pitcairn"}
+            gmt{"-0800"}
+        }
+        "Pacific:Ponape" {
+            ec{"Pohnpei"}
+            gmt{"+1100"}
+        }
+        "Pacific:Port_Moresby" {
+            ec{"Port Moresby"}
+            gmt{"+1000"}
+        }
+        "Pacific:Rarotonga" {
+            ec{"Rarotonga"}
+            gmt{"-1000"}
+        }
+        "Pacific:Saipan" {
+            ec{"Saipan"}
+            gmt{"+1000"}
+        }
+        "Pacific:Tahiti" {
+            ec{"Tahiti"}
+            gmt{"-1000"}
+        }
+        "Pacific:Tarawa" {
+            ec{"Tarawa"}
+            gmt{"+1200"}
+        }
+        "Pacific:Tongatapu" {
+            ec{"Tongatapu"}
+            gmt{"+1300"}
+        }
+        "Pacific:Truk" {
+            ec{"Chuuk"}
+            gmt{"+1000"}
+        }
+        "Pacific:Wake" {
+            ec{"Wake"}
+            gmt{"+1200"}
+        }
+        "Pacific:Wallis" {
+            ec{"Wallis"}
+            gmt{"+1200"}
+        }
+    }
+}

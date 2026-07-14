@@ -1,0 +1,282 @@
+"Asia/Kabul":Ora dell’Afghanistan
+"Africa/Maputo":Ora dell’Africa centrale
+"Africa/Bujumbura":Ora dell’Africa centrale
+"Africa/Gaborone":Ora dell’Africa centrale
+"Africa/Lubumbashi":Ora dell’Africa centrale
+"Africa/Blantyre":Ora dell’Africa centrale
+"Africa/Kigali":Ora dell’Africa centrale
+"Africa/Lusaka":Ora dell’Africa centrale
+"Africa/Harare":Ora dell’Africa centrale
+"Africa/Nairobi":Ora dell’Africa orientale
+"Africa/Djibouti":Ora dell’Africa orientale
+"Africa/Asmera":Ora dell’Africa orientale
+"Africa/Addis_Ababa":Ora dell’Africa orientale
+"Indian/Comoro":Ora dell’Africa orientale
+"Indian/Antananarivo":Ora dell’Africa orientale
+"Africa/Mogadishu":Ora dell’Africa orientale
+"Africa/Dar_es_Salaam":Ora dell’Africa orientale
+"Africa/Kampala":Ora dell’Africa orientale
+"Indian/Mayotte":Ora dell’Africa orientale
+"Africa/Johannesburg":Ora dell’Africa meridionale
+"Africa/Maseru":Ora dell’Africa meridionale
+"Africa/Mbabane":Ora dell’Africa meridionale
+"Africa/Lagos":Ora standard dell’Africa occidentale
+"Africa/Luanda":Ora standard dell’Africa occidentale
+"Africa/Porto-Novo":Ora standard dell’Africa occidentale
+"Africa/Kinshasa":Ora standard dell’Africa occidentale
+"Africa/Bangui":Ora standard dell’Africa occidentale
+"Africa/Brazzaville":Ora standard dell’Africa occidentale
+"Africa/Douala":Ora standard dell’Africa occidentale
+"Africa/Libreville":Ora standard dell’Africa occidentale
+"Africa/Malabo":Ora standard dell’Africa occidentale
+"Africa/Niamey":Ora standard dell’Africa occidentale
+"Africa/Ndjamena":Ora standard dell’Africa occidentale
+"America/Juneau":Ora standard dell’Alaska
+"America/Manaus":Ora standard dell’Amazzonia
+"America/Chicago":Ora standard centrale USA
+"America/Belize":Ora standard centrale USA
+"America/Winnipeg":Ora standard centrale USA
+"America/Costa_Rica":Ora standard centrale USA
+"America/Guatemala":Ora standard centrale USA
+"America/Tegucigalpa":Ora standard centrale USA
+"America/Mexico_City":Ora standard centrale USA
+"America/El_Salvador":Ora standard centrale USA
+"America/New_York":Ora standard orientale USA
+"America/Nassau":Ora standard orientale USA
+"America/Toronto":Ora standard orientale USA
+"America/Port-au-Prince":Ora standard orientale USA
+"America/Jamaica":Ora standard orientale USA
+"America/Cayman":Ora standard orientale USA
+"America/Panama":Ora standard orientale USA
+"America/Denver":Ora standard Montagne Rocciose USA
+"America/Edmonton":Ora standard Montagne Rocciose USA
+"America/Hermosillo":Ora standard Montagne Rocciose USA
+"America/Los_Angeles":Ora standard del Pacifico USA
+"America/Vancouver":Ora standard del Pacifico USA
+"America/Tijuana":Ora standard del Pacifico USA
+"Asia/Anadyr":Ora standard di Anadyr
+"Pacific/Apia":Ora standard di Apia
+"Asia/Riyadh":Ora standard araba
+"Asia/Bahrain":Ora standard araba
+"Asia/Baghdad":Ora standard araba
+"Asia/Kuwait":Ora standard araba
+"Asia/Qatar":Ora standard araba
+"Asia/Aden":Ora standard araba
+"America/Buenos_Aires":Ora standard dell’Argentina
+"America/Argentina/San_Luis":Ora standard dell’Argentina occidentale
+"Asia/Yerevan":Ora standard dell’Armenia
+"America/Halifax":Ora standard dell’Atlantico
+"America/Antigua":Ora standard dell’Atlantico
+"America/Anguilla":Ora standard dell’Atlantico
+"America/Aruba":Ora standard dell’Atlantico
+"America/Barbados":Ora standard dell’Atlantico
+"Atlantic/Bermuda":Ora standard dell’Atlantico
+"America/Kralendijk":Ora standard dell’Atlantico
+"America/Curacao":Ora standard dell’Atlantico
+"America/Dominica":Ora standard dell’Atlantico
+"America/Grenada":Ora standard dell’Atlantico
+"America/Thule":Ora standard dell’Atlantico
+"America/Guadeloupe":Ora standard dell’Atlantico
+"America/St_Kitts":Ora standard dell’Atlantico
+"America/St_Lucia":Ora standard dell’Atlantico
+"America/Marigot":Ora standard dell’Atlantico
+"America/Martinique":Ora standard dell’Atlantico
+"America/Montserrat":Ora standard dell’Atlantico
+"America/Puerto_Rico":Ora standard dell’Atlantico
+"America/Lower_Princes":Ora standard dell’Atlantico
+"America/Port_of_Spain":Ora standard dell’Atlantico
+"America/St_Vincent":Ora standard dell’Atlantico
+"America/Tortola":Ora standard dell’Atlantico
+"America/St_Thomas":Ora standard dell’Atlantico
+"Australia/Adelaide":Ora standard dell’Australia centrale
+"Australia/Eucla":Ora standard dell’Australia centroccidentale
+"Australia/Sydney":Ora standard dell’Australia orientale
+"Australia/Perth":Ora standard dell’Australia occidentale
+"Asia/Baku":Ora standard dell’Azerbaigian
+"Atlantic/Azores":Ora standard delle Azzorre
+"Asia/Dhaka":Ora standard del Bangladesh
+"Asia/Thimphu":Ora del Bhutan
+"America/La_Paz":Ora della Bolivia
+"America/Sao_Paulo":Ora standard di Brasilia
+"Asia/Brunei":Ora del Brunei Darussalam
+"Atlantic/Cape_Verde":Ora standard di Capo Verde
+"Pacific/Saipan":Ora di Chamorro
+"Pacific/Guam":Ora di Chamorro
+"Pacific/Chatham":Ora standard delle Chatham
+"America/Santiago":Ora standard del Cile
+"Asia/Shanghai":Ora standard della Cina
+"Asia/Choibalsan":Ora standard di Choibalsan
+"Indian/Christmas":Ora dell’Isola Christmas
+"Indian/Cocos":Ora delle Isole Cocos
+"America/Bogota":Ora standard della Colombia
+"Pacific/Rarotonga":Ora standard delle isole Cook
+"America/Havana":Ora standard di Cuba
+"Antarctica/Davis":Ora di Davis
+"Antarctica/DumontDUrville":Ora di Dumont-d’Urville
+"Asia/Dili":Ora di Timor Est
+"Pacific/Easter":Ora standard dell’Isola di Pasqua
+"America/Guayaquil":Ora dell’Ecuador
+"Europe/Paris":Ora standard dell’Europa centrale
+"Europe/Andorra":Ora standard dell’Europa centrale
+"Europe/Tirane":Ora standard dell’Europa centrale
+"Europe/Vienna":Ora standard dell’Europa centrale
+"Europe/Sarajevo":Ora standard dell’Europa centrale
+"Europe/Brussels":Ora standard dell’Europa centrale
+"Europe/Zurich":Ora standard dell’Europa centrale
+"Europe/Prague":Ora standard dell’Europa centrale
+"Europe/Berlin":Ora standard dell’Europa centrale
+"Europe/Copenhagen":Ora standard dell’Europa centrale
+"Europe/Madrid":Ora standard dell’Europa centrale
+"Europe/Gibraltar":Ora standard dell’Europa centrale
+"Europe/Zagreb":Ora standard dell’Europa centrale
+"Europe/Budapest":Ora standard dell’Europa centrale
+"Europe/Rome":Ora standard dell’Europa centrale
+"Europe/Vaduz":Ora standard dell’Europa centrale
+"Europe/Luxembourg":Ora standard dell’Europa centrale
+"Europe/Monaco":Ora standard dell’Europa centrale
+"Europe/Podgorica":Ora standard dell’Europa centrale
+"Europe/Skopje":Ora standard dell’Europa centrale
+"Europe/Malta":Ora standard dell’Europa centrale
+"Europe/Amsterdam":Ora standard dell’Europa centrale
+"Europe/Oslo":Ora standard dell’Europa centrale
+"Europe/Warsaw":Ora standard dell’Europa centrale
+"Europe/Belgrade":Ora standard dell’Europa centrale
+"Europe/Stockholm":Ora standard dell’Europa centrale
+"Europe/Ljubljana":Ora standard dell’Europa centrale
+"Arctic/Longyearbyen":Ora standard dell’Europa centrale
+"Europe/Bratislava":Ora standard dell’Europa centrale
+"Europe/San_Marino":Ora standard dell’Europa centrale
+"Africa/Tunis":Ora standard dell’Europa centrale
+"Europe/Vatican":Ora standard dell’Europa centrale
+"Europe/Belgrade":Ora standard dell’Europa centrale
+"Europe/Bucharest":Ora standard dell’Europa orientale
+"Europe/Mariehamn":Ora standard dell’Europa orientale
+"Europe/Sofia":Ora standard dell’Europa orientale
+"Asia/Nicosia":Ora standard dell’Europa orientale
+"Africa/Cairo":Ora standard dell’Europa orientale
+"Europe/Helsinki":Ora standard dell’Europa orientale
+"Europe/Athens":Ora standard dell’Europa orientale
+"Asia/Amman":Ora standard dell’Europa orientale
+"Asia/Beirut":Ora standard dell’Europa orientale
+"Asia/Damascus":Ora standard dell’Europa orientale
+"Europe/Minsk":Ora dell’Europa orientale (Kaliningrad)
+"Europe/Kaliningrad":Ora dell’Europa orientale (Kaliningrad)
+"Atlantic/Canary":Ora standard dell’Europa occidentale
+"Atlantic/Faeroe":Ora standard dell’Europa occidentale
+"Atlantic/Stanley":Ora standard delle Isole Falkland
+"Pacific/Fiji":Ora standard delle Figi
+"America/Cayenne":Ora della Guiana francese
+"Indian/Kerguelen":Ora delle Terre australi e antartiche francesi
+"Atlantic/Reykjavik":Ora del meridiano di Greenwich
+"Africa/Ouagadougou":Ora del meridiano di Greenwich
+"Africa/Abidjan":Ora del meridiano di Greenwich
+"Europe/London":Ora del meridiano di Greenwich
+"Africa/Accra":Ora del meridiano di Greenwich
+"Africa/Banjul":Ora del meridiano di Greenwich
+"Africa/Conakry":Ora del meridiano di Greenwich
+"Europe/Dublin":Ora del meridiano di Greenwich
+"Africa/Bamako":Ora del meridiano di Greenwich
+"Africa/Nouakchott":Ora del meridiano di Greenwich
+"Atlantic/St_Helena":Ora del meridiano di Greenwich
+"Africa/Freetown":Ora del meridiano di Greenwich
+"Africa/Dakar":Ora del meridiano di Greenwich
+"Africa/Lome":Ora del meridiano di Greenwich
+"Pacific/Galapagos":Ora delle Galapagos
+"Pacific/Gambier":Ora di Gambier
+"Asia/Tbilisi":Ora standard della Georgia
+"Pacific/Tarawa":Ora delle isole Gilbert
+"America/Scoresbysund":Ora standard della Groenlandia orientale
+"America/Godthab":Ora standard della Groenlandia occidentale
+"Asia/Dubai":Ora del Golfo
+"Asia/Muscat":Ora del Golfo
+"America/Guyana":Ora della Guyana
+"Pacific/Honolulu":Ora standard delle Isole Hawaii-Aleutine
+"Asia/Hong_Kong":Ora standard della Cina
+"Asia/Hovd":Ora standard di Hovd
+"Asia/Calcutta":Ora standard dell’India
+"Asia/Colombo":Ora standard dell’India
+"Indian/Chagos":Ora dell’Oceano Indiano
+"Asia/Bangkok":Ora dell’Indocina
+"Asia/Phnom_Penh":Ora dell’Indocina
+"Asia/Vientiane":Ora dell’Indocina
+"Asia/Makassar":Ora dell’Indonesia centrale
+"Asia/Jayapura":Ora dell’Indonesia orientale
+"Asia/Jakarta":Ora dell’Indonesia occidentale
+"Asia/Tehran":Ora standard dell’Iran
+"Asia/Irkutsk":Ora standard di Irkutsk
+"Asia/Jerusalem":Ora standard di Israele
+"Asia/Tokyo":Ora standard del Giappone
+"Asia/Kamchatka":Ora standard di Petropavlovsk-Kamchatski
+"Asia/Almaty":Ora del Kazakistan orientale
+"Asia/Aqtobe":Ora del Kazakistan occidentale
+"Asia/Seoul":Ora standard coreana
+"Pacific/Kosrae":Ora del Kosrae
+"Asia/Krasnoyarsk":Ora standard di Krasnoyarsk
+"Asia/Bishkek":Ora del Kirghizistan
+"Pacific/Kiritimati":Ora delle Sporadi equatoriali
+"Australia/Lord_Howe":Ora standard di Lord Howe
+"Antarctica/Macquarie":Ora dell’Isola Macquarie
+"Asia/Magadan":Ora standard di Magadan
+"Asia/Kuching":Ora della Malesia
+"Indian/Maldives":Ora delle Maldive
+"Pacific/Marquesas":Ora delle Marchesi
+"Pacific/Majuro":Ora delle Isole Marshall
+"Indian/Mauritius":Ora standard delle Mauritius
+"Antarctica/Mawson":Ora di Mawson
+"America/Santa_Isabel":Ora standard del Messico nord-occidentale
+"America/Mazatlan":Ora standard del Pacifico (Messico)
+"Asia/Ulaanbaatar":Ora standard di Ulan Bator
+"Europe/Moscow":Ora standard di Mosca
+"Asia/Rangoon":Ora della Birmania
+"Pacific/Nauru":Ora di Nauru
+"Asia/Katmandu":Ora del Nepal
+"Pacific/Noumea":Ora standard della Nuova Caledonia
+"Pacific/Auckland":Ora standard della Nuova Zelanda
+"Antarctica/McMurdo":Ora standard della Nuova Zelanda
+"America/St_Johns":Ora standard di Terranova
+"Pacific/Niue":Ora di Niue
+"Pacific/Norfolk":Ora standard delle Isole Norfolk
+"America/Noronha":Ora standard di Fernando de Noronha
+"Asia/Novosibirsk":Ora standard di Novosibirsk
+"Asia/Omsk":Ora standard di Omsk
+"Asia/Karachi":Ora standard del Pakistan
+"Pacific/Palau":Ora di Palau
+"Pacific/Port_Moresby":Ora della Papua Nuova Guinea
+"America/Asuncion":Ora standard del Paraguay
+"America/Lima":Ora standard del Perù
+"Asia/Manila":Ora standard delle Filippine
+"Pacific/Enderbury":Ora delle Isole della Fenice
+"America/Miquelon":Ora standard di Saint-Pierre e Miquelon
+"Pacific/Pitcairn":Ora delle Pitcairn
+"Pacific/Ponape":Ora di Pohnpei
+"Asia/Pyongyang":Ora di Pyongyang
+"Indian/Reunion":Ora di Riunione
+"Antarctica/Rothera":Ora di Rothera
+"Asia/Sakhalin":Ora standard di Sakhalin
+"Europe/Samara":Ora standard di Samara
+"Pacific/Pago_Pago":Ora standard di Samoa
+"Indian/Mahe":Ora delle Seychelles
+"Asia/Singapore":Ora di Singapore
+"Pacific/Guadalcanal":Ora delle Isole Salomone
+"Atlantic/South_Georgia":Ora della Georgia del Sud
+"America/Paramaribo":Ora del Suriname
+"Antarctica/Syowa":Ora di Syowa
+"Pacific/Tahiti":Ora di Tahiti
+"Asia/Taipei":Ora standard della Cina
+"Asia/Dushanbe":Ora del Tagikistan
+"Pacific/Fakaofo":Ora di Tokelau
+"Pacific/Tongatapu":Ora standard di Tonga
+"Pacific/Truk":Ora del Chuuk
+"Asia/Ashgabat":Ora standard del Turkmenistan
+"Pacific/Funafuti":Ora di Tuvalu
+"America/Montevideo":Ora standard dell’Uruguay
+"Asia/Tashkent":Ora standard dell’Uzbekistan
+"Pacific/Efate":Ora standard del Vanuatu
+"America/Caracas":Ora del Venezuela
+"Asia/Vladivostok":Ora standard di Vladivostok
+"Europe/Volgograd":Ora standard di Volgograd
+"Antarctica/Vostok":Ora di Vostok
+"Pacific/Wake":Ora dell’Isola di Wake
+"Pacific/Wallis":Ora di Wallis e Futuna
+"Asia/Yakutsk":Ora standard di Yakutsk
+"Asia/Yekaterinburg":Ora standard di Ekaterinburg

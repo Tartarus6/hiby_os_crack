@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# Start logging
+#
+
+recovery_all="/data/recovery_all"
+
+case "$1" in
+  start)
+	echo "Starting $0 : begin "
+	
+    if [ -f "$recovery_all" ]
+    then
+    recovery_mode=$(cat /data/recovery_all)
+	
+    if [ "$recovery_mode" = "recovery_all" ];then
+        /usr/bin/recovery_all.sh
+    else
+        /usr/bin/recovery_all.sh 1
+    fi
+	
+    echo clear > /proc/jz/reset/reset
+    reboot
+    exit 1
+    fi
+	
+	echo "Starting $0 : end "
+	;;
+  stop)
+	echo -n "Stopping $0 : "
+	echo "OK"
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

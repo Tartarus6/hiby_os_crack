@@ -1,0 +1,11 @@
+1.17,hiby_module_label_c.view
+1.17,vg_listview_m3u.listview
+3.1,hiby_settings.view
+3.1,hiby_settings_english.view
+3.1,step_data.dlg
+3.1,vg_listview_qobuz_home.listview
+3.2,hiby_songlist_label.view
+3.2,hiby_bt_input.view
+3.2,bt_connect_type.dlg
+3.4,hiby_module_label.view
+3.4,hiby_module_label_c.view

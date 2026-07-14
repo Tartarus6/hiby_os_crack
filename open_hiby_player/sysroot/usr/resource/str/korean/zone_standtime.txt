@@ -1,0 +1,289 @@
+"America/Rio_Branco":아크레 표준시
+"Asia/Kabul":아프가니스탄 시간
+"Africa/Maputo":중앙아프리카 시간
+"Africa/Bujumbura":중앙아프리카 시간
+"Africa/Gaborone":중앙아프리카 시간
+"Africa/Lubumbashi":중앙아프리카 시간
+"Africa/Blantyre":중앙아프리카 시간
+"Africa/Kigali":중앙아프리카 시간
+"Africa/Lusaka":중앙아프리카 시간
+"Africa/Harare":중앙아프리카 시간
+"Africa/Nairobi":동아프리카 시간
+"Africa/Djibouti":동아프리카 시간
+"Africa/Asmera":동아프리카 시간
+"Africa/Addis_Ababa":동아프리카 시간
+"Indian/Comoro":동아프리카 시간
+"Indian/Antananarivo":동아프리카 시간
+"Africa/Mogadishu":동아프리카 시간
+"Africa/Dar_es_Salaam":동아프리카 시간
+"Africa/Kampala":동아프리카 시간
+"Indian/Mayotte":동아프리카 시간
+"Africa/Johannesburg":남아프리카 시간
+"Africa/Maseru":남아프리카 시간
+"Africa/Mbabane":남아프리카 시간
+"Africa/Lagos":서아프리카 표준시
+"Africa/Luanda":서아프리카 표준시
+"Africa/Porto-Novo":서아프리카 표준시
+"Africa/Kinshasa":서아프리카 표준시
+"Africa/Bangui":서아프리카 표준시
+"Africa/Brazzaville":서아프리카 표준시
+"Africa/Douala":서아프리카 표준시
+"Africa/Libreville":서아프리카 표준시
+"Africa/Malabo":서아프리카 표준시
+"Africa/Niamey":서아프리카 표준시
+"Africa/Ndjamena":서아프리카 표준시
+"America/Juneau":알래스카 표준시
+"Asia/Almaty":알마티 표준 표준시
+"America/Manaus":아마존 표준시
+"America/Chicago":미 중부 표준시
+"America/Belize":미 중부 표준시
+"America/Winnipeg":미 중부 표준시
+"America/Costa_Rica":미 중부 표준시
+"America/Guatemala":미 중부 표준시
+"America/Tegucigalpa":미 중부 표준시
+"America/Mexico_City":미 중부 표준시
+"America/El_Salvador":미 중부 표준시
+"America/New_York":미 동부 표준시
+"America/Nassau":미 동부 표준시
+"America/Toronto":미 동부 표준시
+"America/Port-au-Prince":미 동부 표준시
+"America/Jamaica":미 동부 표준시
+"America/Cayman":미 동부 표준시
+"America/Panama":미 동부 표준시
+"America/Denver":미 산악 표준시
+"America/Edmonton":미 산악 표준시
+"America/Hermosillo":미 산악 표준시
+"America/Los_Angeles":미 태평양 표준시
+"America/Vancouver":미 태평양 표준시
+"America/Tijuana":미 태평양 표준시
+"Asia/Anadyr":아나디리 표준시
+"Pacific/Apia":아피아 표준시
+"Asia/Aqtau":악타우 표준 표준시
+"Asia/Aqtobe":악퇴베 표준 표준시
+"Asia/Riyadh":아라비아 표준시
+"Asia/Bahrain":아라비아 표준시
+"Asia/Baghdad":아라비아 표준시
+"Asia/Kuwait":아라비아 표준시
+"Asia/Qatar":아라비아 표준시
+"Asia/Aden":아라비아 표준시
+"America/Buenos_Aires":아르헨티나 표준시
+"America/Argentina/San_Luis":아르헨티나 서부 표준시
+"Asia/Yerevan":아르메니아 표준시
+"America/Halifax":대서양 표준시
+"America/Antigua":대서양 표준시
+"America/Anguilla":대서양 표준시
+"America/Aruba":대서양 표준시
+"America/Barbados":대서양 표준시
+"Atlantic/Bermuda":대서양 표준시
+"America/Kralendijk":대서양 표준시
+"America/Curacao":대서양 표준시
+"America/Dominica":대서양 표준시
+"America/Grenada":대서양 표준시
+"America/Thule":대서양 표준시
+"America/Guadeloupe":대서양 표준시
+"America/St_Kitts":대서양 표준시
+"America/St_Lucia":대서양 표준시
+"America/Marigot":대서양 표준시
+"America/Martinique":대서양 표준시
+"America/Montserrat":대서양 표준시
+"America/Puerto_Rico":대서양 표준시
+"America/Lower_Princes":대서양 표준시
+"America/Port_of_Spain":대서양 표준시
+"America/St_Vincent":대서양 표준시
+"America/Tortola":대서양 표준시
+"America/St_Thomas":대서양 표준시
+"Australia/Adelaide":오스트레일리아 중부 표준시
+"Australia/Eucla":오스트레일리아 중서부 표준시
+"Australia/Sydney":오스트레일리아 동부 표준시
+"Australia/Perth":오스트레일리아 서부 표준시
+"Asia/Baku":아제르바이잔 표준시
+"Atlantic/Azores":아조레스 표준시
+"Asia/Dhaka":방글라데시 표준시
+"Asia/Thimphu":부탄 시간
+"America/La_Paz":볼리비아 시간
+"America/Sao_Paulo":브라질리아 표준시
+"Asia/Brunei":브루나이 시간
+"Atlantic/Cape_Verde":카보 베르데 표준시
+"Antarctica/Casey":케이시 시간
+"Pacific/Saipan":차모로 시간
+"Pacific/Guam":차모로 시간
+"Pacific/Chatham":채텀 표준시
+"America/Santiago":칠레 표준시
+"Asia/Shanghai":중국 표준시
+"Asia/Choibalsan":초이발산 표준시
+"Indian/Christmas":크리스마스섬 시간
+"Indian/Cocos":코코스 제도 시간
+"America/Bogota":콜롬비아 표준시
+"Pacific/Rarotonga":쿡 제도 표준시
+"America/Havana":쿠바 표준시
+"Antarctica/Davis":데이비스 시간
+"Antarctica/DumontDUrville":뒤몽뒤르빌 시간
+"Asia/Dili":동티모르 시간
+"Pacific/Easter":이스터섬 표준시
+"America/Guayaquil":에콰도르 시간
+"Europe/Paris":중부유럽 표준시
+"Europe/Andorra":중부유럽 표준시
+"Europe/Tirane":중부유럽 표준시
+"Europe/Vienna":중부유럽 표준시
+"Europe/Sarajevo":중부유럽 표준시
+"Europe/Brussels":중부유럽 표준시
+"Europe/Zurich":중부유럽 표준시
+"Europe/Prague":중부유럽 표준시
+"Europe/Berlin":중부유럽 표준시
+"Europe/Copenhagen":중부유럽 표준시
+"Europe/Madrid":중부유럽 표준시
+"Europe/Gibraltar":중부유럽 표준시
+"Europe/Zagreb":중부유럽 표준시
+"Europe/Budapest":중부유럽 표준시
+"Europe/Rome":중부유럽 표준시
+"Europe/Vaduz":중부유럽 표준시
+"Europe/Luxembourg":중부유럽 표준시
+"Europe/Monaco":중부유럽 표준시
+"Europe/Podgorica":중부유럽 표준시
+"Europe/Skopje":중부유럽 표준시
+"Europe/Malta":중부유럽 표준시
+"Europe/Amsterdam":중부유럽 표준시
+"Europe/Oslo":중부유럽 표준시
+"Europe/Warsaw":중부유럽 표준시
+"Europe/Belgrade":중부유럽 표준시
+"Europe/Stockholm":중부유럽 표준시
+"Europe/Ljubljana":중부유럽 표준시
+"Arctic/Longyearbyen":중부유럽 표준시
+"Europe/Bratislava":중부유럽 표준시
+"Europe/San_Marino":중부유럽 표준시
+"Africa/Tunis":중부유럽 표준시
+"Europe/Vatican":중부유럽 표준시
+"Europe/Belgrade":중부유럽 표준시
+"Europe/Bucharest":동유럽 표준시
+"Europe/Mariehamn":동유럽 표준시
+"Europe/Sofia":동유럽 표준시
+"Asia/Nicosia":동유럽 표준시
+"Africa/Cairo":동유럽 표준시
+"Europe/Helsinki":동유럽 표준시
+"Europe/Athens":동유럽 표준시
+"Asia/Amman":동유럽 표준시
+"Asia/Beirut":동유럽 표준시
+"Asia/Damascus":동유럽 표준시
+"Europe/Minsk":극동유럽 표준시
+"Europe/Kaliningrad":극동유럽 표준시
+"Atlantic/Canary":서유럽 표준시
+"Atlantic/Faeroe":서유럽 표준시
+"Atlantic/Stanley":포클랜드 제도 표준시
+"Pacific/Fiji":피지 표준시
+"America/Cayenne":프랑스령 가이아나 시간
+"Indian/Kerguelen":프랑스령 남부 식민지 및 남극 시간
+"Atlantic/Reykjavik":그리니치 표준시
+"Africa/Ouagadougou":그리니치 표준시
+"Africa/Abidjan":그리니치 표준시
+"Europe/London":그리니치 표준시
+"Africa/Accra":그리니치 표준시
+"Africa/Banjul":그리니치 표준시
+"Africa/Conakry":그리니치 표준시
+"Europe/Dublin":그리니치 표준시
+"Africa/Bamako":그리니치 표준시
+"Africa/Nouakchott":그리니치 표준시
+"Atlantic/St_Helena":그리니치 표준시
+"Africa/Freetown":그리니치 표준시
+"Africa/Dakar":그리니치 표준시
+"Africa/Lome":그리니치 표준시
+"Pacific/Galapagos":갈라파고스 시간
+"Pacific/Gambier":감비에 시간
+"Asia/Tbilisi":조지아 표준시
+"Pacific/Tarawa":길버트 제도 시간
+"America/Scoresbysund":그린란드 동부 표준시
+"America/Godthab":그린란드 서부 표준시
+"Asia/Dubai":걸프만 표준시
+"Asia/Muscat":걸프만 표준시
+"America/Guyana":가이아나 시간
+"Pacific/Honolulu":하와이 알류샨 표준시
+"Asia/Hong_Kong":중국 표준시
+"Asia/Hovd":호브드 표준시
+"Asia/Calcutta":인도 표준시
+"Asia/Colombo":인도 표준시
+"Indian/Chagos":인도양 시간
+"Asia/Bangkok":인도차이나 시간
+"Asia/Phnom_Penh":인도차이나 시간
+"Asia/Vientiane":인도차이나 시간
+"Asia/Makassar":중부 인도네시아 시간
+"Asia/Jayapura":동부 인도네시아 시간
+"Asia/Jakarta":서부 인도네시아 시간
+"Asia/Tehran":이란 표준시
+"Asia/Irkutsk":이르쿠츠크 표준시
+"Asia/Jerusalem":이스라엘 표준시
+"Asia/Tokyo":일본 표준시
+"Asia/Kamchatka":페트로파블롭스크-캄차츠키 표준시
+"Asia/Almaty":동부 카자흐스탄 시간
+"Asia/Aqtobe":서부 카자흐스탄 시간
+"Asia/Seoul":한국 표준시
+"Pacific/Kosrae":코스라에섬 시간
+"Asia/Krasnoyarsk":크라스노야르스크 표준시
+"Asia/Bishkek":키르기스스탄 시간
+"Pacific/Kiritimati":라인 제도 시간
+"Australia/Lord_Howe":로드 하우 표준시
+"Asia/Macau":중국 표준시
+"Antarctica/Macquarie":매쿼리섬 시간
+"Asia/Magadan":마가단 표준시
+"Asia/Kuching":말레이시아 시간
+"Indian/Maldives":몰디브 시간
+"Pacific/Marquesas":마르키즈 제도 시간
+"Pacific/Majuro":마셜 제도 시간
+"Indian/Mauritius":모리셔스 표준시
+"Antarctica/Mawson":모슨 시간
+"America/Santa_Isabel":멕시코 북서부 표준시
+"America/Mazatlan":멕시코 태평양 표준시
+"Asia/Ulaanbaatar":울란바토르 표준시
+"Europe/Moscow":모스크바 표준시
+"Asia/Rangoon":미얀마 시간
+"Pacific/Nauru":나우루 시간
+"Asia/Katmandu":네팔 시간
+"Pacific/Noumea":뉴칼레도니아 표준시
+"Pacific/Auckland":뉴질랜드 표준시
+"Antarctica/McMurdo":뉴질랜드 표준시
+"America/St_Johns":뉴펀들랜드 표준시
+"Pacific/Niue":니우에 시간
+"Pacific/Norfolk":노퍽섬 표준시
+"America/Noronha":페르난도 데 노로냐 표준시
+"Asia/Novosibirsk":노보시비르스크 표준시
+"Asia/Omsk":옴스크 표준시
+"Asia/Karachi":파키스탄 표준시
+"Pacific/Palau":팔라우 시간
+"Pacific/Port_Moresby":파푸아뉴기니 시간
+"America/Asuncion":파라과이 표준시
+"America/Lima":페루 표준시
+"Asia/Manila":필리핀 표준시
+"Pacific/Enderbury":피닉스 제도 시간
+"America/Miquelon":세인트피에르 미클롱 표준시
+"Pacific/Pitcairn":핏케언 시간
+"Pacific/Ponape":포나페 시간
+"Asia/Pyongyang":평양 시간
+"Asia/Qyzylorda":키질로르다 표준 시간
+"Indian/Reunion":레위니옹 시간
+"Antarctica/Rothera":로데라 시간
+"Asia/Sakhalin":사할린 표준시
+"Europe/Samara":사마라 표준시
+"Pacific/Pago_Pago":사모아 표준시
+"Indian/Mahe":세이셸 시간
+"Asia/Singapore":싱가포르 표준시
+"Pacific/Guadalcanal":솔로몬 제도 시간
+"Atlantic/South_Georgia":사우스 조지아 시간
+"America/Paramaribo":수리남 시간
+"Antarctica/Syowa":쇼와 시간
+"Pacific/Tahiti":타히티 시간
+"Asia/Taipei":중국 표준시
+"Asia/Dushanbe":타지키스탄 시간
+"Pacific/Fakaofo":토켈라우 시간
+"Pacific/Tongatapu":통가 표준시
+"Pacific/Truk":추크 시간
+"Asia/Ashgabat":투르크메니스탄 표준시
+"Pacific/Funafuti":투발루 시간
+"America/Montevideo":우루과이 표준시
+"Asia/Tashkent":우즈베키스탄 표준시
+"Pacific/Efate":바누아투 표준시
+"America/Caracas":베네수엘라 시간
+"Asia/Vladivostok":블라디보스토크 표준시
+"Europe/Volgograd":볼고그라드 표준시
+"Antarctica/Vostok":보스톡 시간
+"Pacific/Wake":웨이크섬 시간
+"Pacific/Wallis":월리스푸투나 제도 시간
+"Asia/Yakutsk":야쿠츠크 표준시
+"Asia/Yekaterinburg":예카테린부르크 표준시

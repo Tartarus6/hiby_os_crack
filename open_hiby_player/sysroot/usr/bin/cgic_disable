@@ -1,0 +1,15 @@
+#!/bin/sh
+
+rm -rf /tmp/udp_state
+rm -rf /tmp/thttpd_state
+
+killall udp_server > /dev/null
+killall thttpd > /dev/null
+
+# avoid zombie process
+killall create.cgi > /dev/null
+killall delete.cgi > /dev/null
+killall download.cgi > /dev/null
+killall list.cgi > /dev/null
+killall move.cgi > /dev/null
+killall upload.cgi > /dev/null

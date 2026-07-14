@@ -1,0 +1,64 @@
+{
+	"item": [{
+			"name": "this",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "420",
+			"height": "160"
+		},
+		{
+			"name": "memory",
+			"type": "CheckBox",
+			"title": "<1001>",
+			"left": "40",
+			"top": "16",
+			"width": "100",
+			"height": "25",
+			"data_type": "int32",
+			"link": "",
+			"value": "<1002>"
+		},
+		{
+			"name": "progress",
+			"type": "HScroll",
+			"title": "",
+			"max": "<1003>",
+			"min": "0",
+			"step": "1",
+			"left": "40",
+			"top": "100",
+			"width": "320",
+			"height": "32",
+			"data_type": "int32",
+			"link": "cur_val",
+			"value": "<1004>"
+		},
+		{
+			"name": "cur_val",
+			"type": "Static",
+			"title": "%s",
+			"left": "200",
+			"top": "50",
+			"width": "100",
+			"height": "20"
+		},
+		{
+			"name": "max",
+			"type": "Static",
+			"title": "<1005>",
+			"left": "325",
+			"top": "140",
+			"width": "100",
+			"height": "20"
+		},
+		{
+			"name": "min",
+			"type": "Static",
+			"title": "0",
+			"left": "45",
+			"top": "140",
+			"width": "100",
+			"height": "20"
+		}
+	]
+}

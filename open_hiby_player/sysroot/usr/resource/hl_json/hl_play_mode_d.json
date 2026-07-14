@@ -1,0 +1,41 @@
+{
+	"item": 
+	[
+		{
+			"name": "this",
+			"type": "Self",
+			"title": "<1000>",
+			"width": "420",
+			"height": "250"
+		},		
+		{
+			"name": "radiobutton",
+			"type": "Radiobutton_list",
+			"flags": "HCENTER|VCENTER",
+			"left": "60",
+			"top": "30",
+			"width": "360",
+			"height": "240",
+			"data_type": "utf8",
+			"data": 
+			[
+				{
+					"title": "<1001>",
+					"value": "<1002>"
+				},
+				{
+					"title": "<1003>",
+					"value": "<1004>"
+				},
+				{
+					"title": "<1005>",
+					"value": "<1006>"
+				},
+				{
+					"title": "<1007>",
+					"value": "<1008>"
+				},
+			]
+		}
+	]
+}

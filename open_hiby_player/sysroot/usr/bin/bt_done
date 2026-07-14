@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Script to stop all bluetooth related processes
+#
+
+killall -9 bt-agent
+
+killall brcm_patchram_plus

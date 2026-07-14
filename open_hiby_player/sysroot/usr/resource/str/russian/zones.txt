@@ -1,0 +1,1718 @@
+﻿// © 2016 and later: Unicode, Inc. and others.
+// License & terms of use: http://www.unicode.org/copyright.html
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+ru{
+    zoneStrings{
+        "Africa:Abidjan" {
+            ec{"Абиджан"}
+            gmt{"+0000"}
+        }
+        "Africa:Accra" {
+            ec{"Аккра"}
+            gmt{"+0000"}
+        }
+        "Africa:Addis_Ababa" {
+            ec{"Аддис-Абеба"}
+            gmt{"+0300"}
+        }
+        "Africa:Algiers" {
+            ec{"Алжир"}
+            gmt{"+0100"}
+        }
+        "Africa:Asmera" {
+            ec{"Асмэра"}
+            gmt{"+0300"}
+        }
+        "Africa:Bamako" {
+            ec{"Бамако"}
+            gmt{"+0000"}
+        }
+        "Africa:Bangui" {
+            ec{"Банги"}
+            gmt{"+0100"}
+        }
+        "Africa:Banjul" {
+            ec{"Банжул"}
+            gmt{"+0000"}
+        }
+        "Africa:Bissau" {
+            ec{"Бисау"}
+            gmt{"+0000"}
+        }
+        "Africa:Blantyre" {
+            ec{"Блантайр"}
+            gmt{"+0200"}
+        }
+        "Africa:Brazzaville" {
+            ec{"Браззавиль"}
+            gmt{"+0100"}
+        }
+        "Africa:Bujumbura" {
+            ec{"Бужумбура"}
+            gmt{"+0200"}
+        }
+        "Africa:Cairo" {
+            ec{"Каир"}
+            gmt{"+0200"}
+        }
+        "Africa:Casablanca" {
+            ec{"Касабланка"}
+            gmt{"+0100"}
+        }
+        "Africa:Ceuta" {
+            ec{"Сеута"}
+            gmt{"+0100"}
+        }
+        "Africa:Conakry" {
+            ec{"Конакри"}
+            gmt{"+0000"}
+        }
+        "Africa:Dakar" {
+            ec{"Дакар"}
+            gmt{"+0000"}
+        }
+        "Africa:Dar_es_Salaam" {
+            ec{"Дар-эс-Салам"}
+            gmt{"+0300"}
+        }
+        "Africa:Djibouti" {
+            ec{"Джибути"}
+            gmt{"+0300"}
+        }
+        "Africa:Douala" {
+            ec{"Дуала"}
+            gmt{"+0100"}
+        }
+        "Africa:El_Aaiun" {
+            ec{"Эль-Аюн"}
+            gmt{"+0100"}
+        }
+        "Africa:Freetown" {
+            ec{"Фритаун"}
+            gmt{"+0000"}
+        }
+        "Africa:Gaborone" {
+            ec{"Габороне"}
+            gmt{"+0200"}
+        }
+        "Africa:Harare" {
+            ec{"Хараре"}
+            gmt{"+0200"}
+        }
+        "Africa:Johannesburg" {
+            ec{"Йоханнесбург"}
+            gmt{"+0200"}
+        }
+        "Africa:Juba" {
+            ec{"Джуба"}
+            gmt{"+0200"}
+        }
+        "Africa:Kampala" {
+            ec{"Кампала"}
+            gmt{"+0300"}
+        }
+        "Africa:Khartoum" {
+            ec{"Хартум"}
+            gmt{"+0200"}
+        }
+        "Africa:Kigali" {
+            ec{"Кигали"}
+            gmt{"+0200"}
+        }
+        "Africa:Kinshasa" {
+            ec{"Киншаса"}
+            gmt{"+0100"}
+        }
+        "Africa:Lagos" {
+            ec{"Лагос"}
+            gmt{"+0100"}
+        }
+        "Africa:Libreville" {
+            ec{"Либревиль"}
+            gmt{"+0100"}
+        }
+        "Africa:Lome" {
+            ec{"Ломе"}
+            gmt{"+0000"}
+        }
+        "Africa:Luanda" {
+            ec{"Луанда"}
+            gmt{"+0100"}
+        }
+        "Africa:Lubumbashi" {
+            ec{"Лубумбаши"}
+            gmt{"+0200"}
+        }
+        "Africa:Lusaka" {
+            ec{"Лусака"}
+            gmt{"+0200"}
+        }
+        "Africa:Malabo" {
+            ec{"Малабо"}
+            gmt{"+0100"}
+        }
+        "Africa:Maputo" {
+            ec{"Мапуту"}
+            gmt{"+0200"}
+        }
+        "Africa:Maseru" {
+            ec{"Масеру"}
+            gmt{"+0200"}
+        }
+        "Africa:Mbabane" {
+            ec{"Мбабане"}
+            gmt{"+0200"}
+        }
+        "Africa:Mogadishu" {
+            ec{"Могадишо"}
+            gmt{"+0300"}
+        }
+        "Africa:Monrovia" {
+            ec{"Монровия"}
+            gmt{"+0000"}
+        }
+        "Africa:Nairobi" {
+            ec{"Найроби"}
+            gmt{"+0300"}
+        }
+        "Africa:Ndjamena" {
+            ec{"Нджамена"}
+            gmt{"+0100"}
+        }
+        "Africa:Niamey" {
+            ec{"Ниамей"}
+            gmt{"+0100"}
+        }
+        "Africa:Nouakchott" {
+            ec{"Нуакшот"}
+            gmt{"+0000"}
+        }
+        "Africa:Ouagadougou" {
+            ec{"Уагадугу"}
+            gmt{"+0000"}
+        }
+        "Africa:Porto-Novo"{
+            ec{"Порто-Ново"}
+        }
+        "Africa:Sao_Tome" {
+            ec{"Сан-Томе"}
+            gmt{"+0000"}
+        }
+        "Africa:Tripoli" {
+            ec{"Триполи"}
+            gmt{"+0200"}
+        }
+        "Africa:Tunis" {
+            ec{"Тунис"}
+            gmt{"+0100"}
+        }
+        "Africa:Windhoek" {
+            ec{"Виндхук"}
+            gmt{"+0200"}
+        }
+        "America:Adak" {
+            ec{"Адак"}
+            gmt{"-1000"}
+        }
+        "America:Anchorage" {
+            ec{"Анкоридж"}
+            gmt{"-0900"}
+        }
+        "America:Anguilla" {
+            ec{"Ангилья"}
+            gmt{"-0400"}
+        }
+        "America:Antigua" {
+            ec{"Антигуа"}
+            gmt{"-0400"}
+        }
+        "America:Araguaina" {
+            ec{"Арагуаина"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:La_Rioja" {
+            ec{"Ла-Риоха"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Rio_Gallegos" {
+            ec{"Рио-Гальегос"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Salta" {
+            ec{"Сальта"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:San_Juan" {
+            ec{"Сан-Хуан"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:San_Luis" {
+            ec{"Сан-Луис"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Tucuman" {
+            ec{"Тукуман"}
+            gmt{"-0300"}
+        }
+        "America:Argentina:Ushuaia" {
+            ec{"Ушуая"}
+            gmt{"-0300"}
+        }
+        "America:Aruba" {
+            ec{"Аруба"}
+            gmt{"-0400"}
+        }
+        "America:Asuncion" {
+            ec{"Асунсьон"}
+            gmt{"-0300"}
+        }
+        "America:Bahia" {
+            ec{"Баия"}
+            gmt{"-0300"}
+        }
+        "America:Bahia_Banderas" {
+            ec{"Баия-де-Бандерас"}
+            gmt{"-0600"}
+        }
+        "America:Barbados" {
+            ec{"Барбадос"}
+            gmt{"-0400"}
+        }
+        "America:Belem" {
+            ec{"Белен"}
+            gmt{"-0300"}
+        }
+        "America:Belize" {
+            ec{"Белиз"}
+            gmt{"-0600"}
+        }
+        "America:Blanc-Sablon"{
+            ec{"Бланк-Саблон"}
+        }
+        "America:Boa_Vista" {
+            ec{"Боа-Виста"}
+            gmt{"-0400"}
+        }
+        "America:Bogota" {
+            ec{"Богота"}
+            gmt{"-0500"}
+        }
+        "America:Boise" {
+            ec{"Бойсе"}
+            gmt{"-0700"}
+        }
+        "America:Buenos_Aires" {
+            ec{"Буэнос-Айрес"}
+            gmt{"-0300"}
+        }
+        "America:Cambridge_Bay" {
+            ec{"Кеймбридж-Бей"}
+            gmt{"-0700"}
+        }
+        "America:Campo_Grande" {
+            ec{"Кампу-Гранди"}
+            gmt{"-0400"}
+        }
+        "America:Cancun" {
+            ec{"Канкун"}
+            gmt{"-0500"}
+        }
+        "America:Caracas" {
+            ec{"Каракас"}
+            gmt{"-0400"}
+        }
+        "America:Catamarca" {
+            ec{"Катамарка"}
+            gmt{"-0300"}
+        }
+        "America:Cayenne" {
+            ec{"Кайенна"}
+            gmt{"-0300"}
+        }
+        "America:Cayman" {
+            ec{"Острова Кайман"}
+            gmt{"-0500"}
+        }
+        "America:Chicago" {
+            ec{"Чикаго"}
+            gmt{"-0600"}
+        }
+        "America:Chihuahua" {
+            ec{"Чиуауа"}
+            gmt{"-0600"}
+        }
+        "America:Coral_Harbour" {
+            ec{"Корал-Харбор"}
+            gmt{"-0500"}
+        }
+        "America:Cordoba" {
+            ec{"Кордова"}
+            gmt{"-0300"}
+        }
+        "America:Costa_Rica" {
+            ec{"Коста-Рика"}
+            gmt{"-0600"}
+        }
+        "America:Creston" {
+            ec{"Крестон"}
+            gmt{"-0700"}
+        }
+        "America:Cuiaba" {
+            ec{"Куяба"}
+            gmt{"-0400"}
+        }
+        "America:Curacao" {
+            ec{"Кюрасао"}
+            gmt{"-0400"}
+        }
+        "America:Danmarkshavn" {
+            ec{"Денмарксхавн"}
+            gmt{"+0000"}
+        }
+        "America:Dawson" {
+            ec{"Доусон"}
+            gmt{"-0700"}
+        }
+        "America:Dawson_Creek" {
+            ec{"Доусон-Крик"}
+            gmt{"-0700"}
+        }
+        "America:Denver" {
+            ec{"Денвер"}
+            gmt{"-0700"}
+        }
+        "America:Detroit" {
+            ec{"Детройт"}
+            gmt{"-0500"}
+        }
+        "America:Dominica" {
+            ec{"Доминика"}
+            gmt{"-0400"}
+        }
+        "America:Edmonton" {
+            ec{"Эдмонтон"}
+            gmt{"-0700"}
+        }
+        "America:Eirunepe" {
+            ec{"Эйрунепе"}
+            gmt{"-0500"}
+        }
+        "America:El_Salvador" {
+            ec{"Сальвадор"}
+            gmt{"-0600"}
+        }
+        "America:Fort_Nelson" {
+            ec{"Форт Нельсон"}
+            gmt{"-0700"}
+        }
+        "America:Fortaleza" {
+            ec{"Форталеза"}
+            gmt{"-0300"}
+        }
+        "America:Glace_Bay" {
+            ec{"Глейс-Бей"}
+            gmt{"-0400"}
+        }
+        "America:Godthab" {
+            ec{"Нуук"}
+            gmt{"-0300"}
+        }
+        "America:Goose_Bay" {
+            ec{"Гус-Бей"}
+            gmt{"-0400"}
+        }
+        "America:Grand_Turk" {
+            ec{"Гранд-Терк"}
+            gmt{"-0500"}
+        }
+        "America:Grenada" {
+            ec{"Гренада"}
+            gmt{"-0400"}
+        }
+        "America:Guadeloupe" {
+            ec{"Гваделупа"}
+            gmt{"-0400"}
+        }
+        "America:Guatemala" {
+            ec{"Гватемала"}
+            gmt{"-0600"}
+        }
+        "America:Guayaquil" {
+            ec{"Гуаякиль"}
+            gmt{"-0500"}
+        }
+        "America:Guyana" {
+            ec{"Гайана"}
+            gmt{"-0400"}
+        }
+        "America:Halifax" {
+            ec{"Галифакс"}
+            gmt{"-0400"}
+        }
+        "America:Havana" {
+            ec{"Гавана"}
+            gmt{"-0500"}
+        }
+        "America:Hermosillo" {
+            ec{"Эрмосильо"}
+            gmt{"-0700"}
+        }
+        "America:Indiana:Knox" {
+            ec{"Нокс, Индиана"}
+            gmt{"-0600"}
+        }
+        "America:Indiana:Marengo" {
+            ec{"Маренго, Индиана"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Petersburg" {
+            ec{"Питерсберг, Индиана"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Tell_City" {
+            ec{"Телл-Сити"}
+            gmt{"-0600"}
+        }
+        "America:Indiana:Vevay" {
+            ec{"Вевей, Индиана"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Vincennes" {
+            ec{"Винсеннес"}
+            gmt{"-0500"}
+        }
+        "America:Indiana:Winamac" {
+            ec{"Уинамак"}
+            gmt{"-0500"}
+        }
+        "America:Indianapolis" {
+            ec{"Индианаполис"}
+            gmt{"-0500"}
+        }
+        "America:Inuvik" {
+            ec{"Инувик"}
+            gmt{"-0700"}
+        }
+        "America:Iqaluit" {
+            ec{"Икалуит"}
+            gmt{"-0500"}
+        }
+        "America:Jamaica" {
+            ec{"Ямайка"}
+            gmt{"-0500"}
+        }
+        "America:Jujuy" {
+            ec{"Жужуй"}
+            gmt{"-0300"}
+        }
+        "America:Juneau" {
+            ec{"Джуно"}
+            gmt{"-0900"}
+        }
+        "America:Kentucky:Monticello" {
+            ec{"Монтиселло, Кентукки"}
+            gmt{"-0500"}
+        }
+        "America:Kralendijk" {
+            ec{"Кралендейк"}
+            gmt{"-0400"}
+        }
+        "America:La_Paz" {
+            ec{"Ла-Пас"}
+            gmt{"-0400"}
+        }
+        "America:Lima" {
+            ec{"Лима"}
+            gmt{"-0500"}
+        }
+        "America:Los_Angeles" {
+            ec{"Лос-Анджелес"}
+            gmt{"-0800"}
+        }
+        "America:Louisville" {
+            ec{"Луисвилл"}
+            gmt{"-0500"}
+        }
+        "America:Lower_Princes" {
+            ec{"Лоуэр-Принс-Куотер"}
+            gmt{"-0400"}
+        }
+        "America:Maceio" {
+            ec{"Масейо"}
+            gmt{"-0300"}
+        }
+        "America:Managua" {
+            ec{"Манагуа"}
+            gmt{"-0600"}
+        }
+        "America:Manaus" {
+            ec{"Манаус"}
+            gmt{"-0400"}
+        }
+        "America:Marigot" {
+            ec{"Мариго"}
+            gmt{"-0400"}
+        }
+        "America:Martinique" {
+            ec{"Мартиника"}
+            gmt{"-0400"}
+        }
+        "America:Matamoros" {
+            ec{"Матаморос"}
+            gmt{"-0600"}
+        }
+        "America:Mazatlan" {
+            ec{"Масатлан"}
+            gmt{"-0700"}
+        }
+        "America:Mendoza" {
+            ec{"Мендоса"}
+            gmt{"-0300"}
+        }
+        "America:Menominee" {
+            ec{"Меномини"}
+            gmt{"-0600"}
+        }
+        "America:Merida" {
+            ec{"Мерида"}
+            gmt{"-0600"}
+        }
+        "America:Metlakatla" {
+            ec{"Метлакатла"}
+            gmt{"-0900"}
+        }
+        "America:Mexico_City" {
+            ec{"Мехико"}
+            gmt{"-0600"}
+        }
+        "America:Miquelon" {
+            ec{"Микелон"}
+            gmt{"-0300"}
+        }
+        "America:Moncton" {
+            ec{"Монктон"}
+            gmt{"-0400"}
+        }
+        "America:Monterrey" {
+            ec{"Монтеррей"}
+            gmt{"-0600"}
+        }
+        "America:Montevideo" {
+            ec{"Монтевидео"}
+            gmt{"-0300"}
+        }
+        "America:Montserrat" {
+            ec{"Монтсеррат"}
+            gmt{"-0400"}
+        }
+        "America:Nassau" {
+            ec{"Нассау"}
+            gmt{"-0500"}
+        }
+        "America:New_York" {
+            ec{"Нью-Йорк"}
+            gmt{"-0500"}
+        }
+        "America:Nipigon" {
+            ec{"Нипигон"}
+            gmt{"-0500"}
+        }
+        "America:Nome" {
+            ec{"Ном"}
+            gmt{"-0900"}
+        }
+        "America:Noronha" {
+            ec{"Норонья"}
+            gmt{"-0200"}
+        }
+        "America:North_Dakota:Beulah" {
+            ec{"Бойла, Северная Дакота"}
+            gmt{"-0600"}
+        }
+        "America:North_Dakota:Center" {
+            ec{"Центр, Северная Дакота"}
+            gmt{"-0600"}
+        }
+        "America:North_Dakota:New_Salem" {
+            ec{"Нью-Сейлем, Северная Дакота"}
+            gmt{"-0600"}
+        }
+        "America:Ojinaga" {
+            ec{"Охинага"}
+            gmt{"-0600"}
+        }
+        "America:Panama" {
+            ec{"Панама"}
+            gmt{"-0500"}
+        }
+        "America:Pangnirtung" {
+            ec{"Пангниртанг"}
+            gmt{"-0500"}
+        }
+        "America:Paramaribo" {
+            ec{"Парамарибо"}
+            gmt{"-0300"}
+        }
+        "America:Phoenix" {
+            ec{"Финикс"}
+            gmt{"-0700"}
+        }
+        "America:Port-au-Prince"{
+            ec{"Порт-о-Пренс"}
+        }
+        "America:Port_of_Spain" {
+            ec{"Порт-оф-Спейн"}
+            gmt{"-0400"}
+        }
+        "America:Porto_Velho" {
+            ec{"Порту-Велью"}
+            gmt{"-0400"}
+        }
+        "America:Puerto_Rico" {
+            ec{"Пуэрто-Рико"}
+            gmt{"-0400"}
+        }
+        "America:Punta_Arenas" {
+            ec{"Пунта-Аренас"}
+            gmt{"-0300"}
+        }
+        "America:Rainy_River" {
+            ec{"Рейни-Ривер"}
+            gmt{"-0600"}
+        }
+        "America:Rankin_Inlet" {
+            ec{"Ранкин-Инлет"}
+            gmt{"-0600"}
+        }
+        "America:Recife" {
+            ec{"Ресифи"}
+            gmt{"-0300"}
+        }
+        "America:Regina" {
+            ec{"Реджайна"}
+            gmt{"-0600"}
+        }
+        "America:Resolute" {
+            ec{"Резольют"}
+            gmt{"-0600"}
+        }
+        "America:Rio_Branco" {
+            ec{"Риу-Бранку"}
+            gmt{"-0500"}
+        }
+        "America:Santa_Isabel" {
+            ec{"Санта-Изабел"}
+            gmt{"-0800"}
+        }
+        "America:Santarem" {
+            ec{"Сантарен"}
+            gmt{"-0300"}
+        }
+        "America:Santiago" {
+            ec{"Сантьяго"}
+            gmt{"-0300"}
+        }
+        "America:Santo_Domingo" {
+            ec{"Санто-Доминго"}
+            gmt{"-0400"}
+        }
+        "America:Sao_Paulo" {
+            ec{"Сан-Паулу"}
+            gmt{"-0300"}
+        }
+        "America:Scoresbysund" {
+            ec{"Скорсбисунн"}
+            gmt{"-0100"}
+        }
+        "America:Sitka" {
+            ec{"Ситка"}
+            gmt{"-0900"}
+        }
+        "America:St_Barthelemy" {
+            ec{"Сен-Бартелеми"}
+            gmt{"-0400"}
+        }
+        "America:St_Johns" {
+            ec{"Сент-Джонс"}
+            gmt{"-0430"}
+        }
+        "America:St_Kitts" {
+            ec{"Сент-Китс"}
+            gmt{"-0400"}
+        }
+        "America:St_Lucia" {
+            ec{"Сент-Люсия"}
+            gmt{"-0400"}
+        }
+        "America:St_Thomas" {
+            ec{"Сент-Томас"}
+            gmt{"-0400"}
+        }
+        "America:St_Vincent" {
+            ec{"Сент-Винсент"}
+            gmt{"-0400"}
+        }
+        "America:Swift_Current" {
+            ec{"Свифт-Керрент"}
+            gmt{"-0600"}
+        }
+        "America:Tegucigalpa" {
+            ec{"Тегусигальпа"}
+            gmt{"-0600"}
+        }
+        "America:Thule" {
+            ec{"Туле"}
+            gmt{"-0400"}
+        }
+        "America:Thunder_Bay" {
+            ec{"Тандер-Бей"}
+            gmt{"-0500"}
+        }
+        "America:Tijuana" {
+            ec{"Тихуана"}
+            gmt{"-0800"}
+        }
+        "America:Toronto" {
+            ec{"Торонто"}
+            gmt{"-0500"}
+        }
+        "America:Tortola" {
+            ec{"Тортола"}
+            gmt{"-0400"}
+        }
+        "America:Vancouver" {
+            ec{"Ванкувер"}
+            gmt{"-0800"}
+        }
+        "America:Whitehorse" {
+            ec{"Уайтхорс"}
+            gmt{"-0700"}
+        }
+        "America:Winnipeg" {
+            ec{"Виннипег"}
+            gmt{"-0600"}
+        }
+        "America:Yakutat" {
+            ec{"Якутат"}
+            gmt{"-0900"}
+        }
+        "America:Yellowknife" {
+            ec{"Йеллоунайф"}
+            gmt{"-0700"}
+        }
+        "Antarctica:Casey" {
+            ec{"Кейси"}
+            gmt{"+1100"}
+        }
+        "Antarctica:Davis" {
+            ec{"Дейвис"}
+            gmt{"+0700"}
+        }
+        "Antarctica:DumontDUrville" {
+            ec{"Дюмон-д’Юрвиль"}
+            gmt{"+1000"}
+        }
+        "Antarctica:Macquarie" {
+            ec{"Маккуори"}
+            gmt{"+1100"}
+        }
+        "Antarctica:Mawson" {
+            ec{"Моусон"}
+            gmt{"+0500"}
+        }
+        "Antarctica:McMurdo" {
+            ec{"Мак-Мердо"}
+            gmt{"+1300"}
+        }
+        "Antarctica:Palmer" {
+            ec{"Палмер"}
+            gmt{"-0300"}
+        }
+        "Antarctica:Rothera" {
+            ec{"Ротера"}
+            gmt{"-0300"}
+        }
+        "Antarctica:Syowa" {
+            ec{"Сёва"}
+            gmt{"+0300"}
+        }
+        "Antarctica:Troll" {
+            ec{"Тролль"}
+            gmt{"+0000"}
+        }
+        "Antarctica:Vostok" {
+            ec{"Восток"}
+            gmt{"+0700"}
+        }
+        "Arctic:Longyearbyen" {
+            ec{"Лонгйир"}
+            gmt{"+0100"}
+        }
+        "Asia:Aden" {
+            ec{"Аден"}
+            gmt{"+0300"}
+        }
+        "Asia:Almaty" {
+            ec{"Алматы"}
+            gmt{"+0600"}
+        }
+        "Asia:Amman" {
+            ec{"Амман"}
+            gmt{"+0300"}
+        }
+        "Asia:Anadyr" {
+            ec{"Анадырь"}
+            gmt{"+1200"}
+        }
+        "Asia:Aqtau" {
+            ec{"Актау"}
+            gmt{"+0500"}
+        }
+        "Asia:Aqtobe" {
+            ec{"Актобе"}
+            gmt{"+0500"}
+        }
+        "Asia:Ashgabat" {
+            ec{"Ашхабад"}
+            gmt{"+0500"}
+        }
+        "Asia:Atyrau" {
+            ec{"Атырау"}
+            gmt{"+0500"}
+        }
+        "Asia:Baghdad" {
+            ec{"Багдад"}
+            gmt{"+0300"}
+        }
+        "Asia:Bahrain" {
+            ec{"Бахрейн"}
+            gmt{"+0300"}
+        }
+        "Asia:Baku" {
+            ec{"Баку"}
+            gmt{"+0400"}
+        }
+        "Asia:Bangkok" {
+            ec{"Бангкок"}
+            gmt{"+0700"}
+        }
+        "Asia:Barnaul" {
+            ec{"Барнаул"}
+            gmt{"+0700"}
+        }
+        "Asia:Beirut" {
+            ec{"Бейрут"}
+            gmt{"+0200"}
+        }
+        "Asia:Bishkek" {
+            ec{"Бишкек"}
+            gmt{"+0600"}
+        }
+        "Asia:Brunei" {
+            ec{"Бруней"}
+            gmt{"+0800"}
+        }
+        "Asia:Calcutta" {
+            ec{"Калькутта"}
+            gmt{"+0530"}
+        }
+        "Asia:Chita" {
+            ec{"Чита"}
+            gmt{"+0900"}
+        }
+        "Asia:Choibalsan" {
+            ec{"Чойбалсан"}
+            gmt{"+0800"}
+        }
+        "Asia:Colombo" {
+            ec{"Коломбо"}
+            gmt{"+0530"}
+        }
+        "Asia:Damascus" {
+            ec{"Дамаск"}
+            gmt{"+0300"}
+        }
+        "Asia:Dhaka" {
+            ec{"Дакка"}
+            gmt{"+0600"}
+        }
+        "Asia:Dili" {
+            ec{"Дили"}
+            gmt{"+0900"}
+        }
+        "Asia:Dubai" {
+            ec{"Дубай"}
+            gmt{"+0400"}
+        }
+        "Asia:Dushanbe" {
+            ec{"Душанбе"}
+            gmt{"+0500"}
+        }
+        "Asia:Famagusta" {
+            ec{"Фамагуста"}
+            gmt{"+0200"}
+        }
+        "Asia:Gaza" {
+            ec{"Газа"}
+            gmt{"+0200"}
+        }
+        "Asia:Hebron" {
+            ec{"Хеврон"}
+            gmt{"+0200"}
+        }
+        "Asia:Hong_Kong" {
+            ec{"Гонконг"}
+            gmt{"+0800"}
+        }
+        "Asia:Hovd" {
+            ec{"Ховд"}
+            gmt{"+0700"}
+        }
+        "Asia:Irkutsk" {
+            ec{"Иркутск"}
+            gmt{"+0800"}
+        }
+        "Asia:Jakarta" {
+            ec{"Джакарта"}
+            gmt{"+0700"}
+        }
+        "Asia:Jayapura" {
+            ec{"Джаяпура"}
+            gmt{"+0900"}
+        }
+        "Asia:Jerusalem" {
+            ec{"Иерусалим"}
+            gmt{"+0200"}
+        }
+        "Asia:Kabul" {
+            ec{"Кабул"}
+            gmt{"+0430"}
+        }
+        "Asia:Kamchatka" {
+            ec{"Петропавловск-Камчатский"}
+            gmt{"+1200"}
+        }
+        "Asia:Karachi" {
+            ec{"Карачи"}
+            gmt{"+0500"}
+        }
+        "Asia:Katmandu" {
+            ec{"Катманду"}
+            gmt{"+0545"}
+        }
+        "Asia:Khandyga" {
+            ec{"Хандыга"}
+            gmt{"+0900"}
+        }
+        "Asia:Krasnoyarsk" {
+            ec{"Красноярск"}
+            gmt{"+0700"}
+        }
+        "Asia:Kuala_Lumpur" {
+            ec{"Куала-Лумпур"}
+            gmt{"+0800"}
+        }
+        "Asia:Kuching" {
+            ec{"Кучинг"}
+            gmt{"+0800"}
+        }
+        "Asia:Kuwait" {
+            ec{"Кувейт"}
+            gmt{"+0300"}
+        }
+        "Asia:Macau" {
+            ec{"Макао"}
+            gmt{"+0800"}
+        }
+        "Asia:Magadan" {
+            ec{"Магадан"}
+            gmt{"+1100"}
+        }
+        "Asia:Makassar" {
+            ec{"Макасар"}
+            gmt{"+0800"}
+        }
+        "Asia:Manila" {
+            ec{"Манила"}
+            gmt{"+0800"}
+        }
+        "Asia:Muscat" {
+            ec{"Маскат"}
+            gmt{"+0400"}
+        }
+        "Asia:Nicosia" {
+            ec{"Никосия"}
+            gmt{"+0200"}
+        }
+        "Asia:Novokuznetsk" {
+            ec{"Новокузнецк"}
+            gmt{"+0700"}
+        }
+        "Asia:Novosibirsk" {
+            ec{"Новосибирск"}
+            gmt{"+0700"}
+        }
+        "Asia:Omsk" {
+            ec{"Омск"}
+            gmt{"+0600"}
+        }
+        "Asia:Oral" {
+            ec{"Уральск"}
+            gmt{"+0500"}
+        }
+        "Asia:Phnom_Penh" {
+            ec{"Пномпень"}
+            gmt{"+0700"}
+        }
+        "Asia:Pontianak" {
+            ec{"Понтианак"}
+            gmt{"+0700"}
+        }
+        "Asia:Pyongyang" {
+            ec{"Пхеньян"}
+            gmt{"+0900"}
+        }
+        "Asia:Qatar" {
+            ec{"Катар"}
+            gmt{"+0300"}
+        }
+        "Asia:Qostanay" {
+            ec{"Костанай"}
+            gmt{"+0600"}
+        }
+        "Asia:Qyzylorda" {
+            ec{"Кызылорда"}
+            gmt{"+0500"}
+        }
+        "Asia:Rangoon" {
+            ec{"Янгон"}
+            gmt{"+0630"}
+        }
+        "Asia:Riyadh" {
+            ec{"Эр-Рияд"}
+            gmt{"+0300"}
+        }
+        "Asia:Saigon" {
+            ec{"Хошимин"}
+            gmt{"+0700"}
+        }
+        "Asia:Sakhalin" {
+            ec{"о-в Сахалин"}
+            gmt{"+1100"}
+        }
+        "Asia:Samarkand" {
+            ec{"Самарканд"}
+            gmt{"+0500"}
+        }
+        "Asia:Seoul" {
+            ec{"Сеул"}
+            gmt{"+0900"}
+        }
+        "Asia:Shanghai" {
+            ec{"Пекин"}
+            gmt{"+0800"}
+        }
+        "Asia:Singapore" {
+            ec{"Сингапур"}
+            gmt{"+0800"}
+        }
+        "Asia:Srednekolymsk" {
+            ec{"Среднеколымск"}
+            gmt{"+1100"}
+        }
+        "Asia:Taipei" {
+            ec{"Тайбэй"}
+            gmt{"+0800"}
+        }
+        "Asia:Tashkent" {
+            ec{"Ташкент"}
+            gmt{"+0500"}
+        }
+        "Asia:Tbilisi" {
+            ec{"Тбилиси"}
+            gmt{"+0400"}
+        }
+        "Asia:Tehran" {
+            ec{"Тегеран"}
+            gmt{"+0330"}
+        }
+        "Asia:Thimphu" {
+            ec{"Тхимпху"}
+            gmt{"+0600"}
+        }
+        "Asia:Tokyo" {
+            ec{"Токио"}
+            gmt{"+0900"}
+        }
+        "Asia:Tomsk" {
+            ec{"Томск"}
+            gmt{"+0700"}
+        }
+        "Asia:Ulaanbaatar" {
+            ec{"Улан-Батор"}
+            gmt{"+0800"}
+        }
+        "Asia:Urumqi" {
+            ec{"Урумчи"}
+            gmt{"+0600"}
+        }
+        "Asia:Ust-Nera"{
+            ec{"Усть-Нера"}
+        }
+        "Asia:Vientiane" {
+            ec{"Вьентьян"}
+            gmt{"+0700"}
+        }
+        "Asia:Vladivostok" {
+            ec{"Владивосток"}
+            gmt{"+1000"}
+        }
+        "Asia:Yakutsk" {
+            ec{"Якутск"}
+            gmt{"+0900"}
+        }
+        "Asia:Yekaterinburg" {
+            ec{"Екатеринбург"}
+            gmt{"+0500"}
+        }
+        "Asia:Yerevan" {
+            ec{"Ереван"}
+            gmt{"+0400"}
+        }
+        "Atlantic:Azores" {
+            ec{"Азорские о-ва"}
+            gmt{"-0100"}
+        }
+        "Atlantic:Bermuda" {
+            ec{"Бермудские о-ва"}
+            gmt{"-0400"}
+        }
+        "Atlantic:Canary" {
+            ec{"Канарские о-ва"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Cape_Verde" {
+            ec{"Кабо-Верде"}
+            gmt{"-0100"}
+        }
+        "Atlantic:Faeroe" {
+            ec{"Фарерские о-ва"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Madeira" {
+            ec{"Мадейра"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Reykjavik" {
+            ec{"Рейкьявик"}
+            gmt{"+0000"}
+        }
+        "Atlantic:South_Georgia" {
+            ec{"Южная Георгия"}
+            gmt{"-0200"}
+        }
+        "Atlantic:St_Helena" {
+            ec{"о-в Святой Елены"}
+            gmt{"+0000"}
+        }
+        "Atlantic:Stanley" {
+            ec{"Стэнли"}
+            gmt{"-0300"}
+        }
+        "Australia:Adelaide" {
+            ec{"Аделаида"}
+            gmt{"+1030"}
+        }
+        "Australia:Brisbane" {
+            ec{"Брисбен"}
+            gmt{"+1000"}
+        }
+        "Australia:Broken_Hill" {
+            ec{"Брокен-Хилл"}
+            gmt{"+1030"}
+        }
+        "Australia:Currie" {
+            ec{"Керри"}
+            gmt{"+1100"}
+        }
+        "Australia:Darwin" {
+            ec{"Дарвин"}
+            gmt{"+0930"}
+        }
+        "Australia:Eucla" {
+            ec{"Юкла"}
+            gmt{"+0845"}
+        }
+        "Australia:Hobart" {
+            ec{"Хобарт"}
+            gmt{"+1100"}
+        }
+        "Australia:Lindeman" {
+            ec{"Линдеман"}
+            gmt{"+1000"}
+        }
+        "Australia:Lord_Howe" {
+            ec{"Лорд-Хау"}
+            gmt{"+1100"}
+        }
+        "Australia:Melbourne" {
+            ec{"Мельбурн"}
+            gmt{"+1100"}
+        }
+        "Australia:Perth" {
+            ec{"Перт"}
+            gmt{"+0800"}
+        }
+        "Australia:Sydney" {
+            ec{"Сидней"}
+            gmt{"+1100"}
+        }
+        "Etc:UTC" {
+            ls{"Всемирное координированное время"}
+            gmt{"+0000"}
+        }
+        "Etc:Unknown"{
+            ec{"Неизвестный город"}
+        }
+        "Europe:Amsterdam" {
+            ec{"Амстердам"}
+            gmt{"+0100"}
+        }
+        "Europe:Andorra" {
+            ec{"Андорра"}
+            gmt{"+0100"}
+        }
+        "Europe:Astrakhan" {
+            ec{"Астрахань"}
+            gmt{"+0400"}
+        }
+        "Europe:Athens" {
+            ec{"Афины"}
+            gmt{"+0200"}
+        }
+        "Europe:Belgrade" {
+            ec{"Белград"}
+            gmt{"+0100"}
+        }
+        "Europe:Berlin" {
+            ec{"Берлин"}
+            gmt{"+0100"}
+        }
+        "Europe:Bratislava" {
+            ec{"Братислава"}
+            gmt{"+0100"}
+        }
+        "Europe:Brussels" {
+            ec{"Брюссель"}
+            gmt{"+0100"}
+        }
+        "Europe:Bucharest" {
+            ec{"Бухарест"}
+            gmt{"+0200"}
+        }
+        "Europe:Budapest" {
+            ec{"Будапешт"}
+            gmt{"+0100"}
+        }
+        "Europe:Busingen" {
+            ec{"Бюзинген-на-Верхнем-Рейне"}
+            gmt{"+0100"}
+        }
+        "Europe:Chisinau" {
+            ec{"Кишинев"}
+            gmt{"+0200"}
+        }
+        "Europe:Copenhagen" {
+            ec{"Копенгаген"}
+            gmt{"+0100"}
+        }
+        "Europe:Dublin" {
+            ec{"Дублин"}
+            gmt{"+0000"}
+        }
+        "Europe:Gibraltar" {
+            ec{"Гибралтар"}
+            gmt{"+0100"}
+        }
+        "Europe:Guernsey" {
+            ec{"Гернси"}
+            gmt{"+0000"}
+        }
+        "Europe:Helsinki" {
+            ec{"Хельсинки"}
+            gmt{"+0200"}
+        }
+        "Europe:Isle_of_Man" {
+            ec{"о-в Мэн"}
+            gmt{"+0000"}
+        }
+        "Europe:Istanbul" {
+            ec{"Стамбул"}
+            gmt{"+0300"}
+        }
+        "Europe:Jersey" {
+            ec{"Джерси"}
+            gmt{"+0000"}
+        }
+        "Europe:Kaliningrad" {
+            ec{"Калининград"}
+            gmt{"+0200"}
+        }
+        "Europe:Kiev" {
+            ec{"Киев"}
+            gmt{"+0200"}
+        }
+        "Europe:Kirov" {
+            ec{"Киров"}
+            gmt{"+0300"}
+        }
+        "Europe:Lisbon" {
+            ec{"Лиссабон"}
+            gmt{"+0000"}
+        }
+        "Europe:Ljubljana" {
+            ec{"Любляна"}
+            gmt{"+0100"}
+        }
+        "Europe:London" {
+            ec{"Лондон"}
+            gmt{"+0000"}
+        }
+        "Europe:Luxembourg" {
+            ec{"Люксембург"}
+            gmt{"+0100"}
+        }
+        "Europe:Madrid" {
+            ec{"Мадрид"}
+            gmt{"+0100"}
+        }
+        "Europe:Malta" {
+            ec{"Мальта"}
+            gmt{"+0100"}
+        }
+        "Europe:Mariehamn" {
+            ec{"Мариехамн"}
+            gmt{"+0200"}
+        }
+        "Europe:Minsk" {
+            ec{"Минск"}
+            gmt{"+0300"}
+        }
+        "Europe:Monaco" {
+            ec{"Монако"}
+            gmt{"+0100"}
+        }
+        "Europe:Moscow" {
+            ec{"Москва"}
+            gmt{"+0300"}
+        }
+        "Europe:Oslo" {
+            ec{"Осло"}
+            gmt{"+0100"}
+        }
+        "Europe:Paris" {
+            ec{"Париж"}
+            gmt{"+0100"}
+        }
+        "Europe:Podgorica" {
+            ec{"Подгорица"}
+            gmt{"+0100"}
+        }
+        "Europe:Prague" {
+            ec{"Прага"}
+            gmt{"+0100"}
+        }
+        "Europe:Riga" {
+            ec{"Рига"}
+            gmt{"+0200"}
+        }
+        "Europe:Rome" {
+            ec{"Рим"}
+            gmt{"+0100"}
+        }
+        "Europe:Samara" {
+            ec{"Самара"}
+            gmt{"+0400"}
+        }
+        "Europe:San_Marino" {
+            ec{"Сан-Марино"}
+            gmt{"+0100"}
+        }
+        "Europe:Sarajevo" {
+            ec{"Сараево"}
+            gmt{"+0100"}
+        }
+        "Europe:Saratov" {
+            ec{"Саратов"}
+            gmt{"+0400"}
+        }
+        "Europe:Simferopol" {
+            ec{"Симферополь"}
+            gmt{"+0300"}
+        }
+        "Europe:Skopje" {
+            ec{"Скопье"}
+            gmt{"+0100"}
+        }
+        "Europe:Sofia" {
+            ec{"София"}
+            gmt{"+0200"}
+        }
+        "Europe:Stockholm" {
+            ec{"Стокгольм"}
+            gmt{"+0100"}
+        }
+        "Europe:Tallinn" {
+            ec{"Таллин"}
+            gmt{"+0200"}
+        }
+        "Europe:Tirane" {
+            ec{"Тирана"}
+            gmt{"+0100"}
+        }
+        "Europe:Ulyanovsk" {
+            ec{"Ульяновск"}
+            gmt{"+0400"}
+        }
+        "Europe:Uzhgorod" {
+            ec{"Ужгород"}
+            gmt{"+0200"}
+        }
+        "Europe:Vaduz" {
+            ec{"Вадуц"}
+            gmt{"+0100"}
+        }
+        "Europe:Vatican" {
+            ec{"Ватикан"}
+            gmt{"+0100"}
+        }
+        "Europe:Vienna" {
+            ec{"Вена"}
+            gmt{"+0100"}
+        }
+        "Europe:Vilnius" {
+            ec{"Вильнюс"}
+            gmt{"+0200"}
+        }
+        "Europe:Volgograd" {
+            ec{"Волгоград"}
+            gmt{"+0300"}
+        }
+        "Europe:Warsaw" {
+            ec{"Варшава"}
+            gmt{"+0100"}
+        }
+        "Europe:Zagreb" {
+            ec{"Загреб"}
+            gmt{"+0100"}
+        }
+        "Europe:Zaporozhye" {
+            ec{"Запорожье"}
+            gmt{"+0200"}
+        }
+        "Europe:Zurich" {
+            ec{"Цюрих"}
+            gmt{"+0100"}
+        }
+        "Indian:Antananarivo" {
+            ec{"Антананариву"}
+            gmt{"+0300"}
+        }
+        "Indian:Chagos" {
+            ec{"Чагос"}
+            gmt{"+0600"}
+        }
+        "Indian:Christmas" {
+            ec{"о-в Рождества"}
+            gmt{"+0700"}
+        }
+        "Indian:Cocos" {
+            ec{"Кокосовые о-ва"}
+            gmt{"+0630"}
+        }
+        "Indian:Comoro" {
+            ec{"Коморы"}
+            gmt{"+0300"}
+        }
+        "Indian:Kerguelen" {
+            ec{"Кергелен"}
+            gmt{"+0500"}
+        }
+        "Indian:Mahe" {
+            ec{"Маэ"}
+            gmt{"+0400"}
+        }
+        "Indian:Maldives" {
+            ec{"Мальдивы"}
+            gmt{"+0500"}
+        }
+        "Indian:Mauritius" {
+            ec{"Маврикий"}
+            gmt{"+0400"}
+        }
+        "Indian:Mayotte" {
+            ec{"Майотта"}
+            gmt{"+0300"}
+        }
+        "Indian:Reunion" {
+            ec{"Реюньон"}
+            gmt{"+0400"}
+        }
+        "Pacific:Apia" {
+            ec{"Апиа"}
+            gmt{"+1300"}
+        }
+        "Pacific:Auckland" {
+            ec{"Окленд"}
+            gmt{"+1300"}
+        }
+        "Pacific:Bougainville" {
+            ec{"Бугенвиль"}
+            gmt{"+1100"}
+        }
+        "Pacific:Chatham" {
+            ec{"Чатем"}
+            gmt{"+1345"}
+        }
+        "Pacific:Easter" {
+            ec{"о-в Пасхи"}
+            gmt{"-0500"}
+        }
+        "Pacific:Efate" {
+            ec{"Эфате"}
+            gmt{"+1100"}
+        }
+        "Pacific:Enderbury" {
+            ec{"о-в Эндербери"}
+            gmt{"+1300"}
+        }
+        "Pacific:Fakaofo" {
+            ec{"Факаофо"}
+            gmt{"+1300"}
+        }
+        "Pacific:Fiji" {
+            ec{"Фиджи"}
+            gmt{"+1200"}
+        }
+        "Pacific:Funafuti" {
+            ec{"Фунафути"}
+            gmt{"+1200"}
+        }
+        "Pacific:Galapagos" {
+            ec{"Галапагосские о-ва"}
+            gmt{"-0600"}
+        }
+        "Pacific:Gambier" {
+            ec{"о-ва Гамбье"}
+            gmt{"-0900"}
+        }
+        "Pacific:Guadalcanal" {
+            ec{"Гуадалканал"}
+            gmt{"+1100"}
+        }
+        "Pacific:Guam" {
+            ec{"Гуам"}
+            gmt{"+1000"}
+        }
+        "Pacific:Honolulu" {
+            ec{"Гавайи"}
+            gmt{"-1000"}
+        }
+        "Pacific:Johnston" {
+            ec{"Джонстон"}
+            gmt{"-1000"}
+        }
+        "Pacific:Kiritimati" {
+            ec{"Киритимати"}
+            gmt{"+1400"}
+        }
+        "Pacific:Kosrae" {
+            ec{"Косрае"}
+            gmt{"+1100"}
+        }
+        "Pacific:Kwajalein" {
+            ec{"Кваджалейн"}
+            gmt{"+1200"}
+        }
+        "Pacific:Majuro" {
+            ec{"Маджуро"}
+            gmt{"+1200"}
+        }
+        "Pacific:Marquesas" {
+            ec{"Маркизские о-ва"}
+            gmt{"-1030"}
+        }
+        "Pacific:Midway" {
+            ec{"о-ва Мидуэй"}
+            gmt{"-1100"}
+        }
+        "Pacific:Nauru" {
+            ec{"Науру"}
+            gmt{"+1200"}
+        }
+        "Pacific:Niue" {
+            ec{"Ниуэ"}
+            gmt{"-1100"}
+        }
+        "Pacific:Norfolk" {
+            ec{"Норфолк"}
+            gmt{"+1200"}
+        }
+        "Pacific:Noumea" {
+            ec{"Нумеа"}
+            gmt{"+1100"}
+        }
+        "Pacific:Pago_Pago" {
+            ec{"Паго-Паго"}
+            gmt{"-1100"}
+        }
+        "Pacific:Palau" {
+            ec{"Палау"}
+            gmt{"+0900"}
+        }
+        "Pacific:Pitcairn" {
+            ec{"Питкэрн"}
+            gmt{"-0800"}
+        }
+        "Pacific:Ponape" {
+            ec{"Понпеи"}
+            gmt{"+1100"}
+        }
+        "Pacific:Port_Moresby" {
+            ec{"Порт-Морсби"}
+            gmt{"+1000"}
+        }
+        "Pacific:Rarotonga" {
+            ec{"Раротонга"}
+            gmt{"-1000"}
+        }
+        "Pacific:Saipan" {
+            ec{"Сайпан"}
+            gmt{"+1000"}
+        }
+        "Pacific:Tahiti" {
+            ec{"Таити"}
+            gmt{"-1000"}
+        }
+        "Pacific:Tarawa" {
+            ec{"Тарава"}
+            gmt{"+1200"}
+        }
+        "Pacific:Tongatapu" {
+            ec{"Тонгатапу"}
+            gmt{"+1300"}
+        }
+        "Pacific:Truk" {
+            ec{"Трук"}
+            gmt{"+1000"}
+        }
+        "Pacific:Wake" {
+            ec{"Уэйк"}
+            gmt{"+1200"}
+        }
+        "Pacific:Wallis" {
+            ec{"Уоллис"}
+            gmt{"+1200"}
+        }
+    }
+}

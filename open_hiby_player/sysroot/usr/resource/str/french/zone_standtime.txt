@@ -1,0 +1,288 @@
+"America/Rio_Branco":heure normale de l’Acre
+"Asia/Kabul":heure de l’Afghanistan
+"Africa/Maputo":heure normale d’Afrique centrale
+"Africa/Bujumbura":heure normale d’Afrique centrale
+"Africa/Gaborone":heure normale d’Afrique centrale
+"Africa/Lubumbashi":heure normale d’Afrique centrale
+"Africa/Blantyre":heure normale d’Afrique centrale
+"Africa/Kigali":heure normale d’Afrique centrale
+"Africa/Lusaka":heure normale d’Afrique centrale
+"Africa/Harare":heure normale d’Afrique centrale
+"Africa/Nairobi":heure normale d’Afrique de l’Est
+"Africa/Djibouti":heure normale d’Afrique de l’Est
+"Africa/Asmera":heure normale d’Afrique de l’Est
+"Africa/Addis_Ababa":heure normale d’Afrique de l’Est
+"Indian/Comoro":heure normale d’Afrique de l’Est
+"Indian/Antananarivo":heure normale d’Afrique de l’Est
+"Africa/Mogadishu":heure normale d’Afrique de l’Est
+"Africa/Dar_es_Salaam":heure normale d’Afrique de l’Est
+"Africa/Kampala":heure normale d’Afrique de l’Est
+"Indian/Mayotte":heure normale d’Afrique de l’Est
+"Africa/Johannesburg":heure normale d’Afrique méridionale
+"Africa/Maseru":heure normale d’Afrique méridionale
+"Africa/Mbabane":heure normale d’Afrique méridionale
+"Africa/Lagos":heure normale d’Afrique de l’Ouest
+"Africa/Luanda":heure normale d’Afrique de l’Ouest
+"Africa/Porto-Novo":heure normale d’Afrique de l’Ouest
+"Africa/Kinshasa":heure normale d’Afrique de l’Ouest
+"Africa/Bangui":heure normale d’Afrique de l’Ouest
+"Africa/Brazzaville":heure normale d’Afrique de l’Ouest
+"Africa/Douala":heure normale d’Afrique de l’Ouest
+"Africa/Libreville":heure normale d’Afrique de l’Ouest
+"Africa/Malabo":heure normale d’Afrique de l’Ouest
+"Africa/Niamey":heure normale d’Afrique de l’Ouest
+"Africa/Ndjamena":heure normale d’Afrique de l’Ouest
+"America/Juneau":heure normale de l’Alaska
+"Asia/Almaty":heure normale d’Alma Ata
+"America/Manaus":heure normale de l’Amazonie
+"America/Chicago":heure normale du centre nord-américain
+"America/Belize":heure normale du centre nord-américain
+"America/Winnipeg":heure normale du centre nord-américain
+"America/Costa_Rica":heure normale du centre nord-américain
+"America/Guatemala":heure normale du centre nord-américain
+"America/Tegucigalpa":heure normale du centre nord-américain
+"America/Mexico_City":heure normale du centre nord-américain
+"America/El_Salvador":heure normale du centre nord-américain
+"America/New_York":heure normale de l’Est nord-américain
+"America/Nassau":heure normale de l’Est nord-américain
+"America/Toronto":heure normale de l’Est nord-américain
+"America/Port-au-Prince":heure normale de l’Est nord-américain
+"America/Jamaica":heure normale de l’Est nord-américain
+"America/Cayman":heure normale de l’Est nord-américain
+"America/Panama":heure normale de l’Est nord-américain
+"America/Denver":heure normale des Rocheuses
+"America/Edmonton":heure normale des Rocheuses
+"America/Hermosillo":heure normale des Rocheuses
+"America/Los_Angeles":heure normale du Pacifique nord-américain
+"America/Vancouver":heure normale du Pacifique nord-américain
+"America/Tijuana":heure normale du Pacifique nord-américain
+"Asia/Anadyr":heure normale d’Anadyr
+"Pacific/Apia":heure normale d’Apia
+"Asia/Aqtau":heure normale d’Aktaou
+"Asia/Aqtobe":heure normale d’Aqtöbe
+"Asia/Riyadh":heure normale de l’Arabie
+"Asia/Bahrain":heure normale de l’Arabie
+"Asia/Baghdad":heure normale de l’Arabie
+"Asia/Kuwait":heure normale de l’Arabie
+"Asia/Qatar":heure normale de l’Arabie
+"Asia/Aden":heure normale de l’Arabie
+"America/Buenos_Aires":heure normale d’Argentine
+"America/Argentina/San_Luis":heure normale de l’Ouest argentin
+"Asia/Yerevan":heure normale de l’Arménie
+"America/Halifax":heure normale de l’Atlantique
+"America/Antigua":heure normale de l’Atlantique
+"America/Anguilla":heure normale de l’Atlantique
+"America/Aruba":heure normale de l’Atlantique
+"America/Barbados":heure normale de l’Atlantique
+"Atlantic/Bermuda":heure normale de l’Atlantique
+"America/Kralendijk":heure normale de l’Atlantique
+"America/Curacao":heure normale de l’Atlantique
+"America/Dominica":heure normale de l’Atlantique
+"America/Grenada":heure normale de l’Atlantique
+"America/Thule":heure normale de l’Atlantique
+"America/Guadeloupe":heure normale de l’Atlantique
+"America/St_Kitts":heure normale de l’Atlantique
+"America/St_Lucia":heure normale de l’Atlantique
+"America/Marigot":heure normale de l’Atlantique
+"America/Martinique":heure normale de l’Atlantique
+"America/Montserrat":heure normale de l’Atlantique
+"America/Puerto_Rico":heure normale de l’Atlantique
+"America/Lower_Princes":heure normale de l’Atlantique
+"America/Port_of_Spain":heure normale de l’Atlantique
+"America/St_Vincent":heure normale de l’Atlantique
+"America/Tortola":heure normale de l’Atlantique
+"America/St_Thomas":heure normale de l’Atlantique
+"Australia/Adelaide":heure normale du centre de l’Australie
+"Australia/Eucla":heure normale du centre-ouest de l’Australie
+"Australia/Sydney":heure normale de l’Est de l’Australie
+"Australia/Perth":heure normale de l’Ouest de l’Australie
+"Asia/Baku":heure normale de l’Azerbaïdjan
+"Atlantic/Azores":heure normale des Açores
+"Asia/Dhaka":heure normale du Bangladesh
+"Asia/Thimphu":heure du Bhoutan
+"America/La_Paz":heure de Bolivie
+"America/Sao_Paulo":heure normale de Brasilia
+"Asia/Brunei":heure du Brunéi
+"Atlantic/Cape_Verde":heure normale du Cap-Vert
+"Pacific/Saipan":heure des Chamorro
+"Pacific/Guam":heure des Chamorro
+"Pacific/Chatham":heure normale des îles Chatham
+"America/Santiago":heure normale du Chili
+"Asia/Shanghai":heure normale de la Chine
+"Asia/Choibalsan":heure normale de Choibalsan
+"Indian/Christmas":heure de l’île Christmas
+"Indian/Cocos":heure des îles Cocos
+"America/Bogota":heure normale de Colombie
+"Pacific/Rarotonga":heure normale des îles Cook
+"America/Havana":heure normale de Cuba
+"Antarctica/Davis":heure de Davis
+"Antarctica/DumontDUrville":heure de Dumont-d’Urville
+"Asia/Dili":heure du Timor oriental
+"Pacific/Easter":heure normale de l’île de Pâques
+"America/Guayaquil":heure de l’Équateur
+"Europe/Paris":heure normale d’Europe centrale
+"Europe/Andorra":heure normale d’Europe centrale
+"Europe/Tirane":heure normale d’Europe centrale
+"Europe/Vienna":heure normale d’Europe centrale
+"Europe/Sarajevo":heure normale d’Europe centrale
+"Europe/Brussels":heure normale d’Europe centrale
+"Europe/Zurich":heure normale d’Europe centrale
+"Europe/Prague":heure normale d’Europe centrale
+"Europe/Berlin":heure normale d’Europe centrale
+"Europe/Copenhagen":heure normale d’Europe centrale
+"Europe/Madrid":heure normale d’Europe centrale
+"Europe/Gibraltar":heure normale d’Europe centrale
+"Europe/Zagreb":heure normale d’Europe centrale
+"Europe/Budapest":heure normale d’Europe centrale
+"Europe/Rome":heure normale d’Europe centrale
+"Europe/Vaduz":heure normale d’Europe centrale
+"Europe/Luxembourg":heure normale d’Europe centrale
+"Europe/Monaco":heure normale d’Europe centrale
+"Europe/Podgorica":heure normale d’Europe centrale
+"Europe/Skopje":heure normale d’Europe centrale
+"Europe/Malta":heure normale d’Europe centrale
+"Europe/Amsterdam":heure normale d’Europe centrale
+"Europe/Oslo":heure normale d’Europe centrale
+"Europe/Warsaw":heure normale d’Europe centrale
+"Europe/Belgrade":heure normale d’Europe centrale
+"Europe/Stockholm":heure normale d’Europe centrale
+"Europe/Ljubljana":heure normale d’Europe centrale
+"Arctic/Longyearbyen":heure normale d’Europe centrale
+"Europe/Bratislava":heure normale d’Europe centrale
+"Europe/San_Marino":heure normale d’Europe centrale
+"Africa/Tunis":heure normale d’Europe centrale
+"Europe/Vatican":heure normale d’Europe centrale
+"Europe/Belgrade":heure normale d’Europe centrale
+"Europe/Bucharest":heure normale d’Europe de l’Est
+"Europe/Mariehamn":heure normale d’Europe de l’Est
+"Europe/Sofia":heure normale d’Europe de l’Est
+"Asia/Nicosia":heure normale d’Europe de l’Est
+"Africa/Cairo":heure normale d’Europe de l’Est
+"Europe/Helsinki":heure normale d’Europe de l’Est
+"Europe/Athens":heure normale d’Europe de l’Est
+"Asia/Amman":heure normale d’Europe de l’Est
+"Asia/Beirut":heure normale d’Europe de l’Est
+"Asia/Damascus":heure normale d’Europe de l’Est
+"Europe/Minsk":heure de Kaliningrad
+"Europe/Kaliningrad":heure de Kaliningrad
+"Atlantic/Canary":heure normale d’Europe de l’Ouest
+"Atlantic/Faeroe":heure normale d’Europe de l’Ouest
+"Atlantic/Stanley":heure normale des îles Malouines
+"Pacific/Fiji":heure normale des îles Fidji
+"America/Cayenne":heure de la Guyane française
+"Indian/Kerguelen":heure des Terres australes et antarctiques françaises
+"Atlantic/Reykjavik":heure moyenne de Greenwich
+"Africa/Ouagadougou":heure moyenne de Greenwich
+"Africa/Abidjan":heure moyenne de Greenwich
+"Europe/London":heure moyenne de Greenwich
+"Africa/Accra":heure moyenne de Greenwich
+"Africa/Banjul":heure moyenne de Greenwich
+"Africa/Conakry":heure moyenne de Greenwich
+"Europe/Dublin":heure moyenne de Greenwich
+"Africa/Bamako":heure moyenne de Greenwich
+"Africa/Nouakchott":heure moyenne de Greenwich
+"Atlantic/St_Helena":heure moyenne de Greenwich
+"Africa/Freetown":heure moyenne de Greenwich
+"Africa/Dakar":heure moyenne de Greenwich
+"Africa/Lome":heure moyenne de Greenwich
+"Pacific/Galapagos":heure des îles Galápagos
+"Pacific/Gambier":heure des îles Gambier
+"Asia/Tbilisi":heure normale de la Géorgie
+"Pacific/Tarawa":heure des îles Gilbert
+"America/Scoresbysund":heure normale de l’Est du Groenland
+"America/Godthab":heure normale de l’Ouest du Groenland
+"Pacific/Guam":heure de Guam
+"Asia/Dubai":heure du Golfe
+"Asia/Muscat":heure du Golfe
+"America/Guyana":heure du Guyana
+"Pacific/Honolulu":heure normale d’Hawaii - Aléoutiennes
+"Asia/Hong_Kong":heure normale de la Chine
+"Asia/Hovd":heure normale de Hovd
+"Asia/Calcutta":heure de l’Inde
+"Asia/Colombo":heure de l’Inde
+"Indian/Chagos":heure de l’Océan Indien
+"Asia/Bangkok":heure d’Indochine
+"Asia/Phnom_Penh":heure d’Indochine
+"Asia/Vientiane":heure d’Indochine
+"Asia/Makassar":heure du Centre indonésien
+"Asia/Jayapura":heure de l’Est indonésien
+"Asia/Jakarta":heure de l’Ouest indonésien
+"Asia/Tehran":heure normale d’Iran
+"Asia/Irkutsk":heure normale d’Irkoutsk
+"Asia/Jerusalem":heure normale d’Israël
+"Asia/Tokyo":heure normale du Japon
+"Asia/Kamchatka":heure normale de Petropavlovsk-Kamchatski
+"Asia/Almaty":heure de l’Est du Kazakhstan
+"Asia/Aqtobe":heure de l’Ouest du Kazakhstan
+"Asia/Seoul":heure normale de la Corée
+"Pacific/Kosrae":heure de Kosrae
+"Asia/Krasnoyarsk":heure normale de Krasnoïarsk
+"Asia/Bishkek":heure du Kirghizistan
+"Pacific/Kiritimati":heure des îles de la Ligne
+"Australia/Lord_Howe":heure normale de Lord Howe
+"Antarctica/Macquarie":heure de l’île Macquarie
+"Asia/Magadan":heure normale de Magadan
+"Asia/Kuching":heure de la Malaisie
+"Indian/Maldives":heure des Maldives
+"Pacific/Marquesas":heure des îles Marquises
+"Pacific/Majuro":heure des îles Marshall
+"Indian/Mauritius":heure normale de Maurice
+"Antarctica/Mawson":heure de Mawson
+"America/Santa_Isabel":heure normale du Nord-Ouest du Mexique
+"America/Mazatlan":heure normale du Pacifique mexicain
+"Asia/Ulaanbaatar":heure normale d’Oulan-Bator
+"Europe/Moscow":heure normale de Moscou
+"Asia/Rangoon":heure du Myanmar
+"Pacific/Nauru":heure de Nauru
+"Asia/Katmandu":heure du Népal
+"Pacific/Noumea":heure normale de la Nouvelle-Calédonie
+"Pacific/Auckland":heure normale de la Nouvelle-Zélande
+"Antarctica/McMurdo":heure normale de la Nouvelle-Zélande
+"America/St_Johns":heure normale de Terre-Neuve
+"Pacific/Niue":heure de Nioué
+"Pacific/Norfolk":heure normale de l’île Norfolk
+"America/Noronha":heure normale de Fernando de Noronha
+"Pacific/Saipan":heure des îles Mariannes du Nord
+"Asia/Novosibirsk":heure normale de Novossibirsk
+"Asia/Omsk":heure normale de Omsk
+"Asia/Karachi":heure normale du Pakistan
+"Pacific/Palau":heure des Palaos
+"Pacific/Port_Moresby":heure de la Papouasie-Nouvelle-Guinée
+"America/Asuncion":heure normale du Paraguay
+"America/Lima":heure normale du Pérou
+"Asia/Manila":heure normale des Philippines
+"Pacific/Enderbury":heure des îles Phoenix
+"America/Miquelon":heure normale de Saint-Pierre-et-Miquelon
+"Pacific/Pitcairn":heure des îles Pitcairn
+"Pacific/Ponape":heure de l’île de Pohnpei
+"Asia/Pyongyang":heure de Pyongyang
+"Indian/Reunion":heure de La Réunion
+"Antarctica/Rothera":heure de Rothera
+"Asia/Sakhalin":heure normale de Sakhaline
+"Europe/Samara":heure normale de Samara
+"Pacific/Pago_Pago":heure normale des Samoa
+"Indian/Mahe":heure des Seychelles
+"Asia/Singapore":heure de Singapour
+"Pacific/Guadalcanal":heure des îles Salomon
+"Atlantic/South_Georgia":heure de Géorgie du Sud
+"America/Paramaribo":heure du Suriname
+"Antarctica/Syowa":heure de Syowa
+"Pacific/Tahiti":heure de Tahiti
+"Asia/Taipei":heure normale de la Chine
+"Asia/Dushanbe":heure du Tadjikistan
+"Pacific/Fakaofo":heure de Tokelau
+"Pacific/Tongatapu":heure normale des Tonga
+"Pacific/Truk":heure de Chuuk
+"Asia/Ashgabat":heure normale du Turkménistan
+"Pacific/Funafuti":heure des Tuvalu
+"America/Montevideo":heure normale de l’Uruguay
+"Asia/Tashkent":heure normale de l’Ouzbékistan
+"Pacific/Efate":heure normale du Vanuatu
+"America/Caracas":heure du Venezuela
+"Asia/Vladivostok":heure normale de Vladivostok
+"Europe/Volgograd":heure normale de Volgograd
+"Antarctica/Vostok":heure de Vostok
+"Pacific/Wake":heure de l’île Wake
+"Pacific/Wallis":heure de Wallis-et-Futuna
+"Asia/Yakutsk":heure normale de Iakoutsk
+"Asia/Yekaterinburg":heure normale d’Ekaterinbourg

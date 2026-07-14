@@ -1,0 +1,292 @@
+"America/Rio_Branco":Acre-Normalzeit
+"Asia/Kabul":Afghanistan-Zeit
+"Africa/Maputo":Zentralafrikanische Zeit
+"Africa/Bujumbura":Zentralafrikanische Zeit
+"Africa/Gaborone":Zentralafrikanische Zeit
+"Africa/Lubumbashi":Zentralafrikanische Zeit
+"Africa/Blantyre":Zentralafrikanische Zeit
+"Africa/Kigali":Zentralafrikanische Zeit
+"Africa/Lusaka":Zentralafrikanische Zeit
+"Africa/Harare":Zentralafrikanische Zeit
+"Africa/Nairobi":Ostafrikanische Zeit
+"Africa/Djibouti":Ostafrikanische Zeit
+"Africa/Asmera":Ostafrikanische Zeit
+"Africa/Addis_Ababa":Ostafrikanische Zeit
+"Indian/Comoro":Ostafrikanische Zeit
+"Indian/Antananarivo":Ostafrikanische Zeit
+"Africa/Mogadishu":Ostafrikanische Zeit
+"Africa/Dar_es_Salaam":Ostafrikanische Zeit
+"Africa/Kampala":Ostafrikanische Zeit
+"Indian/Mayotte":Ostafrikanische Zeit
+"Africa/Johannesburg":Südafrikanische Zeit
+"Africa/Maseru":Südafrikanische Zeit
+"Africa/Mbabane":Südafrikanische Zeit
+"Africa/Lagos":Westafrikanische Normalzeit
+"Africa/Luanda":Westafrikanische Normalzeit
+"Africa/Porto-Novo":Westafrikanische Normalzeit
+"Africa/Kinshasa":Westafrikanische Normalzeit
+"Africa/Bangui":Westafrikanische Normalzeit
+"Africa/Brazzaville":Westafrikanische Normalzeit
+"Africa/Douala":Westafrikanische Normalzeit
+"Africa/Libreville":Westafrikanische Normalzeit
+"Africa/Malabo":Westafrikanische Normalzeit
+"Africa/Niamey":Westafrikanische Normalzeit
+"Africa/Ndjamena":Westafrikanische Normalzeit
+"America/Juneau":Alaska-Normalzeit
+"Asia/Almaty":Almaty-Normalzeit
+"America/Manaus":Amazonas-Normalzeit
+"America/Chicago":Nordamerikanische Inland-Normalzeit
+"America/Belize":Nordamerikanische Inland-Normalzeit
+"America/Winnipeg":Nordamerikanische Inland-Normalzeit
+"America/Costa_Rica":Nordamerikanische Inland-Normalzeit
+"America/Guatemala":Nordamerikanische Inland-Normalzeit
+"America/Tegucigalpa":Nordamerikanische Inland-Normalzeit
+"America/Mexico_City":Nordamerikanische Inland-Normalzeit
+"America/El_Salvador":Nordamerikanische Inland-Normalzeit
+"America/New_York":Nordamerikanische Ostküsten-Normalzeit
+"America/Nassau":Nordamerikanische Ostküsten-Normalzeit
+"America/Toronto":Nordamerikanische Ostküsten-Normalzeit
+"America/Port-au-Prince":Nordamerikanische Ostküsten-Normalzeit
+"America/Jamaica":Nordamerikanische Ostküsten-Normalzeit
+"America/Cayman":Nordamerikanische Ostküsten-Normalzeit
+"America/Panama":Nordamerikanische Ostküsten-Normalzeit
+"America/Denver":Rocky Mountain-Normalzeit
+"America/Edmonton":Rocky Mountain-Normalzeit
+"America/Hermosillo":Rocky Mountain-Normalzeit
+"America/Los_Angeles":Nordamerikanische Westküsten-Normalzeit
+"America/Vancouver":Nordamerikanische Westküsten-Normalzeit
+"America/Tijuana":Nordamerikanische Westküsten-Normalzeit
+"Asia/Anadyr":Anadyr Normalzeit
+"Pacific/Apia":Apia-Normalzeit
+"Asia/Aqtau":Aqtau-Normalzeit
+"Asia/Aqtobe":Aqtöbe-Normalzeit
+"Asia/Riyadh":Arabische Normalzeit
+"Asia/Bahrain":Arabische Normalzeit
+"Asia/Baghdad":Arabische Normalzeit
+"Asia/Kuwait":Arabische Normalzeit
+"Asia/Qatar":Arabische Normalzeit
+"Asia/Aden":Arabische Normalzeit
+"America/Buenos_Aires":Argentinische Normalzeit
+"America/Argentina/San_Luis":Westargentinische Normalzeit
+"Asia/Yerevan":Armenische Normalzeit
+"America/Halifax":Atlantik-Normalzeit
+"America/Antigua":Atlantik-Normalzeit
+"America/Anguilla":Atlantik-Normalzeit
+"America/Aruba":Atlantik-Normalzeit
+"America/Barbados":Atlantik-Normalzeit
+"Atlantic/Bermuda":Atlantik-Normalzeit
+"America/Kralendijk":Atlantik-Normalzeit
+"America/Curacao":Atlantik-Normalzeit
+"America/Dominica":Atlantik-Normalzeit
+"America/Grenada":Atlantik-Normalzeit
+"America/Thule":Atlantik-Normalzeit
+"America/Guadeloupe":Atlantik-Normalzeit
+"America/St_Kitts":Atlantik-Normalzeit
+"America/St_Lucia":Atlantik-Normalzeit
+"America/Marigot":Atlantik-Normalzeit
+"America/Martinique":Atlantik-Normalzeit
+"America/Montserrat":Atlantik-Normalzeit
+"America/Puerto_Rico":Atlantik-Normalzeit
+"America/Lower_Princes":Atlantik-Normalzeit
+"America/Port_of_Spain":Atlantik-Normalzeit
+"America/St_Vincent":Atlantik-Normalzeit
+"America/Tortola":Atlantik-Normalzeit
+"America/St_Thomas":Atlantik-Normalzeit
+"Australia/Adelaide":Zentralaustralische Normalzeit
+"Australia/Eucla":Zentral-/Westaustralische Normalzeit
+"Australia/Sydney":Ostaustralische Normalzeit
+"Australia/Perth":Westaustralische Normalzeit
+"Asia/Baku":Aserbeidschanische Normalzeit
+"Atlantic/Azores":Azoren-Normalzeit
+"Asia/Dhaka":Bangladesch-Normalzeit
+"Asia/Thimphu":Bhutan-Zeit
+"America/La_Paz":Bolivianische Zeit
+"America/Sao_Paulo":Brasília-Normalzeit
+"Asia/Brunei":Brunei-Darussalam-Zeit
+"Atlantic/Cape_Verde":Cabo-Verde-Normalzeit
+"Antarctica/Casey":Casey-Zeit
+"Pacific/Saipan":Chamorro-Zeit
+"Pacific/Guam":Chamorro-Zeit
+"Pacific/Chatham":Chatham-Normalzeit
+"America/Santiago":Chilenische Normalzeit
+"Asia/Shanghai":Chinesische Normalzeit
+"Asia/Choibalsan":Tschoibalsan-Normalzeit
+"Indian/Christmas":Weihnachtsinsel-Zeit
+"Indian/Cocos":Kokosinseln-Zeit
+"America/Bogota":Kolumbianische Normalzeit
+"Pacific/Rarotonga":Cookinseln-Normalzeit
+"America/Havana":Kubanische Normalzeit
+"Antarctica/Davis":Davis-Zeit
+"Antarctica/DumontDUrville":Dumont-d’Urville-Zeit
+"Asia/Dili":Osttimor-Zeit
+"Pacific/Easter":Osterinsel-Normalzeit
+"America/Guayaquil":Ecuadorianische Zeit
+"Europe/Paris":Mitteleuropäische Normalzeit
+"Europe/Andorra":Mitteleuropäische Normalzeit
+"Europe/Tirane":Mitteleuropäische Normalzeit
+"Europe/Vienna":Mitteleuropäische Normalzeit
+"Europe/Sarajevo":Mitteleuropäische Normalzeit
+"Europe/Brussels":Mitteleuropäische Normalzeit
+"Europe/Zurich":Mitteleuropäische Normalzeit
+"Europe/Prague":Mitteleuropäische Normalzeit
+"Europe/Berlin":Mitteleuropäische Normalzeit
+"Europe/Copenhagen":Mitteleuropäische Normalzeit
+"Europe/Madrid":Mitteleuropäische Normalzeit
+"Europe/Gibraltar":Mitteleuropäische Normalzeit
+"Europe/Zagreb":Mitteleuropäische Normalzeit
+"Europe/Budapest":Mitteleuropäische Normalzeit
+"Europe/Rome":Mitteleuropäische Normalzeit
+"Europe/Vaduz":Mitteleuropäische Normalzeit
+"Europe/Luxembourg":Mitteleuropäische Normalzeit
+"Europe/Monaco":Mitteleuropäische Normalzeit
+"Europe/Podgorica":Mitteleuropäische Normalzeit
+"Europe/Skopje":Mitteleuropäische Normalzeit
+"Europe/Malta":Mitteleuropäische Normalzeit
+"Europe/Amsterdam":Mitteleuropäische Normalzeit
+"Europe/Oslo":Mitteleuropäische Normalzeit
+"Europe/Warsaw":Mitteleuropäische Normalzeit
+"Europe/Belgrade":Mitteleuropäische Normalzeit
+"Europe/Stockholm":Mitteleuropäische Normalzeit
+"Europe/Ljubljana":Mitteleuropäische Normalzeit
+"Arctic/Longyearbyen":Mitteleuropäische Normalzeit
+"Europe/Bratislava":Mitteleuropäische Normalzeit
+"Europe/San_Marino":Mitteleuropäische Normalzeit
+"Africa/Tunis":Mitteleuropäische Normalzeit
+"Europe/Vatican":Mitteleuropäische Normalzeit
+"Europe/Belgrade":Mitteleuropäische Normalzeit
+"Europe/Bucharest":Osteuropäische Normalzeit
+"Europe/Mariehamn":Osteuropäische Normalzeit
+"Europe/Sofia":Osteuropäische Normalzeit
+"Asia/Nicosia":Osteuropäische Normalzeit
+"Africa/Cairo":Osteuropäische Normalzeit
+"Europe/Helsinki":Osteuropäische Normalzeit
+"Europe/Athens":Osteuropäische Normalzeit
+"Asia/Amman":Osteuropäische Normalzeit
+"Asia/Beirut":Osteuropäische Normalzeit
+"Asia/Damascus":Osteuropäische Normalzeit
+"Europe/Minsk":Kaliningrader Zeit
+"Europe/Kaliningrad":Kaliningrader Zeit
+"Atlantic/Canary":Westeuropäische Normalzeit
+"Atlantic/Faeroe":Westeuropäische Normalzeit
+"Atlantic/Stanley":Falklandinseln-Normalzeit
+"Pacific/Fiji":Fidschi-Normalzeit
+"America/Cayenne":Französisch-Guayana-Zeit
+"Indian/Kerguelen":Französische-Süd-und-Antarktisgebiete-Zeit
+"Atlantic/Reykjavik":Mittlere Greenwich-Zeit
+"Africa/Ouagadougou":Mittlere Greenwich-Zeit
+"Africa/Abidjan":Mittlere Greenwich-Zeit
+"Europe/London":Mittlere Greenwich-Zeit
+"Africa/Accra":Mittlere Greenwich-Zeit
+"Africa/Banjul":Mittlere Greenwich-Zeit
+"Africa/Conakry":Mittlere Greenwich-Zeit
+"Europe/Dublin":Mittlere Greenwich-Zeit
+"Africa/Bamako":Mittlere Greenwich-Zeit
+"Africa/Nouakchott":Mittlere Greenwich-Zeit
+"Atlantic/St_Helena":Mittlere Greenwich-Zeit
+"Africa/Freetown":Mittlere Greenwich-Zeit
+"Africa/Dakar":Mittlere Greenwich-Zeit
+"Africa/Lome":Mittlere Greenwich-Zeit
+"Pacific/Galapagos":Galapagos-Zeit
+"Pacific/Gambier":Gambier-Zeit
+"Asia/Tbilisi":Georgische Normalzeit
+"Pacific/Tarawa":Gilbert-Inseln-Zeit
+"America/Scoresbysund":Ostgrönland-Normalzeit
+"America/Godthab":Westgrönland-Normalzeit
+"Pacific/Guam":Guam-Zeit
+"Asia/Dubai":Golf-Zeit
+"Asia/Muscat":Golf-Zeit
+"America/Guyana":Guyana-Zeit
+"Pacific/Honolulu":Hawaii-Aleuten-Normalzeit
+"Asia/Hong_Kong":Chinesische Normalzeit
+"Asia/Hovd":Chowd-Normalzeit
+"Asia/Calcutta":Indische Normalzeit
+"Asia/Colombo":Indische Normalzeit
+"Indian/Chagos":Indischer-Ozean-Zeit
+"Asia/Bangkok":Indochina-Zeit
+"Asia/Phnom_Penh":Indochina-Zeit
+"Asia/Vientiane":Indochina-Zeit
+"Asia/Makassar":Zentralindonesische Zeit
+"Asia/Jayapura":Ostindonesische Zeit
+"Asia/Jakarta":Westindonesische Zeit
+"Asia/Tehran":Iranische Normalzeit
+"Asia/Irkutsk":Irkutsk-Normalzeit
+"Asia/Jerusalem":Israelische Normalzeit
+"Asia/Tokyo":Japanische Normalzeit
+"Asia/Kamchatka":Kamtschatka-Normalzeit
+"Asia/Almaty":Ostkasachische Zeit
+"Asia/Aqtobe":Westkasachische Zeit
+"Asia/Seoul":Koreanische Normalzeit
+"Pacific/Kosrae":Kosrae-Zeit
+"Asia/Krasnoyarsk":Krasnojarsk-Normalzeit
+"Asia/Bishkek":Kirgisistan-Zeit
+"Asia/Colombo":Sri-Lanka-Zeit
+"Pacific/Kiritimati":Linieninseln-Zeit
+"Australia/Lord_Howe":Lord-Howe-Normalzeit
+"Asia/Macau":Macau-Normalzeit
+"Antarctica/Macquarie":Macquarieinsel-Zeit
+"Asia/Magadan":Magadan-Normalzeit
+"Asia/Kuching":Malaysische Zeit
+"Indian/Maldives":Malediven-Zeit
+"Pacific/Marquesas":Marquesas-Zeit
+"Pacific/Majuro":Marshallinseln-Zeit
+"Indian/Mauritius":Mauritius-Normalzeit
+"Antarctica/Mawson":Mawson-Zeit
+"America/Santa_Isabel":Mexiko Nordwestliche Zone-Normalzeit
+"America/Mazatlan":Mexiko Pazifikzone-Normalzeit
+"Asia/Ulaanbaatar":Ulaanbaatar-Normalzeit
+"Europe/Moscow":Moskauer Normalzeit
+"Asia/Rangoon":Myanmar-Zeit
+"Pacific/Nauru":Nauru-Zeit
+"Asia/Katmandu":Nepalesische Zeit
+"Pacific/Noumea":Neukaledonische Normalzeit
+"Pacific/Auckland":Neuseeland-Normalzeit
+"Antarctica/McMurdo":Neuseeland-Normalzeit
+"America/St_Johns":Neufundland-Normalzeit
+"Pacific/Niue":Niue-Zeit
+"Pacific/Norfolk":Norfolkinsel-Normalzeit
+"America/Noronha":Fernando-de-Noronha-Normalzeit
+"Pacific/Saipan":Nördliche-Marianen-Zeit
+"Asia/Novosibirsk":Nowosibirsk-Normalzeit
+"Asia/Omsk":Omsker Normalzeit
+"Asia/Karachi":Pakistanische Normalzeit
+"Pacific/Palau":Palau-Zeit
+"Pacific/Port_Moresby":Papua-Neuguinea-Zeit
+"America/Asuncion":Paraguayanische Normalzeit
+"America/Lima":Peruanische Normalzeit
+"Asia/Manila":Philippinische Normalzeit
+"Pacific/Enderbury":Phoenixinseln-Zeit
+"America/Miquelon":St.-Pierre-und-Miquelon-Normalzeit
+"Pacific/Pitcairn":Pitcairninseln-Zeit
+"Pacific/Ponape":Ponape-Zeit
+"Asia/Pyongyang":Pjöngjang-Zeit
+"Asia/Qyzylorda":Quysylorda-Normalzeit
+"Indian/Reunion":Réunion-Zeit
+"Antarctica/Rothera":Rothera-Zeit
+"Asia/Sakhalin":Sachalin-Normalzeit
+"Europe/Samara":Samara-Normalzeit
+"Pacific/Pago_Pago":Samoa-Normalzeit
+"Indian/Mahe":Seychellen-Zeit
+"Asia/Singapore":Singapurische Normalzeit
+"Pacific/Guadalcanal":Salomonen-Zeit
+"Atlantic/South_Georgia":Südgeorgische Zeit
+"America/Paramaribo":Suriname-Zeit
+"Antarctica/Syowa":Syowa-Zeit
+"Pacific/Tahiti":Tahiti-Zeit
+"Asia/Taipei":Chinesische Normalzeit
+"Asia/Dushanbe":Tadschikistan-Zeit
+"Pacific/Fakaofo":Tokelau-Zeit
+"Pacific/Tongatapu":Tonganische Normalzeit
+"Pacific/Truk":Chuuk-Zeit
+"Asia/Ashgabat":Turkmenistan-Normalzeit
+"Pacific/Funafuti":Tuvalu-Zeit
+"America/Montevideo":Uruguyanische Normalzeit
+"Asia/Tashkent":Usbekistan-Normalzeit
+"Pacific/Efate":Vanuatu-Normalzeit
+"America/Caracas":Venezuela-Zeit
+"Asia/Vladivostok":Wladiwostok-Normalzeit
+"Europe/Volgograd":Wolgograd-Normalzeit
+"Antarctica/Vostok":Wostok-Zeit
+"Pacific/Wake":Wake-Insel-Zeit
+"Pacific/Wallis":Wallis-und-Futuna-Zeit
+"Asia/Yakutsk":Jakutsker Normalzeit
+"Asia/Yekaterinburg":Jekaterinburg-Normalzeit

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+prep_page()
+{
+    path="/usr/data/share"
+    web="${path}/web"
+    pages="${web}/pages"
+
+    src_web="/usr/share/web"
+    region="/usr/data/region"
+    lang=""
+
+    if [ ! -d ${path} ]; then
+        mkdir "${path}"
+        cp -r -p "${src_web}" "${path}"
+    fi
+
+    if [ ! -d ${region} ]; then
+        lang="CN"
+    fi
+    
+    if [ $(cat ${region}) == "lang=zh-cmn-Hans" ]; then
+            lang="CN"
+     else
+            lang="EN"
+    fi
+  
+    cp -p "${pages}/index-${lang}.html" "${web}/index.html"
+    cp -p "${pages}/index-${lang}.js" "${web}/js/index.js"
+}
+
+prep_page
+udp_server -p 4399 &> /tmp/udp_state
+thttpd -C /etc/thttpd.conf &> /tmp/thttpd_state
