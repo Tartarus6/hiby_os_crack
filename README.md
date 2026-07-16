@@ -20,7 +20,7 @@ This repo is for:
 
 ## Scope
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
-- For now, this project also only focuses on the HiBy OS firmware used by the generation including the R1, R3, and R3 Pro II
+- For now, this project also only focuses on the HiBy OS firmware used by the generation including the R1, R3 II 2025, R3 Pro II, and Tempotec V1. These devices all use the `.upt` firmware format and have an Ingenic X1600E CPU.
     - Older devices such as the R3 Pro and the R3 Pro Saber used a different format. see [hiby-firmware-tools](https://github.com/SuperTaiyaki/hiby-firmware-tools) by SuperTaiyaki on GitHub for that older type of firmware
 
 ### Note for Windows
