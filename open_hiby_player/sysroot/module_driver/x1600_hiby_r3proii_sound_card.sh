@@ -1,1 +1,0 @@
-insmod x1600_hiby_r3proii_sound_card.ko 

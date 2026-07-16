@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "cgic deamo"
-if [ $(ps -ef | grep -c thttpd) -eq 1 ]; then cgic_enable; fi

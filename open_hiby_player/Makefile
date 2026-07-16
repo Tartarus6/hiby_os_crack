@@ -4,22 +4,22 @@
 HOST_BIN = open_hiby_player_host
 TARGET_BIN = open_hiby_player_target
 
-# Compiler and Linker configuration
-# TODO: remove host config, switch to only target
-CC = gcc
-# CROSS_CC = mipsel-rockbox-linux-gnu-gcc
-CROSS_CC ?= mipsel-linux-musl-gcc
-
-# TODO: might need to have different sysroot for different targets. could extract it from a base firmware
-SYSROOT ?= $(CURDIR)/sysroot
-
 # LVGL directory name
-LVGL_DIR = lvgl
+LVGL_DIR = $(CURDIR)/lvgl
+
+# rockbox-toolchain directory name
+ROCKBOX_TOOLCHAIN_DIR = $(CURDIR)/rockbox-toolchain
+
+# Compiler and Linker configuration
+# TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
+CC = gcc
+CROSS_CC = $(ROCKBOX_TOOLCHAIN_DIR)/bin/mipsel-rockbox-linux-gnu-gcc
+# CROSS_CC = mipsel-linux-musl-gcc
 
 # Self-bootstrap: clone LVGL if it doesn't exist yet before evaluating variables
 ifeq ($(wildcard $(LVGL_DIR)),)
-$(info Cloning LVGL v9.1.0...)
-$(shell git clone --depth 1 -b v9.1.0 https://github.com/lvgl/lvgl.git)
+	$(info Cloning LVGL v9.1.0...)
+	$(shell git clone --depth 1 -b v9.1.0 https://github.com/lvgl/lvgl.git)
 endif
 
 # Compile flags
@@ -30,14 +30,8 @@ TARGET_CFLAGS = $(CFLAGS) -I$(LVGL_DIR)/src
 
 # Link flags
 HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm -ldl
-SYSROOT_USR_LIB = $(SYSROOT)/usr/lib
-SYSROOT_LIB     = $(SYSROOT)/lib
-TARGET_LDFLAGS = \
-	-L$(SYSROOT_USR_LIB) \
-	-L$(SYSROOT_LIB) \
-	-Wl,--rpath-link,$(SYSROOT_USR_LIB) \
-	-Wl,--rpath-link,$(SYSROOT_LIB) \
-	-lsndfile -lasound -lpthread -lm -ldl -latomic
+TARGET_LDFLAGS = -lpthread -lm -ldl -lasound -latomic
+
 
 # Source files
 APP_SRCS := $(shell find src -name '*.c')
@@ -68,7 +62,8 @@ build_host/lvgl/%.o: $(LVGL_DIR)/%.c
 	$(CC) $(HOST_CFLAGS) -c $< -o $@
 
 # Build for target (MIPS HiBy Device)
-target: $(TARGET_BIN) compile_commands.json
+# target: $(TARGET_BIN) compile_commands.json
+target: $(TARGET_BIN)
 
 $(TARGET_BIN): $(TARGET_OBJS)
 	$(CROSS_CC) -o $@ $(TARGET_OBJS) $(TARGET_LDFLAGS)
@@ -88,3 +83,9 @@ compile_commands.json:
 
 clean:
 	rm -rf build_host build_target $(HOST_BIN) $(TARGET_BIN) compile_commands.json compile_flags.txt
+
+$(TARGET_OBJS): $(CROSS_CC)
+
+$(CROSS_CC):
+	@echo "Building Rockbox toolchain..."
+	./rockboxdev/rockboxdev.sh
