@@ -13,8 +13,7 @@ ROCKBOX_TOOLCHAIN_DIR = $(CURDIR)/rockbox-toolchain
 # Compiler and Linker configuration
 # TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
 CC = gcc
-CROSS_CC = $(ROCKBOX_TOOLCHAIN_DIR)/bin/mipsel-rockbox-linux-gnu-gcc
-# CROSS_CC = mipsel-linux-musl-gcc
+CROSS_CC ?= $(ROCKBOX_TOOLCHAIN_DIR)/bin/mipsel-rockbox-linux-gnu-gcc
 
 # Self-bootstrap: clone LVGL if it doesn't exist yet before evaluating variables
 ifeq ($(wildcard $(LVGL_DIR)),)
@@ -29,8 +28,8 @@ HOST_CFLAGS = $(CFLAGS) -DHOST_BUILD=1 $(shell sdl2-config --cflags)
 TARGET_CFLAGS = $(CFLAGS) -I$(LVGL_DIR)/src
 
 # Link flags
-HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm -ldl
-TARGET_LDFLAGS = -lpthread -lm -ldl -lasound -latomic
+HOST_LDFLAGS = $(shell sdl2-config --libs) -lpthread -lm -ldl -lasound
+TARGET_LDFLAGS = -lpthread -lm -ldl -lasound
 
 
 # Source files
@@ -47,7 +46,7 @@ TARGET_OBJS = $(APP_SRCS:src/%.c=build_target/%.o) $(LVGL_SRCS:$(LVGL_DIR)/%.c=b
 all: host compile_commands.json
 
 # Build for host (Linux PC)
-host: $(HOST_BIN)
+host: $(HOST_BIN) compile_commands.json
 
 $(HOST_BIN): $(HOST_OBJS)
 	$(CC) -o $@ $(HOST_OBJS) $(HOST_LDFLAGS)
@@ -62,8 +61,7 @@ build_host/lvgl/%.o: $(LVGL_DIR)/%.c
 	$(CC) $(HOST_CFLAGS) -c $< -o $@
 
 # Build for target (MIPS HiBy Device)
-# target: $(TARGET_BIN) compile_commands.json
-target: $(TARGET_BIN)
+target: $(TARGET_BIN) compile_commands.json
 
 $(TARGET_BIN): $(TARGET_OBJS)
 	$(CROSS_CC) -o $@ $(TARGET_OBJS) $(TARGET_LDFLAGS)
@@ -84,6 +82,7 @@ compile_commands.json:
 clean:
 	rm -rf build_host build_target $(HOST_BIN) $(TARGET_BIN) compile_commands.json compile_flags.txt
 
+# make sure the cross compiler is built before trying to make any of the target objects with it
 $(TARGET_OBJS): $(CROSS_CC)
 
 $(CROSS_CC):
