@@ -1,6 +1,7 @@
 #include "lvgl/lvgl.h"
 
 #include <stdint.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <time.h>
@@ -18,6 +19,7 @@ static void sigint_handler(int sig)
 }
 
 #ifdef HOST_BUILD
+  #include <SDL2/SDL.h>
   #include "src/drivers/sdl/lv_sdl_window.h"
   #include "src/drivers/sdl/lv_sdl_mouse.h"
   #include "src/drivers/sdl/lv_sdl_keyboard.h"
@@ -46,6 +48,17 @@ static lv_display_t *init_host_display(void) {
     if (!disp) {
         fprintf(stderr, "Error: Failed to create SDL2 window\n");
         return NULL;
+    }
+
+    // (DISALLOW RESIZING) This triggers automatic floating on tiling WMs
+    lv_sdl_window_set_resizeable(disp, false);
+
+    // (FIX FOR VIEWPORT SHIFT) Fetch SDL context and flush backbuffers
+    SDL_Renderer *renderer = (SDL_Renderer *)lv_sdl_window_get_renderer(disp);
+    if (renderer) {
+        SDL_RenderClear(renderer);   // Clear backbuffer state
+        SDL_RenderPresent(renderer); // Flush context out to Wayland surface
+        SDL_Delay(50);               // Brief pause to allow the compositor coordinates to settle
     }
 
     lv_indev_t *mouse = lv_sdl_mouse_create();
@@ -136,6 +149,11 @@ int main() {
         .screen_height = SCREEN_HEIGHT,
         .top_bar_height = 45,
         .top_bar_padding = 15,
+#ifdef HOST_BUILD
+        .sd_root_path = getenv("HOME"),
+#else
+        .sd_root_path = "/usr/data/mnt/sd_0",
+#endif
     };
 
     gui_init(&gui_cfg);
