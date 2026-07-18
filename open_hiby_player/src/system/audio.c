@@ -1,5 +1,5 @@
 #include "audio.h"
-#include "src/system/utils.h"
+#include "src/system/alsa-controls.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -280,13 +280,12 @@ static void *playback_thread_func(void *arg) {
 }
 
 int audio_init(void) {
-    static bool inited = false;
-    if (inited) return 0;
+    static bool initialized = false;
+    if (initialized) return 0;
 
     // Apply ALSA mixer routing configurations
-    system("sh -c \"amixer -c 0 cset numid=2 100\"");
-    system("sh -c \"amixer -c 0 cset numid=1 100\"");
-    system("sh -c \"amixer -c 0 cset numid=9 2\"");
+    set_volume(150);
+    auto_set_output();
 
     pthread_mutex_lock(&audio_mutex);
     stop_thread = false;
@@ -300,12 +299,15 @@ int audio_init(void) {
         return -1;
     }
 
-    inited = true;
+    initialized = true;
     return 0;
 }
 
 int audio_play(const char *filepath) {
 	printf("playing\n");
+
+	auto_set_output();
+
     pthread_mutex_lock(&audio_mutex);
     strncpy(current_filepath, filepath, sizeof(current_filepath) - 1);
     play_request = true;
@@ -326,6 +328,9 @@ void audio_pause(void) {
 
 void audio_resume(void) {
 	printf("resuming\n");
+
+	auto_set_output();
+
     pthread_mutex_lock(&audio_mutex);
     if (audio_state == AUDIO_STATE_PAUSED) {
         audio_state = AUDIO_STATE_PLAYING;

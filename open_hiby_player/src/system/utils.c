@@ -35,21 +35,21 @@ char* read_file_content(const char* filename) {
 	return content;
 }
 
-// bool file_matches(const char *filename, const char *expected) {
-//     FILE *file = fopen(filename, "rb");
-//     if (file == NULL) {
-//         return false; // Couldn't open file
-//     }
+bool file_matches(const char *filename, const char *expected) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        return false; // Couldn't open file
+    }
 
-//     char buffer[64];
+    char buffer[64];
 
-//     size_t bytes_read = fread(buffer, 1, sizeof(buffer) - 1, file);
-//     fclose(file);
+    size_t bytes_read = fread(buffer, 1, sizeof(buffer) - 1, file);
+    fclose(file);
 
-//     buffer[bytes_read] = '\0';
+    buffer[bytes_read] = '\0';
 
-//     // Remove trailing newline(s), if present.
-//     buffer[strcspn(buffer, "\r\n")] = '\0';
+    // Remove trailing newline(s), if present.
+    buffer[strcspn(buffer, "\r\n")] = '\0';
 
-//     return strcmp(buffer, expected) == 0;
-// }
+    return strcmp(buffer, expected) == 0;
+}

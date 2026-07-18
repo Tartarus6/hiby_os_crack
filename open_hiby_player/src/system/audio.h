@@ -1,6 +1,7 @@
 #ifndef AUDIO_H
 #define AUDIO_H
 
+#include <alsa/asoundlib.h>
 #include <stdbool.h>
 
 typedef enum {
