@@ -3,13 +3,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "src/display/lv_display.h"
+#include "lvgl/lvgl.h"
+
 #include "src/system/system.h"
-#include "src/core/lv_obj.h"
-#include "src/core/lv_obj_pos.h"
-#include "src/core/lv_obj_style_gen.h"
-#include "src/widgets/label/lv_label.h"
-#include "src/misc/lv_timer.h"
 
 // Static objects belonging to the top bar
 static lv_obj_t *top_bar;
@@ -45,10 +41,16 @@ void topbar_init(gui_config_t *cfg) {
     lv_obj_set_style_radius(top_bar, 0, 0);
     lv_obj_remove_flag(top_bar, LV_OBJ_FLAG_SCROLLABLE);
 
+    // FIX FOR FLOATING WINDOWS: Strip away default container padding
+    lv_obj_set_style_pad_left(top_bar, 0, 0);
+    lv_obj_set_style_pad_right(top_bar, 0, 0);
+    lv_obj_set_style_pad_top(top_bar, 0, 0);
+    lv_obj_set_style_pad_bottom(top_bar, 0, 0);
+
     // Battery label (right side)
     bat_label = lv_label_create(top_bar);
     lv_label_set_text(bat_label, "--");
-    lv_obj_align(bat_label, LV_ALIGN_RIGHT_MID, -cfg->top_bar_padding, 0);
+    lv_obj_align(bat_label, LV_ALIGN_RIGHT_MID, -cfg->padding, 0);
     lv_obj_set_style_text_color(bat_label, lv_color_make(220, 220, 220), 0);
     lv_obj_set_style_text_font(bat_label, &lv_font_montserrat_16, 0);
 

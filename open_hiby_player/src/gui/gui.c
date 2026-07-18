@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "src/display/lv_display.h"
+#include "src/gui/browser.h"
 #include "src/gui/main_menu.h"
 #include "src/gui/player.h"
 #include "src/gui/topbar.h"
@@ -68,6 +68,7 @@ void gui_notify_popup(const char *text) {
 void gui_init(gui_config_t *cfg) {
     main_menu_screen = lv_obj_create(NULL);
     player_screen = lv_obj_create(NULL);
+    browser_screen = lv_obj_create(NULL);
 
     // Persistent topbar that stays above every screen.
     topbar_init(cfg);
@@ -79,6 +80,11 @@ void gui_init(gui_config_t *cfg) {
 
     // player
     player_init(cfg);
+
+    // file browser
+    browser_init(cfg);
+
+    // TODO: add the back button to the top layer, so it's the same button shared accross all screens. just hide the button on the base page
 
     // popup
     popup = lv_obj_create(lv_layer_top());

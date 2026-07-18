@@ -10,6 +10,9 @@
 #include "src/system/system.h"
 #include "src/gui/gui.h"
 
+// TODO: include more fonts. or at least sizes. gap between 16 and 28 is way too big
+// TODO: have a global style config (colors, fonts, etc.)
+
 static volatile sig_atomic_t running = 1;
 
 static void sigint_handler(int sig)
@@ -148,7 +151,7 @@ int main() {
         .screen_width = SCREEN_WIDTH,
         .screen_height = SCREEN_HEIGHT,
         .top_bar_height = 45,
-        .top_bar_padding = 15,
+        .padding = 15,
 #ifdef HOST_BUILD
         .sd_root_path = getenv("HOME"),
 #else
