@@ -53,3 +53,11 @@ bool file_matches(const char *filename, const char *expected) {
 
     return strcmp(buffer, expected) == 0;
 }
+
+bool has_extension(const char *name, const char *ext) {
+    size_t name_len = strlen(name);
+    size_t ext_len = strlen(ext);
+
+    if (name_len < ext_len) return false;
+    return strcasecmp(name + (name_len - ext_len), ext) == 0;
+}

@@ -1,5 +1,7 @@
 # Open HiBy Player
 
+(TODO) reboots when started through adb from rockbox bootloader after killing with `killall bootloader.r3proii`. but it does not reboot when doing the same but killing with `killall -9 bootlaoder.r3proii`. seems like it might reboot a bit after touching somewhere? i think?
+
 **Terminology**:
 - "host device", "host": This refers to the device you are developing on, such as your laptop or PC.
 - "target device", "target": This refers to the device you are developing for, such as the R1 or R3Pro II.
@@ -33,25 +35,14 @@ This will open an SDL2 graphical window. Clicking and stuff works. Scrolling is 
 
 ## 2. Cross-Compiling for the HiBy Device (MIPS Target)
 
-***(TODO): cross-compilation is not working right now. could be a me problem, not sure***
 Building a binary that can be placed on the HiBy OS device.
-
-### Install Target Cross-Compiler
-On your host machine, ensure you have the little-endian MIPS cross-compiler:
-```bash
-# Ubuntu/Debian host package name:
-sudo apt install gcc-mipsel-linux-gnu
-
-# Arch Linux:
-# Install 'mipsel-linux-gnu-gcc' from the AUR or build from source
-```
 
 ### Build for Target
 Build the target-specific binary:
 ```bash
 make target
 ```
-This generates the binary `open_hiby_player_target`.
+This builds the cross compilers, then generates the binary `open_hiby_player_target`. This generated binary can be transfered to the device, and run from anywhere.
 
 ### Modifying Unpacked Firmware
 (TODO)

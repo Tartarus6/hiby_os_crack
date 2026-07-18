@@ -27,6 +27,7 @@
 #include "src/misc/lv_style_gen.h"
 #include "src/misc/lv_text.h"
 #include "src/misc/lv_types.h"
+#include "src/system/utils.h"
 
 lv_obj_t *browser_screen;
 
@@ -72,12 +73,12 @@ static void init_list_styles(void) {
 static void browser_open_dir(const char *path);
 
 static bool is_playable_file(const char *name) {
-    size_t name_len = strlen(name);
-    static const char ext[] = ".wav";
-    size_t ext_len = strlen(ext);
+    static const char *const playable_exts[] = { ".wav", ".mp3", ".flac", ".ogg" };
 
-    if (name_len < ext_len) return false;
-    return strcasecmp(name + (name_len - ext_len), ext) == 0;
+    for (size_t i = 0; i < sizeof(playable_exts) / sizeof(playable_exts[0]); i++) {
+        if (has_extension(name, playable_exts[i])) return true;
+    }
+    return false;
 }
 
 // Directories sort before files, otherwise alphabetical (case-insensitive).
