@@ -4,9 +4,7 @@
 #include <string.h>
 
 #include "src/system/audio.h"
-
 #include "src/gui/gui.h"
-#include "src/gui/main_menu.h"
 
 #include "lvgl/lvgl.h"
 
@@ -19,26 +17,27 @@ static lv_obj_t *song_artist;
 static bool is_playing = false;
 static char current_filepath[512] = {0};
 
-// Event handler for the Play/Pause button
-static void play_btn_event_cb(lv_event_t *e) {
-    if (e != NULL) {
-        lv_event_code_t code = lv_event_get_code(e);
-        if (code != LV_EVENT_CLICKED) return;
-        if (current_filepath[0] == '\0') return; // nothing loaded yet
-        is_playing = !is_playing;
-    }
+// TODO: make playing state handling much more robust. reference audio state directly to make sure desync isn't possible but do retain optimistic UI updates
+static void set_playing(bool playing) {
+	if (current_filepath[0] == '\0') return; // nothing loaded yet
 
-    if (is_playing) {
+	is_playing = playing;
+	if (is_playing) {
         // topbar_set_play_status("Playing...");    // use topbar function
-        lv_label_set_text(play_btn_label, "Pause");
+        lv_label_set_text(play_btn_label, LV_SYMBOL_PAUSE);
         lv_obj_set_style_bg_color(play_btn, lv_color_make(220, 80, 60), 0);
         audio_resume();
     } else {
         // topbar_set_play_status("Paused...");     // use topbar function
-        lv_label_set_text(play_btn_label, "Play");
+        lv_label_set_text(play_btn_label, LV_SYMBOL_PLAY);
         lv_obj_set_style_bg_color(play_btn, lv_color_make(60, 160, 220), 0);
         audio_pause();
     }
+}
+
+// Event handler for the Play/Pause button
+static void play_btn_event_cb(lv_event_t *e) {
+    set_playing(!is_playing);
 }
 
 // Public: load and start playing a new file, updating the now-playing info
@@ -50,9 +49,7 @@ void player_play_file(const char *filepath) {
     lv_label_set_text(song_title, slash ? slash + 1 : filepath);
     lv_label_set_text(song_artist, "");
 
-    is_playing = true;
-    lv_label_set_text(play_btn_label, "Pause");
-    lv_obj_set_style_bg_color(play_btn, lv_color_make(220, 80, 60), 0);
+    set_playing(true);
     audio_play(current_filepath);
 }
 
@@ -124,7 +121,8 @@ void player_init(gui_config_t *cfg) {
     lv_obj_set_size(prev_btn, 100, 100);
     lv_obj_set_style_bg_color(prev_btn, lv_color_make(45, 45, 52), 0);
     lv_obj_t * prev_label = lv_label_create(prev_btn);
-    lv_label_set_text(prev_label, "|<<");
+    lv_label_set_text(prev_label, LV_SYMBOL_PREV);
+    lv_obj_set_style_text_font(prev_label, &lv_font_montserrat_28, 0);
     lv_obj_center(prev_label);
 
     // Play/Pause Button
@@ -134,18 +132,19 @@ void player_init(gui_config_t *cfg) {
     lv_obj_add_event_cb(play_btn, play_btn_event_cb, LV_EVENT_CLICKED, NULL);
 
     play_btn_label = lv_label_create(play_btn);
-    lv_label_set_text(play_btn_label, "Play");
+    lv_label_set_text(play_btn_label, "..."); // TODO: fix placeholder. do something to indicate no song is picked yet
     lv_obj_center(play_btn_label);
-    lv_obj_set_style_text_font(play_btn_label, &lv_font_montserrat_16, 0);
+    lv_obj_set_style_text_font(play_btn_label, &lv_font_montserrat_28, 0);
 
     // manually update the playing status
-    play_btn_event_cb(NULL);
+    set_playing(is_playing);
 
     // Next Song Button
     lv_obj_t * next_btn = lv_btn_create(player_controls_buttons);
     lv_obj_set_size(next_btn, 100, 100);
     lv_obj_set_style_bg_color(next_btn, lv_color_make(45, 45, 52), 0);
     lv_obj_t * next_label = lv_label_create(next_btn);
-    lv_label_set_text(next_label, ">>|");
+    lv_label_set_text(next_label, LV_SYMBOL_NEXT);
+    lv_obj_set_style_text_font(next_label, &lv_font_montserrat_28, 0);
     lv_obj_center(next_label);
 }

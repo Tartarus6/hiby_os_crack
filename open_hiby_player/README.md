@@ -1,8 +1,6 @@
 # Open HiBy Player
 
-(TODO) reboots when started through adb from rockbox bootloader after killing with `killall bootloader.r3proii`. but it does not reboot when doing the same but killing with `killall -9 bootlaoder.r3proii`. seems like it might reboot a bit after touching somewhere? i think?
-(TODO) playback breaks when switching back from output mode 4 (or maybe switching in general). play music with nothing plugged in, pause, plug something in, play, it won't play and will give i/o error.
-(TODO) `lv_screen_load()` should only be used within `switcher.c`, so that the switcher can handle going back screens and such. can i make it so that it's not possible to (or at least easy to accidentally) use `lv_screen_load()` outside of `switcher.c`?
+**TODOS**: look at [TODO.md](open_hiby_player/TODO.md) to see what has to be done
 
 **Terminology**:
 - "host device", "host": This refers to the device you are developing on, such as your laptop or PC.
@@ -33,6 +31,8 @@ Launch the compiled executable:
 ```
 This will open an SDL2 graphical window. Clicking and stuff works. Scrolling is handled through holding click and dragging.
 
+Note that the battery display doesnt work. That's intended. No real point in hooking that up for host testing.
+
 ---
 
 ## 2. Cross-Compiling for the HiBy Device (MIPS Target)
@@ -45,6 +45,11 @@ Build the target-specific binary:
 make target
 ```
 This builds the cross compilers, then generates the binary `open_hiby_player_target`. This generated binary can be transfered to the device, and run from anywhere.
+
+> ![TIP]
+> You can use `-j$(nproc)` to speed up builds significantly. Or you can manually set the number of compile threads. `-j4` sets it to 4 threads, for example.
+> 
+> So in practice, that would be running `make target -j$(nproc)` to make the target build with multithreading.
 
 ### Modifying Unpacked Firmware
 (TODO)
