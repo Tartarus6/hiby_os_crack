@@ -2,6 +2,7 @@
 
 (TODO) reboots when started through adb from rockbox bootloader after killing with `killall bootloader.r3proii`. but it does not reboot when doing the same but killing with `killall -9 bootlaoder.r3proii`. seems like it might reboot a bit after touching somewhere? i think?
 (TODO) playback breaks when switching back from output mode 4 (or maybe switching in general). play music with nothing plugged in, pause, plug something in, play, it won't play and will give i/o error.
+(TODO) `lv_screen_load()` should only be used within `switcher.c`, so that the switcher can handle going back screens and such. can i make it so that it's not possible to (or at least easy to accidentally) use `lv_screen_load()` outside of `switcher.c`?
 
 **Terminology**:
 - "host device", "host": This refers to the device you are developing on, such as your laptop or PC.

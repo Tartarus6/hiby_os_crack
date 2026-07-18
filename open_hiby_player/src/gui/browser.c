@@ -8,26 +8,13 @@
 #include <strings.h>
 #include <sys/stat.h>
 
-#include "src/core/lv_obj.h"
-#include "src/core/lv_obj_pos.h"
-#include "src/core/lv_obj_style.h"
-#include "src/core/lv_obj_style_gen.h"
-#include "src/display/lv_display.h"
-#include "src/font/lv_font.h"
-#include "src/gui/gui.h"
-#include "src/gui/main_menu.h"
-#include "src/gui/player.h"
-
 #include "lvgl/lvgl.h"
-#include "src/layouts/flex/lv_flex.h"
-#include "src/lv_conf_internal.h"
-#include "src/misc/lv_area.h"
-#include "src/misc/lv_color.h"
-#include "src/misc/lv_style.h"
-#include "src/misc/lv_style_gen.h"
-#include "src/misc/lv_text.h"
-#include "src/misc/lv_types.h"
+
+#include "src/gui/gui.h"
+#include "src/gui/switcher.h"
+#include "src/gui/player.h"
 #include "src/system/utils.h"
+
 
 lv_obj_t *browser_screen;
 
@@ -107,7 +94,7 @@ static void entry_clicked_cb(lv_event_t *e) {
         browser_open_dir(full_path);
     } else {
         player_play_file(full_path);
-        lv_screen_load(player_screen);
+        switch_screen(player_screen);
     }
 }
 
@@ -134,11 +121,6 @@ static void up_btn_cb(lv_event_t *e) {
     }
 
     browser_open_dir(parent);
-}
-
-static void back_btn_cb(lv_event_t *e) {
-    (void)e;
-    lv_screen_load(main_menu_screen);
 }
 
 static void browser_open_dir(const char *path) {
@@ -268,20 +250,6 @@ void browser_init(gui_config_t *cfg) {
     lv_obj_set_style_border_width(file_list, 0, 0);
     lv_obj_set_style_radius(file_list, 0, 0);
     lv_obj_set_flex_grow(file_list, 1);
-
-    // TODO: remove this back button, add a generic reused back button for all pages
-    // back button
-    lv_obj_t *back_btn = lv_btn_create(browser_screen);
-    lv_obj_set_size(back_btn, 50, 50);
-    lv_obj_align(back_btn, LV_ALIGN_TOP_LEFT, cfg->padding, cfg->top_bar_height + cfg->padding);
-    lv_obj_set_style_bg_color(back_btn, lv_color_make(60, 160, 220), 0);
-    lv_obj_add_event_cb(back_btn, back_btn_cb, LV_EVENT_CLICKED, NULL);
-
-    lv_obj_t *back_btn_label = lv_label_create(back_btn);
-    lv_label_set_text(back_btn_label, "<-");
-    lv_obj_center(back_btn_label);
-    lv_obj_set_style_text_font(back_btn_label, &lv_font_montserrat_28, 0);
-
 
     browser_open_dir(root_path);
 }

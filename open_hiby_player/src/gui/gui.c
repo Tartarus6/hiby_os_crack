@@ -9,6 +9,7 @@
 #include "src/gui/main_menu.h"
 #include "src/gui/player.h"
 #include "src/gui/topbar.h"
+#include "src/gui/switcher.h"
 
 #include "lvgl/lvgl.h"
 
@@ -73,7 +74,8 @@ void gui_init(gui_config_t *cfg) {
     // Persistent topbar that stays above every screen.
     topbar_init(cfg);
 
-    lv_screen_load(main_menu_screen);
+    // Persistent back button that hides when on the main page
+    back_btn_init(cfg);
 
     // main menu
     main_menu_init(cfg);
@@ -98,5 +100,6 @@ void gui_init(gui_config_t *cfg) {
     popup_timer = lv_timer_create(popup_hide_cb, 2000, NULL);
     lv_timer_pause(popup_timer); // dont run hide timer while it's already hidden
 
-    lv_screen_load(main_menu_screen);
+    // load into the main screen
+    switch_screen(main_menu_screen);
 }

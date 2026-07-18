@@ -56,27 +56,10 @@ void player_play_file(const char *filepath) {
     audio_play(current_filepath);
 }
 
-// Event handler for the back button
-static void back_btn_event_cb(lv_event_t *e) {
-	lv_screen_load(main_menu_screen);
-}
-
 // Public: initialize the top bar
 void player_init(gui_config_t *cfg) {
 	// Screen Style
     lv_obj_set_style_bg_color(player_screen, lv_color_make(50, 50, 62), 0);
-
-    // back button
-    lv_obj_t *back_btn = lv_btn_create(player_screen);
-    lv_obj_set_size(back_btn, 50, 50);
-    lv_obj_align(back_btn, LV_ALIGN_TOP_LEFT, 20, 100);
-    lv_obj_set_style_bg_color(back_btn, lv_color_make(60, 160, 220), 0);
-    lv_obj_add_event_cb(back_btn, back_btn_event_cb, LV_EVENT_CLICKED, NULL);
-
-    lv_obj_t *back_btn_label = lv_label_create(back_btn);
-    lv_label_set_text(back_btn_label, "<-");
-    lv_obj_center(back_btn_label);
-    lv_obj_set_style_text_font(back_btn_label, &lv_font_montserrat_28, 0);
 
 	// Screen Title
     lv_obj_t *title = lv_label_create(player_screen);
