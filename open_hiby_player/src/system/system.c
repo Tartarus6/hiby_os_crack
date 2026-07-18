@@ -11,12 +11,12 @@
 #include <pthread.h>
 #include <sys/inotify.h>
 #include <errno.h>
+#include <linux/input.h>
 
+#include "src/system/alsa-controls.h"
 #include "src/system/audio.h"
 #include "src/system/utils.h"
 #include "utils.h"
-
-// TODO: mounting doesn't work. it seems like the binary doesn't have access to the sd card device or something
 
 static char battery_cache[8] = "!!";
 static const battery_config_t *g_battery_cfg = NULL;
@@ -140,7 +140,6 @@ static int mount_sd(storage_config_t *storage_cfg, const system_runtime_t *runti
 	return ret;
 }
 
-// TODO: make mount directory be a variable somewhere, instead of a repeated hard-coded value
 static void unmount_sd(storage_config_t *storage_cfg) {
 	umount(storage_cfg->mount_point);
 }
@@ -154,7 +153,6 @@ static void check_and_mount_existing_sd(storage_config_t *storage_cfg, const sys
     }
 }
 
-// TODO: make this function more generic, in case device name differs
 void *sd_hotplug_thread(void *arg) {
 	system_runtime_t *runtime = arg;
 	storage_config_t *storage_cfg = runtime->storage_cfg;
@@ -208,12 +206,51 @@ void *sd_hotplug_thread(void *arg) {
 	}
 }
 
+static void *volume_button_thread(void *arg)
+{
+    int fd = open("/dev/input/event2", O_RDONLY);
+
+    if (fd < 0) {
+        perror("open input");
+        return NULL;
+    }
+
+    struct input_event ev;
+
+    while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
+
+        if (ev.type != EV_KEY)
+            continue;
+
+        /* ignore key release */
+        if (ev.value != 1)
+            continue;
+
+        switch (ev.code) {
+
+        case KEY_VOLUMEUP:
+            change_volume(-5);
+            break;
+
+        case KEY_VOLUMEDOWN:
+            change_volume(5);
+            break;
+        }
+    }
+
+    close(fd);
+    return NULL;
+}
+
 /*
  * Starts system services including:
  *     - SD card detection + mounting
  *     - Audio service initializing
  */
 void system_start_services(system_config_t *cfg, system_notification_cb_t notification_cb, void *user_data) {
+	static bool initialized = false;
+    if (initialized) return;
+
 	static system_runtime_t runtime;
 
 	// --- Battery ---
@@ -235,6 +272,16 @@ void system_start_services(system_config_t *cfg, system_notification_cb_t notifi
 		pthread_detach(sd_thread);
 	}
 
+	pthread_t volume_thread;
+	pthread_create(&volume_thread,
+               NULL,
+               volume_button_thread,
+               NULL);
+
+	pthread_detach(volume_thread);
+
     // --- Audio ---
-    audio_init(); // TODO: audio doesnt work. the system restarts after attempting to play sound
+    audio_init();
+
+    initialized = true;
 }

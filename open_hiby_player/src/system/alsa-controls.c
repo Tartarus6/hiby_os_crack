@@ -4,6 +4,9 @@
 #include <alsa/asoundlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
+
+long current_volume; // TODO: better organize current volume, so that it's guaranteed to be updated whenever we update the volume and externally accessible
 
 // used to set an alsa control value such as volume or output port
 int alsa_set_control(const char *name, long value) {
@@ -46,7 +49,8 @@ int detect_output(void) {
     	return 2; // 3.5mm headset output
     }
 
-    return 4; // Default to i2s (S/PDIF) (USB) device
+    // return 4; // Default to i2s (S/PDIF) (USB) device
+    return 2; // Default to 3.5mm device
 }
 
 // TODO: set some state variable to show which output is currently selected
@@ -63,6 +67,25 @@ void auto_set_output(void) {
 // set left and right ALSA volumes
 // NOTE: volume is 0-255
 void set_volume(long volume) {
-	alsa_set_control("Right Playback Volume", volume);
-    alsa_set_control("Left Playback Volume", volume);
+	current_volume = volume;
+
+	alsa_set_control("Right Playback Volume", current_volume);
+    alsa_set_control("Left Playback Volume", current_volume);
+
+    printf("set volume to %d\n", current_volume);
+}
+
+// change volume by given amount, positive or negative
+void change_volume(long amount) {
+	current_volume += amount;
+
+	if (current_volume > 255) {
+		current_volume = 255;
+	}
+
+	if (current_volume < 0) {
+		current_volume = 0;
+	}
+
+	set_volume(current_volume);
 }

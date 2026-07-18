@@ -11,7 +11,7 @@ LVGL_DIR = $(CURDIR)/lvgl
 ROCKBOX_TOOLCHAIN_DIR = $(CURDIR)/rockbox-toolchain
 
 # Compiler and Linker configuration
-# TODO: make it easier for others to obtain the cross cc being used (make one that's easier to get and add instructions)
+# TODO: speed up the cross cc build, if possible. 20+ minutes is too long, me thinks
 CC = gcc
 CROSS_CC ?= $(ROCKBOX_TOOLCHAIN_DIR)/bin/mipsel-rockbox-linux-gnu-gcc
 
