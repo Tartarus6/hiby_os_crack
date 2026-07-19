@@ -65,6 +65,22 @@ static void set_progress_label(double current_secs, double total_secs) {
 	}
 }
 
+// reads the current audio progress and updates the UI
+static void update_progress(void) {
+	double cur, total;
+	audio_get_progress(&cur, &total);
+
+	// update cached total length
+	if (total > 0) {
+		int value = (cur / total) * 1000;
+		lv_slider_set_value(progress_slider, value, LV_ANIM_OFF);
+
+		current_total_length = total;
+	}
+
+	set_progress_label(cur, current_total_length);
+}
+
 // Event handler for the Play/Pause button
 static void play_btn_event_cb(lv_event_t *e) {
 	set_playing(!is_playing); // update ui
@@ -74,7 +90,9 @@ static void play_btn_event_cb(lv_event_t *e) {
 static void prev_btn_event_cb(lv_event_t *e) {
 	audio_seek(0);
 
-	lv_timer_ready(progress_slider_timer);
+	// TODO: progress still jumps back and forth a bit. need a robust fix to prevent getting stale data from audio.c
+	// immediately update the progress
+	update_progress();
 }
 
 // Event handler for the progress slider
@@ -110,20 +128,7 @@ static void progress_slider_event_cb(lv_event_t *e) {
 }
 
 // timer to update the progress slider text based on playback progress
-static void progress_slider_timer_cb(lv_timer_t *timer) {
-	double cur, total;
-	audio_get_progress(&cur, &total);
-
-	// update cached total length
-	if (total > 0) {
-		int value = (cur / total) * 1000;
-		lv_slider_set_value(progress_slider, value, LV_ANIM_OFF);
-
-		current_total_length = total;
-	}
-
-	set_progress_label(cur, current_total_length);
-}
+static void progress_slider_timer_cb(lv_timer_t *timer) { update_progress(); }
 
 // Public: load and start playing a new file, updating the now-playing info
 void player_play_file(const char *filepath) {
