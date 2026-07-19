@@ -7,10 +7,10 @@
 // Compressed formats supported through the unified decoder below. WAV is
 // uncompressed PCM and is handled separately in audio.c.
 typedef enum {
-    DECODE_FORMAT_UNKNOWN,
-    DECODE_FORMAT_MP3,
-    DECODE_FORMAT_FLAC,
-    DECODE_FORMAT_OGG_VORBIS,
+	DECODE_FORMAT_UNKNOWN,
+	DECODE_FORMAT_MP3,
+	DECODE_FORMAT_FLAC,
+	DECODE_FORMAT_OGG_VORBIS,
 } decode_format_t;
 
 typedef struct decoder decoder_t;
@@ -32,6 +32,9 @@ uint64_t decoder_total_pcm_frames(const decoder_t *dec);
 // Buffer type is `short` (not int16_t) to exactly match the underlying
 // decoder libraries' signatures across translation units.
 uint64_t decoder_read_pcm_frames_s16(decoder_t *dec, uint64_t frame_count, short *pBuffer);
+
+// Seek decoder to the specified frame index. Returns nonzero on success, 0 on failure.
+int decoder_seek_to_frame(decoder_t *dec, uint64_t frame_index);
 
 void decoder_close(decoder_t *dec);
 

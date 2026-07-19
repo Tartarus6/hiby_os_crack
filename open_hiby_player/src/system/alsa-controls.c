@@ -10,47 +10,47 @@ long current_volume; // TODO: better organize current volume, so that it's guara
 
 // used to set an alsa control value such as volume or output port
 int alsa_set_control(const char *name, long value) {
-    snd_ctl_t *ctl;
-    snd_ctl_elem_id_t *id;
-    snd_ctl_elem_value_t *elem;
-    int err;
+	snd_ctl_t *ctl;
+	snd_ctl_elem_id_t *id;
+	snd_ctl_elem_value_t *elem;
+	int err;
 
-    err = snd_ctl_open(&ctl, "hw:0", 0);
-    if (err < 0) {
-        return err;
-    }
+	err = snd_ctl_open(&ctl, "hw:0", 0);
+	if (err < 0) {
+		return err;
+	}
 
-    snd_ctl_elem_id_alloca(&id);
-    snd_ctl_elem_value_alloca(&elem);
+	snd_ctl_elem_id_alloca(&id);
+	snd_ctl_elem_value_alloca(&elem);
 
-    snd_ctl_elem_id_set_interface(id, SND_CTL_ELEM_IFACE_MIXER);
-    snd_ctl_elem_id_set_name(id, name);
+	snd_ctl_elem_id_set_interface(id, SND_CTL_ELEM_IFACE_MIXER);
+	snd_ctl_elem_id_set_name(id, name);
 
-    snd_ctl_elem_value_set_id(elem, id);
-    snd_ctl_elem_value_set_integer(elem, 0, value);
+	snd_ctl_elem_value_set_id(elem, id);
+	snd_ctl_elem_value_set_integer(elem, 0, value);
 
-    err = snd_ctl_elem_write(ctl, elem);
+	err = snd_ctl_elem_write(ctl, elem);
 
-    snd_ctl_close(ctl);
-    return err;
+	snd_ctl_close(ctl);
+	return err;
 }
 
 // TODO: bluetooth? how does outputting over bluetooth work?
 // returns a valid value for ALSA "Output Port Switch" based on what's plugged in
 int detect_output(void) {
-    const char * const sysfs_hs_switch = "/sys/class/switch/headset/state";
-    const char * const sysfs_bal_switch = "/sys/class/switch/balance/state";
+	const char *const sysfs_hs_switch = "/sys/class/switch/headset/state";
+	const char *const sysfs_bal_switch = "/sys/class/switch/balance/state";
 
-    if (file_matches(sysfs_bal_switch, "1")) {
-    	return 3; // 4.4mm balanced output
-    }
+	if (file_matches(sysfs_bal_switch, "1")) {
+		return 3; // 4.4mm balanced output
+	}
 
-    if (file_matches(sysfs_hs_switch, "1")) {
-    	return 2; // 3.5mm headset output
-    }
+	if (file_matches(sysfs_hs_switch, "1")) {
+		return 2; // 3.5mm headset output
+	}
 
-    // return 4; // Default to i2s (S/PDIF) (USB) device
-    return 2; // Default to 3.5mm device
+	// return 4; // Default to i2s (S/PDIF) (USB) device
+	return 2; // Default to 3.5mm device
 }
 
 // TODO: set some state variable to show which output is currently selected
@@ -70,9 +70,9 @@ void set_volume(long volume) {
 	current_volume = volume;
 
 	alsa_set_control("Right Playback Volume", current_volume);
-    alsa_set_control("Left Playback Volume", current_volume);
+	alsa_set_control("Left Playback Volume", current_volume);
 
-    printf("set volume to %d\n", current_volume);
+	printf("set volume to %d\n", current_volume);
 }
 
 // change volume by given amount, positive or negative

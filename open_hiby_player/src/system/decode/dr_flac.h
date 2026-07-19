@@ -6894,7 +6894,7 @@ static drflac_bool32 drflac__read_and_decode_metadata(drflac_read_proc onRead, d
                     (void)blockSizeRemaining;
 
                     metadata.data.picture.pPictureData = (const drflac_uint8*)pPictureData;
-                    
+
 
                     /* Only fire the callback if we actually have a way to read the image data. We must have either a valid offset, or a valid data pointer. */
                     if (metadata.data.picture.pictureDataOffset != 0 || metadata.data.picture.pPictureData != NULL) {

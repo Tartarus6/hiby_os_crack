@@ -2665,7 +2665,7 @@ static size_t drmp3__on_read_clamped(drmp3* pMP3, void* pBufferOut, size_t bytes
         if (bytesToRead >         bytesRemaining) {
             bytesToRead = (size_t)bytesRemaining;
         }
-    
+
         return drmp3__on_read(pMP3, pBufferOut, bytesToRead);
     }
 }
@@ -2977,7 +2977,7 @@ static drmp3_bool32 drmp3_init_internal(drmp3* pMP3, drmp3_read_proc onRead, drm
         if (onSeek(pUserData, 0, DRMP3_SEEK_END)) {
             drmp3_int64 streamLen;
             int streamEndOffset = 0;
-        
+
             /* First get the length of the stream. We need this so we can ensure the stream is big enough to store the tags. */
             if (onTell(pUserData, &streamLen)) {
                 /* ID3v1 */
@@ -3023,7 +3023,7 @@ static drmp3_bool32 drmp3_init_internal(drmp3* pMP3, drmp3_read_proc onRead, drm
                             if (32 + tagSize < streamLen) {
                                 streamEndOffset -= 32 + tagSize;
                                 streamLen       -= 32 + tagSize;
-                                
+
                                 /* Fire a metadata callback for the APE data. Must include both the main content and footer. */
                                 if (onMeta != NULL) {
                                     /* We first need to seek to the start of the APE tag. */
@@ -3248,7 +3248,7 @@ static drmp3_bool32 drmp3_init_internal(drmp3* pMP3, drmp3_read_proc onRead, drm
                         if (frameBytes - (size_t)(pTagData - pFirstFrameData) < 4) {
                             goto done_xing_info;    /* Invalid Xing/Info tag. */
                         }
-                        
+
                         pTagData += 4;
                     }
 
@@ -3268,7 +3268,7 @@ static drmp3_bool32 drmp3_init_internal(drmp3* pMP3, drmp3_read_proc onRead, drm
                         if (paddingInPCMFrames < 0) {
                             paddingInPCMFrames = 0; /* Padding cannot be negative. Probably a malformed file. Ignore. */
                         }
-                        
+
                         pMP3->delayInPCMFrames   = (drmp3_uint32)delayInPCMFrames;
                         pMP3->paddingInPCMFrames = (drmp3_uint32)paddingInPCMFrames;
                     }
@@ -3288,7 +3288,7 @@ static drmp3_bool32 drmp3_init_internal(drmp3* pMP3, drmp3_read_proc onRead, drm
                     if (onMeta != NULL) {
                         drmp3_metadata_type metadataType = isXing ? DRMP3_METADATA_TYPE_XING : DRMP3_METADATA_TYPE_VBRI;
                         size_t tagDataSize;
-                    
+
                         tagDataSize  = (size_t)firstFrameInfo.frame_bytes;
                         tagDataSize -= (size_t)(pTagDataBeg - pFirstFrameData);
 

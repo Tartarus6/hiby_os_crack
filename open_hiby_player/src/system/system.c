@@ -1,17 +1,17 @@
 #include "system.h"
 
+#include <errno.h>
+#include <linux/input.h>
+#include <linux/netlink.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <linux/netlink.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <sys/mount.h>
-#include <sys/stat.h>
-#include <pthread.h>
 #include <sys/inotify.h>
-#include <errno.h>
-#include <linux/input.h>
+#include <sys/mount.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "src/system/alsa-controls.h"
 #include "src/system/audio.h"
@@ -39,7 +39,6 @@ static const char *storage_device_name(const char *device_path) {
 	return name ? name + 1 : device_path;
 }
 
-
 void sync_battery_from_sysfs(void) {
 	if (!g_battery_cfg) {
 		strcpy(battery_cache, "!!");
@@ -58,16 +57,15 @@ void sync_battery_from_sysfs(void) {
 	content[strcspn(content, "\r\n")] = '\0'; // remove the trailing newline
 
 	// copy content into cache
-	strncpy(battery_cache, content, sizeof(battery_cache) - 1); // -1 to leave room for null terminator
+	strncpy(battery_cache, content,
+			sizeof(battery_cache) - 1);				 // -1 to leave room for null terminator
 	battery_cache[sizeof(battery_cache) - 1] = '\0'; // null terminator
 
 	// cleanup
 	free(content);
 }
 
-char * read_battery_percent() {
-	return battery_cache;
-}
+char *read_battery_percent() { return battery_cache; }
 
 static int wait_for_sd(const system_runtime_t *runtime) {
 	char device_path[128];
@@ -90,48 +88,41 @@ static int wait_for_sd(const system_runtime_t *runtime) {
 
 	char buf[4096];
 
-    for (;;) {
-        ssize_t len = read(fd, buf, sizeof(buf));
+	for (;;) {
+		ssize_t len = read(fd, buf, sizeof(buf));
 
-        if (len < 0) {
-            if (errno == EINTR)
-                continue;
+		if (len < 0) {
+			if (errno == EINTR)
+				continue;
 
-            close(fd);
-            return -1;
-        }
+			close(fd);
+			return -1;
+		}
 
-        for (char *p = buf; p < buf + len; ) {
-            struct inotify_event *ev = (struct inotify_event *)p;
+		for (char *p = buf; p < buf + len;) {
+			struct inotify_event *ev = (struct inotify_event *)p;
 
-            if ((ev->mask & (IN_CREATE | IN_MOVED_TO)) &&
-				strcmp(ev->name, runtime->device_name) == 0)
-            {
-                close(fd);
-                return 0;
-            }
+			if ((ev->mask & (IN_CREATE | IN_MOVED_TO)) && strcmp(ev->name, runtime->device_name) == 0) {
+				close(fd);
+				return 0;
+			}
 
-            p += sizeof(*ev) + ev->len;
-        }
-    }
+			p += sizeof(*ev) + ev->len;
+		}
+	}
 }
 
 static int mount_sd(storage_config_t *storage_cfg, const system_runtime_t *runtime) {
-	mkdir(storage_cfg->mount_point, 0755); // make media dir in case it didnt exist
+	mkdir(storage_cfg->mount_point,
+		  0755); // make media dir in case it didnt exist
 
 	if (wait_for_sd(runtime) != 0) {
-        fprintf(stderr, "Timed out waiting for SD\n");
-        return -1;
+		fprintf(stderr, "Timed out waiting for SD\n");
+		return -1;
 	}
 
 	// TODO: detect filesystem type automatically, rather than it being hardcoded
-	int ret = mount(
-		storage_cfg->device,
-		storage_cfg->mount_point,
-		"exfat",
-		MS_NOATIME,
-		NULL
-	);
+	int ret = mount(storage_cfg->device, storage_cfg->mount_point, "exfat", MS_NOATIME, NULL);
 
 	if (ret != 0) {
 		perror("mount_sd failed");
@@ -140,17 +131,15 @@ static int mount_sd(storage_config_t *storage_cfg, const system_runtime_t *runti
 	return ret;
 }
 
-static void unmount_sd(storage_config_t *storage_cfg) {
-	umount(storage_cfg->mount_point);
-}
+static void unmount_sd(storage_config_t *storage_cfg) { umount(storage_cfg->mount_point); }
 
 static void check_and_mount_existing_sd(storage_config_t *storage_cfg, const system_runtime_t *runtime) {
-    if (access(storage_cfg->device, F_OK) == 0) {
-        printf("SD card device found at boot, mounting...\n");
+	if (access(storage_cfg->device, F_OK) == 0) {
+		printf("SD card device found at boot, mounting...\n");
 		mount_sd(storage_cfg, runtime);
-    } else {
-        printf("No SD card detected at boot.\n");
-    }
+	} else {
+		printf("No SD card detected at boot.\n");
+	}
 }
 
 void *sd_hotplug_thread(void *arg) {
@@ -165,7 +154,7 @@ void *sd_hotplug_thread(void *arg) {
 		.nl_groups = 1,
 	};
 
-	if (bind(sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+	if (bind(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
 		fprintf(stderr, "Failed to bind netlink socket\n");
 		close(sock);
 		return NULL;
@@ -206,40 +195,39 @@ void *sd_hotplug_thread(void *arg) {
 	}
 }
 
-static void *volume_button_thread(void *arg)
-{
-    int fd = open("/dev/input/event2", O_RDONLY);
+static void *volume_button_thread(void *arg) {
+	int fd = open("/dev/input/event2", O_RDONLY);
 
-    if (fd < 0) {
-        perror("open input");
-        return NULL;
-    }
+	if (fd < 0) {
+		perror("open input");
+		return NULL;
+	}
 
-    struct input_event ev;
+	struct input_event ev;
 
-    while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
+	while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
 
-        if (ev.type != EV_KEY)
-            continue;
+		if (ev.type != EV_KEY)
+			continue;
 
-        /* ignore key release */
-        if (ev.value != 1)
-            continue;
+		/* ignore key release */
+		if (ev.value != 1)
+			continue;
 
-        switch (ev.code) {
+		switch (ev.code) {
 
-        case KEY_VOLUMEUP:
-            change_volume(-5);
-            break;
+		case KEY_VOLUMEUP:
+			change_volume(-5);
+			break;
 
-        case KEY_VOLUMEDOWN:
-            change_volume(5);
-            break;
-        }
-    }
+		case KEY_VOLUMEDOWN:
+			change_volume(5);
+			break;
+		}
+	}
 
-    close(fd);
-    return NULL;
+	close(fd);
+	return NULL;
 }
 
 /*
@@ -249,7 +237,8 @@ static void *volume_button_thread(void *arg)
  */
 void system_start_services(system_config_t *cfg, system_notification_cb_t notification_cb, void *user_data) {
 	static bool initialized = false;
-    if (initialized) return;
+	if (initialized)
+		return;
 
 	static system_runtime_t runtime;
 
@@ -264,24 +253,21 @@ void system_start_services(system_config_t *cfg, system_notification_cb_t notifi
 
 	check_and_mount_existing_sd(cfg->storage_cfg, &runtime); // mount sd on startup, if it's present
 
-    pthread_t sd_thread;
+	pthread_t sd_thread;
 	if (pthread_create(&sd_thread, NULL, sd_hotplug_thread, &runtime) != 0) {
-	    fprintf(stderr, "Failed to start SD hotplug thread :(\n");
+		fprintf(stderr, "Failed to start SD hotplug thread :(\n");
 	} else {
 		printf("Started SD hotplug thread :)\n");
 		pthread_detach(sd_thread);
 	}
 
 	pthread_t volume_thread;
-	pthread_create(&volume_thread,
-               NULL,
-               volume_button_thread,
-               NULL);
+	pthread_create(&volume_thread, NULL, volume_button_thread, NULL);
 
 	pthread_detach(volume_thread);
 
-    // --- Audio ---
-    audio_init();
+	// --- Audio ---
+	audio_init();
 
-    initialized = true;
+	initialized = true;
 }

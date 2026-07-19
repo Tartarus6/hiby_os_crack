@@ -2,10 +2,10 @@
 
 #include <stdint.h>
 
-#include "src/gui/gui.h"
-#include "src/gui/switcher.h"
-#include "src/gui/player.h"
 #include "src/gui/browser.h"
+#include "src/gui/gui.h"
+#include "src/gui/player.h"
+#include "src/gui/switcher.h"
 
 #include "lvgl/lvgl.h"
 
@@ -14,7 +14,7 @@ lv_obj_t *main_menu_screen;
 // Public: initialize the top bar
 void main_menu_init(gui_config_t *cfg) {
 	// Screen Style
-    lv_obj_set_style_bg_color(main_menu_screen, lv_color_make(50, 50, 62), 0);
+	lv_obj_set_style_bg_color(main_menu_screen, lv_color_make(50, 50, 62), 0);
 
 	// Title
 	lv_obj_t *menu_title = lv_label_create(main_menu_screen);

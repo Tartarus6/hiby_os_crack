@@ -13,5 +13,4 @@ void player_init(gui_config_t *cfg);
 // Does not switch screens; call lv_screen_load(player_screen) separately.
 void player_play_file(const char *filepath);
 
-
 #endif
