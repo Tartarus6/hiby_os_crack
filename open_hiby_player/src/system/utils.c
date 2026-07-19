@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,4 +61,50 @@ bool has_extension(const char *name, const char *ext) {
 
     if (name_len < ext_len) return false;
     return strcasecmp(name + (name_len - ext_len), ext) == 0;
+}
+
+// formats a double of seconds as an HH:MM:SS string
+// hides hours if no hours, only shows necessary minute digits, always has 2 seconds digits
+// returns the number of characters written
+int formatDoubleSeconds(double total_seconds, char *buffer, size_t max_len) {
+    uint32_t total_secs = (uint32_t)total_seconds;
+
+    uint32_t hours = total_secs / 3600;
+    uint32_t rem_secs = total_secs % 3600;
+    uint32_t minutes = rem_secs / 60;
+    uint32_t seconds = rem_secs % 60;
+
+    if (hours > 0) {
+        return snprintf(buffer, max_len, "%u:%02u:%02u", hours, minutes, seconds);
+    } else {
+        return snprintf(buffer, max_len, "%u:%02u", minutes, seconds);
+    }
+}
+
+// formats a pair of doubles of seconds as an "HH:MM:SS/HH:MM:SS" string
+// for each double: hides hours if no hours, only shows necessary minute digits, always has 2 seconds digits
+void formatDoubleProgress(double current_secs, double total_secs, char *buffer, size_t max_len) {
+    // Guard against a completely useless/zero-size destination buffer
+    if (max_len == 0 || buffer == NULL) return;
+
+    // Format current time safely
+    int chars_written = formatDoubleSeconds(current_secs, buffer, max_len);
+
+    // snprintf returns what it *wanted* to write. We must clamp it to the actual capacity.
+    if ((size_t)chars_written >= max_len) {
+        return; // Buffer was too small; current time consumed or hit the bounds
+    }
+
+    buffer += chars_written;
+    max_len -= chars_written; // Reduce the remaining capacity
+
+    // Append the divider safely (ensure space for '/' and a '\0')
+    if (max_len < 2) {
+        return;
+    }
+    *buffer++ = '/';
+    max_len--; // Reduce capacity by 1 for the '/' character
+
+    // Format total time into the remaining memory space
+    formatDoubleSeconds(total_secs, buffer, max_len);
 }

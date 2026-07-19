@@ -5,10 +5,13 @@
 #include <stdbool.h>
 
 typedef enum {
-    AUDIO_STATE_STOPPED,
-    AUDIO_STATE_PLAYING,
-    AUDIO_STATE_PAUSED
-} audio_state_t;
+    AUDIO_CMD_NONE,
+    AUDIO_CMD_PLAY,
+    AUDIO_CMD_STOP,
+    AUDIO_CMD_PAUSE,
+    AUDIO_CMD_RESUME,
+    AUDIO_CMD_SEEK,
+} audio_command_t;
 
 // Initialize the audio playback thread/subsystem
 int audio_init();
@@ -24,9 +27,6 @@ void audio_resume();
 
 // Stop playback completely
 void audio_stop();
-
-// Get current playback state
-audio_state_t audio_get_state();
 
 // Get playback progress in seconds
 void audio_get_progress(double *current_secs, double *total_secs);

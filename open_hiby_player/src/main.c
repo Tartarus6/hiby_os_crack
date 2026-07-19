@@ -153,7 +153,8 @@ int main() {
         .top_bar_height = 45,
         .padding = 15,
 #ifdef HOST_BUILD
-        .sd_root_path = getenv("HOME"),
+		// .sd_root_path = getenv("HOME"),
+        .sd_root_path = "/home/tar/Music",
 #else
         .sd_root_path = "/usr/data/mnt/sd_0",
 #endif

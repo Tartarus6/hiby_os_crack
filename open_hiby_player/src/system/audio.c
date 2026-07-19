@@ -28,7 +28,7 @@ static pthread_t playback_thread;
 static pthread_mutex_t audio_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t audio_cond = PTHREAD_COND_INITIALIZER;
 
-static audio_state_t audio_state = AUDIO_STATE_STOPPED;
+static audio_command_t audio_command = AUDIO_CMD_NONE;
 static char current_filepath[512] = {0};
 static bool play_request = false;
 static bool stop_thread = false;
@@ -174,7 +174,7 @@ static void play_wav_file(const char *filepath) {
     if (parse_wav(filepath, &info, &f) < 0) {
         fprintf(stderr, "Audio: Failed to parse WAV metadata: %s\n", filepath);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -190,7 +190,7 @@ static void play_wav_file(const char *filepath) {
     if (!pcm_handle) {
         fclose(f);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -202,7 +202,7 @@ static void play_wav_file(const char *filepath) {
         snd_pcm_close(pcm_handle);
         fclose(f);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -212,16 +212,17 @@ static void play_wav_file(const char *filepath) {
 
     while (1) {
         pthread_mutex_lock(&audio_mutex);
-        if (audio_state == AUDIO_STATE_STOPPED || play_request) {
+        if (audio_command == AUDIO_CMD_STOP || play_request) {
             pthread_mutex_unlock(&audio_mutex);
             break;
         }
-        if (audio_state == AUDIO_STATE_PAUSED) {
+        if (audio_command == AUDIO_CMD_PAUSE) {
             if (!is_paused) {
                 snd_pcm_pause(pcm_handle, 1);
                 is_paused = true;
             }
             pthread_mutex_unlock(&audio_mutex);
+            // TODO: is this sleep needed? or is there a more robust way of handling this?
             usleep(50000); // 50ms latency sleep
             continue;
         } else {
@@ -236,7 +237,7 @@ static void play_wav_file(const char *filepath) {
         if (read_bytes <= 0) {
             // Track completed naturally
             pthread_mutex_lock(&audio_mutex);
-            audio_state = AUDIO_STATE_STOPPED;
+            audio_command = AUDIO_CMD_STOP;
             pthread_mutex_unlock(&audio_mutex);
             break;
         }
@@ -249,7 +250,7 @@ static void play_wav_file(const char *filepath) {
         } else if (written < 0) {
             fprintf(stderr, "Audio: Write failed: %s\n", snd_strerror(written));
             pthread_mutex_lock(&audio_mutex);
-            audio_state = AUDIO_STATE_STOPPED;
+            audio_command = AUDIO_CMD_STOP;
             pthread_mutex_unlock(&audio_mutex);
             break;
         } else {
@@ -273,7 +274,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
     if (!dec) {
         fprintf(stderr, "Audio: Failed to open decoder for: %s\n", filepath);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -293,7 +294,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
     if (!pcm_handle) {
         decoder_close(dec);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -305,7 +306,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
         snd_pcm_close(pcm_handle);
         decoder_close(dec);
         pthread_mutex_lock(&audio_mutex);
-        audio_state = AUDIO_STATE_STOPPED;
+        audio_command = AUDIO_CMD_STOP;
         pthread_mutex_unlock(&audio_mutex);
         return;
     }
@@ -315,11 +316,11 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
 
     while (1) {
         pthread_mutex_lock(&audio_mutex);
-        if (audio_state == AUDIO_STATE_STOPPED || play_request) {
+        if (audio_command == AUDIO_CMD_STOP || play_request) {
             pthread_mutex_unlock(&audio_mutex);
             break;
         }
-        if (audio_state == AUDIO_STATE_PAUSED) {
+        if (audio_command == AUDIO_CMD_PAUSE) {
             if (!is_paused) {
                 snd_pcm_pause(pcm_handle, 1);
                 is_paused = true;
@@ -339,7 +340,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
         if (frames_read == 0) {
             // Track completed naturally
             pthread_mutex_lock(&audio_mutex);
-            audio_state = AUDIO_STATE_STOPPED;
+            audio_command = AUDIO_CMD_STOP;
             pthread_mutex_unlock(&audio_mutex);
             break;
         }
@@ -351,7 +352,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
         } else if (written < 0) {
             fprintf(stderr, "Audio: Write failed: %s\n", snd_strerror(written));
             pthread_mutex_lock(&audio_mutex);
-            audio_state = AUDIO_STATE_STOPPED;
+            audio_command = AUDIO_CMD_STOP;
             pthread_mutex_unlock(&audio_mutex);
             break;
         } else {
@@ -411,7 +412,7 @@ int audio_init(void) {
     pthread_mutex_lock(&audio_mutex);
     stop_thread = false;
     play_request = false;
-    audio_state = AUDIO_STATE_STOPPED;
+    audio_command = AUDIO_CMD_STOP;
     pthread_mutex_unlock(&audio_mutex);
 
     int err = pthread_create(&playback_thread, NULL, playback_thread_func, NULL);
@@ -424,6 +425,7 @@ int audio_init(void) {
     return 0;
 }
 
+// play a new file
 int audio_play(const char *filepath) {
 	printf("playing\n");
 
@@ -432,45 +434,40 @@ int audio_play(const char *filepath) {
     pthread_mutex_lock(&audio_mutex);
     strncpy(current_filepath, filepath, sizeof(current_filepath) - 1);
     play_request = true;
-    audio_state = AUDIO_STATE_PLAYING;
+    audio_command = AUDIO_CMD_PLAY;
     pthread_cond_signal(&audio_cond);
     pthread_mutex_unlock(&audio_mutex);
     return 0;
 }
 
+// pause the current playback
+// TODO: should we filter and make sure pausing is valid?
 void audio_pause(void) {
 	printf("pausing\n");
     pthread_mutex_lock(&audio_mutex);
-    if (audio_state == AUDIO_STATE_PLAYING) {
-        audio_state = AUDIO_STATE_PAUSED;
-    }
+    audio_command = AUDIO_CMD_PAUSE;
     pthread_mutex_unlock(&audio_mutex);
 }
 
+// resume paused playback
+// TODO: should we filter and make sure resuming is valid?
 void audio_resume(void) {
 	printf("resuming\n");
 
 	auto_set_output();
 
     pthread_mutex_lock(&audio_mutex);
-    if (audio_state == AUDIO_STATE_PAUSED) {
-        audio_state = AUDIO_STATE_PLAYING;
-    }
+    audio_command = AUDIO_CMD_RESUME;
     pthread_mutex_unlock(&audio_mutex);
 }
 
+// stop playback
+// TODO: how exactly is this different than pausing? do we need both
 void audio_stop(void) {
 	printf("stopping\n");
     pthread_mutex_lock(&audio_mutex);
-    audio_state = AUDIO_STATE_STOPPED;
+    audio_command = AUDIO_CMD_STOP;
     pthread_mutex_unlock(&audio_mutex);
-}
-
-audio_state_t audio_get_state(void) {
-    pthread_mutex_lock(&audio_mutex);
-    audio_state_t state = audio_state;
-    pthread_mutex_unlock(&audio_mutex);
-    return state;
 }
 
 void audio_get_progress(double *current_secs, double *total_secs) {
