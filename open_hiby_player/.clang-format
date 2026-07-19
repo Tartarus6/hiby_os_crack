@@ -1,0 +1,14 @@
+BasedOnStyle: LLVM
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+
+ColumnLimit: 1000
+
+ReflowComments: false
+PenaltyBreakComment: 0
+PenaltyExcessCharacter: 0
+
+AlignTrailingComments:
+    Kind: Always
+    OverEmptyLines: 0
