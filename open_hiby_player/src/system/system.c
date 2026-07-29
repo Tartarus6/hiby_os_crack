@@ -13,8 +13,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "src/system/alsa-controls.h"
 #include "src/system/audio.h"
+#include "src/system/device_state.h"
 #include "src/system/utils.h"
 #include "utils.h"
 
@@ -257,7 +257,7 @@ static void *event2_thread_func(void *arg) {
 		case KEY_VOLUMEUP:
 			if (ev.value == 1) {
 				printf("Volume Up Button Pressed\n");
-				change_volume(-5);
+				device_state_change_volume(-5);
 			} else if (ev.value == 0) {
 				printf("Volume Up Button Released\n");
 			}
@@ -266,7 +266,7 @@ static void *event2_thread_func(void *arg) {
 		case KEY_VOLUMEDOWN:
 			if (ev.value == 1) {
 				printf("Volume Down Button Pressed\n");
-				change_volume(5);
+				device_state_change_volume(5);
 			} else if (ev.value == 0) {
 				printf("Volume Down Button Released\n");
 			}

@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-long current_volume; // TODO: better organize current volume, so that it's guaranteed to be updated whenever we update the volume and externally accessible
+static long current_volume;
 
 // used to set an alsa control value such as volume or output port
 int alsa_set_control(const char *name, long value) {
@@ -74,6 +74,9 @@ void set_volume(long volume) {
 
 	printf("set volume to %d\n", current_volume);
 }
+
+// returns the last volume value set via set_volume()/change_volume()
+long get_volume(void) { return current_volume; }
 
 // change volume by given amount, positive or negative
 void change_volume(long amount) {

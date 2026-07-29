@@ -7,9 +7,10 @@
 
 ## good code
 
-- [ ] centralized state handling. battery, playing/paused, selected output, volume, etc. this should help prevent possible desyncs and allow stuff such as displaying the battery, current output, and play/paused on the topbar easily.
+- [x] centralized state handling. battery, playing/paused, selected output, volume, etc. this should help prevent possible desyncs and allow stuff such as displaying the battery, current output, and play/paused on the topbar easily.
 - [ ] `lv_screen_load()` should only be used within `switcher.c`, so that the switcher can handle going back screens and such. can i make it so that it's not possible to (or at least easy to accidentally) use `lv_screen_load()` outside of `switcher.c`?
 - [ ] make UI timer lengths not just be hardcoded in-line. make it more organized and centralized
+- [ ] (at least for volume and such) switch to an immediate event-driven update system rather than relying on a timer. keep it very lightweight though
 
 ## little bugs
 

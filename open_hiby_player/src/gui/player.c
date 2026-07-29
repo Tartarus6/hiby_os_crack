@@ -5,9 +5,8 @@
 #include <string.h>
 
 #include "src/gui/gui.h"
-#include "src/system/audio.h"
 #include "src/system/decode/decode.h"
-#include "src/system/metadata.h"
+#include "src/system/device_state.h"
 #include "src/system/utils.h"
 
 #include "lvgl/lvgl.h"
@@ -24,29 +23,25 @@ static lv_obj_t *progress_slider;
 static lv_obj_t *progress_label;
 static lv_timer_t *progress_slider_timer;
 
-static bool is_playing = false;
-static char current_filepath[512] = {0};
-static double current_total_length = 0; // initialize total length to 0, so that progress display starts as "0:00/0:00"
-static char progress_label_text[32];	// string to hold the text for the progress label
+static double current_total_length = 0;	  // cached from the last device_state snapshot, so slider math works between polls
+static char progress_label_text[32];	  // string to hold the text for the progress label
 static bool format_info_computed = false; // whether song_format_label has been filled in for the current track
 
-// TODO: make playing state handling much more robust. reference audio state directly to make sure desync isn't possible but do retain optimistic UI updates
-static void set_playing(bool playing) {
-	if (current_filepath[0] == '\0') {
-		return; // nothing loaded yet
-	}
+// Applies a playback status to the play/pause button + progress timer.
+// Called both optimistically (right after a button press, before the audio
+// thread has caught up) and from update_progress() every poll, which is what
+// keeps the UI from going stale if the track stops on its own.
+static void apply_playback_status(audio_status_t status) {
+	bool playing = (status == AUDIO_STATUS_PLAYING);
 
-	is_playing = playing;
-	if (is_playing) {
-		lv_timer_resume(progress_slider_timer); // dont keep checking playback progress when not playing
-		lv_label_set_text(play_btn_label, LV_SYMBOL_PAUSE);
-		lv_obj_set_style_bg_color(play_btn, lv_color_make(220, 80, 60), 0);
-		audio_resume();
+	lv_label_set_text(play_btn_label, playing ? LV_SYMBOL_PAUSE : LV_SYMBOL_PLAY);
+	lv_obj_set_style_bg_color(play_btn, playing ? lv_color_make(220, 80, 60) : lv_color_make(60, 160, 220), 0);
+
+	// dont keep checking playback progress when not playing
+	if (playing) {
+		lv_timer_resume(progress_slider_timer);
 	} else {
-		lv_timer_pause(progress_slider_timer); // dont keep checking playback progress when not playing
-		lv_label_set_text(play_btn_label, LV_SYMBOL_PLAY);
-		lv_obj_set_style_bg_color(play_btn, lv_color_make(60, 160, 220), 0);
-		audio_pause();
+		lv_timer_pause(progress_slider_timer);
 	}
 }
 
@@ -81,54 +76,54 @@ static const char *format_name_for_file(const char *filepath) {
 // once the stream's sample rate and the track's duration are both known,
 // computes an average bitrate from the file size and fills in the technical
 // info label. Only runs once per track.
-static void update_format_info(void) {
+static void update_format_info(const device_state_t *state) {
 	if (format_info_computed || current_total_length <= 0)
 		return;
 
-	int sample_rate = 0, channels = 0;
-	audio_get_stream_info(&sample_rate, &channels);
-	if (sample_rate <= 0)
+	if (state->stream_sample_rate <= 0)
 		return; // stream info not ready yet
 
 	char format_text[64];
-	long file_size = get_file_size(current_filepath);
+	long file_size = get_file_size(state->current_file);
 	if (file_size > 0) {
 		int bitrate_kbps = (int)((file_size * 8.0) / current_total_length / 1000.0 + 0.5);
-		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz | %d kbps",
-				 format_name_for_file(current_filepath), sample_rate / 1000.0, bitrate_kbps);
+		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz | %d kbps", format_name_for_file(state->current_file), state->stream_sample_rate / 1000.0, bitrate_kbps);
 	} else {
-		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz",
-				 format_name_for_file(current_filepath), sample_rate / 1000.0);
+		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz", format_name_for_file(state->current_file), state->stream_sample_rate / 1000.0);
 	}
 	lv_label_set_text(song_format_label, format_text);
 	format_info_computed = true;
 }
 
-// reads the current audio progress and updates the UI
+// reads the current device state and reconciles the UI against it -- this is
+// the single point that keeps the play/pause button and progress bar from
+// going stale once a track finishes on its own.
 static void update_progress(void) {
-	double cur, total;
-	audio_get_progress(&cur, &total);
+	device_state_t state;
+	device_state_get(&state);
 
 	// update cached total length
-	if (total > 0) {
-		int value = (cur / total) * 1000;
+	if (state.progress_total_secs > 0) {
+		int value = (state.progress_current_secs / state.progress_total_secs) * 1000;
 		lv_slider_set_value(progress_slider, value, LV_ANIM_OFF);
 
-		current_total_length = total;
+		current_total_length = state.progress_total_secs;
 	}
 
-	set_progress_label(cur, current_total_length);
-	update_format_info();
+	set_progress_label(state.progress_current_secs, current_total_length);
+	update_format_info(&state);
+	apply_playback_status(state.status);
 }
 
 // Event handler for the Play/Pause button
 static void play_btn_event_cb(lv_event_t *e) {
-	set_playing(!is_playing); // update ui
+	audio_status_t new_status = device_state_toggle_play_pause();
+	apply_playback_status(new_status); // optimistic UI update; next poll reconciles against the real status
 }
 
 // Event handler for the Prev button
 static void prev_btn_event_cb(lv_event_t *e) {
-	audio_seek(0);
+	device_state_seek(0);
 
 	// TODO: progress still jumps back and forth a bit. need a robust fix to prevent getting stale data from audio.c
 	// immediately update the progress
@@ -151,7 +146,7 @@ static void progress_slider_event_cb(lv_event_t *e) {
 
 		double seconds = current_total_length * value / 1000.0;
 
-		audio_seek(seconds);
+		device_state_seek(seconds);
 
 		lv_timer_resume(progress_slider_timer);
 	}
@@ -172,23 +167,21 @@ static void progress_slider_timer_cb(lv_timer_t *timer) { update_progress(); }
 
 // Public: load and start playing a new file, updating the now-playing info
 void player_play_file(const char *filepath) {
-	strncpy(current_filepath, filepath, sizeof(current_filepath) - 1);
-	current_filepath[sizeof(current_filepath) - 1] = '\0';
-
-	current_total_length = 0;	   // unknown until the playback thread reports it
+	current_total_length = 0;	  // unknown until the playback thread reports it
 	format_info_computed = false; // recompute bitrate/format info for the new track
 	lv_label_set_text(song_format_label, "...");
 
-	song_metadata_t meta;
-	metadata_read(current_filepath, &meta);
+	device_state_play_file(filepath); // loads metadata + starts playback together
+
+	device_state_t state;
+	device_state_get(&state);
 
 	const char *slash = strrchr(filepath, '/');
-	lv_label_set_text(song_title_label, meta.title[0] ? meta.title : (slash ? slash + 1 : filepath));
-	lv_label_set_text(song_artist_label, meta.artist);
-	lv_label_set_text(song_album_label, meta.album);
+	lv_label_set_text(song_title_label, state.metadata.title[0] ? state.metadata.title : (slash ? slash + 1 : filepath));
+	lv_label_set_text(song_artist_label, state.metadata.artist);
+	lv_label_set_text(song_album_label, state.metadata.album);
 
-	set_playing(true);			  // update the UI
-	audio_play(current_filepath); // start playback of the filew
+	apply_playback_status(state.status); // update the UI
 }
 
 // Public: initialize the top bar
@@ -295,9 +288,6 @@ void player_init(gui_config_t *cfg) {
 	lv_label_set_text(play_btn_label, "..."); // TODO: fix placeholder. do something to indicate no song is picked yet
 	lv_obj_center(play_btn_label);
 	lv_obj_set_style_text_font(play_btn_label, &lv_font_montserrat_28, 0);
-
-	// manually update the playing status
-	set_playing(is_playing);
 
 	// Next Song Button
 	lv_obj_t *next_btn = lv_btn_create(player_controls_buttons);
