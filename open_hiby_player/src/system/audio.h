@@ -31,6 +31,10 @@ void audio_stop();
 // Get playback progress in seconds
 void audio_get_progress(double *current_secs, double *total_secs);
 
+// Get the sample rate and channel count of the currently playing stream.
+// Both are 0 if nothing has started playing yet.
+void audio_get_stream_info(int *sample_rate, int *channels);
+
 // Seek playback to the specified time in seconds
 void audio_seek(double seconds);
 

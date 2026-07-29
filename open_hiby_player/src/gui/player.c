@@ -4,17 +4,13 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "src/core/lv_obj_event.h"
 #include "src/gui/gui.h"
-#include "src/layouts/flex/lv_flex.h"
-#include "src/misc/lv_area.h"
-#include "src/misc/lv_event.h"
-#include "src/misc/lv_timer.h"
 #include "src/system/audio.h"
+#include "src/system/decode/decode.h"
+#include "src/system/metadata.h"
+#include "src/system/utils.h"
 
 #include "lvgl/lvgl.h"
-#include "src/system/utils.h"
-#include "src/widgets/slider/lv_slider.h"
 
 lv_obj_t *player_screen;
 
@@ -22,6 +18,8 @@ static lv_obj_t *play_btn;
 static lv_obj_t *play_btn_label;
 static lv_obj_t *song_title_label;
 static lv_obj_t *song_artist_label;
+static lv_obj_t *song_album_label;
+static lv_obj_t *song_format_label;
 static lv_obj_t *progress_slider;
 static lv_obj_t *progress_label;
 static lv_timer_t *progress_slider_timer;
@@ -30,6 +28,7 @@ static bool is_playing = false;
 static char current_filepath[512] = {0};
 static double current_total_length = 0; // initialize total length to 0, so that progress display starts as "0:00/0:00"
 static char progress_label_text[32];	// string to hold the text for the progress label
+static bool format_info_computed = false; // whether song_format_label has been filled in for the current track
 
 // TODO: make playing state handling much more robust. reference audio state directly to make sure desync isn't possible but do retain optimistic UI updates
 static void set_playing(bool playing) {
@@ -65,6 +64,46 @@ static void set_progress_label(double current_secs, double total_secs) {
 	}
 }
 
+// returns a short format label ("MP3", "FLAC", "OGG", "WAV") for the given file
+static const char *format_name_for_file(const char *filepath) {
+	switch (decode_detect_format(filepath)) {
+	case DECODE_FORMAT_MP3:
+		return "MP3";
+	case DECODE_FORMAT_FLAC:
+		return "FLAC";
+	case DECODE_FORMAT_OGG_VORBIS:
+		return "OGG";
+	default:
+		return "WAV";
+	}
+}
+
+// once the stream's sample rate and the track's duration are both known,
+// computes an average bitrate from the file size and fills in the technical
+// info label. Only runs once per track.
+static void update_format_info(void) {
+	if (format_info_computed || current_total_length <= 0)
+		return;
+
+	int sample_rate = 0, channels = 0;
+	audio_get_stream_info(&sample_rate, &channels);
+	if (sample_rate <= 0)
+		return; // stream info not ready yet
+
+	char format_text[64];
+	long file_size = get_file_size(current_filepath);
+	if (file_size > 0) {
+		int bitrate_kbps = (int)((file_size * 8.0) / current_total_length / 1000.0 + 0.5);
+		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz | %d kbps",
+				 format_name_for_file(current_filepath), sample_rate / 1000.0, bitrate_kbps);
+	} else {
+		snprintf(format_text, sizeof(format_text), "%s | %.1f kHz",
+				 format_name_for_file(current_filepath), sample_rate / 1000.0);
+	}
+	lv_label_set_text(song_format_label, format_text);
+	format_info_computed = true;
+}
+
 // reads the current audio progress and updates the UI
 static void update_progress(void) {
 	double cur, total;
@@ -79,6 +118,7 @@ static void update_progress(void) {
 	}
 
 	set_progress_label(cur, current_total_length);
+	update_format_info();
 }
 
 // Event handler for the Play/Pause button
@@ -135,9 +175,17 @@ void player_play_file(const char *filepath) {
 	strncpy(current_filepath, filepath, sizeof(current_filepath) - 1);
 	current_filepath[sizeof(current_filepath) - 1] = '\0';
 
+	current_total_length = 0;	   // unknown until the playback thread reports it
+	format_info_computed = false; // recompute bitrate/format info for the new track
+	lv_label_set_text(song_format_label, "...");
+
+	song_metadata_t meta;
+	metadata_read(current_filepath, &meta);
+
 	const char *slash = strrchr(filepath, '/');
-	lv_label_set_text(song_title_label, slash ? slash + 1 : filepath);
-	lv_label_set_text(song_artist_label, "");
+	lv_label_set_text(song_title_label, meta.title[0] ? meta.title : (slash ? slash + 1 : filepath));
+	lv_label_set_text(song_artist_label, meta.artist);
+	lv_label_set_text(song_album_label, meta.album);
 
 	set_playing(true);			  // update the UI
 	audio_play(current_filepath); // start playback of the filew
@@ -185,6 +233,16 @@ void player_init(gui_config_t *cfg) {
 	lv_label_set_text(song_artist_label, "");
 	lv_obj_set_style_text_color(song_artist_label, lv_color_make(130, 130, 130), 0);
 	lv_obj_set_style_text_font(song_artist_label, &lv_font_montserrat_16, 0);
+
+	song_album_label = lv_label_create(song_info);
+	lv_label_set_text(song_album_label, "");
+	lv_obj_set_style_text_color(song_album_label, lv_color_make(130, 130, 130), 0);
+	lv_obj_set_style_text_font(song_album_label, &lv_font_montserrat_16, 0);
+
+	song_format_label = lv_label_create(song_info);
+	lv_label_set_text(song_format_label, "");
+	lv_obj_set_style_text_color(song_format_label, lv_color_make(100, 100, 100), 0);
+	lv_obj_set_style_text_font(song_format_label, &lv_font_montserrat_16, 0);
 
 	// Playback Progress Slider
 	// TODO: make slider knob bigger

@@ -64,6 +64,19 @@ bool has_extension(const char *name, const char *ext) {
 	return strcasecmp(name + (name_len - ext_len), ext) == 0;
 }
 
+long get_file_size(const char *filepath) {
+	FILE *file = fopen(filepath, "rb");
+	if (file == NULL) {
+		return -1;
+	}
+
+	fseek(file, 0, SEEK_END);
+	long size = ftell(file);
+	fclose(file);
+
+	return size;
+}
+
 // formats a double of seconds as an HH:MM:SS string
 // hides hours if no hours, only shows necessary minute digits, always has 2 seconds digits
 // returns the number of characters written

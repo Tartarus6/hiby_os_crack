@@ -1,3 +1,7 @@
+/*
+ * This file is mostly LLM written, be warned.
+ */
+
 #ifndef STB_VORBIS_DECL_H
 #define STB_VORBIS_DECL_H
 
@@ -25,7 +29,15 @@ typedef struct {
 	int max_frame_size;
 } stb_vorbis_info;
 
+typedef struct {
+	char *vendor;
+
+	int comment_list_length;
+	char **comment_list;
+} stb_vorbis_comment;
+
 extern stb_vorbis_info stb_vorbis_get_info(stb_vorbis *f);
+extern stb_vorbis_comment stb_vorbis_get_comment(stb_vorbis *f);
 extern void stb_vorbis_close(stb_vorbis *f);
 extern stb_vorbis *stb_vorbis_open_filename(const char *filename, int *error, const stb_vorbis_alloc *alloc_buffer);
 extern unsigned int stb_vorbis_stream_length_in_samples(stb_vorbis *f);

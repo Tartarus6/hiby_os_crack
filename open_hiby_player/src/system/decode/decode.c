@@ -1,3 +1,7 @@
+/*
+ * This file is mostly LLM written, be warned.
+ */
+
 #include "decode.h"
 
 #include "src/system/utils.h"

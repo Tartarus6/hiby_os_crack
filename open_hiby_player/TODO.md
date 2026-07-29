@@ -13,14 +13,15 @@
 
 ## little bugs
 
-- [ ] fix progress slider jumping back briefly after seeking. this is likely due to the delay in performing the seek, so the old data is still being given from `audio_get_progress()` after the seek request occurred. could probably just set the current seconds in `audio.c` directly whenever the seek function is called?
+- [ ] fix progress slider jumping back briefly after seeking. this is likely due to the delay in performing the seek, so the old data is still being given from `audio_get_progress()` after the seek request occurred. (could probably just set the current seconds in `audio.c` directly whenever the seek function is called? -> already doing this, it improved it but issue still happens sometimes)
 - [ ] side scrolling text in browser bugs out a little bit when scrolling up/down the page. it seems like scrolling on the page resets the text scrolling? or something?
+- [ ] hitting prev when song finished and none others starting seeks back to 0 but does not start playback
 
 ## player features
 
 - [x] seeking through file
 - [x] prev button to seek to start of current playback file
-- [ ] load song title and artist to display in player
+- [x] load song title and artist to display in player (also loads album, genre, track, year, and computed bitrate/format info)
 - [ ] previous page storage. make some data structure so that every page stores what its previous page was, so that the path back can be easily taken. set the previous page dynamically as you switch pages, so that nothing is hard-coded
 - [ ] physical play/pause button handling
 - [ ] next/prev handling to go to next/prev songs (just in folders for now) (do it like Spotify does. if you're in the first few seconds of the file, then go to prev track. if you're not in the first few seconds, then seek to the start of the file)

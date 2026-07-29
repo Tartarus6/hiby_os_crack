@@ -39,6 +39,9 @@ static bool seek_request = false;
 static double progress_current_secs = 0.0;
 static double progress_total_secs = 0.0;
 
+static int stream_sample_rate = 0;
+static int stream_channels = 0;
+
 // Helper: Parse WAV file headers
 static int parse_wav(const char *filepath, wav_info_t *info, FILE **file_out) {
 	FILE *f = fopen(filepath, "rb");
@@ -186,6 +189,8 @@ static void play_wav_file(const char *filepath) {
 	pthread_mutex_lock(&audio_mutex);
 	progress_total_secs = (double)info.data_size / bytes_per_sec;
 	progress_current_secs = 0.0;
+	stream_sample_rate = info.sample_rate;
+	stream_channels = info.channels;
 	pthread_mutex_unlock(&audio_mutex);
 
 	snd_pcm_uframes_t period_size;
@@ -320,6 +325,8 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
 	pthread_mutex_lock(&audio_mutex);
 	progress_total_secs = (double)total_frames / sample_rate;
 	progress_current_secs = 0.0;
+	stream_sample_rate = sample_rate;
+	stream_channels = channels;
 	pthread_mutex_unlock(&audio_mutex);
 
 	snd_pcm_uframes_t period_size;
@@ -542,6 +549,15 @@ void audio_get_progress(double *current_secs, double *total_secs) {
 		*current_secs = progress_current_secs;
 	if (total_secs)
 		*total_secs = progress_total_secs;
+	pthread_mutex_unlock(&audio_mutex);
+}
+
+void audio_get_stream_info(int *sample_rate, int *channels) {
+	pthread_mutex_lock(&audio_mutex);
+	if (sample_rate)
+		*sample_rate = stream_sample_rate;
+	if (channels)
+		*channels = stream_channels;
 	pthread_mutex_unlock(&audio_mutex);
 }
 
