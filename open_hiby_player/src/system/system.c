@@ -195,11 +195,50 @@ void *sd_hotplug_thread(void *arg) {
 	}
 }
 
-static void *volume_button_thread(void *arg) {
+// TODO: can the event0 and event2 threads be combined to save some overhead and reduce duplicate code?
+static void *event0_thread_func(void *arg) {
+	int fd = open("/dev/input/event0", O_RDONLY);
+
+	if (fd < 0) {
+		perror("open input event0");
+		return NULL;
+	}
+
+	struct input_event ev;
+
+	while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
+
+		if (ev.type != EV_KEY)
+			continue;
+
+		switch (ev.code) {
+		case KEY_POWER:
+			if (ev.value == 1) {
+				printf("Power Button Pressed\n");
+			} else if (ev.value == 0) {
+				printf("Power Button Released\n");
+			}
+			break;
+
+		case KEY_PREVIOUSSONG:
+			if (ev.value == 1) {
+				printf("0: Previous Song Button Pressed\n");
+			} else if (ev.value == 0) {
+				printf("0: Previous Song Button Released\n");
+			}
+			break;
+		}
+	}
+
+	close(fd);
+	return NULL;
+}
+
+static void *event2_thread_func(void *arg) {
 	int fd = open("/dev/input/event2", O_RDONLY);
 
 	if (fd < 0) {
-		perror("open input");
+		perror("open input event2");
 		return NULL;
 	}
 
@@ -211,17 +250,42 @@ static void *volume_button_thread(void *arg) {
 			continue;
 
 		/* ignore key release */
-		if (ev.value != 1)
-			continue;
+		// if (ev.value != 1)
+		// 	continue;
 
 		switch (ev.code) {
-
 		case KEY_VOLUMEUP:
-			change_volume(-5);
+			if (ev.value == 1) {
+				printf("Volume Up Button Pressed\n");
+				change_volume(-5);
+			} else if (ev.value == 0) {
+				printf("Volume Up Button Released\n");
+			}
 			break;
 
 		case KEY_VOLUMEDOWN:
-			change_volume(5);
+			if (ev.value == 1) {
+				printf("Volume Down Button Pressed\n");
+				change_volume(5);
+			} else if (ev.value == 0) {
+				printf("Volume Down Button Released\n");
+			}
+			break;
+
+		case KEY_NEXTSONG:
+			if (ev.value == 1) {
+				printf("2: Next Song Button Pressed\n");
+			} else if (ev.value == 0) {
+				printf("2: Next Song Button Released\n");
+			}
+			break;
+
+		case KEY_PLAYPAUSE:
+			if (ev.value == 1) {
+				printf("2: Play/Pause Button Pressed\n");
+			} else if (ev.value == 0) {
+				printf("2: Play/Pause Button Released\n");
+			}
 			break;
 		}
 	}
@@ -261,10 +325,13 @@ void system_start_services(system_config_t *cfg, system_notification_cb_t notifi
 		pthread_detach(sd_thread);
 	}
 
-	pthread_t volume_thread;
-	pthread_create(&volume_thread, NULL, volume_button_thread, NULL);
+	pthread_t event0_thread;
+	pthread_create(&event0_thread, NULL, event0_thread_func, NULL);
+	pthread_detach(event0_thread);
 
-	pthread_detach(volume_thread);
+	pthread_t event2_thread;
+	pthread_create(&event2_thread, NULL, event2_thread_func, NULL);
+	pthread_detach(event2_thread);
 
 	// --- Audio ---
 	audio_init();
