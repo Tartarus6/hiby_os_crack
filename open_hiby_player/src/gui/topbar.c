@@ -5,7 +5,7 @@
 
 #include "lvgl/lvgl.h"
 
-#include "src/system/system.h"
+#include "src/system/device_state.h"
 
 // Static objects belonging to the top bar
 static lv_obj_t *top_bar;
@@ -16,14 +16,12 @@ static lv_timer_t *battery_timer;
 static void battery_update_cb(lv_timer_t *timer) {
 	(void)timer;
 
-	sync_battery_from_sysfs();
-	char *battery_level = read_battery_percent();
+	device_state_refresh_battery();
 
-	if (battery_level == NULL) {
-		battery_level = "!!"; // error indicator
-	}
+	device_state_t state;
+	device_state_get(&state);
 
-	lv_label_set_text_fmt(bat_label, "%s%%", battery_level);
+	lv_label_set_text_fmt(bat_label, "%s%%", state.battery_percent);
 }
 
 // Public: initialize the top bar
