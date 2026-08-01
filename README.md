@@ -18,6 +18,11 @@ This repo is for:
 > [!TIP]
 > If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](/guides/INSTALLING_FIRMWARE))
 
+> [!TIP]
+> To talk with the community (whether you're a developer or not), you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
+> I host the discord, and it has the same scope as this project (current HiBy OS devices)
+> The discord link will expire every once in a while. If you want to join but the link is expired, you can make an issue in this repo, or contact me in whatever other way to inform me.
+
 ## Scope
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
 - For now, this project also only focuses on the HiBy OS firmware used by the generation including the R1, R3 II 2025, R3 Pro II, and Tempotec V1. These devices all use the `.upt` firmware format and have an Ingenic X1600E CPU.
