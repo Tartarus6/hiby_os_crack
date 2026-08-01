@@ -19,7 +19,7 @@ This repo is for:
 > If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](/guides/INSTALLING_FIRMWARE))
 
 > [!TIP]
-> To talk with the community (whether you're a developer or not), you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
+> To talk with the community <ins>*whether you're a developer or not*</ins>, you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
 >
 > I host the discord, and it has the same scope as this project (current HiBy OS devices)
 >
