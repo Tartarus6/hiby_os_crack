@@ -40,16 +40,22 @@ We have collected documentation and created firmware unpacking/repacking scripts
 - HiBy R1
 - HiBy R3Pro II
 
+## Guides
+- [installing firmware](/guides/INSTALLING_FIRMWARE.md)
+- [firmware unpacking](/guides/UNPACKING.md)
+- [firmware repacking](/guides/REPACKING.md)
+- [accessing ADB](/guides/ACCESSING_ADB.md)
+- [easter egg](/guides/EASTER_EGG.md)
+
+## Tools
+- [general upt firmware unpacking script (no helper)](/scripts/unpack.sh)
+- [general upt firmware repacking script (no helper)](/scripts/repack.sh)
+- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
+
 ## Documentation
 - [this README](/README.md)
 - [project TODO](/TODO.md)
 - [firmware file system structure](/docs/ROOTFS_STRUCTURE.md)
-- Guides
-    - [installing firmware](/guides/INSTALLING_FIRMWARE.md)
-    - [firmware unpacking](/guides/UNPACKING.md)
-    - [firmware repacking](/guides/REPACKING.md)
-    - [accessing ADB](/guides/ACCESSING_ADB.md)
-    - [easter egg](/guides/EASTER_EGG.md)
 - R3ProII
     - [specs](/docs/r3proii/SPECS.md)
     - [output modes](/docs/r3proii/OUTPUT_MODES.md)
@@ -85,11 +91,6 @@ We have collected documentation and created firmware unpacking/repacking scripts
             - URL: `ftp://ftp.ingenic.com.cn`
             - Username: `ingenic_public`
             - Password: `BFdg2f9B12`
-
-## Tools
-- [general upt firmware unpacking script (no helper)](/scripts/unpack.sh)
-- [general upt firmware repacking script (no helper)](/scripts/repack.sh)
-- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
 
 
 ## Unpacking and Repacking Workflow Overview
