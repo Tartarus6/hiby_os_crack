@@ -20,6 +20,7 @@
 - [ ] add output modes documentation for the r1
 - [ ] move open_hiby_player into it's own repository
 - [ ] remove the `r1` and `r3proii` directories, combine unpacking and repacking for the devices into one place, with the script asking which device/firmware to target
+- [ ] document the 4 sleep modes of the OFW
 
 
 ## Emulator
