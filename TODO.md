@@ -22,6 +22,7 @@
 - [ ] remove the `r1` and `r3proii` directories, combine unpacking and repacking for the devices into one place, with the script asking which device/firmware to target
 - [ ] document the 4 sleep modes of the OFW
 - [ ] add guide for adding unpacking and repacking helpers (etc.) for a new device
+- [ ] add more detailed `.upt` structure explanation. talk about xImage, uboot, and squashfs
 
 
 ## Emulator
