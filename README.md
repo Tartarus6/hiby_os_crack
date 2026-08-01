@@ -20,7 +20,9 @@ This repo is for:
 
 > [!TIP]
 > To talk with the community (whether you're a developer or not), you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
+>
 > I host the discord, and it has the same scope as this project (current HiBy OS devices)
+>
 > The discord link will expire every once in a while. If you want to join but the link is expired, you can make an issue in this repo, or contact me in whatever other way to inform me.
 
 ## Scope
