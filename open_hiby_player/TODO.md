@@ -30,5 +30,7 @@
 
 ## display features
 
-- [ ] backlight handling. turn on the backlight when starting up
-- [ ] sleep mode. figure out how to enter a sleep mode to maintain maximum battery while having extremely fast wakeup time, just as the original firmware does it
+- [x] backlight handling. turn on the backlight when starting up (src/system/power.c: sets brightness from sysfs on init; runtime brightness control via power_set_brightness())
+- [x] sleep mode. screen-off on idle/power-button, and SoC suspend-to-RAM on deep idle (src/system/power.c). NOTE: idle suspend is disabled by default until KEY_POWER is confirmed as a kernel wake source over ADB (`echo mem > /sys/power/state`, then press power).
+- [ ] settings page to configure power behaviour (screen-off timeout + enable, idle-suspend timeout + enable, brightness). Runtime setters already exist in src/system/power.h (power_set_*).
+- [ ] long-press power button handling (currently short-press toggles the screen; long-press is left to the kernel/init poweroff path)

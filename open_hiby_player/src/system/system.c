@@ -15,6 +15,7 @@
 
 #include "src/system/audio.h"
 #include "src/system/device_state.h"
+#include "src/system/power.h"
 #include "src/system/utils.h"
 #include "utils.h"
 
@@ -211,10 +212,15 @@ static void *event0_thread_func(void *arg) {
 		if (ev.type != EV_KEY)
 			continue;
 
+		if (ev.value == 1) {
+			power_notify_activity(); // any physical button press counts as user activity
+		}
+
 		switch (ev.code) {
 		case KEY_POWER:
 			if (ev.value == 1) {
 				printf("Power Button Pressed\n");
+				power_notify_power_button(); // short-press toggles the screen / wakes from suspend
 			} else if (ev.value == 0) {
 				printf("Power Button Released\n");
 			}
@@ -248,6 +254,10 @@ static void *event2_thread_func(void *arg) {
 
 		if (ev.type != EV_KEY)
 			continue;
+
+		if (ev.value == 1) {
+			power_notify_activity(); // any physical button press counts as user activity
+		}
 
 		/* ignore key release */
 		// if (ev.value != 1)

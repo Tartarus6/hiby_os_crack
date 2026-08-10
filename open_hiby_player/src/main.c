@@ -8,6 +8,7 @@
 #include <unistd.h>
 
 #include "src/gui/gui.h"
+#include "src/system/power.h"
 #include "src/system/system.h"
 
 // TODO: include more fonts. or at least sizes. gap between 16 and 28 is way too big
@@ -166,6 +167,35 @@ int main() {
 	};
 
 	gui_init(&gui_cfg);
+
+	// power / display idle management (backlight, screen-off, SoC suspend).
+	// On the host build every device path is left NULL so nothing touches the
+	// developer's own backlight/framebuffer/suspend.
+	power_config_t power_cfg = {
+#ifdef HOST_BUILD
+		.brightness_path = NULL,
+		.max_brightness_path = NULL,
+		.power_state_path = NULL,
+		.blank_path = NULL,
+#else
+		.brightness_path = "/sys/class/backlight/backlight_pwm0/brightness",
+		.max_brightness_path = "/sys/class/backlight/backlight_pwm0/max_brightness",
+		.power_state_path = "/sys/power/state",
+		// Screen on/off via the framebuffer blank node -- the same mechanism
+		// Rockbox's HiBy port uses. Writing here powers the backlight, panel,
+		// and touch controller together, and is reliably reversible.
+		.blank_path = "/sys/class/graphics/fb0/blank",
+#endif
+		.brightness = -1, // adopt the panel's current level as the on-brightness
+		.screen_off_enabled = true,
+		.screen_off_timeout_ms = 30000, // 30s of no input -> screen off
+		// Off by default: SoC suspend only wakes if KEY_POWER is a registered
+		// kernel wake source. Confirm that over ADB first (see the notes), then
+		// flip this on (or wire it up from the settings page).
+		.idle_suspend_enabled = false,
+		.idle_suspend_timeout_ms = 120000, // 2min idle + nothing playing -> suspend
+	};
+	power_init(&power_cfg, disp);
 
 	// main event loop
 	// TODO: how does this event loop work? is this effieient? is this standard?

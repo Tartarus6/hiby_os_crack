@@ -26,9 +26,9 @@ void main_menu_init(gui_config_t *cfg) {
 	// Button to go to the player
 	lv_obj_t *go_to_player_btn = lv_btn_create(main_menu_screen);
 	lv_obj_align(go_to_player_btn, LV_ALIGN_CENTER, 0, -40);
-	lv_obj_t *btn_label = lv_label_create(go_to_player_btn);
-	lv_label_set_text(btn_label, "Go to Player");
-	lv_obj_set_style_text_font(btn_label, &lv_font_montserrat_28, 0);
+	lv_obj_t *go_to_player_btn_label = lv_label_create(go_to_player_btn);
+	lv_label_set_text(go_to_player_btn_label, "Go to Player");
+	lv_obj_set_style_text_font(go_to_player_btn_label, &lv_font_montserrat_28, 0);
 	lv_obj_add_event_cb(go_to_player_btn, switch_screen_cb, LV_EVENT_CLICKED, player_screen);
 
 	// Button to browse SD card files
