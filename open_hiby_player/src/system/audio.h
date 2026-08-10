@@ -41,6 +41,12 @@ void audio_stop();
 // Get the current playback status (playing/paused/stopped)
 audio_status_t audio_get_status(void);
 
+// Returns true exactly once if the current track reached its end on its own
+// since the last call, clearing the internal flag. User-initiated stops
+// (audio_stop/audio_play) do NOT set it. Lets the controller distinguish a
+// natural track completion (auto-advance) from a deliberate stop.
+bool audio_take_completion(void);
+
 // Copies the path of the currently loaded file into out (empty string if
 // nothing is loaded). out_size is the size of the out buffer.
 void audio_get_current_file(char *out, size_t out_size);

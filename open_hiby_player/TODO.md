@@ -16,16 +16,20 @@
 
 - [ ] fix progress slider jumping back briefly after seeking. this is likely due to the delay in performing the seek, so the old data is still being given from `audio_get_progress()` after the seek request occurred. (could probably just set the current seconds in `audio.c` directly whenever the seek function is called? -> already doing this, it improved it but issue still happens sometimes)
 - [ ] side scrolling text in browser bugs out a little bit when scrolling up/down the page. it seems like scrolling on the page resets the text scrolling? or something?
-- [ ] hitting prev when song finished and none others starting seeks back to 0 but does not start playback
+- [x] hitting prev when song finished and none others starting seeks back to 0 but does not start playback (device_state_seek now restarts the loaded track when playback has stopped)
+- [ ] (idk how to reproduce it) sometimes the player UI will desync. the play/pause may be incorrect and the progress indicator may be incorrect and/or not updating
 
 ## player features
 
 - [x] seeking through file
 - [x] prev button to seek to start of current playback file
 - [x] load song title and artist to display in player (also loads album, genre, track, year, and computed bitrate/format info)
+- [x] folder playback: auto-advance to the next song in the folder when one finishes (src/system/playlist.c holds the folder queue; player.c polls device_state_take_completion() and calls device_state_advance_auto())
+- [x] playback modes: loop folder / loop current song / stop at end of folder (playback_mode_t, cycled via the repeat button on the player screen)
+- [x] play button always plays the currently-shown song, even after it ended (device_state_toggle_play_pause restarts the loaded track from STOPPED instead of a no-op resume)
+- [x] next/prev handling to go to next/prev songs (just in folders for now) (on-screen buttons: prev goes to previous track within the first 3s, else restarts; next skips to the next track)
 - [ ] previous page storage. make some data structure so that every page stores what its previous page was, so that the path back can be easily taken. set the previous page dynamically as you switch pages, so that nothing is hard-coded
 - [ ] physical play/pause button handling
-- [ ] next/prev handling to go to next/prev songs (just in folders for now) (do it like Spotify does. if you're in the first few seconds of the file, then go to prev track. if you're not in the first few seconds, then seek to the start of the file)
 - [ ] physical next/prev handling
 
 ## display features

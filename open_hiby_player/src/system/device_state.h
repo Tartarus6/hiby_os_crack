@@ -26,12 +26,33 @@ typedef struct {
 void device_state_get(device_state_t *out);
 
 // Loads and starts playing a new file: reads its metadata (cached for
-// subsequent device_state_get() calls) and starts playback.
+// subsequent device_state_get() calls) and starts playback. Also (re)builds
+// the folder playback queue from the file's directory, so playback can
+// continue to the following tracks when this one finishes.
 void device_state_play_file(const char *filepath);
+
+// Call when the current track has finished on its own (see
+// device_state_take_completion). Advances the folder queue according to the
+// active playback mode and starts the next track; returns true if playback
+// continued (optionally copying the new track's path into out_path), or false
+// if playback should stop (end of folder in normal mode / empty queue).
+bool device_state_advance_auto(char *out_path, size_t out_size);
+
+// User-initiated skip to the next/previous track in the folder queue. Start
+// the new track and return true (optionally copying its path into out_path);
+// return false if the queue is empty.
+bool device_state_next(char *out_path, size_t out_size);
+bool device_state_prev(char *out_path, size_t out_size);
+
+// Returns true exactly once after the current track finished playing on its
+// own (not from a user stop), so the caller can auto-advance the queue.
+bool device_state_take_completion(void);
 
 // Toggles play/pause based on the current playback status and returns the
 // intended new status immediately, so callers can update UI optimistically
-// without waiting for the playback thread to catch up.
+// without waiting for the playback thread to catch up. When playback has
+// stopped (e.g. the track ended), this restarts the currently-loaded track
+// from the beginning rather than doing nothing.
 audio_status_t device_state_toggle_play_pause(void);
 
 void device_state_seek(double seconds);

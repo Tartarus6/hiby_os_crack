@@ -4,9 +4,13 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "src/core/lv_obj.h"
+#include "src/core/lv_obj_pos.h"
 #include "src/gui/gui.h"
+#include "src/misc/lv_area.h"
 #include "src/system/decode/decode.h"
 #include "src/system/device_state.h"
+#include "src/system/playlist.h"
 #include "src/system/utils.h"
 
 #include "lvgl/lvgl.h"
@@ -21,6 +25,7 @@ static lv_obj_t *song_album_label;
 static lv_obj_t *song_format_label;
 static lv_obj_t *progress_slider;
 static lv_obj_t *progress_label;
+static lv_obj_t *repeat_btn_label;
 static lv_timer_t *progress_slider_timer;
 
 static double current_total_length = 0;	  // cached from the last device_state snapshot, so slider math works between polls
@@ -95,10 +100,64 @@ static void update_format_info(const device_state_t *state) {
 	format_info_computed = true;
 }
 
+// Refreshes the now-playing info (title/artist/album) from the current device
+// state and resets the per-track format/length caches. Used both when the user
+// picks a file and when playback auto-advances to a new track.
+static void refresh_now_playing(void) {
+	current_total_length = 0;	  // unknown until the playback thread reports it
+	format_info_computed = false; // recompute bitrate/format info for the new track
+	lv_label_set_text(song_format_label, "...");
+
+	device_state_t state;
+	device_state_get(&state);
+
+	const char *file = state.current_file;
+	const char *slash = strrchr(file, '/');
+	lv_label_set_text(song_title_label, state.metadata.title[0] ? state.metadata.title : (slash ? slash + 1 : file));
+	lv_label_set_text(song_artist_label, state.metadata.artist);
+	lv_label_set_text(song_album_label, state.metadata.album);
+}
+
+// Updates the repeat-mode button's icon/color to reflect the active mode.
+static void update_repeat_button(void) {
+	lv_color_t active = lv_color_make(60, 160, 220);
+	lv_color_t inactive = lv_color_make(100, 100, 100);
+
+	switch (playlist_get_mode()) {
+	case PLAYBACK_MODE_REPEAT_ONE:
+		lv_label_set_text(repeat_btn_label, LV_SYMBOL_LOOP " 1");
+		lv_obj_set_style_text_color(repeat_btn_label, active, 0);
+		break;
+	case PLAYBACK_MODE_REPEAT_ALL:
+		lv_label_set_text(repeat_btn_label, LV_SYMBOL_LOOP);
+		lv_obj_set_style_text_color(repeat_btn_label, active, 0);
+		break;
+	case PLAYBACK_MODE_NORMAL:
+	default:
+		lv_label_set_text(repeat_btn_label, LV_SYMBOL_LOOP);
+		lv_obj_set_style_text_color(repeat_btn_label, inactive, 0);
+		break;
+	}
+}
+
+// Called when the current track finished on its own: advances the folder queue
+// per the active playback mode. If a next track starts, refresh the UI to it;
+// otherwise playback simply stays stopped (end of folder in normal mode).
+static void handle_track_finished(void) {
+	if (device_state_advance_auto(NULL, 0)) {
+		refresh_now_playing();
+	}
+}
+
 // reads the current device state and reconciles the UI against it -- this is
 // the single point that keeps the play/pause button and progress bar from
 // going stale once a track finishes on its own.
 static void update_progress(void) {
+	// Auto-advance/loop the folder when the track has played through.
+	if (device_state_take_completion()) {
+		handle_track_finished();
+	}
+
 	device_state_t state;
 	device_state_get(&state);
 
@@ -121,13 +180,40 @@ static void play_btn_event_cb(lv_event_t *e) {
 	apply_playback_status(new_status); // optimistic UI update; next poll reconciles against the real status
 }
 
-// Event handler for the Prev button
+// Event handler for the Prev button. Spotify-style: within the first few
+// seconds of the track it goes to the previous track in the folder; otherwise
+// it restarts the current track.
 static void prev_btn_event_cb(lv_event_t *e) {
-	device_state_seek(0);
+	device_state_t state;
+	device_state_get(&state);
+
+	// TODO: this 3 seconds into song number probably shouldn't be hard-coded
+	if (state.progress_current_secs > 3.0) {
+		device_state_seek(0); // far enough in -> restart current track
+	} else if (device_state_prev(NULL, 0)) {
+		refresh_now_playing(); // near the start -> go to previous track
+	} else {
+		device_state_seek(0); // no queue -> just restart
+	}
 
 	// TODO: progress still jumps back and forth a bit. need a robust fix to prevent getting stale data from audio.c
 	// immediately update the progress
 	update_progress();
+}
+
+// Event handler for the Next button: skip to the next track in the folder.
+static void next_btn_event_cb(lv_event_t *e) {
+	if (device_state_next(NULL, 0)) {
+		refresh_now_playing();
+	}
+	update_progress();
+}
+
+// Event handler for the repeat-mode button: cycle normal -> loop folder ->
+// loop track.
+static void repeat_btn_event_cb(lv_event_t *e) {
+	playlist_cycle_mode();
+	update_repeat_button();
 }
 
 // Event handler for the progress slider
@@ -165,22 +251,16 @@ static void progress_slider_event_cb(lv_event_t *e) {
 // timer to update the progress slider text based on playback progress
 static void progress_slider_timer_cb(lv_timer_t *timer) { update_progress(); }
 
-// Public: load and start playing a new file, updating the now-playing info
+// Public: load and start playing a new file, updating the now-playing info.
+// This also (re)builds the folder playback queue inside device_state, so
+// playback continues to the following tracks when this one finishes.
 void player_play_file(const char *filepath) {
-	current_total_length = 0;	  // unknown until the playback thread reports it
-	format_info_computed = false; // recompute bitrate/format info for the new track
-	lv_label_set_text(song_format_label, "...");
+	device_state_play_file(filepath); // builds folder queue, loads metadata + starts playback
 
-	device_state_play_file(filepath); // loads metadata + starts playback together
+	refresh_now_playing();
 
 	device_state_t state;
 	device_state_get(&state);
-
-	const char *slash = strrchr(filepath, '/');
-	lv_label_set_text(song_title_label, state.metadata.title[0] ? state.metadata.title : (slash ? slash + 1 : filepath));
-	lv_label_set_text(song_artist_label, state.metadata.artist);
-	lv_label_set_text(song_album_label, state.metadata.album);
-
 	apply_playback_status(state.status); // update the UI
 }
 
@@ -251,10 +331,32 @@ void player_init(gui_config_t *cfg) {
 	progress_slider_timer = lv_timer_create(progress_slider_timer_cb, 500, NULL); // timer to update the progress slider as the song progresses
 	lv_timer_pause(progress_slider_timer);										  // dont keep checking playback progress when not playing
 
-	progress_label = lv_label_create(player_menu);
+	lv_obj_t *below_slider_group = lv_obj_create(player_menu);
+	lv_obj_set_size(below_slider_group, lv_pct(100), LV_SIZE_CONTENT);
+	lv_obj_set_style_bg_opa(below_slider_group, 0, 0);
+	lv_obj_set_style_border_width(below_slider_group, 0, 0);
+	lv_obj_set_style_radius(below_slider_group, 0, 0);
+	lv_obj_set_style_pad_all(below_slider_group, 0, 0);
+	lv_obj_remove_flag(below_slider_group, LV_OBJ_FLAG_SCROLLABLE);
+
+	progress_label = lv_label_create(below_slider_group);
 	lv_label_set_text(progress_label, "..."); // TODO: make this more robust. automatically load in a placeholder using the same mechanism that sets it during playback
 	lv_obj_set_style_text_color(progress_label, lv_color_make(255, 255, 255), 0);
 	lv_obj_set_style_text_font(progress_label, &lv_font_montserrat_16, 0);
+	lv_obj_set_align(progress_label, LV_ALIGN_CENTER);
+
+	// Repeat/loop mode button: cycles normal -> loop folder -> loop track
+	lv_obj_t *repeat_btn = lv_btn_create(below_slider_group);
+	lv_obj_set_size(repeat_btn, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+	lv_obj_set_style_bg_opa(repeat_btn, 0, 0);
+	lv_obj_set_style_shadow_width(repeat_btn, 0, 0);
+	lv_obj_add_event_cb(repeat_btn, repeat_btn_event_cb, LV_EVENT_CLICKED, NULL);
+	lv_obj_set_align(repeat_btn, LV_ALIGN_LEFT_MID);
+
+	repeat_btn_label = lv_label_create(repeat_btn);
+	lv_obj_set_style_text_font(repeat_btn_label, &lv_font_montserrat_28, 0);
+	lv_obj_center(repeat_btn_label);
+	update_repeat_button(); // set the initial icon/color for the current mode
 
 	// Controls buttons: Back, Play/Pause, Next
 	// Player Controls Buttons Container
@@ -297,4 +399,6 @@ void player_init(gui_config_t *cfg) {
 	lv_label_set_text(next_label, LV_SYMBOL_NEXT);
 	lv_obj_set_style_text_font(next_label, &lv_font_montserrat_28, 0);
 	lv_obj_center(next_label);
+
+	lv_obj_add_event_cb(next_btn, next_btn_event_cb, LV_EVENT_CLICKED, NULL);
 }

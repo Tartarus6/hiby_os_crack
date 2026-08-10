@@ -37,6 +37,11 @@ static bool stop_thread = false;
 static double seek_target_secs = -1.0;
 static bool seek_request = false;
 
+// Set true by the playback thread when a track plays through to its end (as
+// opposed to being stopped/replaced by the user). Consumed via
+// audio_take_completion() so the controller can auto-advance.
+static bool track_completed = false;
+
 static double progress_current_secs = 0.0;
 static double progress_total_secs = 0.0;
 
@@ -284,6 +289,7 @@ static void play_wav_file(const char *filepath) {
 			pthread_mutex_lock(&audio_mutex);
 			audio_command = AUDIO_CMD_STOP;
 			playback_status = AUDIO_STATUS_STOPPED;
+			track_completed = true;
 			pthread_mutex_unlock(&audio_mutex);
 			break;
 		}
@@ -429,6 +435,7 @@ static void play_decoded_file(const char *filepath, decode_format_t format) {
 			pthread_mutex_lock(&audio_mutex);
 			audio_command = AUDIO_CMD_STOP;
 			playback_status = AUDIO_STATUS_STOPPED;
+			track_completed = true;
 			pthread_mutex_unlock(&audio_mutex);
 			break;
 		}
@@ -533,6 +540,7 @@ int audio_play(const char *filepath) {
 	playback_status = AUDIO_STATUS_PLAYING;
 	seek_request = false;
 	seek_target_secs = -1.0;
+	track_completed = false; // fresh playback; any prior completion is consumed
 	pthread_cond_signal(&audio_cond);
 	pthread_mutex_unlock(&audio_mutex);
 	return 0;
@@ -568,6 +576,7 @@ void audio_stop(void) {
 	playback_status = AUDIO_STATUS_STOPPED;
 	seek_request = false;
 	seek_target_secs = -1.0;
+	track_completed = false; // deliberate stop is not a natural completion
 	pthread_mutex_unlock(&audio_mutex);
 }
 
@@ -576,6 +585,14 @@ audio_status_t audio_get_status(void) {
 	audio_status_t status = playback_status;
 	pthread_mutex_unlock(&audio_mutex);
 	return status;
+}
+
+bool audio_take_completion(void) {
+	pthread_mutex_lock(&audio_mutex);
+	bool completed = track_completed;
+	track_completed = false;
+	pthread_mutex_unlock(&audio_mutex);
+	return completed;
 }
 
 void audio_get_current_file(char *out, size_t out_size) {
