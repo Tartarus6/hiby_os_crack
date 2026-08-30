@@ -23,9 +23,9 @@ ${Cyan}-k${NC} ${Yellow}XIMAGE${NC} \
 ${Cyan}-o${NC} ${Yellow}OUTPUT_FILE${NC}
 
 ${Green}Options:${NC}
-  ${Cyan}-i${NC} DIR     squashfs-root directory   ${Red}(required)${NC}
-  ${Cyan}-k${NC} FILE    xImage                    ${Red}(required)${NC}
-  ${Cyan}-o${NC} FILE    Output .upt file          ${Red}(required)${NC}
+  ${Cyan}-i${NC} ${Yellow}DIR${NC}     squashfs-root directory   ${Red}(required)${NC}
+  ${Cyan}-k${NC} ${Yellow}FILE${NC}    xImage                    ${Red}(required)${NC}
+  ${Cyan}-o${NC} ${Yellow}FILE${NC}    Output .upt file          ${Red}(required)${NC}
   ${Cyan}-h${NC}         Show this help
 EOF
 }
@@ -74,8 +74,8 @@ output_file=$(realpath "$output_file")
 # check if output already exists, ask if it should be overwritten
 if [[ -e "$output_file" ]]; then
     echo
-    echo -e "${Yellow}Output file '$output_file' already exists.${NC}"
-    read -rp "Overwrite it? [y/N] " reply
+    echo -e "${Red}Output file '$output_file' already exists.${NC}"
+    read -rp "Overwrite it? ${Red}[y/N]${NC} " reply
 
     case "$reply" in
         [yY]|[yY][eE][sS])
@@ -93,7 +93,7 @@ mkdir -p "$TEMP_DIR/ota_v0"
 
 pushd "$TEMP_DIR/ota_v0" >/dev/null
 
-echo "${Yellow}#####################################"
+echo "${Red}#####################################"
 echo "### GENERATING NEW SQUASHFS FILES ###"
 echo "#####################################${NC}"
 echo ""
@@ -124,7 +124,7 @@ for part in $(ls rootfs.squashfs.[0-9]* | sort); do
     md5="${md5next}"
 done
 
-echo "${Yellow}###################################"
+echo "${Red}###################################"
 echo "### GENERATING NEW xImage FILES ###"
 echo "###################################${NC}"
 echo ""
@@ -155,7 +155,7 @@ for part in $(ls xImage.[0-9]* | sort); do
     md5="${md5next}"
 done
 
-echo "${Yellow}#################################"
+echo "${Red}#################################"
 echo "### GENERATING METADATA FILES ###"
 echo "#################################${NC}"
 echo ""
@@ -181,7 +181,7 @@ echo > ota_v0.ok
 # Generate ota_config.in in parent directory (temp/)
 echo "current_version=0" > ../ota_config.in
 
-echo "${Yellow}#################################"
+echo "${Red}#################################"
 echo "### GENERATING FIRMWARE FILE ###"
 echo "#################################${NC}"
 echo ""

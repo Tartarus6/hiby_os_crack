@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Color Consts (just for decoration)
-NC=$'\033[0m' # No Color
+NC=$'\033[0m'              # No Color
 Black=$'\033[0;30m'        # Black
 Red=$'\033[0;31m'          # Red
 Green=$'\033[0;32m'        # Green
@@ -76,12 +76,12 @@ done
 # Check whether either output already exists
 if [[ -e "$output_dir" || -e "$output_ximage" ]]; then
     echo
-    echo -e "${Yellow}One or more output files already exist:${NC}"
+    echo -e "${Red}One or more output files already exist:${NC}"
 
     [[ -e "$output_dir" ]]    && echo "  - ${Cyan}${output_dir}${NC}"
     [[ -e "$output_ximage" ]] && echo "  - ${Cyan}${output_ximage}${NC}"
 
-    read -rp "Overwrite them? ${Cyan}[y/N]${NC} " reply
+    read -rp "Overwrite them? ${Yellow}[y/N]${NC} " reply
 
     case "$reply" in
         [yY]|[yY][eE][sS])
@@ -116,7 +116,7 @@ pushd ota_v0 > /dev/null
 cat rootfs.squashfs.* > rootfs.squashfs  # combine the squashfs file parts into one
 cat xImage.* > "${output_ximage}"  # combine the xImage file parts into one
 
-echo "${Yellow}##################################"
+echo "${Red}##################################"
 echo "### EXTRACTING SQUASHFS-ROOTFS ###"
 echo "##################################${NC}"
 echo ""
@@ -133,4 +133,4 @@ echo "Unpacking complete!"
 echo "Original filesystem extracted to: ${output_dir}"
 echo "xImage extracted to: ${output_ximage}"
 echo ""
-echo "${Cyan}Now you can modify files in ${output_dir}/${NC}"
+echo "${Red}Now you can modify files in ${output_dir}/${NC}"

@@ -1,6 +1,10 @@
 # HiBy OS Crack
 Cracking the firmware of HiBy's linux devices
 
+> [!TIP]
+> If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](/guides/INSTALLING_FIRMWARE))
+
+---
 
 This repo is for:
 - Tools to unpack/repack hiby os firmwares
@@ -8,15 +12,14 @@ This repo is for:
 - Documentation on the device (datasheets, ISA, etc.)
 - Other tools and information helpful for creating custom firmwares
 
+---
+
 > [!NOTE]
 > This project is part of the [hiby-modding organization](https://github.com/hiby-modding). Also see:
 > - [hiby-r3proii-custom-firmware](https://github.com/hiby-modding/hiby-r3proii-custom-firmware) by noisetta — complementary firmware modding project that adds Arabic text rendering support and documents the proprietary OTA firmware format.
 
 > [!TIP]
 > **How Can I Help❓**: If you want to help with this project, <ins>*whether you're a developer or not*</ins>, look at [HOW_CAN_I_HELP.md](/HOW_CAN_I_HELP.md).
-
-> [!TIP]
-> If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](/guides/INSTALLING_FIRMWARE))
 
 > [!TIP]
 > To talk with the community <ins>*whether you're a developer or not*</ins>, you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
@@ -49,8 +52,13 @@ We have collected documentation and created firmware unpacking/repacking scripts
 
 ## Tools
 - [general upt firmware unpacking script (no helper)](/scripts/unpack.sh)
+    - Can unpack any `.upt` firmware
 - [general upt firmware repacking script (no helper)](/scripts/repack.sh)
-- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
+    - Can repack any unpacked `.upt` firmware
+- Unpacking and repacking helper scripts. Called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
+    - Base firmwares are already provided
+    - No configuring needed, just run the script and select what you want
+    - This helper (automatic) script has only been written for devices that we've collected documentation and firmware for already, so we don't have it for every supported device yet. Feel free to contribute those for new devices.
 
 ## Documentation
 - [this README](/README.md)
@@ -60,9 +68,11 @@ We have collected documentation and created firmware unpacking/repacking scripts
     - [specs](/docs/r3proii/SPECS.md)
     - [output modes](/docs/r3proii/OUTPUT_MODES.md)
     - [qemu readme](/r3proii/qemu/README.md)
+        - QEMU functionality is very experimental, we haven't gotten very far into making it work
 - R1
     - [specs](/docs/r1/SPECS.md)
     - [qemu readme](/r1/qemu/README.md)
+        - QEMU functionality is very experimental, we haven't gotten very far into making it work
 - Third Party
     - Curated
         - HiBy User Manuals
