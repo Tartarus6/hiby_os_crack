@@ -13,10 +13,17 @@ This repo is for:
 > - [hiby-r3proii-custom-firmware](https://github.com/hiby-modding/hiby-r3proii-custom-firmware) by noisetta — complementary firmware modding project that adds Arabic text rendering support and documents the proprietary OTA firmware format.
 
 > [!TIP]
-> **How Can I Help❓**: If you want to help with this project, whether you're a developer or not, look at [HOW_CAN_I_HELP.md](/HOW_CAN_I_HELP.md).
+> **How Can I Help❓**: If you want to help with this project, <ins>*whether you're a developer or not*</ins>, look at [HOW_CAN_I_HELP.md](/HOW_CAN_I_HELP.md).
 
 > [!TIP]
 > If you just want to see instructions on how to install custom firmware onto your device: [here's the guide](/guides/INSTALLING_FIRMWARE))
+
+> [!TIP]
+> To talk with the community <ins>*whether you're a developer or not*</ins>, you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
+>
+> I host the discord, and it has the same scope as this project (current HiBy OS devices)
+>
+> The discord link will expire every once in a while. If you want to join but the link is expired, you can make an issue in this repo, or contact me in whatever other way to inform me.
 
 ## Scope
 - The goal of this project is to make it possible to modify the HiBy OS firmware to add custom functionality.
@@ -33,16 +40,22 @@ We have collected documentation and created firmware unpacking/repacking scripts
 - HiBy R1
 - HiBy R3Pro II
 
+## Guides
+- [installing firmware](/guides/INSTALLING_FIRMWARE.md)
+- [firmware unpacking](/guides/UNPACKING.md)
+- [firmware repacking](/guides/REPACKING.md)
+- [accessing ADB](/guides/ACCESSING_ADB.md)
+- [easter egg](/guides/EASTER_EGG.md)
+
+## Tools
+- [general upt firmware unpacking script (no helper)](/scripts/unpack.sh)
+- [general upt firmware repacking script (no helper)](/scripts/repack.sh)
+- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
+
 ## Documentation
 - [this README](/README.md)
 - [project TODO](/TODO.md)
 - [firmware file system structure](/docs/ROOTFS_STRUCTURE.md)
-- Guides
-    - [installing firmware](/guides/INSTALLING_FIRMWARE.md)
-    - [firmware unpacking](/guides/UNPACKING.md)
-    - [firmware repacking](/guides/REPACKING.md)
-    - [accessing ADB](/guides/ACCESSING_ADB.md)
-    - [easter egg](/guides/EASTER_EGG.md)
 - R3ProII
     - [specs](/docs/r3proii/SPECS.md)
     - [output modes](/docs/r3proii/OUTPUT_MODES.md)
@@ -78,17 +91,15 @@ We have collected documentation and created firmware unpacking/repacking scripts
             - Username: `ingenic_public`
             - Password: `BFdg2f9B12`
 
-## Tools
-- [general upt firmware unpacking script](/scripts/unpack.sh)
-- [general upt firmware repacking script](/scripts/repack.sh)
-- Unpacking and repacking helper scripts (convenient selection of base firmware and automatic file output selection) called `unpack-helper.sh` and `repack-helper.sh` exist in the `unpacking_and_repacking` directory for the relevant device.
 
-
-## Unpacking and Repacking Workflow
+## Unpacking and Repacking Workflow Overview
+> [!TIP]
+> For more specific and detailed instructions, look at [UNPACKING.md](/guides/UNPACKING.md) and [REPACKING.md](/guides/REPACKING.md).
 1. Depending on your device, enter either the `r1` directory or the `r3proii` directory
 2. if you want to unpack a firmware not in this repo already, add it in the `firmware/custom` directory
 3. enter the `unpacking_and_repacking` directory for your device
 4. to unpack your firmware use the `unpack-helper.sh` script and choose the firmware you want to unpack
+    - The linux root filesystem of the firmware will be extracted into a folder
 5. to repack your firmware, just run the `repack-helper.sh` script
 
 > [!NOTE]
