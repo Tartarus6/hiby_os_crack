@@ -22,7 +22,7 @@ This repo is for:
 > **How Can I Help❓**: If you want to help with this project, <ins>*whether you're a developer or not*</ins>, look at [HOW_CAN_I_HELP.md](/HOW_CAN_I_HELP.md).
 
 > [!TIP]
-> To talk with the community <ins>*whether you're a developer or not*</ins>, you can join the HiBy OS Modding discord: https://discord.gg/22vhTYK3Y
+> To talk with the community <ins>*whether you're a developer or not*</ins>, you can join the HiBy OS Modding discord: https://discord.gg/gv3sfBmxu
 >
 > I host the discord, and it has the same scope as this project (current HiBy OS devices)
 >
